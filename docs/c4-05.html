@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ko" data-site="1bb07e">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>명령 한 줄이 실행되는 5단계 ★★★ 시험 최다 출제 · 빅데이터플랫폼 시험공부</title>
+<meta name="description" content="빅데이터플랫폼 중간고사를 전공 처음인 사람도 이해하게 정리한 공부 사이트">
+<link rel="stylesheet" href="assets/style.css?v=d2a0e0e2">
+</head>
+<body>
+<header class="top"><div class="top-in">
+<a class="brand" href="index.html"><span class="bases"><i class="a">시</i><i class="t">험</i><i class="g">공</i><i class="c">부</i></span>빅데이터플랫폼</a>
+<nav class="nav" aria-label="메뉴"><a href="index.html" class=on>보드</a><a href="b.html">최소코스</a><a href="bplus.html">B+코스</a><a href="quiz.html">퀴즈</a><a href="essay.html">서술형</a><a href="cards.html">암기카드</a><a href="words.html">낱말사전</a><a href="cheat.html">시험 전 1장</a></nav>
+</div></header>
+<main>
+<div class="crumb k4"><a href="index.html#c4">← 보드</a><span>중앙처리장치(CPU) · 5/9</span></div><h1>명령 한 줄이 실행되는 5단계 ★★★ 시험 최다 출제</h1>
+<p><a class="w" href="words.html#w26" data-w="26">CPU</a>는 명령 한 줄을 통째로 처리하지 않고, 더 작은 <b><a class="w" href="words.html#w81" data-w="81">마이크로 명령</a></b> 5개로 나눠서 <a class="w" href="words.html#w78" data-w="78">실행</a>해요. 이 5단계를 한 바퀴 도는 것을 <b>주사이클</b>(<a class="w" href="words.html#w72" data-w="72">명령어</a> 사이클)이라고 해요. 순서는 <b><a class="w" href="words.html#w76" data-w="76">인출</a> → <a class="w" href="words.html#w77" data-w="77">해독</a> → 실행 → 데이터 → <a class="w" href="words.html#w80" data-w="80">기록</a></b>이에요.</p>
+<div class="paper"><svg viewBox="0 0 600 120" width="150mm">
+  <defs><marker id="c4a" viewBox="0 0 8 8" markerWidth="5" markerHeight="5" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#1d4ed8"/></marker></defs>
+  <g font-size="14" font-weight="bold" fill="#1b2333" text-anchor="middle">
+    <rect x="6" y="20" width="100" height="50" rx="8" fill="#dbe6ff"/><text x="56" y="42">1 인출</text><text x="56" y="60" font-size="11" font-weight="normal">fetch</text>
+    <rect x="124" y="20" width="100" height="50" rx="8" fill="#e3f6ec"/><text x="174" y="42">2 해독</text><text x="174" y="60" font-size="11" font-weight="normal">decode</text>
+    <rect x="242" y="20" width="100" height="50" rx="8" fill="#fff1d6"/><text x="292" y="42">3 실행</text><text x="292" y="60" font-size="11" font-weight="normal">execute</text>
+    <rect x="360" y="20" width="100" height="50" rx="8" fill="#fde2e2"/><text x="410" y="42">4 데이터</text><text x="410" y="60" font-size="11" font-weight="normal">data</text>
+    <rect x="478" y="20" width="100" height="50" rx="8" fill="#eadcf8"/><text x="528" y="42">5 기록</text><text x="528" y="60" font-size="11" font-weight="normal">write back</text>
+  </g>
+  <g stroke="#1d4ed8" stroke-width="2.5"><line x1="106" y1="45" x2="122" y2="45" marker-end="url(#c4a)"/><line x1="224" y1="45" x2="240" y2="45" marker-end="url(#c4a)"/><line x1="342" y1="45" x2="358" y2="45" marker-end="url(#c4a)"/><line x1="460" y1="45" x2="476" y2="45" marker-end="url(#c4a)"/></g>
+  <text x="300" y="95" text-anchor="middle" font-size="13" fill="#1b2333">레지스터 계산 명령(MOVE, ADD, MUL)은 1-2-3-5, 메모리 접근 명령(LOAD, STORE)은 1-2-4-5</text>
+  <text x="300" y="112" text-anchor="middle" font-size="12" fill="#5d6b80">해당 없는 단계는 "No action"(아무 일 없음)이에요</text>
+</svg></div>
+<div class="box eg"><span class="t">비유 — 도서관에서 책 빌려 계산하기</span>
+<p><b>인출</b>은 다음에 할 일이 적힌 쪽지를 가져오는 것, <b>해독</b>은 쪽지 내용을 이해하는 것, <b>실행</b>은 계산기를 두드리는 것이에요. <b>데이터</b>는 책장(메모리)에서 책을 꺼내거나 꽂는 것, <b>기록</b>은 결과를 내 노트(<a class="w" href="words.html#w66" data-w="66">레지스터</a>)에 적는 것이에요.</p>
+</div>
+<div class="tw"><table>
+  <tr><th style="width:18%">단계</th><th>하는 일 (자료 기준)</th><th style="width:26%">주로 쓰는 부품</th></tr>
+  <tr><td><b>1 인출</b><br><span class="small">fetch</span></td><td><a class="w" href="words.html#w67" data-w="67">PC</a>가 가리키는 번지의 명령을 메모리에서 읽어 <a class="w" href="words.html#w68" data-w="68">IR</a>로 가져와요. 그다음 PC는 <b>다음 명령의 번지로 바뀌어요</b>.</td><td>PC, <a class="w" href="words.html#w69" data-w="69">MAR</a>, <a class="w" href="words.html#w70" data-w="70">MBR</a>, IR</td></tr>
+  <tr><td><b>2 해독</b><br><span class="small"><a class="w" href="words.html#w38" data-w="38">decode</a></span></td><td><a class="w" href="words.html#w65" data-w="65">CU</a>가 IR의 명령을 해석하고 제어신호를 정해요. 계산에 쓸 값을 X, Y에 넣어요.</td><td>CU, IR, X, Y</td></tr>
+  <tr><td><b>3 실행</b><br><span class="small">execute</span></td><td><a class="w" href="words.html#w64" data-w="64">ALU</a>가 계산해요. <b>(레지스터 계산 명령일 때만)</b></td><td>ALU, <a class="w" href="words.html#w71" data-w="71">AC</a></td></tr>
+  <tr><td><b>4 데이터</b><br><span class="small">data</span></td><td>MAR 번지에서 값을 MBR로 읽거나(읽기), MBR의 값을 MAR 번지에 써요(쓰기). <b>(메모리 접근 명령일 때만)</b></td><td>MAR, MBR, 메모리</td></tr>
+  <tr><td><b>5 기록</b><br><span class="small">write back</span></td><td>계산 결과 또는 메모리에서 읽은 값을 레지스터에 기록해요.</td><td>AC 또는 MBR, 레지스터</td></tr>
+</table></div>
+<p>실제 예로 따라가 볼게요. 메모리 00번지에 <code>MOVE R1 2</code>, 02번지에 <code>MOVE R2 3</code>, 04번지에 <code>ADD R3 R1 R2</code>, 06번지에 <code>STORE CC R3</code>이 있어요. 명령 하나가 2칸(16<a class="w" href="words.html#w0" data-w="0">비트</a> = 2<a class="w" href="words.html#w1" data-w="1">바이트</a>)을 차지해서 번지가 0, 2, 4, 6으로 2씩 늘어요. 그래서 PC도 2씩 늘어요. R1에는 2, R2에는 3이 이미 들어 있다고 해요.</p>
+<p><b>예 1. 04번지 ADD R3 R1 R2 (레지스터 계산 명령)</b> — 시험과 과제에 가장 많이 나온 예예요. PC=4에서 시작해요.</p>
+<div class="tw"><table>
+  <tr><th style="width:16%">단계</th><th>일어나는 일</th></tr>
+  <tr><td>1 인출</td><td>PC 값 4를 MAR로 보내요 (MAR ← 4). 제어신호는 Read(읽기). 4번지의 명령이 MBR을 거쳐 IR로 들어가요 (MBR, IR ← ADD R3 R1 R2). PC는 6으로 바뀌어요 (PC: 4 ; PC ← 6).</td></tr>
+  <tr><td>2 해독</td><td>CU가 IR을 해석해요. R1, R2의 값이 X ← 2, Y ← 3으로 들어가고 ALU 제어신호는 <b>+</b>예요.</td></tr>
+  <tr><td>3 실행</td><td>ALU가 2 + 3을 계산해서 AC ← 5가 돼요.</td></tr>
+  <tr><td>4 데이터</td><td>메모리를 안 쓰는 명령이라 <b>No action</b>이에요.</td></tr>
+  <tr><td>5 기록</td><td>AC의 5를 R3에 기록해요 (R3 ← 5).</td></tr>
+</table></div>
+<p><b>예 2. 06번지 STORE CC R3 (메모리 접근 명령)</b> — 계산이 없어서 3단계가 No action이에요. PC=6에서 시작해요.</p>
+<div class="tw"><table>
+  <tr><th style="width:16%">단계</th><th>일어나는 일</th></tr>
+  <tr><td>1 인출</td><td>MAR ← 6, 제어신호 Read, MBR와 IR ← STORE CC R3, PC ← 8.</td></tr>
+  <tr><td>2 해독</td><td>IR 해석. 쓸 번지와 값을 준비해요 (MAR ← CC, MBR ← R3의 값 5).</td></tr>
+  <tr><td>3 실행</td><td><b>No action</b> (계산이 없어요).</td></tr>
+  <tr><td>4 데이터</td><td>제어신호 Write. 메모리 CC번지에 MBR의 값을 써요 (MEM[CC] ← 5).</td></tr>
+  <tr><td>5 기록</td><td><b>No action</b> (레지스터에 쓸 것이 없어요).</td></tr>
+</table></div>
+<figure class="slide"><img src="slides/b_fetch.jpg" alt="인출 단계 슬라이드"><figcaption>교수님 슬라이드 — 1단계 인출. MAR ← 0, 제어신호 Read, MBR와 IR ← MOVE R1 2, PC: 0 ; PC ← 2</figcaption></figure>
+<p><b>예 3. <a class="w" href="words.html#w22" data-w="22">LOAD</a> R5 CC (스스로 해 보기)</b> — 교수님이 "혼자 해 보라"고 한 명령이에요. 같은 방식으로 따라가면 해독에서 MAR ← CC, 데이터에서 Read로 MBR ← MEM[CC], 기록에서 R5 ← MBR이 돼요. 실행은 No action이에요.</p>
+<p><b>왜 이렇게 쪼갤까요?</b> 5단계는 서로 쓰는 부품이 달라서 신호가 겹치지 않아요. 덕분에 다음 절의 <a class="w" href="words.html#w84" data-w="84">파이프라인</a>처럼 겹쳐서 실행할 수 있어요.</p>
+<p>2023년 기출 Q7은 이 그림을 그대로 냈어요. 04번지의 ADD를 실행하는 중이고, 메모리에는 00번지 MOVE R1 5, 02번지 MOVE R2 7이 들어 있었어요(그래서 R1=5, R2=7이에요). 답은 아래와 같아요.</p>
+<div class="tw"><table>
+  <tr><th style="width:12%">빈칸</th><th style="width:26%">답</th><th>어떻게 알아보나</th></tr>
+  <tr><td>①</td><td><b>인출(fetch)</b></td><td>그림에 PC, MAR, IR, MBR 화살표가 있으면 인출이에요.</td></tr>
+  <tr><td>②, ③</td><td><b>4, 6</b></td><td>PC : 현재 값 ; PC ← 다음 값. 현재 04번지니까 4, 다음 명령은 06번지니까 6이에요.</td></tr>
+  <tr><td>④</td><td><b>4</b></td><td>MAR ← PC 값이에요.</td></tr>
+  <tr><td>⑤</td><td><b>ADD R3 R1 R2</b></td><td>IR ← 메모리에서 읽은 명령이에요.</td></tr>
+  <tr><td>⑥</td><td><b>실행(execute)</b></td><td>ALU, X, Y, 제어신호, AC가 보이면 실행이에요.</td></tr>
+  <tr><td>⑦</td><td><b>+</b></td><td>ADD니까 더하기 신호예요.</td></tr>
+  <tr><td>⑧, ⑨</td><td><b>5, 7</b></td><td>R1=5, R2=7 값이 X, Y로 들어가요.</td></tr>
+  <tr><td>⑩</td><td><b>12</b></td><td>5 + 7 = 12이고 AC ← 12예요.</td></tr>
+</table></div>
+<p>Q6.2도 같은 계산이에요. "1100 0011 0001 0010"(ADD R3 R1 R2)을 ALU에서 계산할 때 R1=2, R2=3이면 입력은 <b>A=0000 0010, B=0000 0011, C=1000 0000, Y=0000 0101</b>이에요. 제어신호 C는 왼쪽부터 +, -, ×, /, &amp;, |, &gt;&gt;, &lt;&lt; 순서(C7부터 C0)라서 더하기(+)는 맨 왼쪽 비트만 1이에요. 그래서 1000 0000이에요. Y는 2+3=5를 <a class="w" href="words.html#w3" data-w="3">2진수</a>로 쓴 0000 0101이에요.</p>
+<div class="box tip"><span class="t">외우기 팁</span>
+<p>그림 문제는 <b>어느 부품에 화살표가 있나</b>로 단계를 알아봐요. PC·MAR·IR → 인출, X·Y·제어신호 → 해독(또는 실행), AC가 값을 받으면 실행, MAR·MBR에서 메모리로 → 데이터, 레지스터에 값이 들어가면 기록이에요. 계산(ADD, MUL)은 <b>1-2-3-5</b>, 메모리(LOAD, STORE)는 <b>1-2-4-5</b>예요.</p>
+</div>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>CPU는 하나의 <a class="w" href="words.html#w17" data-w="17">기계어</a> 명령을 인출(fetch), 해독(decode), 실행(execute), 데이터(data), 기록(write back)의 5단계 마이크로 명령으로 나누어 실행한다. 인출 단계에서는 PC의 주소를 MAR에 넣고 메모리에서 읽은 명령을 MBR을 거쳐 IR에 가져오며 PC는 다음 명령의 주소로 변경된다. 해독 단계에서는 제어장치가 IR의 명령을 해독하여 제어신호를 결정하고, 실행 단계에서는 ALU가 계산하여 결과를 AC에 둔다. <a class="w" href="words.html#w79" data-w="79">데이터 단계</a>는 메모리 접근 명령에서만 MAR 주소와 MBR 사이에 값을 읽거나 쓰며, 기록 단계에서는 결과를 레지스터에 기록한다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — ADD 명령에서 "데이터" 단계는 무슨 일을 하나요? 그리고 PC가 4일 때 인출 후 PC 값은?</summary>
+<p>ADD는 메모리를 안 쓰는 계산 명령이라 데이터 단계는 No action이에요. 명령이 2칸이라 인출 후 PC는 6이에요.</p></details>
+
+<div class="done"><a class="go" href="c4-06.html">다음 카드 → 파이프라인과 RISC·CISC ★</a><div class="pn"><a href="c4-04.html"><b>← 이전</b>이전 카드</a><a class="next" href="quiz.html#c4"><b>연습</b>이 장 문제 풀기</a></div><p class="muted small">자료: 5~6주차 · 05중앙처리장치.pdf · 빅데이터플렛폼05(5주차), 빅데이터플06(6주차), 빅데이터플07(7주차 일부)</p></div>
+</main>
+<script src="assets/words.js?v=d2a0e0e2"></script>
+<script src="assets/app.js?v=d2a0e0e2"></script>
+</body>
+</html>

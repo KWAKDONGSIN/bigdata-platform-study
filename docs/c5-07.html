@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ko" data-site="1bb07e">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>페이지, 프레임, 주소 변환 ★★ 계산 문제 가능 · 빅데이터플랫폼 시험공부</title>
+<meta name="description" content="빅데이터플랫폼 중간고사를 전공 처음인 사람도 이해하게 정리한 공부 사이트">
+<link rel="stylesheet" href="assets/style.css?v=d2a0e0e2">
+</head>
+<body>
+<header class="top"><div class="top-in">
+<a class="brand" href="index.html"><span class="bases"><i class="a">시</i><i class="t">험</i><i class="g">공</i><i class="c">부</i></span>빅데이터플랫폼</a>
+<nav class="nav" aria-label="메뉴"><a href="index.html" class=on>보드</a><a href="b.html">최소코스</a><a href="bplus.html">B+코스</a><a href="quiz.html">퀴즈</a><a href="essay.html">서술형</a><a href="cards.html">암기카드</a><a href="words.html">낱말사전</a><a href="cheat.html">시험 전 1장</a></nav>
+</div></header>
+<main>
+<div class="crumb k5"><a href="index.html#c5">← 보드</a><span>메모리와 계층 구조 · 7/9</span></div><h1>페이지, 프레임, 주소 변환 ★★ 계산 문제 가능</h1>
+<p><a class="w" href="words.html#w105" data-w="105">운영체제</a>는 메모리를 <a class="w" href="words.html#w1" data-w="1">바이트</a> 하나하나가 아니라 <b>같은 크기의 블록</b>으로 나눠서 관리해요. <a class="w" href="words.html#w112" data-w="112">가상메모리</a>의 블록은 <b><a class="w" href="words.html#w116" data-w="116">페이지</a>(page)</b>, <a class="w" href="words.html#w113" data-w="113">물리메모리</a>(<a class="w" href="words.html#w28" data-w="28">RAM</a>)의 블록은 <b><a class="w" href="words.html#w117" data-w="117">프레임</a>(frame)</b>이라고 해요. 두 블록의 크기는 <b>같아요</b>. 이 크기가 <b>페이지 크기</b>예요(예 4KB = 4,096바이트).</p>
+<div class="tw"><table>
+  <tr><th style="width:26%">용어</th><th>뜻</th></tr>
+  <tr><td><b>페이지</b> (Page)</td><td>가상메모리의 고정 크기 블록</td></tr>
+  <tr><td><b>프레임</b> (Frame)</td><td>RAM의 고정 크기 블록</td></tr>
+  <tr><td><b>페이징</b> (Paging)</td><td>페이지를 프레임에 대응시켜 관리하는 방식</td></tr>
+  <tr><td><b>가상주소</b> (VA)</td><td><a class="w" href="words.html#w12" data-w="12">프로그램</a>/<a class="w" href="words.html#w26" data-w="26">CPU</a>가 메모리를 부를 때 쓰는 주소</td></tr>
+  <tr><td><b>물리주소</b> (PA)</td><td>RAM에서 실제로 데이터가 있는 주소</td></tr>
+  <tr><td><b>주소 변환</b></td><td>가상주소를 물리주소로 바꾸는 과정</td></tr>
+</table></div>
+<div class="box eg"><span class="t">비유</span>
+<p>가상주소는 "301호"라는 방 번호이고, 물리주소는 건물 안의 실제 위치예요. 책의 쪽수(페이지 번호)와 그 쪽 안의 몇 번째 줄(오프셋)로 위치를 말하는 것과도 같아요.</p>
+</div>
+<p>핵심 공식은 하나예요. 주소를 <b>"페이지 번호 + 페이지 안의 위치(오프셋)"</b>로 쪼개요.</p>
+<div class="box def"><span class="t">공식</span>
+<p>가상주소 = 페이지 번호 × 페이지 크기 + 오프셋 (페이지 안의 위치)</p>
+</div>
+<p>손계산 순서는 3단계예요. 예는 자료 13쪽의 가상주소 10,000이고 페이지 크기는 4,096이에요. <a class="w" href="words.html#w118" data-w="118">페이지 테이블</a>은 (페이지 0→프레임 7, 1→2, 2→9, 3→4)예요.</p>
+<ul>
+  <li><b>① 나눗셈</b> : 10,000 ÷ 4,096 = 몫 2, 나머지 1,808. 그러니까 <b>페이지 번호 2, 오프셋 1,808</b>이에요 (2 × 4,096 = 8,192이고 10,000 − 8,192 = 1,808).</li>
+  <li><b>② 표 찾기</b> : 페이지 테이블에서 페이지 2는 <b>프레임 9</b>예요.</li>
+  <li><b>③ 다시 합치기</b> : 9 × 4,096 + 1,808 = 36,864 + 1,808 = <b>38,672</b>. 이게 물리주소예요.</li>
+</ul>
+<figure class="slide"><img src="slides/b_addr_trans.jpg" alt="페이지 번호와 오프셋 슬라이드"><figcaption>교수님 슬라이드 — 가상주소 10,000 = 2 × 4,096 + 1,808 → 물리주소 38,672 = 9 × 4,096 + 1,808</figcaption></figure>
+<p><b>왜 오프셋은 그대로일까요?</b> 페이지와 프레임은 크기가 같아서 블록 안의 위치는 변하지 않기 때문이에요. 바뀌는 것은 "몇 번째 블록이냐"뿐이고, 데이터의 값은 그대로예요. 달라지는 건 CPU가 찾아가는 주소예요.</p>
+<p><b>한 문제 더</b> 해 봐요. 같은 표에서 가상주소 5,000이면? 5,000 ÷ 4,096 = 몫 1, 나머지 904. 페이지 1은 프레임 2니까 물리주소는 2 × 4,096 + 904 = 8,192 + 904 = <b>9,096</b>이에요.</p>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>가상메모리는 페이지, 물리메모리(RAM)는 같은 크기의 프레임으로 나누어 관리하며, 가상주소는 페이지 번호 × 페이지 크기 + 오프셋으로 나타낸다. 주소 변환은 페이지 번호만 프레임 번호로 바꾸고 오프셋은 그대로 유지한다. 예를 들어 가상주소 10,000은 페이지 2(오프셋 1,808)이고 프레임 9에 대응되면 물리주소는 9 × 4,096 + 1,808 = 38,672이다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — 페이지 크기 4,096에서 가상주소 8,300은 페이지 몇 번, 오프셋 몇인가요?</summary>
+<p>8,300 ÷ 4,096 = 몫 2, 나머지 108이에요(2 × 4,096 = 8,192). 페이지 2, 오프셋 108이에요.</p></details>
+
+<div class="done"><a class="go" href="c5-08.html">다음 카드 → 페이지 테이블, TLB, 페이지 폴트 — 주소를 찾는 순서 ★★★ 올해 새로 추가</a><div class="pn"><a href="c5-06.html"><b>← 이전</b>이전 카드</a><a class="next" href="quiz.html#c5"><b>연습</b>이 장 문제 풀기</a></div><p class="muted small">자료: 6~7주차 · 06메모리와계층구조.pdf, 07보조기억장치.pdf(앞부분) · 빅데이터플06(6주차), 빅데이터플07(7주차)</p></div>
+</main>
+<script src="assets/words.js?v=d2a0e0e2"></script>
+<script src="assets/app.js?v=d2a0e0e2"></script>
+</body>
+</html>

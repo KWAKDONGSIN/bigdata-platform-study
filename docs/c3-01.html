@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ko" data-site="1bb07e">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>계산기는 레고처럼 쌓아서 만든다 ★★ · 빅데이터플랫폼 시험공부</title>
+<meta name="description" content="빅데이터플랫폼 중간고사를 전공 처음인 사람도 이해하게 정리한 공부 사이트">
+<link rel="stylesheet" href="assets/style.css?v=d2a0e0e2">
+</head>
+<body>
+<header class="top"><div class="top-in">
+<a class="brand" href="index.html"><span class="bases"><i class="a">시</i><i class="t">험</i><i class="g">공</i><i class="c">부</i></span>빅데이터플랫폼</a>
+<nav class="nav" aria-label="메뉴"><a href="index.html" class=on>보드</a><a href="b.html">최소코스</a><a href="bplus.html">B+코스</a><a href="quiz.html">퀴즈</a><a href="essay.html">서술형</a><a href="cards.html">암기카드</a><a href="words.html">낱말사전</a><a href="cheat.html">시험 전 1장</a></nav>
+</div></header>
+<main>
+<div class="crumb k3"><a href="index.html#c3">← 보드</a><span>계산기 회로 · 1/9</span></div><h1>계산기는 레고처럼 쌓아서 만든다 ★★</h1>
+<p><a class="w" href="words.html#w26" data-w="26">CPU</a> 안에서 실제로 계산을 하는 부품이 <b><a class="w" href="words.html#w64" data-w="64">ALU</a>(산술논리연산장치, 계산기)</b>예요. 그런데 ALU도 처음부터 통으로 만든 게 아니라, 작은 블록을 단계별로 쌓아서 만들어요. 교수님은 "작은 블록으로 큰 구조물을 만드는 레고 조립"이라고 비유했어요.</p>
+<figure class="slide"><img src="slides/a_layers.jpg" alt="반도체, 논리게이트, 논리회로, 계산기(ALU) 순서로 조합하는 4단계 그림"><figcaption>교수님 슬라이드 — 계산기 만드는 과정. 반도체 → 논리게이트 → 논리회로 → 계산기(ALU)</figcaption></figure>
+<div class="tw"><table>
+  <tr><th style="width:8%">단계</th><th style="width:30%">블록</th><th>설명</th><th style="width:20%">레고 비유</th></tr>
+  <tr><td>①</td><td><b><a class="w" href="words.html#w48" data-w="48">반도체</a></b><br><span class="small"><a class="w" href="words.html#w49" data-w="49">다이오드</a>, <a class="w" href="words.html#w50" data-w="50">트랜지스터</a></span></td><td>전기의 흐름을 조절하는 가장 작은 부품</td><td>1칸짜리 기본 블록</td></tr>
+  <tr><td>②</td><td><b><a class="w" href="words.html#w51" data-w="51">논리 게이트</a></b><br><span class="small"><a class="w" href="words.html#w52" data-w="52">AND</a>, <a class="w" href="words.html#w53" data-w="53">OR</a>, <a class="w" href="words.html#w54" data-w="54">NOT</a> …</span></td><td>반도체를 조합해 0과 1의 규칙을 계산하는 회로</td><td>2칸, 4칸 블록</td></tr>
+  <tr><td>③</td><td><b>논리 회로</b><br><span class="small">덧셈기, 뺄셈기 …</span></td><td>게이트를 조합해 덧셈, 뺄셈 같은 계산을 하는 회로</td><td>벽, 지붕 조각</td></tr>
+  <tr><td>④</td><td><b>계산기 (ALU)</b></td><td>논리 회로들을 모두 모은 CPU 속 계산기</td><td>완성된 건물</td></tr>
+</table></div>
+<p>ALU는 <b>입력선 둘(A, B), 제어선(C), 출력선(Y)</b>으로 이루어져요. 각 선은 8개씩의 전기 신호(5V는 1, 0V는 0)예요.</p>
+<ul>
+  <li><b>A, B</b> : 계산할 두 수 (8<a class="w" href="words.html#w0" data-w="0">비트</a>씩)</li>
+  <li><b>C</b> : 제어 신호. 무슨 계산을 할지 고르는 8개의 선이에요. 순서는 <code>C7 C6 C5 C4 C3 C2 C1 C0</code> = <code>+ - x / &amp; | &gt;&gt; &lt;&lt;</code> (덧셈, 뺄셈, 곱셈, 나눗셈, AND, OR, 오른쪽 이동, 왼쪽 이동)</li>
+  <li><b>Y</b> : 계산 결과 (8비트)</li>
+</ul>
+<p>ALU 안에는 덧셈기, 뺄셈기, AND, OR, 시프터 같은 회로가 모두 들어 있고, 제어 신호 C가 "이 중 어느 회로의 결과를 Y로 내보낼지"를 골라요. <a class="w" href="words.html#w18" data-w="18">어셈블리어</a> 두 줄로 확인해 볼게요.</p>
+<div class="tw"><table>
+  <tr><th style="width:18%"></th><th>ADD R1, 2, 3<br><span class="small">(2와 3을 더해 R1에 저장)</span></th><th>MUL R2, 5, 5<br><span class="small">(5와 5를 곱해 R2에 저장)</span></th></tr>
+  <tr><td><b>A</b></td><td><code>00000010</code> (2)</td><td><code>00000101</code> (5)</td></tr>
+  <tr><td><b>B</b></td><td><code>00000011</code> (3)</td><td><code>00000101</code> (5)</td></tr>
+  <tr><td><b>C</b> (제어)</td><td><code>10000000</code> (C7 = 덧셈)</td><td><code>00100000</code> (C5 = 곱셈)</td></tr>
+  <tr><td><b>Y</b> (결과)</td><td><code>00000101</code> (5)</td><td><code>00011001</code> (25)</td></tr>
+</table></div>
+<p>덧셈이면 맨 왼쪽 제어선(C7) 하나만 1, 곱셈이면 왼쪽에서 세 번째(C5) 하나만 1이에요. 25는 16 + 8 + 1이라서 <code>00011001</code>이에요. 2023 기출 6.2번(ADD R3 R1 R2)의 A, B, C, Y 값도 위 왼쪽 열과 똑같아요.</p>
+<div class="box eg"><span class="t">비유 — 멀티 리모컨</span>
+<p>ALU는 계산 버튼이 여러 개 달린 계산기예요. 두 숫자(A, B)를 넣고 버튼(C)을 하나 누르면, 그 버튼에 해당하는 회로의 결과가 Y로 나와요. CPU는 이 입력을 1초에 약 30억 번(3GHz) 바꿔 가며 계산해요.</p>
+</div>
+<p>이렇게 만든 회로들을 손톱만 한 칩에 촘촘히 모아 넣은 것이 <b><a class="w" href="words.html#w63" data-w="63">집적회로</a>(IC)</b>예요. CPU 칩과 <a class="w" href="words.html#w28" data-w="28">RAM</a> 칩이 모두 집적회로이고, 지금은 나노미터 단위의 공정으로 만들어요.</p>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>계산기(ALU)는 반도체(다이오드, 트랜지스터)를 조합해 논리 게이트(AND, OR, NOT)를 만들고, 논리 게이트를 조합해 논리 회로(덧셈기 등)를 만들고, 논리 회로를 조합해 구성한다. 반도체를 잘 연결하면 AND, OR, NOT의 기본 논리 게이트를 구현할 수 있다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — ADD 명령을 실행할 때 ALU의 제어 신호 C 중 1이 되는 선은 어느 것인가요?</summary>
+<p>맨 왼쪽 C7이에요. 순서가 + - x / &amp; | &gt;&gt; &lt;&lt;이고 덧셈(+)이 첫 번째라서 <code>10000000</code>이에요.</p></details>
+
+<div class="done"><a class="go" href="c3-02.html">다음 카드 → 반도체 — 다이오드와 트랜지스터</a><div class="pn"><a href="index.html#c3"><b>← 이전</b>보드로</a><a class="next" href="quiz.html#c3"><b>연습</b>이 장 문제 풀기</a></div><p class="muted small">자료: 4주차 · 04계산기회로.pdf · 빅데이터플랫폼04</p></div>
+</main>
+<script src="assets/words.js?v=d2a0e0e2"></script>
+<script src="assets/app.js?v=d2a0e0e2"></script>
+</body>
+</html>

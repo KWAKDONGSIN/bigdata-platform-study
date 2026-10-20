@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko" data-site="1bb07e">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>패리티 비트와 유니코드 · 빅데이터플랫폼 시험공부</title>
+<meta name="description" content="빅데이터플랫폼 중간고사를 전공 처음인 사람도 이해하게 정리한 공부 사이트">
+<link rel="stylesheet" href="assets/style.css?v=d2a0e0e2">
+</head>
+<body>
+<header class="top"><div class="top-in">
+<a class="brand" href="index.html"><span class="bases"><i class="a">시</i><i class="t">험</i><i class="g">공</i><i class="c">부</i></span>빅데이터플랫폼</a>
+<nav class="nav" aria-label="메뉴"><a href="index.html" class=on>보드</a><a href="b.html">최소코스</a><a href="bplus.html">B+코스</a><a href="quiz.html">퀴즈</a><a href="essay.html">서술형</a><a href="cards.html">암기카드</a><a href="words.html">낱말사전</a><a href="cheat.html">시험 전 1장</a></nav>
+</div></header>
+<main>
+<div class="crumb k2"><a href="index.html#c2">← 보드</a><span>데이터 표현 · 8/11</span></div><h1>패리티 비트와 유니코드</h1>
+<p><b><a class="w" href="words.html#w45" data-w="45">패리티 비트</a>(parity bit)</b>는 데이터가 올바른지 검사하려고 <b>덧붙이는 <a class="w" href="words.html#w0" data-w="0">비트</a> 1개</b>예요.</p>
+<ul>
+  <li><b><a class="w" href="words.html#w46" data-w="46">짝수 패리티</a>(even)</b> : 전체에서 1의 개수가 <b>짝수</b>가 되도록 붙이는 비트예요.</li>
+  <li><b>홀수 패리티(odd)</b> : 전체에서 1의 개수가 <b>홀수</b>가 되도록 붙이는 비트예요.</li>
+</ul>
+<p>예제 2-13의 A와 T를 풀어 볼게요. 먼저 <a class="w" href="words.html#w43" data-w="43">ASCII</a>의 7비트에서 1이 몇 개인지 세요.</p>
+<div class="tw"><table>
+  <tr><th style="width:14%">글자</th><th style="width:22%">ASCII 7비트</th><th style="width:16%">1의 개수</th><th style="width:24%">짝수 패리티 비트</th><th>홀수 패리티 비트</th></tr>
+  <tr><td><b>A</b></td><td><code>1000001</code></td><td>2개 (짝수)</td><td><b>0</b> (이미 짝수)</td><td><b>1</b> (홀수로 만듦)</td></tr>
+  <tr><td><b>T</b></td><td><code>1010100</code></td><td>3개 (홀수)</td><td><b>1</b> (짝수로 만듦)</td><td><b>0</b> (이미 홀수)</td></tr>
+</table></div>
+<p><b>왜 붙일까요?</b> 데이터를 주고받다가 비트 하나가 바뀌면 1의 개수의 짝홀이 규칙과 달라져서 오류를 알아챌 수 있기 때문이에요.</p>
+<p>ASCII는 영어에 최적화돼 있어서 한글은 못 담아요. 그래서 전 세계 글자를 담는 <b><a class="w" href="words.html#w44" data-w="44">유니코드</a>(Unicode)</b>가 만들어졌어요.</p>
+<ul>
+  <li>국제적으로 통용되는 16비트 문자 체계예요. 1991년에 1.0 버전이 나왔어요.</li>
+  <li><code>U+0000 ~ U+007F</code> 영역은 영문자(ASCII와 같은 칸)이고, 그 뒤로 여러 나라 글자가 이어져요.</li>
+  <li><b>한글은 <code>U+AC00</code>부터 <code>U+D7A3</code>까지 11,172자</b>예요. 자음·모음만이 아니라 조합된 글자 하나하나가 모두 자기 번호를 가져요.</li>
+</ul>
+<div class="code">print(hex(ord("홍")))
+print(ord("홍"))
+print(chr(0xD64D))</div>
+<div class="tw"><table>
+  <tr><th style="width:42%">코드 줄</th><th>무슨 뜻인가요</th></tr>
+  <tr><td><code>print(hex(ord("홍")))</code></td><td>"홍"의 유니코드 번호를 <a class="w" href="words.html#w6" data-w="6">16진수</a>로 보여 줘요</td></tr>
+  <tr><td><code>print(ord("홍"))</code></td><td>같은 번호를 <a class="w" href="words.html#w4" data-w="4">10진수</a>로 보여 줘요</td></tr>
+  <tr><td><code>print(chr(0xD64D))</code></td><td>16진수 <code>D64D</code> 번호의 글자를 찾아요</td></tr>
+</table></div>
+<p><b><a class="w" href="words.html#w78" data-w="78">실행</a> 결과(출력)</b></p>
+<div class="code">0xd64d
+54861
+홍</div>
+<p>그래서 예제 2-14 "홍길동"의 유니코드는 홍 = <code>U+D64D</code>, 길 = <code>U+AE38</code>, 동 = <code>U+B3D9</code>예요.</p>
+<p>교수님이 덧붙인 주의점이 있어요. 한글은 저장 방식(인코딩)이 여러 개예요. UTF-16은 한글 한 글자가 2<a class="w" href="words.html#w1" data-w="1">바이트</a>이고 UTF-8은 3바이트예요.</p>
+<p>쓸 때와 읽을 때의 방식이 다르면 글자가 깨져요. 그래서 <b><a class="w" href="words.html#w21" data-w="21">변수</a> 이름과 코드는 영어로 쓰라</b>고 권했어요.</p>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>패리티 비트는 데이터가 올바른지 검사하기 위해 추가하는 비트로, 짝수 패리티는 1의 개수가 짝수가 되도록, 홀수 패리티는 홀수가 되도록 붙인다. 유니코드는 세계 각국의 언어를 표현하는 국제 문자 체계이며 한글은 U+AC00부터 U+D7A3까지 11,172자가 정의되어 있다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — 7비트 <code>1010100</code>(T)에 짝수 패리티 비트를 붙이면 몇이 되나요?</summary>
+<p>1이에요. 1이 3개(홀수)라서 하나를 더 붙여야 총 4개(짝수)가 돼요.</p></details>
+
+<div class="done"><a class="go" href="c2-09.html">다음 카드 → 기출 4번 — 메모리 칸에 숫자와 글자 쓰기 ★★★</a><div class="pn"><a href="c2-07.html"><b>← 이전</b>이전 카드</a><a class="next" href="quiz.html#c2"><b>연습</b>이 장 문제 풀기</a></div><p class="muted small">자료: 3주차 · 03데이터표현.pdf · 빅데이터플03</p></div>
+</main>
+<script src="assets/words.js?v=d2a0e0e2"></script>
+<script src="assets/app.js?v=d2a0e0e2"></script>
+</body>
+</html>

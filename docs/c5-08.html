@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ko" data-site="1bb07e">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>페이지 테이블, TLB, 페이지 폴트 — 주소를 찾는 순서 ★★★ 올해 새로 추가 · 빅데이터플랫폼 시험공부</title>
+<meta name="description" content="빅데이터플랫폼 중간고사를 전공 처음인 사람도 이해하게 정리한 공부 사이트">
+<link rel="stylesheet" href="assets/style.css?v=d2a0e0e2">
+</head>
+<body>
+<header class="top"><div class="top-in">
+<a class="brand" href="index.html"><span class="bases"><i class="a">시</i><i class="t">험</i><i class="g">공</i><i class="c">부</i></span>빅데이터플랫폼</a>
+<nav class="nav" aria-label="메뉴"><a href="index.html" class=on>보드</a><a href="b.html">최소코스</a><a href="bplus.html">B+코스</a><a href="quiz.html">퀴즈</a><a href="essay.html">서술형</a><a href="cards.html">암기카드</a><a href="words.html">낱말사전</a><a href="cheat.html">시험 전 1장</a></nav>
+</div></header>
+<main>
+<div class="crumb k5"><a href="index.html#c5">← 보드</a><span>메모리와 계층 구조 · 8/9</span></div><h1>페이지 테이블, TLB, 페이지 폴트 — 주소를 찾는 순서 ★★★ 올해 새로 추가</h1>
+<p><a class="w" href="words.html#w26" data-w="26">CPU</a>가 데이터 하나를 읽는 일은 사실 <b>두 단계</b>예요. 1단계는 <b>"주소 알아내기"</b>(가상주소 → 물리주소), 2단계는 <b>"데이터 가져오기"</b>예요. 아래 세 가지 장치가 각자 다른 질문에 답해요.</p>
+<div class="tw"><table>
+  <tr><th style="width:24%">장치</th><th style="width:26%">담고 있는 것</th><th>이 장치가 답하는 질문</th></tr>
+  <tr><td><b><a class="w" href="words.html#w119" data-w="119">TLB</a></b></td><td>주소 변환 정보 (<a class="w" href="words.html#w116" data-w="116">페이지</a> → <a class="w" href="words.html#w117" data-w="117">프레임</a>)</td><td>주소 변환 정보를 찾았나?</td></tr>
+  <tr><td><b><a class="w" href="words.html#w118" data-w="118">페이지 테이블</a></b></td><td>페이지의 <a class="w" href="words.html#w28" data-w="28">RAM</a> 대응 (페이지 → 프레임)</td><td>이 페이지가 지금 RAM에 있어서 접근 가능한가?</td></tr>
+  <tr><td><b>CPU <a class="w" href="words.html#w98" data-w="98">캐시</a></b></td><td>실제 데이터 (캐시 라인)</td><td>데이터가 캐시에 있나?</td></tr>
+</table></div>
+<ul>
+  <li><b>페이지 테이블</b> : 가상 페이지가 RAM의 어느 프레임에 대응되는지 적은 표예요. <a class="w" href="words.html#w13" data-w="13">프로세스</a>마다 하나씩 있고(워드, <a class="w" href="words.html#w34" data-w="34">파워</a>포인트, 브라우저 각각), 보통 RAM에 있어요.</li>
+  <li><b>TLB</b> : 페이지 테이블에서 <b>자주 쓰는 변환 정보만 뽑아서 캐시처럼 빠르게 보관</b>하는 곳이에요. 실제 데이터가 아니라 "페이지 → 프레임" 정보를 담아요. 찾으면 <b>TLB <a class="w" href="words.html#w121" data-w="121">히트</a></b>, 없으면 <b>TLB <a class="w" href="words.html#w122" data-w="122">미스</a></b>예요.</li>
+  <li><b><a class="w" href="words.html#w120" data-w="120">페이지 폴트</a></b>(page fault) : 필요한 페이지가 RAM에 <b>없고</b> <a class="w" href="words.html#w114" data-w="114">스왑 영역</a>에 있는 경우예요. <a class="w" href="words.html#w105" data-w="105">운영체제</a>가 스왑 영역에서 RAM으로 <a class="w" href="words.html#w22" data-w="22">적재</a>(<a class="w" href="words.html#w115" data-w="115">스와핑</a>)하고, 페이지 테이블과 TLB를 고친 뒤 다시 <a class="w" href="words.html#w78" data-w="78">실행</a>해요.</li>
+</ul>
+<div class="box tip"><span class="t">외우기 팁</span>
+<p><b>TLB 미스 ≠ 페이지 폴트.</b> TLB 미스는 "빠른 메모장에 변환 정보가 없다"는 뜻이라 페이지 테이블에서 찾으면 돼요. 페이지 폴트는 "아예 RAM에 그 페이지가 없다"는 더 큰 사건이에요.</p>
+</div>
+<p>전체 순서를 그림 하나로 정리했어요. HW7 Q1은 이 그림을 따라가며 사건의 번호를 순서대로 쓰는 문제예요.</p>
+<div class="paper"><svg viewBox="0 0 600 560" width="150mm">
+  <defs><marker id="d5" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#1b2333"/></marker></defs>
+  <g font-size="13" fill="#1b2333" text-anchor="middle">
+    <rect x="190" y="8" width="220" height="34" rx="6" fill="#eef2f8" stroke="#94a3b8"/><text x="300" y="30">CPU : 가상주소로 데이터 요청</text>
+    <rect x="190" y="64" width="220" height="34" rx="6" fill="#dbe6ff" stroke="#475569"/><text x="300" y="86">① TLB 접근</text>
+    <rect x="20" y="130" width="190" height="46" rx="6" fill="#e3f6ec" stroke="#475569"/><text x="115" y="150">② TLB 히트</text><text x="115" y="167" font-size="12">변환 정보를 바로 얻음</text>
+    <rect x="360" y="130" width="200" height="46" rx="6" fill="#fde2e2" stroke="#475569"/><text x="460" y="150">③ TLB 미스</text><text x="460" y="167" font-size="12">변환 정보가 TLB에 없음</text>
+    <rect x="360" y="198" width="200" height="38" rx="6" fill="#dbe6ff" stroke="#475569"/><text x="460" y="222">④ 페이지 테이블 접근</text>
+    <rect x="230" y="262" width="150" height="62" rx="6" fill="#e3f6ec" stroke="#475569"/><text x="305" y="282">⑤ 페이지 존재</text><text x="305" y="299" font-size="12">(RAM에 있음)</text><text x="305" y="315" font-size="12">TLB에 등록</text>
+    <rect x="400" y="262" width="190" height="96" rx="6" fill="#fff1d6" stroke="#475569"/><text x="495" y="282">⑥ 페이지 폴트</text><text x="495" y="299" font-size="12">(RAM에 없음, 스왑에 있음)</text><text x="495" y="318">⑪ 스와핑</text><text x="495" y="335" font-size="12">스왑 → RAM 적재</text><text x="495" y="350" font-size="12">페이지 테이블·TLB 갱신</text>
+    <rect x="150" y="386" width="300" height="38" rx="6" fill="#eef2f8" stroke="#94a3b8"/><text x="300" y="410">물리주소 확보 (1단계 끝)</text>
+    <rect x="190" y="446" width="220" height="34" rx="6" fill="#dbe6ff" stroke="#475569"/><text x="300" y="468">⑦ 캐시 접근</text>
+    <rect x="40" y="512" width="220" height="40" rx="6" fill="#e3f6ec" stroke="#475569"/><text x="150" y="530">⑧ 캐시 히트</text><text x="150" y="546" font-size="12">데이터를 바로 사용</text>
+    <rect x="320" y="512" width="270" height="40" rx="6" fill="#fde2e2" stroke="#475569"/><text x="455" y="530">⑨ 캐시 미스 → ⑩ 메모리 데이터 접근</text><text x="455" y="546" font-size="12">RAM에서 캐시 라인을 가져옴</text>
+  </g>
+  <g stroke="#1b2333" stroke-width="2" fill="none">
+    <line x1="300" y1="42" x2="300" y2="62" marker-end="url(#d5)"/>
+    <line x1="240" y1="98" x2="140" y2="128" marker-end="url(#d5)"/>
+    <line x1="360" y1="98" x2="440" y2="128" marker-end="url(#d5)"/>
+    <line x1="460" y1="176" x2="460" y2="196" marker-end="url(#d5)"/>
+    <line x1="410" y1="236" x2="340" y2="260" marker-end="url(#d5)"/>
+    <line x1="500" y1="236" x2="520" y2="260" marker-end="url(#d5)"/>
+    <polyline points="115,176 115,405 148,405" marker-end="url(#d5)"/>
+    <line x1="305" y1="324" x2="305" y2="384" marker-end="url(#d5)"/>
+    <polyline points="495,358 495,405 452,405" marker-end="url(#d5)"/>
+    <line x1="300" y1="424" x2="300" y2="444" marker-end="url(#d5)"/>
+    <line x1="250" y1="480" x2="170" y2="510" marker-end="url(#d5)"/>
+    <line x1="350" y1="480" x2="430" y2="510" marker-end="url(#d5)"/>
+  </g>
+</svg></div>
+<p class="small" style="text-align:center">TLB → 페이지 테이블 → (필요하면 스왑) → 물리주소 → 캐시 → 메모리. 자료 07 슬라이드와 7주차 교수님 설명을 합친 그림이에요.</p>
+<p>2단계도 같은 방식이에요. 물리주소를 알았으면 캐시를 먼저 보고(⑦), 있으면 히트(⑧), 없으면 미스(⑨)라서 메모리에서 읽어 와요(⑩). 교수님은 "주소를 알아야 데이터를 가져올 수 있다. 1단계는 주소, 2단계는 데이터"라고 설명했어요.</p>
+<p>자료 20쪽 확인문제도 풀어 보세요. 무엇이 갱신되는지를 묻는 세 문제예요.</p>
+<div class="tw"><table>
+  <tr><th style="width:56%">상황</th><th>정답</th></tr>
+  <tr><td>페이지는 RAM에 있지만 TLB에 주소 변환 정보가 없다</td><td>페이지 테이블 탐색 → <b>TLB 갱신</b></td></tr>
+  <tr><td>주소 변환은 성공했지만 L1/L2/L3에 데이터가 없다</td><td>RAM에서 캐시 라인 읽기 → <b>CPU 캐시 갱신</b></td></tr>
+  <tr><td>필요한 페이지가 스왑에 있고 RAM에 없다</td><td>OS가 RAM에 적재 → <b>페이지 테이블 갱신</b> → 재실행</td></tr>
+</table></div>
+<p>용어 몇 개를 더 정리해요. <b>페이지 적재(page-in)</b>는 필요한 페이지를 RAM으로 가져오는 일, <b>페이지 반출(page-out)</b>은 RAM에서 내보내는 일, <b>스왑 인/아웃</b>은 스왑 영역과 RAM 사이에서 가져오고 내보내는 일이에요. <b>페이지 교체</b>는 RAM이 부족할 때 기존 페이지를 내보내고 새 페이지를 놓는 일이에요. 페이지 폴트가 났다고 항상 스왑을 읽는 것은 아니고(새 페이지 할당이나 파일 읽기로 해결되기도 해요), 이 수업에서는 "스왑에 있는 경우"를 다뤄요.</p>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>CPU가 가상주소로 메모리에 접근하면 먼저 TLB에서 주소 변환 정보를 찾는다. TLB 히트이면 물리주소를 바로 얻고, TLB 미스이면 페이지 테이블을 탐색한다. 페이지가 RAM에 있으면 TLB를 갱신하고, RAM에 없으면 페이지 폴트가 발생하여 운영체제가 스왑 영역의 페이지를 RAM에 적재하고 페이지 테이블과 TLB를 갱신한다. 물리주소를 얻은 뒤에는 캐시에 접근하여 히트이면 데이터를 사용하고, 미스이면 메모리에서 데이터를 가져온다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — TLB 미스가 나면 반드시 페이지 폴트가 발생하나요?</summary>
+<p>아니에요. 페이지가 RAM에 있다면 페이지 테이블을 보고 정상적으로 변환할 수 있어요. 페이지가 RAM에 없을 때만 페이지 폴트가 나요.</p></details>
+
+<div class="done"><a class="go" href="c5-09.html">다음 카드 → 이 장 3줄 요약</a><div class="pn"><a href="c5-07.html"><b>← 이전</b>이전 카드</a><a class="next" href="quiz.html#c5"><b>연습</b>이 장 문제 풀기</a></div><p class="muted small">자료: 6~7주차 · 06메모리와계층구조.pdf, 07보조기억장치.pdf(앞부분) · 빅데이터플06(6주차), 빅데이터플07(7주차)</p></div>
+</main>
+<script src="assets/words.js?v=d2a0e0e2"></script>
+<script src="assets/app.js?v=d2a0e0e2"></script>
+</body>
+</html>

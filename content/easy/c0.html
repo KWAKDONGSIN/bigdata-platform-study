@@ -1,0 +1,244 @@
+<!-- 0장: 왕초보 컴퓨터 기초. 컴퓨터가 하는 일(입력·처리·저장·출력), 0과 1, 하드웨어와 소프트웨어, 프로그램이 돌아가는 큰 그림을 쉬운 말로 설명해요 -->
+<h2>왕초보 컴퓨터 기초 — 컴퓨터는 0과 1로 일하는 계산 기계</h2>
+<p class="lead">컴퓨터를 하나도 모르는 상태에서 시작해도 괜찮아요. 이 장에서는 "컴퓨터가 무슨 일을 하는지, 왜 0과 1만 쓰는지, 프로그램이 어떤 순서로 돌아가는지"를 큰 그림으로 잡아요. 1장부터 나오는 부품 이름과 용어는 모두 이 그림 위에 얹혀요.</p>
+
+<h3>0-1. 컴퓨터는 무슨 일을 하는 기계일까요</h3>
+<p>컴퓨터(computer)는 한마디로 <b>계산(computation)하는 기계</b>예요. 교수님은 더 정확하게 "프로그램을 실행해서 계산하는 기계"라고 정리했어요.</p>
+<p>컴퓨터가 하는 일은 크게 네 가지예요. 시험공부하는 학생을 떠올리면 쉬워요.</p>
+<table>
+  <tr><th style="width:16%">하는 일</th><th style="width:34%">뜻</th><th style="width:24%">대표 부품</th><th>학생 비유</th></tr>
+  <tr><td><b>입력</b></td><td>컴퓨터에 정보를 넣어요</td><td>키보드, 마우스</td><td>문제지를 받아서 읽기</td></tr>
+  <tr><td><b>처리</b></td><td>계산하고 판단해요</td><td>CPU</td><td>머리로 문제 풀기</td></tr>
+  <tr><td><b>저장</b></td><td>자료와 결과를 보관해요</td><td>RAM, SSD·HDD</td><td>책상 위(잠깐), 도서관(오래)</td></tr>
+  <tr><td><b>출력</b></td><td>결과를 사람에게 보여 줘요</td><td>모니터</td><td>답안지에 답 쓰기</td></tr>
+</table>
+<svg viewBox="0 0 380 210" style="max-width:420px;width:100%;height:auto" role="img" aria-label="입력, 처리, 출력, 저장의 관계">
+<defs><marker id="a0m1" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#1d4ed8"/></marker></defs>
+<rect x="10" y="20" width="100" height="62" rx="8" fill="#dbe6ff"/>
+<text x="60" y="48" text-anchor="middle" font-size="17" font-weight="bold" fill="#1b2333">입력</text>
+<text x="60" y="68" text-anchor="middle" font-size="11" fill="#1b2333">키보드·마우스</text>
+<rect x="140" y="20" width="100" height="62" rx="8" fill="#e3f6ec"/>
+<text x="190" y="48" text-anchor="middle" font-size="17" font-weight="bold" fill="#1b2333">처리</text>
+<text x="190" y="68" text-anchor="middle" font-size="11" fill="#1b2333">CPU가 계산</text>
+<rect x="270" y="20" width="100" height="62" rx="8" fill="#fff1d6"/>
+<text x="320" y="48" text-anchor="middle" font-size="17" font-weight="bold" fill="#1b2333">출력</text>
+<text x="320" y="68" text-anchor="middle" font-size="11" fill="#1b2333">모니터</text>
+<rect x="110" y="140" width="160" height="56" rx="8" fill="#efe4ff"/>
+<text x="190" y="165" text-anchor="middle" font-size="17" font-weight="bold" fill="#1b2333">저장</text>
+<text x="190" y="184" text-anchor="middle" font-size="11" fill="#1b2333">RAM · SSD · HDD</text>
+<line x1="110" y1="51" x2="138" y2="51" stroke="#1d4ed8" stroke-width="3" marker-end="url(#a0m1)"/>
+<line x1="240" y1="51" x2="268" y2="51" stroke="#1d4ed8" stroke-width="3" marker-end="url(#a0m1)"/>
+<line x1="175" y1="84" x2="175" y2="138" stroke="#1d4ed8" stroke-width="3" marker-end="url(#a0m1)"/>
+<line x1="205" y1="138" x2="205" y2="86" stroke="#1d4ed8" stroke-width="3" marker-end="url(#a0m1)"/>
+</svg>
+<p>"계산"이라고 하면 덧셈·뺄셈만 떠올리기 쉬워요. 하지만 강의자료는 컴퓨터가 하는 계산을 다섯 가지로 나눠요.</p>
+<table>
+  <tr><th style="width:24%">종류</th><th>어떤 계산인가요</th></tr>
+  <tr><td><b>산술 계산</b></td><td>덧셈·뺄셈·곱셈·나눗셈 같은 사칙연산</td></tr>
+  <tr><td><b>논리 계산</b></td><td>AND, OR, NOT으로 참(1)인지 거짓(0)인지 판단. 조건문과 반복문을 제어해요</td></tr>
+  <tr><td><b>데이터 처리</b></td><td>자료를 검색하고, 정렬하고, 걸러 내요</td></tr>
+  <tr><td><b>그래픽 처리</b></td><td>이미지, 영상, 게임 화면을 만들어요</td></tr>
+  <tr><td><b>복합 계산</b></td><td>위의 것들을 섞은 더 복잡한 계산</td></tr>
+</table>
+<div class="box def"><span class="t">한 줄 정의</span>
+<p><b>컴퓨터 = 프로그램을 실행해서 계산하는 기계.</b> 하는 일은 입력, 처리, 저장, 출력이에요.</p>
+</div>
+<p><b>왜 이렇게 나눠서 알아 둘까요?</b> 나중에 컴퓨터가 느려지거나 멈췄을 때 "입력, 처리, 저장, 출력 중 어디가 문제인가"를 따져 볼 수 있기 때문이에요. 교수님도 부품을 배우는 이유가 "문제가 생기면 어디서 생기는지 이해하기 위해서"라고 했어요.</p>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>컴퓨터는 프로그램을 실행하여 계산하는 기계이다. 입력장치로 받은 데이터를 CPU가 처리하고, 기억장치에 저장하며, 출력장치로 결과를 보여 준다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — 컴퓨터가 하는 네 가지 일은 무엇인가요?</summary>
+<p>입력, 처리, 저장, 출력이에요. "받아서 → 계산해서 → 보관하고 → 보여 준다"로 기억하세요.</p></details>
+
+<h3>0-2. 계산기와 컴퓨터는 뭐가 다를까요</h3>
+<p>계산기도 계산을 하는데 왜 컴퓨터라고 부르지 않을까요? 이유는 <b>프로그램을 실행할 수 있느냐</b>예요. 계산기는 <code>2+3</code>이나 <code>(5+13)*7</code> 같은 단순 계산만 해요. 컴퓨터는 프로그램만 바꿔 주면 "10000 이하의 모든 소수 나열"이나 "ChatGPT 학습"까지 해요.</p>
+<div class="box def"><span class="t">한 줄 정의</span>
+<p><b>프로그램(program) = 큰 계산 문제를 풀기 위해 순서대로 나열한 작은 계산 명령들.</b> 강의자료 요약으로는 "컴퓨터가 수행해야 할 작업을 일련의 명령어들로 나열한 작업 명세서"예요.</p>
+</div>
+<div class="box eg"><span class="t">비유 — 계산 시나리오</span>
+<p>교수님은 프로그램을 "계산 시나리오"(대본)라고 불렀어요. 대본이 있어야 배우가 연기를 하듯, 프로그램이 있어야 CPU가 계산을 해요. 대본만 바꾸면 같은 배우가 전혀 다른 연극을 해요.</p>
+</div>
+<p>자료는 비슷한 두 영어 단어도 구분해요.</p>
+<table>
+  <tr><th style="width:22%">단어</th><th>뜻</th><th style="width:28%">비유</th></tr>
+  <tr><td><b>calculation</b></td><td><code>1+1=2</code> 같은 단순한 수학 계산 작업</td><td>못질, 톱질, 도배</td></tr>
+  <tr><td><b>computation</b></td><td>단순 계산에 그치지 않고 <b>문제 해결 과정 전체</b>. 문제를 수학 모델로 만들고 계산해서 푸는 일</td><td>건축 기술(집 전체 짓기)</td></tr>
+</table>
+<p>컴퓨터는 calculation(작은 계산)을 엄청나게 많이 모아서 computation(큰 문제 해결)을 해내는 기계예요.</p>
+<p>컴퓨터는 크게 두 시대로 나뉘어요. 이 차이가 1장의 <b>폰노이만 구조</b>가 중요한 이유예요.</p>
+<table>
+  <tr><th style="width:18%"></th><th>고전 컴퓨터</th><th>현대 컴퓨터</th></tr>
+  <tr><td><b>프로그램</b></td><td>물리적 회로에 <b>박혀 있음</b></td><td>데이터처럼 <b>저장장치에 저장</b>됨</td></tr>
+  <tr><td><b>새 계산을 하려면</b></td><td>컴퓨터를 <b>새로 만들어야</b> 함</td><td><b>소프트웨어만 새로 만들면</b> 됨</td></tr>
+  <tr><td><b>예</b></td><td>소수를 계산하는 컴퓨터, 암호를 해독하는 컴퓨터</td><td>엑셀, 파워포인트, 데이터베이스</td></tr>
+</table>
+<figure class="slide"><img src="slides/a_classic.jpg" alt="고전 컴퓨터와 현대 컴퓨터의 차이를 비교한 슬라이드"><figcaption>교수님 슬라이드 — 고전 컴퓨터는 프로그램이 회로에 들어 있고, 현대 컴퓨터는 프로그램도 저장장치에 저장돼요</figcaption></figure>
+<div class="box eg"><span class="t">비유 — 오르골과 스마트폰</span>
+<p>고전 컴퓨터는 오르골이에요. 한 곡만 연주하도록 만들어져서 다른 곡을 듣고 싶으면 오르골을 새로 사야 해요. 현대 컴퓨터는 스마트폰이에요. 같은 기계에 앱(프로그램)만 설치하면 음악도, 게임도, 계산도 해요.</p>
+</div>
+<p><b>왜 현대 컴퓨터가 필요했을까요?</b> 세계대전 때 복잡한 암호를 빨리 풀어야 했기 때문이에요. 예전에는 천재 수학자가 규칙을 찾아야 풀렸는데, 컴퓨터가 생긴 뒤에는 컴퓨터가 값을 반복해서 대입해 보는 방식으로 시간을 확 줄였어요. 요즘의 코인 채굴 계산이나 딥러닝 학습도 같은 원리예요.</p>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>프로그램은 컴퓨터가 수행해야 할 작업을 일련의 명령어들로 나열한 작업 명세서이다. 계산기는 단순 계산만 가능하지만 컴퓨터는 프로그램을 실행하여 단순 계산부터 복합 계산까지 수행한다. 현대 컴퓨터는 프로그램도 데이터와 같이 저장장치에 저장하므로 하드웨어를 새로 만들지 않고 소프트웨어만 바꾸어 다른 작업을 할 수 있다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — 계산기와 컴퓨터를 가르는 결정적 차이는 무엇인가요?</summary>
+<p>프로그램을 실행할 수 있는지 여부예요. 계산 능력의 크기가 아니라, 계산 순서(프로그램)를 바꿔 끼울 수 있는지가 차이예요.</p></details>
+
+<h3>0-3. 컴퓨터는 왜 0과 1만 쓸까요</h3>
+<p>컴퓨터의 계산 부품은 <b>전기 회로</b>예요. 전기 회로가 구별하기 쉬운 것은 "전기가 흐르는가, 안 흐르는가" 딱 두 가지예요. 그래서 컴퓨터는 <b>전기가 있으면 1, 없으면 0</b>으로 약속해요. 교수님 설명으로는 5볼트(V)가 가해지면 1, 0볼트면 0이에요.</p>
+<div class="box eg"><span class="t">비유 — 전등 스위치</span>
+<p>방의 전등 스위치는 켜짐과 꺼짐 두 가지뿐이에요. 스위치가 하나면 2가지, 두 개면 4가지, 8개면 2를 8번 곱한 <b>256가지</b>를 만들 수 있어요. 컴퓨터는 이 스위치(비트)를 엄청나게 많이 이어서 모든 것을 표현해요.</p>
+</div>
+<svg viewBox="0 0 380 130" style="max-width:420px;width:100%;height:auto" role="img" aria-label="전등 8개로 표현한 이진수 10001001, 십진수 137">
+<text x="190" y="16" text-anchor="middle" font-size="13" font-weight="bold" fill="#1b2333">스위치 8개 = 1바이트. 켜짐(노랑) = 1, 꺼짐(회색) = 0</text>
+<text x="28" y="42" text-anchor="middle" font-size="11" fill="#5d6b80">128</text>
+<circle cx="28" cy="70" r="17" fill="#fde68a" stroke="#b45309" stroke-width="2"/>
+<text x="28" y="76" text-anchor="middle" font-size="15" font-weight="bold" fill="#1b2333">1</text>
+<text x="74" y="42" text-anchor="middle" font-size="11" fill="#5d6b80">64</text>
+<circle cx="74" cy="70" r="17" fill="#e5e9f0" stroke="#94a3b8" stroke-width="2"/>
+<text x="74" y="76" text-anchor="middle" font-size="15" font-weight="bold" fill="#1b2333">0</text>
+<text x="120" y="42" text-anchor="middle" font-size="11" fill="#5d6b80">32</text>
+<circle cx="120" cy="70" r="17" fill="#e5e9f0" stroke="#94a3b8" stroke-width="2"/>
+<text x="120" y="76" text-anchor="middle" font-size="15" font-weight="bold" fill="#1b2333">0</text>
+<text x="166" y="42" text-anchor="middle" font-size="11" fill="#5d6b80">16</text>
+<circle cx="166" cy="70" r="17" fill="#e5e9f0" stroke="#94a3b8" stroke-width="2"/>
+<text x="166" y="76" text-anchor="middle" font-size="15" font-weight="bold" fill="#1b2333">0</text>
+<text x="212" y="42" text-anchor="middle" font-size="11" fill="#5d6b80">8</text>
+<circle cx="212" cy="70" r="17" fill="#fde68a" stroke="#b45309" stroke-width="2"/>
+<text x="212" y="76" text-anchor="middle" font-size="15" font-weight="bold" fill="#1b2333">1</text>
+<text x="258" y="42" text-anchor="middle" font-size="11" fill="#5d6b80">4</text>
+<circle cx="258" cy="70" r="17" fill="#e5e9f0" stroke="#94a3b8" stroke-width="2"/>
+<text x="258" y="76" text-anchor="middle" font-size="15" font-weight="bold" fill="#1b2333">0</text>
+<text x="304" y="42" text-anchor="middle" font-size="11" fill="#5d6b80">2</text>
+<circle cx="304" cy="70" r="17" fill="#e5e9f0" stroke="#94a3b8" stroke-width="2"/>
+<text x="304" y="76" text-anchor="middle" font-size="15" font-weight="bold" fill="#1b2333">0</text>
+<text x="350" y="42" text-anchor="middle" font-size="11" fill="#5d6b80">1</text>
+<circle cx="350" cy="70" r="17" fill="#fde68a" stroke="#b45309" stroke-width="2"/>
+<text x="350" y="76" text-anchor="middle" font-size="15" font-weight="bold" fill="#1b2333">1</text>
+<text x="190" y="116" text-anchor="middle" font-size="14" fill="#1b2333">10001001 → 128 + 8 + 1 = 137</text>
+</svg>
+<p>숫자만이 아니에요. 글자는 "A는 01000001" 같은 약속(문자 코드)으로, 사진·소리도 숫자로 바꿔서 결국 0과 1의 묶음으로 저장해요. 이렇게 사람이 쓰는 정보를 0과 1로 바꾸는 일을 <b>인코드(encode)</b>, 거꾸로 되돌리는 일을 <b>디코드(decode)</b>라고 해요. 자세한 방법은 2장(데이터 표현)에서 배워요.</p>
+<div class="box def"><span class="t">한 줄 정의</span>
+<p><b>비트(bit) = 0 또는 1 하나.</b> 영어 binary(2진) + digit(숫자)의 줄임말이에요. 비트 8개를 묶으면 <b>1바이트(byte)</b>예요.</p>
+</div>
+<p><b>왜 사람처럼 10진법을 쓰지 않을까요?</b> 사람은 손가락이 10개라서 10진법이 편해요. 하지만 반도체 회로로 10가지 전기 상태를 안정적으로 구별하기는 어려워요. 두 가지만 구별하면 되는 이진법이 훨씬 단순하고 튼튼해서 컴퓨터가 이진법을 써요.</p>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>컴퓨터는 반도체 회로의 전기 신호(5V는 1, 0V는 0)로 동작하므로 모든 숫자와 문자를 0과 1로 이루어진 이진수로 바꾸어 처리한다. 비트(bit)는 이진수 한 자리이고 8비트가 1바이트이다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — 컴퓨터는 왜 모든 정보를 0과 1로 바꾸나요?</summary>
+<p>계산 부품이 전기 회로라서 "전기가 있다/없다" 두 상태를 쓰는 것이 가장 단순하고 안정적이기 때문이에요.</p></details>
+
+<h3>0-4. 하드웨어와 소프트웨어</h3>
+<p>컴퓨터는 두 덩어리로 이루어져요.</p>
+<ul>
+  <li><b>하드웨어(hardware)</b> : 손으로 만질 수 있는 물리적 부품이에요. CPU, RAM, SSD, 그래픽카드, 메인보드, 파워, 모니터, 키보드가 모두 하드웨어예요.</li>
+  <li><b>소프트웨어(software)</b> : 만질 수 없는 프로그램(코드)이에요. 하드웨어 위에서 일을 시키는 지시서예요.</li>
+</ul>
+<p>소프트웨어도 두 종류로 나뉘어요. 하나는 <b>운영체제(OS, Operating System)</b>이고, 다른 하나는 <b>응용 프로그램(application)</b>이에요. 윈도우, 리눅스, macOS가 운영체제이고, 엑셀, 파워포인트, 게임, 크롬, 파이썬이 응용 프로그램이에요.</p>
+<svg viewBox="0 0 380 190" style="max-width:420px;width:100%;height:auto" role="img" aria-label="하드웨어 위에 운영체제, 그 위에 응용 프로그램이 올라가는 층 구조">
+<rect x="10" y="8" width="360" height="50" rx="8" fill="#fff1d6"/>
+<text x="190" y="29" text-anchor="middle" font-size="15" font-weight="bold" fill="#1b2333">응용 프로그램</text>
+<text x="190" y="47" text-anchor="middle" font-size="11" fill="#1b2333">엑셀 · 파워포인트 · 게임 · 크롬 · 파이썬</text>
+<rect x="10" y="68" width="360" height="50" rx="8" fill="#e3f6ec"/>
+<text x="190" y="89" text-anchor="middle" font-size="15" font-weight="bold" fill="#1b2333">운영체제 (OS)</text>
+<text x="190" y="107" text-anchor="middle" font-size="11" fill="#1b2333">윈도우 · 리눅스 · macOS</text>
+<rect x="10" y="128" width="360" height="50" rx="8" fill="#dbe6ff"/>
+<text x="190" y="149" text-anchor="middle" font-size="15" font-weight="bold" fill="#1b2333">하드웨어</text>
+<text x="190" y="167" text-anchor="middle" font-size="11" fill="#1b2333">CPU · RAM · SSD · 그래픽카드 · 메인보드 · 파워</text>
+</svg>
+<div class="box eg"><span class="t">비유 — 극장</span>
+<p>하드웨어는 극장 건물과 무대, 배우예요. 응용 프로그램은 그날 공연하는 연극(대본)이고, 운영체제는 배우와 무대를 배정하고 순서를 정해 주는 <b>극장 관리자</b>예요. 관리자 없이는 연극을 올릴 수 없어요.</p>
+</div>
+<p>교수님도 "컴퓨터를 조립하고 나서 바로 쓸 수 있는 게 아니라, 운영체제를 깔아 줘야 한다"고 말했어요. 전원을 켜면 <b>가장 먼저 실행되는 소프트웨어가 운영체제</b>이고, 그다음에 우리가 엑셀 같은 응용 프로그램을 실행해요. 하지만 우리가 컴퓨터를 쓰는 진짜 목적은 응용 프로그램이에요.</p>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>하드웨어는 컴퓨터를 구성하는 물리적 장치이고 소프트웨어는 하드웨어를 동작시키는 프로그램이다. 운영체제는 컴퓨터 전원이 켜지면 가장 먼저 실행되어 컴퓨터 자원을 관리하고 응용 프로그램의 실행을 관리하는 프로그램이다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — 엑셀과 윈도우 중 어느 쪽이 운영체제인가요?</summary>
+<p>윈도우예요. 엑셀은 윈도우 위에서 실행되는 응용 프로그램이에요.</p></details>
+
+<h3>0-5. 프로그램이 돌아가는 아주 큰 그림</h3>
+<p>이 사이트 전체가 사실 이 한 그림을 자세히 풀어 쓴 거예요. 먼저 아주 작은 파이썬 프로그램을 볼게요. 1부터 100까지 더하는 프로그램이에요.</p>
+<div class="code">sum = 0
+for i in range(1, 101):
+    sum += i
+print("1부터 100까지의 합은", sum, "입니다.")</div>
+<table>
+  <tr><th style="width:44%">코드 줄</th><th>무슨 뜻인가요</th></tr>
+  <tr><td><code>sum = 0</code></td><td><code>sum</code>이라는 이름의 칸을 만들고 0을 넣어요</td></tr>
+  <tr><td><code>for i in range(1, 101):</code></td><td><code>i</code>가 1, 2, 3 … 100이 될 때까지 아래 줄을 반복해요 (101은 포함하지 않아요)</td></tr>
+  <tr><td><code>    sum += i</code></td><td><code>sum</code>에 <code>i</code>를 더해서 다시 <code>sum</code>에 넣어요 (<code>sum = sum + i</code>와 같아요)</td></tr>
+  <tr><td><code>print(...)</code></td><td>화면에 결과를 출력해요</td></tr>
+</table>
+<p><b>실행 결과(출력)</b></p>
+<div class="code">1부터 100까지의 합은 5050 입니다.</div>
+<p>이 프로그램이 컴퓨터 안에서 거치는 길은 이래요.</p>
+<svg viewBox="0 0 380 290" style="max-width:420px;width:100%;height:auto" role="img" aria-label="프로그램이 SSD에서 RAM으로 올라가 CPU가 한 줄씩 실행하고 결과를 RAM에 기록하는 흐름">
+<defs><marker id="a0m2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#1d4ed8"/></marker><marker id="a0m3" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#0f7a4f"/></marker></defs>
+<rect x="10" y="40" width="120" height="62" rx="8" fill="#efe4ff"/>
+<text x="70" y="66" text-anchor="middle" font-size="15" font-weight="bold" fill="#1b2333">SSD · HDD</text>
+<text x="70" y="86" text-anchor="middle" font-size="11" fill="#1b2333">도서관(보관)</text>
+<rect x="250" y="40" width="120" height="62" rx="8" fill="#dbe6ff"/>
+<text x="310" y="66" text-anchor="middle" font-size="15" font-weight="bold" fill="#1b2333">RAM</text>
+<text x="310" y="86" text-anchor="middle" font-size="11" fill="#1b2333">책상 위(실행 중)</text>
+<rect x="250" y="190" width="120" height="62" rx="8" fill="#e3f6ec"/>
+<text x="310" y="216" text-anchor="middle" font-size="15" font-weight="bold" fill="#1b2333">CPU</text>
+<text x="310" y="236" text-anchor="middle" font-size="11" fill="#1b2333">머리(계산)</text>
+<rect x="10" y="190" width="120" height="62" rx="8" fill="#fff1d6"/>
+<text x="70" y="216" text-anchor="middle" font-size="15" font-weight="bold" fill="#1b2333">모니터</text>
+<text x="70" y="236" text-anchor="middle" font-size="11" fill="#1b2333">출력</text>
+<line x1="130" y1="71" x2="248" y2="71" stroke="#1d4ed8" stroke-width="3" marker-end="url(#a0m2)"/>
+<text x="189" y="60" text-anchor="middle" font-size="12" font-weight="bold" fill="#1d4ed8">① 적재</text>
+<line x1="285" y1="104" x2="285" y2="188" stroke="#1d4ed8" stroke-width="3" marker-end="url(#a0m2)"/>
+<text x="278" y="150" text-anchor="end" font-size="12" font-weight="bold" fill="#1d4ed8">② 한 줄씩</text>
+<line x1="335" y1="190" x2="335" y2="106" stroke="#0f7a4f" stroke-width="3" marker-end="url(#a0m3)"/>
+<text x="344" y="150" text-anchor="start" font-size="12" font-weight="bold" fill="#0f7a4f">③ 기록</text>
+<line x1="250" y1="221" x2="132" y2="221" stroke="#1d4ed8" stroke-width="3" marker-end="url(#a0m2)"/>
+<text x="191" y="211" text-anchor="middle" font-size="12" font-weight="bold" fill="#1d4ed8">④ 출력</text>
+<text x="190" y="278" text-anchor="middle" font-size="12" fill="#1b2333">②와 ③은 한 줄마다 반복돼요</text>
+</svg>
+<ul>
+  <li><b>먼저 저장</b> : 코드를 파일(<code>sum.py</code>)로 만들어 SSD·HDD에 저장해 둬요. 이때는 "보관만 된" 상태예요.</li>
+  <li><b>① 적재</b> : 실행하면 코드가 RAM으로 올라와요. 이것을 <b>적재(load)</b>라고 해요.</li>
+  <li><b>② 한 줄씩</b> : RAM에 올라온 코드가 한 줄씩 CPU로 전달돼요.</li>
+  <li><b>③ 기록</b> : CPU가 계산하고, 결과(<code>sum</code>, <code>i</code> 값)를 RAM에 기록해요. ②와 ③을 100번 반복해요.</li>
+  <li><b>④ 출력과 종료</b> : 결과를 화면에 보여 주고, 프로그램이 끝나면 RAM의 코드와 중간 결과는 모두 지워져요. 교수님 표현으로 "방 빼라"예요.</li>
+</ul>
+<p>한 가지 더 알아 둘 점이 있어요. 파이썬 같은 사람이 읽는 코드는 CPU가 바로 이해하지 못해요. CPU는 0과 1(기계어)만 알아들어서, 중간에 <b>파이썬 인터프리터</b>가 한 줄씩 기계어로 번역해서 CPU에 넘겨요. 이 번역 과정은 1장에서 자세히 다뤄요.</p>
+<div class="box eg"><span class="t">비유 — 시험공부</span>
+<p>도서관(SSD)에는 책이 많이 보관돼 있어요. 공부하려는 책만 책상(RAM)으로 가져오고, 머리(CPU)로 한 줄씩 읽고 풀어서, 푼 내용을 책상 위 노트에 적어요. 공부가 끝나면 책상을 비우고, 답안지(모니터)에 쓴 결과만 남아요. 교수님도 시험 공부에 도서관, 책상, 노트를 빗대어 설명했어요.</p>
+</div>
+<div class="box tip"><span class="t">외우기 팁</span>
+<p><b>저장은 SSD, 실행은 RAM, 계산은 CPU.</b> "보관 → 올림 → 계산 → 기록 → 출력" 순서로 말할 수 있으면 돼요.</p>
+</div>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>프로그램은 보조기억장치(SSD)에 저장되어 있다가 실행되면 주기억장치(RAM)에 적재되고, 명령어가 한 줄씩 CPU로 전달되어 실행되며, 그 결과가 다시 RAM에 기록된다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — 프로그램이 끝나면 RAM에 있던 코드와 중간 결과는 어떻게 되나요?</summary>
+<p>모두 지워져요. RAM은 실행 중인 것만 잠깐 올려 두는 책상이라서, 오래 보관할 것은 SSD·HDD에 저장해야 해요.</p></details>
+
+<h3>0-6. 앞으로 자주 만날 말 미리 보기</h3>
+<p>1장부터 나오는 말을 한 번에 훑어봐요. 지금은 "아, 이런 말이 있구나" 정도만 알면 돼요. 오른쪽 열의 장에서 자세히 배워요.</p>
+<table>
+  <tr><th style="width:24%">용어</th><th>쉬운 뜻</th><th style="width:14%">어디서</th></tr>
+  <tr><td><b>CPU</b></td><td>컴퓨터의 두뇌. 계산과 제어를 해요</td><td>1장</td></tr>
+  <tr><td><b>RAM</b></td><td>실행 중인 프로그램과 데이터를 잠깐 올려 두는 책상. 전원이 꺼지면 지워져요</td><td>1장</td></tr>
+  <tr><td><b>SSD · HDD</b></td><td>프로그램과 데이터를 오래 보관하는 보조기억장치. 전원이 꺼져도 남아요</td><td>1장</td></tr>
+  <tr><td><b>폰노이만 구조</b></td><td>프로그램을 기억장치에 두고 한 줄씩 CPU로 가져와 실행하는 현대 컴퓨터의 설계</td><td>1장</td></tr>
+  <tr><td><b>프로그램 / 프로세스</b></td><td>저장돼 있는 코드 / 실행되어 메모리에 올라온 코드</td><td>1장</td></tr>
+  <tr><td><b>비트 · 바이트</b></td><td>0 또는 1 한 자리 / 8비트 묶음</td><td>2장</td></tr>
+  <tr><td><b>진법 · 문자 코드</b></td><td>숫자를 2·8·16진수로 쓰는 법 / 글자를 숫자로 바꾸는 약속(ASCII)</td><td>2장</td></tr>
+  <tr><td><b>논리 게이트</b></td><td>0과 1을 받아 0 또는 1을 내놓는 기본 회로(AND, OR, NOT 등)</td><td>3장</td></tr>
+  <tr><td><b>가산기 · ALU</b></td><td>게이트를 조립한 덧셈 회로 / 계산을 담당하는 CPU 속 계산기</td><td>3장</td></tr>
+</table>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>(용어 고르기 문제 요령) 보기가 비슷해 보여도 "어디에 있는가"로 구분하세요. 보조기억장치에 보관된 코드는 프로그램, 메모리에 올라와 실행 중인 코드는 프로세스예요. 전원이 꺼져도 남으면 비휘발성, 사라지면 휘발성이에요.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — 8비트는 몇 바이트이고, 2장에서는 그것으로 무엇을 표현하나요?</summary>
+<p>1바이트예요. 1바이트로 0부터 255까지 256가지를 표현하고, 숫자와 글자를 이진수로 바꿔서 저장하는 방법을 2장에서 배워요.</p></details>
+
+<div class="box tip"><span class="t">이 장 3줄 요약</span>
+<ul>
+  <li>컴퓨터는 프로그램을 실행해서 계산하는 기계이고, 하는 일은 입력·처리·저장·출력이에요. 계산기와 달리 프로그램을 바꿔 끼울 수 있어요.</li>
+  <li>계산 부품이 전기 회로라서 전기가 있으면 1, 없으면 0으로 모든 정보를 표현하고, 소프트웨어는 운영체제와 응용 프로그램으로 나뉘어요.</li>
+  <li>프로그램은 SSD에 저장 → 실행하면 RAM에 적재 → 한 줄씩 CPU가 계산 → 결과를 RAM에 기록 → 출력 순서로 돌아가요.</li>
+</ul>
+</div>

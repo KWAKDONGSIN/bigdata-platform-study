@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ko" data-site="1bb07e">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>RAID — 여러 디스크를 묶어 하나처럼 ★★★ · 빅데이터플랫폼 시험공부</title>
+<meta name="description" content="빅데이터플랫폼 중간고사를 전공 처음인 사람도 이해하게 정리한 공부 사이트">
+<link rel="stylesheet" href="assets/style.css?v=d2a0e0e2">
+</head>
+<body>
+<header class="top"><div class="top-in">
+<a class="brand" href="index.html"><span class="bases"><i class="a">시</i><i class="t">험</i><i class="g">공</i><i class="c">부</i></span>빅데이터플랫폼</a>
+<nav class="nav" aria-label="메뉴"><a href="index.html" class=on>보드</a><a href="b.html">최소코스</a><a href="bplus.html">B+코스</a><a href="quiz.html">퀴즈</a><a href="essay.html">서술형</a><a href="cards.html">암기카드</a><a href="words.html">낱말사전</a><a href="cheat.html">시험 전 1장</a></nav>
+</div></header>
+<main>
+<div class="crumb k6"><a href="index.html#c6">← 보드</a><span>보조기억장치 · 7/8</span></div><h1>RAID — 여러 디스크를 묶어 하나처럼 ★★★</h1>
+<p>디스크 하나의 용량에는 한계가 있고, 서버나 데이터센터는 수백 TB가 필요해요. 20TB 디스크 25개를 묶으면 500TB짜리 시스템이 돼요. 이렇게 여러 개의 작은 디스크를 연결해 <b>하나의 큰 논리적 <a class="w" href="words.html#w29" data-w="29">저장장치</a></b>로 만드는 기술이 <b><a class="w" href="words.html#w134" data-w="134">RAID</a></b>(레이드)예요. 원래 뜻은 Redundant Array of <b>Inexpensive</b> Disks(값싼 디스크의 중복 배열)였고, 지금은 <b>Independent</b>(독립적인) Disks라고도 해요.</p>
+<p>RAID가 주는 이점은 용량 확대뿐이 아니에요. 데이터를 나눠 저장하면 <b>동시에(병렬로) 읽고 쓸 수 있어 속도가 빨라지고</b>, 복사본이나 검산용 정보를 두면 <b>디스크 하나가 고장 나도 복구</b>할 수 있어요. 대신 디스크 개수가 늘어서 어딘가 고장 날 가능성은 올라가요. 개인 <a class="w" href="words.html#w67" data-w="67">PC</a>는 RAID를 쓰지 않고, 회사 서버를 관리하게 되면 대부분 RAID를 구성해요.</p>
+<p>RAID에 쓰이는 핵심 기술은 세 가지예요.</p>
+<div class="tw"><table>
+  <tr><th style="width:24%">기술</th><th>뜻</th><th style="width:26%">비유</th></tr>
+  <tr><td><b><a class="w" href="words.html#w135" data-w="135">스트라이핑</a></b><br><span class="small">striping, 분산</span></td><td>데이터를 여러 디스크에 <b>나눠서</b> 저장 (라운드 로빈 방식으로 골고루)</td><td>일을 여러 직원에게 나눠 맡기기</td></tr>
+  <tr><td><b><a class="w" href="words.html#w136" data-w="136">미러링</a></b><br><span class="small">mirroring, 중복</span></td><td>같은 데이터를 두 디스크에 <b>똑같이 복사</b></td><td>거울에 비춘 사본</td></tr>
+  <tr><td><b><a class="w" href="words.html#w45" data-w="45">패리티</a></b><br><span class="small"><a class="w" href="words.html#w137" data-w="137">parity</a>, 무결성</span></td><td>여러 <a class="w" href="words.html#w0" data-w="0">비트</a>의 <b>합(<a class="w" href="words.html#w57" data-w="57">XOR</a>)</b>을 따로 저장해 두었다가, 고장 나면 복원에 사용</td><td>합계 검산표</td></tr>
+</table></div>
+<p>교수님이 설명한 RAID 종류 중 시험에서 알아 둘 것을 표로 정리했어요.</p>
+<div class="tw"><table>
+  <tr><th style="width:14%">종류</th><th style="width:24%">기술</th><th>특징</th></tr>
+  <tr><td><b>RAID-0</b></td><td>스트라이핑</td><td>디스크 여러 개를 이어 붙여 큰 하나처럼. 병렬 접근으로 <b>속도가 빨라요</b>. 복제나 패리티가 없어서(비중복) 디스크 하나가 고장 나면 데이터를 잃을 수 있어요</td></tr>
+  <tr><td><b>RAID-1</b></td><td>미러링</td><td>모든 데이터를 짝 디스크에 복사. <b>거의 완벽한 결함 허용(안전)</b>, 단점은 <b>높은 가격</b>(용량 이득 없음). 중요한 파일, 시스템 <a class="w" href="words.html#w11" data-w="11">소프트웨어</a>에 써요</td></tr>
+  <tr><td>RAID-2, 3, 4</td><td>해밍코드, 패리티</td><td>문제점(검사 디스크 많음, 쓰기마다 패리티 갱신, 패리티 디스크 병목)이 있어서 <b>거의 안 써요</b></td></tr>
+  <tr><td><b>RAID-5</b></td><td>스트라이핑 + 분산 패리티</td><td>패리티를 디스크마다 돌아가며(라운드 로빈) 분산 저장해서 RAID-4의 병목을 해결. <b>현재 가장 널리 쓰이는 방식</b>. 속도, 용량, 복구력의 절충</td></tr>
+  <tr><td><b>RAID-6</b></td><td>2종 패리티 (P, Q)</td><td>디스크 <b>2개가 고장 나도</b> 복구 가능. 용량은 더 줄고 쓰기 성능은 RAID-5보다 못해요</td></tr>
+  <tr><td>RAID-10 / 01</td><td>스트라이핑 + 미러링</td><td>속도와 안정성을 함께. 전체 용량의 <b>50%만</b> 써서 비싸요. 디스크 하나 고장 시 RAID-10은 짝 하나만 복사하면 돼서 RAID-01보다 유리해요</td></tr>
+</table></div>
+<figure class="slide"><img src="slides/b_raid5.jpg" alt="RAID-5 구성 슬라이드"><figcaption>교수님 슬라이드 — RAID-5. 패리티 블록 P가 디스크 0~4에 번갈아 분산돼요</figcaption></figure>
+<div class="box eg"><span class="t">패리티 비유 — 합계 검산</span>
+<p>친구 4명이 숫자 카드를 한 장씩 갖고, 나는 "1이 홀수 개면 1, 짝수 개면 0"이라는 검산표를 적어 둬요. 한 명의 카드가 사라져도 나머지 카드와 검산표로 알아낼 수 있어요.</p>
+</div>
+<p><b>패리티 복구 손계산</b>이에요. 네 디스크의 같은 자리 비트가 b0=1, b1=0, b2=1, b3=1이라고 해요. 패리티 p는 모두 더해서(XOR) 1의 개수가 홀수면 1, 짝수면 0이에요. 1이 3개(홀수)이므로 <b>p = 1</b>이에요.</p>
+<ul>
+  <li><b>b3 디스크가 고장 났을 때</b> : 남은 b0, b1, b2와 p로 구해요. 남은 데이터 비트에 1이 두 개(b0, b2)인데 p=1(홀수)이니 b3이 1이어야 홀수가 돼요. → <b>b3 = 1</b> (원래 값과 같아요).</li>
+  <li>식으로는 b3 = p ⊕ b0 ⊕ b1 ⊕ b2 = 1 ⊕ 1 ⊕ 0 ⊕ 1 = 1이에요.</li>
+  <li><b>디스크 2개가 고장 났을 때</b> (예 b2, b3) : 남은 b0=1, b1=0, p=1로는 (b2, b3)가 (0,0)이든 (1,1)이든 모두 맞아서 알 수 없어요. 그래서 RAID-5는 2개 고장을 복구하지 못하고 RAID-6이 필요해요.</li>
+</ul>
+<p><b>용량 계산</b>도 알아 두세요. 4TB 디스크로 구성할 때 이래요.</p>
+<div class="tw"><table>
+  <tr><th style="width:28%">구성</th><th style="width:30%">쓸 수 있는 용량</th><th>이유</th></tr>
+  <tr><td>RAID-0, 4TB × 4개</td><td><b>16TB</b></td><td>전부 데이터로 써요 (4 × 4)</td></tr>
+  <tr><td>RAID-1, 4TB × 2개</td><td><b>4TB</b></td><td>하나는 복사본이라 용량 이득 없음</td></tr>
+  <tr><td>RAID-5, 4TB × 5개</td><td><b>16TB</b></td><td>패리티 한 개 몫(4TB)을 빼요: (5 − 1) × 4. 교수님이 든 예예요</td></tr>
+  <tr><td>RAID-6, 4TB × 5개</td><td>12TB</td><td>패리티 두 개 몫을 빼요: (5 − 2) × 4</td></tr>
+</table></div>
+<p>교수님이 정리한 선택 기준은 이래요. <b>용량이 최우선이면 RAID-0, 안전이 최우선이면 RAID-1, 절충(용량 + 성능 + 복구력)이면 RAID-5</b>예요. 그리고 데이터센터에서는 RAID-0, 1, 5, 6을 많이 써요.</p>
+<div class="box tip"><span class="t">외우기 팁</span>
+<p>RAID-<b>0</b>은 복구력 <b>0</b>(속도만), RAID-<b>1</b>은 <b>1</b>(복사본 하나, 안전), RAID-<b>5</b>는 패리티(<b>5</b>가 가장 인기), RAID-<b>6</b>은 패리티 <b>2개</b>(디스크 2개 고장까지)예요.</p>
+</div>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>RAID는 보조기억장치 여러 개를 연결하여 하나의 논리적 저장장치로 구성함으로써 용량과 성능을 개선하는 기술이다. 스트라이핑(분산), 미러링(중복), 패리티(무결성)를 이용한다. RAID-0은 분산 저장으로 속도를 높이고, RAID-1은 미러링으로 높은 신뢰성을 제공하며, RAID-5는 패리티를 디스크에 분산 저장하여 속도와 안정성을 절충하고 현재 널리 사용된다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — 4TB 디스크 5개를 RAID-5로 묶으면 쓸 수 있는 용량은?</summary>
+<p>(5 − 1) × 4TB = 16TB예요. 패리티 한 개 몫을 제외해요.</p></details>
+
+<div class="done"><a class="go" href="c6-08.html">다음 카드 → 이 장 3줄 요약</a><div class="pn"><a href="c6-06.html"><b>← 이전</b>이전 카드</a><a class="next" href="quiz.html#c6"><b>연습</b>이 장 문제 풀기</a></div><p class="muted small">자료: 7주차 · 07보조기억장치.pdf(28쪽~) · 빅데이터플07(7주차)</p></div>
+</main>
+<script src="assets/words.js?v=d2a0e0e2"></script>
+<script src="assets/app.js?v=d2a0e0e2"></script>
+</body>
+</html>

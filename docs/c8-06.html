@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ko" data-site="1bb07e">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Q6. 기계어와 ALU (10점) · 빅데이터플랫폼 시험공부</title>
+<meta name="description" content="빅데이터플랫폼 중간고사를 전공 처음인 사람도 이해하게 정리한 공부 사이트">
+<link rel="stylesheet" href="assets/style.css?v=d2a0e0e2">
+</head>
+<body>
+<header class="top"><div class="top-in">
+<a class="brand" href="index.html"><span class="bases"><i class="a">시</i><i class="t">험</i><i class="g">공</i><i class="c">부</i></span>빅데이터플랫폼</a>
+<nav class="nav" aria-label="메뉴"><a href="index.html" class=on>보드</a><a href="b.html">최소코스</a><a href="bplus.html">B+코스</a><a href="quiz.html">퀴즈</a><a href="essay.html">서술형</a><a href="cards.html">암기카드</a><a href="words.html">낱말사전</a><a href="cheat.html">시험 전 1장</a></nav>
+</div></header>
+<main>
+<div class="crumb k8"><a href="index.html#c8">← 보드</a><span>기출 풀이 (2023) · 6/11</span></div><h1>Q6. 기계어와 ALU (10점)</h1>
+<p><a class="w" href="words.html#w19" data-w="19">고급언어</a> 코드가 <a class="w" href="words.html#w18" data-w="18">어셈블리어</a>를 거쳐 <a class="w" href="words.html#w17" data-w="17">기계어</a>로 번역되고, 3번째 줄이 <a class="w" href="words.html#w64" data-w="64">ALU</a>에서 <a class="w" href="words.html#w78" data-w="78">실행</a>되는 그림이에요. 기계어 빈칸 ①~⑥(각 1점)과 ALU 입력값 4개(각 1점)를 써요.</p>
+<figure class="slide"><img src="slides/past_q6.jpg" alt="어셈블리어와 기계어 대응 그림, 빈칸 1에서 6"><figcaption>기출 9쪽 — 어셈블리어와 기계어는 1대1로 대응돼요</figcaption></figure>
+<p><b>6.1 풀이 요령</b> 명령 한 줄은 16<a class="w" href="words.html#w0" data-w="0">비트</a>로, 4비트씩 네 덩어리예요. 맨 앞이 <a class="w" href="words.html#w73" data-w="73">동작 코드</a>(opcode)이고 뒤는 대상(<a class="w" href="words.html#w74" data-w="74">operand</a>)이에요. 그림에 이미 나온 줄에서 "사전"을 만들어 쓰면 돼요.</p>
+<div class="tw"><table>
+<tr><th>의미</th><th>이진수</th><th>어디서 알 수 있나요</th></tr>
+<tr><td>MOVE</td><td>1000</td><td>2번째 줄 MOVE R2 3, 5번째 줄 MOVE R4 5</td></tr>
+<tr><td>ADD</td><td>1100</td><td>3번째 줄 ADD R3 R1 R2</td></tr>
+<tr><td>STORE</td><td>1010</td><td>4번째 줄 STORE CC R3</td></tr>
+<tr><td><a class="w" href="words.html#w22" data-w="22">LOAD</a></td><td>1001</td><td>6번째 줄 LOAD R5 CC</td></tr>
+<tr><td>MUL</td><td>1101</td><td>7번째 줄 MUL R6 R4 R5</td></tr>
+<tr><td>R1~R6</td><td>0001, 0010, 0011, 0100, 0101, 0110</td><td><a class="w" href="words.html#w66" data-w="66">레지스터</a> 번호를 <a class="w" href="words.html#w3" data-w="3">이진수</a>로</td></tr>
+<tr><td>숫자 2, 3, 5</td><td>0000 0010, 0000 0011, 0000 0101</td><td>8비트 이진수</td></tr>
+<tr><td>CC, CD</td><td>1100 1100, 1100 1101</td><td>4번째 줄에서 CC를 읽고, CD는 CC 다음 번지(+1)</td></tr>
+</table></div>
+<div class="tw"><table>
+<tr><th>빈칸</th><th>줄</th><th>풀이</th><th>정답</th></tr>
+<tr><td>①</td><td>2번째</td><td>MOVE R2 3이라 1000, 0010 다음에 숫자 3</td><td>0000 0011</td></tr>
+<tr><td>②</td><td>1번째</td><td>MOVE이므로 동작 코드</td><td>1000</td></tr>
+<tr><td>③</td><td>5번째</td><td>MOVE R4 5이므로 숫자 5</td><td>0000 0101</td></tr>
+<tr><td>④</td><td>6번째</td><td>LOAD R5 CC이므로 주소 CC</td><td>1100 1100</td></tr>
+<tr><td>⑤</td><td>8번째</td><td>STORE이므로 동작 코드</td><td>1010</td></tr>
+<tr><td>⑥</td><td>8번째</td><td>STORE CD R6이므로 주소 CD</td><td>1100 1101</td></tr>
+</table></div>
+<p>참고로 4번째 줄 끝이 0101로 인쇄돼 있지만 R3은 0011이라 인쇄 오류로 보여요. 문제 답에는 영향이 없어요.</p>
+<p><b>6.2 ALU 입력값</b> 3번째 줄 ADD R3 R1 R2는 "R1과 R2를 더해 R3에 저장"이에요.</p>
+<ul>
+<li>R1에는 1번째 줄에서 2가, R2에는 2번째 줄에서 3이 들어 있어요.</li>
+<li>A는 2, B는 3이에요.</li>
+<li>제어신호 C는 +, -, x, /, &amp;, |, &gt;&gt;, &lt;&lt; 순서이고, 덧셈은 맨 앞(C7)이라 1000 0000이에요.</li>
+<li>Y는 2 + 3 = 5예요.</li>
+</ul>
+<div class="tw"><table>
+<tr><th>입력</th><th>8비트 값</th></tr>
+<tr><td>A</td><td>0000 0010</td></tr>
+<tr><td>B</td><td>0000 0011</td></tr>
+<tr><td>C</td><td>1000 0000</td></tr>
+<tr><td>Y</td><td>0000 0101</td></tr>
+</table></div>
+<p>곱셈(x)이면 세 번째 자리라 C가 0010 0000이 돼요. 수업 슬라이드의 5 x 5 = 25 예시는 A=0000 0101, B=0000 0101, C=0010 0000, Y=0001 1001이에요.</p>
+<div class="box exam"><span class="t">올해 시험에서도 이렇게 쓰세요</span>
+<p>기계어 빈칸은 "그림에 이미 나온 줄에서 opcode, 레지스터, 주소를 사전처럼 베껴 오는 문제"라고 쓰고 풀면 돼요. ALU 문제는 A, B에 두 레지스터 값, C에 연산 위치(덧셈은 1000 0000), Y에 계산 결과를 8비트로 적으세요.</p></div>
+<details class="check"><summary>잠깐 확인 — 제어신호 C로 뺄셈(-)을 고르면 C는?</summary><p>0100 0000이에요. 순서가 +, -, x, / 이라 두 번째 자리가 1이에요.</p></details>
+
+<div class="done"><a class="go" href="c8-07.html">다음 카드 → Q7. 명령 실행의 마이크로 단계 (10점)</a><div class="pn"><a href="c8-05.html"><b>← 이전</b>이전 카드</a><a class="next" href="quiz.html#c8"><b>연습</b>이 장 문제 풀기</a></div><p class="muted small">자료: 중간고사_빅데이터플랫폼001_정답포함_오류수정.pdf</p></div>
+</main>
+<script src="assets/words.js?v=d2a0e0e2"></script>
+<script src="assets/app.js?v=d2a0e0e2"></script>
+</body>
+</html>

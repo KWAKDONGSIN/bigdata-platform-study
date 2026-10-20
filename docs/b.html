@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="ko" data-site="1bb07e">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>최소 코스 · 빅데이터플랫폼 시험공부</title>
+<meta name="description" content="빅데이터플랫폼 중간고사를 전공 처음인 사람도 이해하게 정리한 공부 사이트">
+<link rel="stylesheet" href="assets/style.css?v=d2a0e0e2">
+</head>
+<body>
+<header class="top"><div class="top-in">
+<a class="brand" href="index.html"><span class="bases"><i class="a">시</i><i class="t">험</i><i class="g">공</i><i class="c">부</i></span>빅데이터플랫폼</a>
+<nav class="nav" aria-label="메뉴"><a href="index.html">보드</a><a href="b.html" class=on>최소코스</a><a href="bplus.html">B+코스</a><a href="quiz.html">퀴즈</a><a href="essay.html">서술형</a><a href="cards.html">암기카드</a><a href="words.html">낱말사전</a><a href="cheat.html">시험 전 1장</a></nav>
+</div></header>
+<main>
+<h1>B 코스 — 오늘 이것만</h1>
+<p class="lead">어려운 건 다 뺐어요. <b>핵심 10개 + 기출 빈칸 10개 + 약어 10개 + 숫자 5개 + 서술형 4개</b>만 보면 돼요. 약 1시간이에요. 위에서부터 차례로 읽으세요. 시험은 10월 26일(월) 필기·클로즈드북이에요.</p>
+
+<div class="box exam"><span class="t">B 받는 법</span>
+<p>① 기출처럼 <b>보기에서 고르는 빈칸·부품 문제</b>는 다 맞힌다 ② 계산 문제(<a class="w" href="words.html#w3" data-w="3">이진수</a> 변환)는 <b>자릿값 128 64 32 16 8 4 2 1</b>만 써서 푼다 ③ 서술형은 빈칸 없이 아래 "시험엔 이 한 문장"을 쓴다. 이 셋이면 B예요.</p></div>
+
+<h2>먼저 큰 그림 한 줄</h2>
+<p>이 과목은 결국 이거예요. <b><a class="w" href="words.html#w12" data-w="12">프로그램</a>은 <a class="w" href="words.html#w30" data-w="30">SSD</a>에 있다가, <a class="w" href="words.html#w78" data-w="78">실행</a>하면 <a class="w" href="words.html#w28" data-w="28">RAM</a>으로 올라오고, <a class="w" href="words.html#w26" data-w="26">CPU</a>가 한 줄씩 가져가 계산해요.</b></p>
+<div class="box tip"><span class="t">시험지 여백에 먼저 쓰기</span>
+<p class="big">SSD(보관) → RAM(실행 중) → CPU(계산) → 결과는 RAM</p>
+<p class="small">외우는 요령 — <b>창고(SSD)에서 조리대(RAM)로 꺼내 놓고, 요리사(CPU)가 한 줄씩 요리해요.</b></p></div>
+
+<h2>꼭 알아야 할 10개</h2>
+
+<h3>1. 폰노이만 구조</h3>
+<p><a class="w" href="words.html#w14" data-w="14">컴퓨터</a>는 레시피(프로그램)를 기억장치에 넣어 두고, 요리사(CPU)가 한 줄씩 꺼내 실행해요. 실행 중인 것은 <b>RAM</b>, 다 쓰고 오래 두는 것은 <b><a class="w" href="words.html#w29" data-w="29">보조기억장치</a>(SSD, <a class="w" href="words.html#w31" data-w="31">HDD</a>)</b>예요.</p>
+<div class="box exam"><span class="t">시험엔 이 한 문장</span><p><a class="w" href="words.html#w25" data-w="25">폰노이만 구조</a>는 프로그램과 데이터를 기억장치에 저장하고 <a class="w" href="words.html#w72" data-w="72">명령어</a>를 하나씩 CPU로 가져와 실행하는 구조이며, 실행 중인 것은 RAM에, 영구 보관은 보조기억장치에 둔다.</p></div>
+<details class="check"><summary>확인 — 실행 중인 프로그램이 올라가는 곳은?</summary><p>RAM(<a class="w" href="words.html#w27" data-w="27">주기억장치</a>).</p></details>
+
+<h3>2. 컴퓨터 부품 6개</h3>
+<p>CPU는 두뇌, RAM은 조리대, SSD는 창고, <b><a class="w" href="words.html#w32" data-w="32">메인보드</a></b>는 부품이 꽂히는 바닥판이자 길, <b><a class="w" href="words.html#w33" data-w="33">그래픽카드</a>(GPU)</b>는 계산을 한꺼번에 하는 조수 부대, <b><a class="w" href="words.html#w34" data-w="34">파워</a></b>는 교류를 직류로 바꿔 전기를 주는 설비예요.</p>
+<div class="box exam"><span class="t">시험엔 이 한 문장</span><p>메인보드는 부품 간 데이터 통로, CPU는 대부분의 계산, SSD/HDD는 <a class="w" href="words.html#w24" data-w="24">비휘발성</a> 영구 저장, RAM은 <a class="w" href="words.html#w23" data-w="23">휘발성</a>으로 실행 중 데이터 보관, GPU는 행렬 연산 병렬 처리, 전원공급장치는 교류를 직류로 변환한다.</p></div>
+<details class="check"><summary>확인 — "교류를 직류로 바꿔 전원을 공급"하는 부품은?</summary><p>전원공급장치(파워).</p></details>
+
+<h3>3. 이진수 변환 (손계산)</h3>
+<p>8칸의 자릿값은 <b>128 64 32 16 8 4 2 1</b>이에요. 큰 것부터 "들어가면 1, 안 들어가면 0"으로 채워요. 137 = 128 + 8 + 1이라 <b>1000 1001</b>이에요.</p>
+<div class="box exam"><span class="t">시험엔 이 한 문장</span><p><a class="w" href="words.html#w4" data-w="4">십진수</a>는 128, 64, 32, 16, 8, 4, 2, 1의 자릿값으로 나누어 해당 자리에 1을 써서 8<a class="w" href="words.html#w0" data-w="0">비트</a> 이진수로 바꾼다. 예) 77 = 64 + 8 + 4 + 1 = 0100 1101.</p></div>
+<details class="check"><summary>확인 — 7을 8비트 이진수로?</summary><p>0000 0111 (4 + 2 + 1).</p></details>
+
+<h3>4. 문자는 ASCII 번호로</h3>
+<p>문자도 번호(<a class="w" href="words.html#w43" data-w="43">ASCII</a>)로 바꾼 뒤 이진수로 써요. 대문자 A는 65, 소문자 a는 97이에요. 표를 주니까 찾아서 번호를 이진수로 바꾸면 돼요. 예) R = 82 = <b>0101 0010</b>.</p>
+<div class="box exam"><span class="t">시험엔 이 한 문장</span><p>문자는 ASCII 표에서 번호를 찾아 <a class="w" href="words.html#w1" data-w="1">1바이트</a>(8비트) 이진수로 바꿔 메모리에 한 칸씩 저장한다.</p></div>
+<details class="check"><summary>확인 — 글자 하나(영어)는 몇 바이트로 저장되나?</summary><p>1바이트(8비트).</p></details>
+
+<h3>5. 논리 게이트와 가산기</h3>
+<p><b><a class="w" href="words.html#w52" data-w="52">AND</a></b>는 둘 다 1이어야 1, <b><a class="w" href="words.html#w53" data-w="53">OR</a></b>는 하나라도 1이면 1, <b><a class="w" href="words.html#w54" data-w="54">NOT</a></b>은 뒤집기, <b><a class="w" href="words.html#w57" data-w="57">XOR</a></b>은 다르면 1이에요. 덧셈 회로는 1의 개수로 풀어요. 1이 1개면 합 1, 2개면 합 0에 <a class="w" href="words.html#w62" data-w="62">올림</a> 1, 3개면 합 1에 올림 1이에요.</p>
+<div class="box exam"><span class="t">시험엔 이 한 문장</span><p><a class="w" href="words.html#w60" data-w="60">반가산기</a>는 두 비트를 더해 합(S=A XOR B)과 올림(Cout=A AND B)을 내고, <a class="w" href="words.html#w61" data-w="61">전가산기</a>는 아랫자리 올림(Cin)까지 더하며, 8개를 이어 8비트 덧셈기를 만든다. 맨 아래 Cin은 0이다.</p></div>
+<details class="check"><summary>확인 — 반가산기에 1과 1을 넣으면 S와 Cout은?</summary><p>S=0, Cout=1.</p></details>
+
+<h3>6. CPU 부품과 레지스터</h3>
+<p>CPU 안에는 <b><a class="w" href="words.html#w64" data-w="64">ALU</a></b>(계산), <b><a class="w" href="words.html#w65" data-w="65">CU</a></b>(<a class="w" href="words.html#w77" data-w="77">해독</a>·제어), <b><a class="w" href="words.html#w66" data-w="66">레지스터</a></b>(빠른 메모장)가 있어요. 특수 레지스터는 <b><a class="w" href="words.html#w67" data-w="67">PC</a></b>(다음 명령 주소), <b><a class="w" href="words.html#w68" data-w="68">IR</a></b>(지금 명령), <b><a class="w" href="words.html#w69" data-w="69">MAR</a></b>(메모리 주소), <b><a class="w" href="words.html#w70" data-w="70">MBR</a></b>(메모리 값), <b><a class="w" href="words.html#w71" data-w="71">AC</a></b>(계산 결과)예요.</p>
+<div class="box exam"><span class="t">시험엔 이 한 문장</span><p>CPU는 계산을 하는 ALU, 명령을 해독하고 제어신호를 내는 제어장치, 빠르고 작은 레지스터로 이루어지며, PC는 다음 명령 주소, IR은 현재 명령, MAR는 메모리 주소, MBR는 메모리 값, AC는 계산 결과를 담는다.</p></div>
+<details class="check"><summary>확인 — 다음에 읽을 명령의 주소를 가진 레지스터는?</summary><p>PC(프로그램 카운터).</p></details>
+
+<h3>7. 명령 실행 5단계 (교수님이 복습하라고 한 것)</h3>
+<p>명령 하나는 <b><a class="w" href="words.html#w76" data-w="76">인출</a> → 해독 → 실행 → 데이터 → <a class="w" href="words.html#w80" data-w="80">기록</a></b> 순서로 실행돼요. 도서관에서 책 번호를 보고 가져오고, 뜻을 알아보고, 계산하고, 서랍을 확인하고, 공책에 적는 거예요. ADD는 메모리를 안 쓰니까 <b><a class="w" href="words.html#w79" data-w="79">데이터 단계</a>가 비어요</b>.</p>
+<p>예) PC가 4이고 명령이 2칸이면 인출에서 MAR ← 4, PC ← 6, IR ← ADD R3 R1 R2이고, 실행에서 X=5, Y=7, 제어신호 +, AC=12예요.</p>
+<div class="box exam"><span class="t">시험엔 이 한 문장</span><p>명령은 인출(PC 주소의 명령을 IR로 가져오고 PC 증가), 해독(제어장치가 제어신호 결정), 실행(ALU 계산), 데이터(메모리 접근 명령만), 기록(결과를 레지스터에 쓰기)의 5단계로 실행된다.</p></div>
+<details class="check"><summary>확인 — ALU가 실제로 계산하는 단계는?</summary><p>실행(execute).</p></details>
+
+<h3>8. 기계어와 ALU 입력값</h3>
+<p><a class="w" href="words.html#w17" data-w="17">기계어</a>는 <a class="w" href="words.html#w18" data-w="18">어셈블리어</a>와 1대1로 대응돼요. 그림에 나온 줄에서 <a class="w" href="words.html#w73" data-w="73">opcode</a>와 레지스터·숫자를 사전처럼 베껴 와요. ALU에서 ADD R3 R1 R2(R1=2, R2=3)는 <b>A=0000 0010, B=0000 0011, C=1000 0000, Y=0000 0101</b>이에요. 제어신호 C는 + − x / &amp; | &gt;&gt; &lt;&lt; 순서라 덧셈이 맨 앞이에요.</p>
+<div class="box exam"><span class="t">시험엔 이 한 문장</span><p>ADD R3 R1 R2는 R1과 R2를 더해 R3에 저장하는 명령으로, ALU에 A=2, B=3, 제어신호 C=덧셈(1000 0000)이 입력되고 Y=5(0000 0101)가 출력된다.</p></div>
+<details class="check"><summary>확인 — 제어신호 C로 곱셈을 쓰면?</summary><p>0010 0000 (세 번째 자리).</p></details>
+
+<h3>9. 메모리 계층 구조 (단골)</h3>
+<p>메모리는 <b>레지스터 → <a class="w" href="words.html#w98" data-w="98">캐시</a> → RAM → SSD/HDD</b> 순으로 빠르고, 이 순서로 작고 비싸요. 레지스터와 캐시만 <b>CPU 안</b>에 있어요. 교수님의 시험공부 비유로, RAM에는 1~7주차 PDF 전체, 캐시에는 지금 보는 자료, 레지스터에는 지금 풀고 있는 숫자가 올라와요.</p>
+<div class="box exam"><span class="t">시험엔 이 한 문장</span><p>메모리는 속도가 빠를수록 용량이 작고 비싸서, 레지스터, 캐시, RAM, 보조기억장치의 계층 구조로 쓴다. 레지스터와 캐시는 CPU 안에 있다.</p></div>
+<details class="check"><summary>확인 — CPU 안에 있는 메모리 두 개는?</summary><p>레지스터와 캐시.</p></details>
+
+<h3>10. 가상메모리와 스와핑, 그리고 보조기억장치</h3>
+<p>RAM(<a class="w" href="words.html#w113" data-w="113">물리메모리</a>)이 모자라면 일부 데이터가 저장장치의 <b><a class="w" href="words.html#w114" data-w="114">스왑 영역</a></b>으로 쫓겨나요. 이것이 <b><a class="w" href="words.html#w115" data-w="115">스와핑</a></b>이고, 저장장치가 느려서 컴퓨터가 렉에 걸려요. 해결은 <b>RAM을 늘리는 것</b>이에요. 저장장치는 원리로 구분해서 <b>HDD는 자기, <a class="w" href="words.html#w131" data-w="131">CD-ROM</a>은 광학, SSD는 전자</b>예요.</p>
+<div class="box exam"><span class="t">시험엔 이 한 문장</span><p>데이터가 RAM 용량을 초과하면 보조기억장치의 스왑 영역을 쓰는 스와핑이 일어나 느려지므로 RAM을 늘려야 한다. HDD는 자기적, CD-ROM은 광학적, SSD는 전자적 성질을 이용하고, <a class="w" href="words.html#w134" data-w="134">RAID</a>는 여러 디스크를 묶고 <a class="w" href="words.html#w132" data-w="132">파티션</a>은 하나를 나눈다.</p></div>
+<details class="check"><summary>확인 — RAM이 모자랄 때 데이터가 옮겨 가는 곳은?</summary><p>스왑 영역(보조기억장치).</p></details>
+
+<h2>기출 빈칸 상위 10개 (정답 굵게)</h2>
+<p>2023년 기출에 실제로 나온 문장이에요. 손으로 가리고 빈칸을 말해 본 뒤 확인하세요.</p>
+<ol>
+<li>계산장치와 기억장치로 구성되고 프로그램을 한 줄씩 실행하는 현대 컴퓨터 구조는 <b>폰노이만 구조</b>이다.</li>
+<li><a class="w" href="words.html#w48" data-w="48">반도체</a> <a class="w" href="words.html#w88" data-w="88">집적도</a>가 2년마다 2배가 된다는 법칙은 <b><a class="w" href="words.html#w86" data-w="86">무어의 법칙</a></b>이다.</li>
+<li>CPU <a class="w" href="words.html#w85" data-w="85">클럭</a>이 높아지면 전력·발열이 늘어 <b>온도</b>가 올라가서 클럭을 무한정 높일 수 없다.</li>
+<li>보조기억장치에 있으면 <b>프로그램</b>, 메모리에서 실행 중이면 <b><a class="w" href="words.html#w13" data-w="13">프로세스</a></b>이다.</li>
+<li>프로세스를 여러 개 병렬 실행하면 <b><a class="w" href="words.html#w109" data-w="109">멀티 프로세싱</a></b>, 프로세스 하나 안에서 흐름을 여러 개로 하면 <b><a class="w" href="words.html#w110" data-w="110">멀티 쓰레딩</a></b>이다.</li>
+<li>켜지면 가장 먼저 시작되어 자원과 프로그램을 관리하는 프로그램은 <b><a class="w" href="words.html#w105" data-w="105">운영체제</a></b>이다.</li>
+<li>실행 전 코드는 <b>보조기억장치</b>에, 실행하면 <b>주기억장치</b>에 올라오고, 기계어는 <b>CPU</b>가 실행한다.</li>
+<li>속도가 빠른 순서(RAM=1, SSD/HDD=2, 레지스터=3, 캐쉬=4)는 <b>3, 4, 1, 2</b>이다.</li>
+<li>RAM을 넘어 스왑을 쓰는 과정은 <b>스와핑</b>이고, 40GB 파일의 렉은 <b>RAM</b>을 업그레이드해 해결한다.</li>
+<li><b>HDD</b>는 자기, <b>CD-ROM</b>은 광학, <b>SSD</b>는 전자. 여러 개 묶는 것은 <b>RAID</b>, 하나를 나누는 것은 <b>파티션</b>이다.</li>
+</ol>
+
+<h2>약어 10개 (풀네임 쓰기 문제)</h2>
+<div class="tw"><div class="tw"><table>
+<tr><th>약어</th><th>풀네임</th></tr>
+<tr><td><b>CPU</b></td><td>Central Processing Unit (중앙처리장치)</td></tr>
+<tr><td><b>ALU</b></td><td>Arithmetic Logic Unit (산술논리연산장치)</td></tr>
+<tr><td><b>RAM</b></td><td>Random Access Memory</td></tr>
+<tr><td><b>SSD</b></td><td>Solid State Drive</td></tr>
+<tr><td><b>HDD</b></td><td>Hard Disk Drive</td></tr>
+<tr><td><b>GPU</b></td><td>Graphics Processing Unit</td></tr>
+<tr><td><b>PC</b></td><td>Program Counter (CPU 안에서는 이 뜻)</td></tr>
+<tr><td><b>IR</b></td><td>Instruction Register</td></tr>
+<tr><td><b>OS</b></td><td>Operating System (운영체제)</td></tr>
+<tr><td><b>RAID</b></td><td>Redundant Array of Inexpensive(Independent) Disks</td></tr>
+</table></div></div>
+<p class="small muted">MAR = Memory Address Register, MBR = Memory Buffer Register, AC = Accumulator도 같이 보면 좋아요.</p>
+
+<h2>숫자 5개</h2>
+<ul>
+<li><b>1바이트 = 8비트</b>, 자릿값 <b>128 64 32 16 8 4 2 1</b></li>
+<li>ASCII <b>A = 65, a = 97</b></li>
+<li>무어의 법칙 <b>24개월(2년)마다 2배</b>, <b>3GHz = 초당 30억 번</b></li>
+<li>접근 속도 <b>레지스터 &lt; 캐시 &lt; RAM(50~70ns) &lt; SSD(20~200µs) &lt; HDD(5~20ms)</b></li>
+<li>실행 5단계 <b>인출 → 해독 → 실행 → 데이터 → 기록</b>, 2칸 명령이면 PC는 <b>2씩 증가</b></li>
+</ul>
+
+<h2>서술형 4개 — 이것만 연습</h2>
+<p>가리고 종이에 한 번씩 써 보세요. 위 "시험엔 이 한 문장"을 이어 붙이면 답이 돼요.</p>
+<details class="card"><summary>1. 폰노이만 구조를 설명하시오.</summary><div class="in"><div class="model"><p>폰노이만 구조는 프로그램과 데이터를 기억장치에 저장하고, 명령어를 한 개씩 CPU로 가져와 실행하는 프로그램 내장형 구조이다. CPU는 제어와 연산, RAM은 실행 중인 프로그램과 데이터 저장, 보조기억장치는 영구 저장, <a class="w" href="words.html#w35" data-w="35">입출력장치</a>는 사용자와의 인터페이스, <a class="w" href="words.html#w36" data-w="36">시스템 버스</a>는 부품 간 데이터 전달 경로이다.</p></div></div></details>
+<details class="card"><summary>2. 명령어 실행 5단계를 쓰시오.</summary><div class="in"><div class="model"><p>인출(PC가 가리키는 명령을 메모리에서 읽어 IR로 가져오고 PC를 증가), 해독(제어장치가 IR의 명령을 해독해 제어신호 결정), 실행(ALU가 계산), 데이터(메모리를 읽거나 쓰는 명령일 때만 MAR, MBR 사용), 기록(결과를 레지스터에 기록)의 순서이다.</p></div></div></details>
+<details class="card"><summary>3. 메모리 계층 구조를 쓰는 이유를 설명하시오.</summary><div class="in"><div class="model"><p>빠른 메모리는 용량이 작고 비싸며 용량이 커질수록 느려진다. 빠르면서 큰 메모리는 너무 비싸므로 가격 안에서 속도와 용량을 함께 얻기 위해 레지스터, 캐시, RAM, 보조기억장치의 계층으로 나누어 쓴다. 필요한 데이터만 위 계층으로 올려 CPU가 빠르게 쓴다.</p></div></div></details>
+<details class="card"><summary>4. 40GB 파일을 16GB RAM으로 읽으면 느려지는 이유와 해결 방법을 쓰시오.</summary><div class="in"><div class="model"><p>데이터가 RAM(물리메모리) 용량을 초과하면 일부가 보조기억장치의 스왑 영역으로 옮겨지는 스와핑이 일어난다. 접근 속도가 매우 느린 보조기억장치를 계속 쓰게 되어 컴퓨터가 느려진다. 코드를 수정하지 않는다면 데이터보다 큰 RAM(40GB 이상)으로 업그레이드해야 한다.</p></div></div></details>
+
+<div class="box pro"><span class="t">시험장에서</span>
+<p>① 신분증과 펜 챙기기 ② 여백에 "SSD → RAM → CPU"와 자릿값 "128 64 32 16 8 4 2 1" 먼저 쓰기 ③ 빈칸·부품 문제부터 풀기 ④ 서술형은 모르면 비슷한 "시험엔 이 한 문장"이라도 써서 <b>빈칸 만들지 않기</b>. 화이팅!</p></div>
+<p class="small muted">시간이 남으면 <a href="bplus.html">B+ 코스</a>나 <a href="quiz.html#core">핵심 문제</a>를 풀어 보세요.</p>
+
+</main>
+<script src="assets/words.js?v=d2a0e0e2"></script>
+<script src="assets/app.js?v=d2a0e0e2"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ko" data-site="1bb07e">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>기출 4번 — 메모리 칸에 숫자와 글자 쓰기 ★★★ · 빅데이터플랫폼 시험공부</title>
+<meta name="description" content="빅데이터플랫폼 중간고사를 전공 처음인 사람도 이해하게 정리한 공부 사이트">
+<link rel="stylesheet" href="assets/style.css?v=d2a0e0e2">
+</head>
+<body>
+<header class="top"><div class="top-in">
+<a class="brand" href="index.html"><span class="bases"><i class="a">시</i><i class="t">험</i><i class="g">공</i><i class="c">부</i></span>빅데이터플랫폼</a>
+<nav class="nav" aria-label="메뉴"><a href="index.html" class=on>보드</a><a href="b.html">최소코스</a><a href="bplus.html">B+코스</a><a href="quiz.html">퀴즈</a><a href="essay.html">서술형</a><a href="cards.html">암기카드</a><a href="words.html">낱말사전</a><a href="cheat.html">시험 전 1장</a></nav>
+</div></header>
+<main>
+<div class="crumb k2"><a href="index.html#c2">← 보드</a><span>데이터 표현 · 9/11</span></div><h1>기출 4번 — 메모리 칸에 숫자와 글자 쓰기 ★★★</h1>
+<p>2023 기출 4번은 이 장의 내용을 한 번에 묻는 문제예요. 한 칸이 8<a class="w" href="words.html#w0" data-w="0">비트</a>(<a class="w" href="words.html#w1" data-w="1">1바이트</a>)인 메모리에 다섯 개 숫자 <b>137, 7, 38, 77, 11</b>과 글자 <b>R, o, b, o, t</b>를 01~10번 주소에 순서대로 쓰는 거예요. 푸는 순서는 두 단계예요.</p>
+<ul>
+  <li><b>숫자</b> : 자리값 표(128 64 32 16 8 4 2 1)로 8비트 <a class="w" href="words.html#w3" data-w="3">이진수</a>를 만들어요 (2-2).</li>
+  <li><b>글자</b> : <a class="w" href="words.html#w43" data-w="43">ASCII</a> 표에서 코드를 찾아 맨 앞에 0을 붙인 8비트로 써요 (2-7).</li>
+</ul>
+<div class="tw"><table>
+  <tr><th style="width:12%">주소</th><th style="width:20%">넣을 것</th><th style="width:34%">변환 과정</th><th>메모리(8비트)</th></tr>
+  <tr><td>01</td><td>137</td><td>128 + 8 + 1</td><td><code>1 0 0 0 1 0 0 1</code></td></tr>
+  <tr><td>02</td><td>7</td><td>4 + 2 + 1</td><td><code>0 0 0 0 0 1 1 1</code></td></tr>
+  <tr><td>03</td><td>38</td><td>32 + 4 + 2</td><td><code>0 0 1 0 0 1 1 0</code></td></tr>
+  <tr><td>04</td><td>77</td><td>64 + 8 + 4 + 1</td><td><code>0 1 0 0 1 1 0 1</code></td></tr>
+  <tr><td>05</td><td>11</td><td>8 + 2 + 1</td><td><code>0 0 0 0 1 0 1 1</code></td></tr>
+  <tr><td>06</td><td>R</td><td>열 101, 행 0010 → 82</td><td><code>0 1 0 1 0 0 1 0</code></td></tr>
+  <tr><td>07</td><td>o</td><td>열 110, 행 1111 → 111</td><td><code>0 1 1 0 1 1 1 1</code></td></tr>
+  <tr><td>08</td><td>b</td><td>열 110, 행 0010 → 98</td><td><code>0 1 1 0 0 0 1 0</code></td></tr>
+  <tr><td>09</td><td>o</td><td>08번의 o와 같아요</td><td><code>0 1 1 0 1 1 1 1</code></td></tr>
+  <tr><td>10</td><td>t</td><td>열 111, 행 0100 → 116</td><td><code>0 1 1 1 0 1 0 0</code></td></tr>
+</table></div>
+<p>배점은 칸 하나에 1점이에요. 실수가 많은 곳은 <b>소문자 o의 코드를 두 번 쓰는 것</b>과 <b>앞의 0을 빼먹는 것</b>이에요. 같은 글자는 같은 코드이고, 항상 8자리로 맞추세요.</p>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>(이렇게 푸세요) 숫자는 자리값(128, 64, 32, 16, 8, 4, 2, 1)을 이용해 8비트 이진수로 바꾸고, 문자는 ASCII 변환표에서 열과 행의 비트를 이어 붙이고 앞에 0을 붙여 8비트로 쓴다. 각 칸이 정확히 8자리인지 마지막에 세어 확인하세요.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — 77을 8비트 이진수로 쓰면 무엇인가요?</summary>
+<p>01001101이에요. 77 = 64 + 8 + 4 + 1이라서 64, 8, 4, 1 자리에 1을 써요.</p></details>
+
+<div class="done"><a class="go" href="c2-10.html">다음 카드 → 참고 — 음수와 실수는 어떻게 표현할까요</a><div class="pn"><a href="c2-08.html"><b>← 이전</b>이전 카드</a><a class="next" href="quiz.html#c2"><b>연습</b>이 장 문제 풀기</a></div><p class="muted small">자료: 3주차 · 03데이터표현.pdf · 빅데이터플03</p></div>
+</main>
+<script src="assets/words.js?v=d2a0e0e2"></script>
+<script src="assets/app.js?v=d2a0e0e2"></script>
+</body>
+</html>

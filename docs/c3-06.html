@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ko" data-site="1bb07e">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>반가산기 (Half Adder) ★★★ · 빅데이터플랫폼 시험공부</title>
+<meta name="description" content="빅데이터플랫폼 중간고사를 전공 처음인 사람도 이해하게 정리한 공부 사이트">
+<link rel="stylesheet" href="assets/style.css?v=d2a0e0e2">
+</head>
+<body>
+<header class="top"><div class="top-in">
+<a class="brand" href="index.html"><span class="bases"><i class="a">시</i><i class="t">험</i><i class="g">공</i><i class="c">부</i></span>빅데이터플랫폼</a>
+<nav class="nav" aria-label="메뉴"><a href="index.html" class=on>보드</a><a href="b.html">최소코스</a><a href="bplus.html">B+코스</a><a href="quiz.html">퀴즈</a><a href="essay.html">서술형</a><a href="cards.html">암기카드</a><a href="words.html">낱말사전</a><a href="cheat.html">시험 전 1장</a></nav>
+</div></header>
+<main>
+<div class="crumb k3"><a href="index.html#c3">← 보드</a><span>계산기 회로 · 6/9</span></div><h1>반가산기 (Half Adder) ★★★</h1>
+<p>덧셈을 <a class="w" href="words.html#w14" data-w="14">컴퓨터</a>가 어떻게 할까요? 먼저 한 자리 <a class="w" href="words.html#w3" data-w="3">2진수</a>의 덧셈 규칙이에요.</p>
+<div class="tw"><table>
+  <tr><th>계산</th><th>결과 (2진수)</th><th>합(S, 아래 자리)</th><th>올림(C, 윗자리)</th></tr>
+  <tr><td>0 + 0</td><td>00</td><td>0</td><td>0</td></tr>
+  <tr><td>0 + 1</td><td>01</td><td>1</td><td>0</td></tr>
+  <tr><td>1 + 0</td><td>01</td><td>1</td><td>0</td></tr>
+  <tr><td>1 + 1</td><td>10</td><td>0</td><td>1</td></tr>
+</table></div>
+<p>1 + 1은 2진수로 <code>10</code>이에요. <a class="w" href="words.html#w4" data-w="4">10진수</a>에서 9 + 1 = 10이 되면 <a class="w" href="words.html#w62" data-w="62">올림</a>이 생기듯, 한 자리에는 0만 남기고 <b>윗자리로 1을 올려요</b>. 그래서 1<a class="w" href="words.html#w0" data-w="0">비트</a> 두 개를 더하려면 출력이 <b>두 개</b>(합 S와 올림 Carry)가 필요해요.</p>
+<div class="box def"><span class="t">한 줄 정의</span>
+<p><b><a class="w" href="words.html#w60" data-w="60">반가산기</a>(Half Adder, HA) = 1자리 2진수 2개를 입력해 합(S)과 올림(Carry, C 또는 Cout)을 출력하는 <a class="w" href="words.html#w59" data-w="59">조합 논리 회로</a>.</b></p>
+</div>
+<figure class="slide"><img src="slides/a_ha.jpg" alt="반가산기의 덧셈 규칙, 진리표, XOR와 AND로 만든 논리 회로, 논리 기호"><figcaption>교수님 슬라이드 — 반가산기. 진리표와 식(S = A⊕B, C = AB), XOR 게이트와 AND 게이트로 만든 회로</figcaption></figure>
+<div class="tw"><table>
+  <tr><th>A</th><th>B</th><th>S (합)</th><th>Cout (올림)</th></tr>
+  <tr><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+  <tr><td>0</td><td>1</td><td>1</td><td>0</td></tr>
+  <tr><td>1</td><td>0</td><td>1</td><td>0</td></tr>
+  <tr><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+</table></div>
+<p>표를 보면 규칙이 보여요. <b>합 S는 A와 B가 다를 때 1</b>이라서 <b><a class="w" href="words.html#w57" data-w="57">XOR</a></b>이에요. <b>올림 C는 둘 다 1일 때만 1</b>이라서 <b><a class="w" href="words.html#w52" data-w="52">AND</a></b>예요. 그래서 반가산기는 <b>XOR 게이트 1개와 AND 게이트 1개</b>면 만들어져요.</p>
+<p><code>S = A ⊕ B</code>, <code>C = A·B</code></p>
+<p><b>왜 "반(half)"가산기일까요?</b> 아랫자리에서 올라온 올림을 받는 입력이 없어서, 가장 아랫자리의 덧셈에만 쓸 수 있는 반쪽짜리이기 때문이에요. 그 문제를 푼 것이 다음의 <a class="w" href="words.html#w61" data-w="61">전가산기</a>예요.</p>
+<div class="box eg"><span class="t">비유 — 두 손가락 세기</span>
+<p>두 사람이 각자 손가락 한 개를 들 수 있다고 해요. 한 개만 들면 합이 1이고, 둘 다 들면 한 자리가 가득 차서(2) "0을 쓰고 윗자리로 1을 올려요".</p>
+</div>
+<div class="box exam"><span class="t">시험엔 이렇게 써요 (기출 5.5)</span>
+<p>반가산기(half adder)는 두 개의 비트 A, B가 입력되면 합 비트(S)와 올림 비트(Cout)를 출력하는 회로이다. <a class="w" href="words.html#w58" data-w="58">진리표</a>는 (A, B) = (0,0) → S 0, Cout 0 / (0,1) → 1, 0 / (1,0) → 1, 0 / (1,1) → 0, 1이다. S는 XOR, Cout은 AND로 구현된다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — 반가산기에서 A = 1, B = 1이면 S와 Cout은 각각 무엇인가요?</summary>
+<p>S = 0, Cout = 1이에요. 1 + 1 = 10(2진수)이라서 아래 자리는 0이고 윗자리로 1이 올라가요.</p></details>
+
+<div class="done"><a class="go" href="c3-07.html">다음 카드 → 전가산기 (Full Adder) ★★★</a><div class="pn"><a href="c3-05.html"><b>← 이전</b>이전 카드</a><a class="next" href="quiz.html#c3"><b>연습</b>이 장 문제 풀기</a></div><p class="muted small">자료: 4주차 · 04계산기회로.pdf · 빅데이터플랫폼04</p></div>
+</main>
+<script src="assets/words.js?v=d2a0e0e2"></script>
+<script src="assets/app.js?v=d2a0e0e2"></script>
+</body>
+</html>

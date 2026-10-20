@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ko" data-site="1bb07e">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HW5W 중앙처리장치 — 인출부터 기록까지 ★★★ · 빅데이터플랫폼 시험공부</title>
+<meta name="description" content="빅데이터플랫폼 중간고사를 전공 처음인 사람도 이해하게 정리한 공부 사이트">
+<link rel="stylesheet" href="assets/style.css?v=d2a0e0e2">
+</head>
+<body>
+<header class="top"><div class="top-in">
+<a class="brand" href="index.html"><span class="bases"><i class="a">시</i><i class="t">험</i><i class="g">공</i><i class="c">부</i></span>빅데이터플랫폼</a>
+<nav class="nav" aria-label="메뉴"><a href="index.html" class=on>보드</a><a href="b.html">최소코스</a><a href="bplus.html">B+코스</a><a href="quiz.html">퀴즈</a><a href="essay.html">서술형</a><a href="cards.html">암기카드</a><a href="words.html">낱말사전</a><a href="cheat.html">시험 전 1장</a></nav>
+</div></header>
+<main>
+<div class="crumb k7"><a href="index.html#c7">← 보드</a><span>과제로 복습 · 4/7</span></div><h1>HW5W 중앙처리장치 — 인출부터 기록까지 ★★★</h1>
+<p><b>Q1~Q5 요지</b> : 메모리 0번 주소부터 <a class="w" href="words.html#w12" data-w="12">프로그램</a>이 시작되고 현재 <a class="w" href="words.html#w67" data-w="67">PC</a>가 4이다. <a class="w" href="words.html#w76" data-w="76">인출</a>, <a class="w" href="words.html#w77" data-w="77">해독</a>, <a class="w" href="words.html#w78" data-w="78">실행</a>, 데이터, <a class="w" href="words.html#w80" data-w="80">기록</a> 각 단계에서 데이터의 흐름을 그리고 설명하라. 메모리에는 00번지 MOVE R1 2, 02번지 MOVE R2 3, 04번지 ADD R3 R1 R2, 06번지 STORE CC R3이 들어 있어요. 현재 실행하는 명령은 04번지의 <b>ADD R3 R1 R2</b>이고, R1=2, R2=3이에요.</p>
+<div class="tw"><table>
+  <tr><th style="width:14%">Q</th><th style="width:18%">단계</th><th>그림에 그릴 흐름과 설명</th></tr>
+  <tr><td>Q1</td><td><b>인출</b></td><td>PC의 4가 <a class="w" href="words.html#w69" data-w="69">MAR</a>로 가요(MAR ← 4). <a class="w" href="words.html#w65" data-w="65">CU</a>가 제어신호 Read를 내고, 4번지의 ADD R3 R1 R2가 메모리에서 <a class="w" href="words.html#w70" data-w="70">MBR</a>을 거쳐 <a class="w" href="words.html#w68" data-w="68">IR</a>로 가요. PC는 다음 명령 번지인 6으로 바뀌어요(PC ← 6).</td></tr>
+  <tr><td>Q2</td><td><b>해독</b></td><td>제어장치(CU)가 IR의 명령을 해독해요. R1의 값 2는 X로, R2의 값 3은 Y로 들어가고 <a class="w" href="words.html#w64" data-w="64">ALU</a> 제어신호는 더하기(+)로 정해져요.</td></tr>
+  <tr><td>Q3</td><td><b>실행</b></td><td>ALU가 X와 Y를 받아 2 + 3 = 5를 계산하고 결과를 <a class="w" href="words.html#w71" data-w="71">AC</a>에 담아요(AC ← 5).</td></tr>
+  <tr><td>Q4</td><td><b>데이터</b></td><td>ADD는 메모리를 쓰지 않는 <a class="w" href="words.html#w66" data-w="66">레지스터</a> 계산 명령이라 <b>No action</b>이에요.</td></tr>
+  <tr><td>Q5</td><td><b>기록</b></td><td>AC의 5를 목적 레지스터 R3에 기록해요(R3 ← 5).</td></tr>
+</table></div>
+<p>그림을 그릴 때는 4장의 <a class="w" href="words.html#w26" data-w="26">CPU</a> 내부 그림을 기준으로, 단계마다 "값이 지나가는 길"을 굵은 화살표로 칠하고 상자 옆에 값(4, 6, 5 같은)을 적으면 돼요. 설명은 위 표의 문장을 그대로 쓰면 돼요. 이 흐름은 기출 Q7에서 (R1, R2가 5, 7이라서 결과가 12인 것만 다르게) 그대로 나왔어요.</p>
+<p><b>Q6 요지</b> : <a class="w" href="words.html#w18" data-w="18">어셈블리어</a>와 <a class="w" href="words.html#w17" data-w="17">기계어</a>가 1대1 대응된다고 할 때 빈칸 ①~⑤의 값은? 빈칸 위치는 이래요.</p>
+<div class="tw"><table>
+  <tr><th style="width:36%">어셈블리어</th><th>기계어 (빈칸 포함)</th></tr>
+  <tr><td>MOVE R1 2</td><td>1000 0001 <b>①</b> (8<a class="w" href="words.html#w0" data-w="0">비트</a>)</td></tr>
+  <tr><td>MOVE R2 3</td><td><b>②</b> (4비트) 0010 0000 0011</td></tr>
+  <tr><td>STORE CC R3</td><td>1010 <b>③</b> (8비트) 0011</td></tr>
+  <tr><td>STORE CD R6</td><td><b>④</b> (4비트) <b>⑤</b> (8비트) 0110</td></tr>
+</table></div>
+<div class="tw"><table>
+  <tr><th style="width:10%">빈칸</th><th style="width:26%">답</th><th>이유</th></tr>
+  <tr><td>①</td><td><b>0000 0010</b></td><td>숫자 2를 8비트로 (MOVE R1 2의 마지막 칸)</td></tr>
+  <tr><td>②</td><td><b>1000</b></td><td>MOVE의 <a class="w" href="words.html#w73" data-w="73">opcode</a></td></tr>
+  <tr><td>③</td><td><b>1100 1100</b></td><td>번지 CC. <a class="w" href="words.html#w6" data-w="6">16진수</a> C = 1100 이라서 CC = 1100 1100</td></tr>
+  <tr><td>④</td><td><b>1010</b></td><td>STORE의 opcode (위의 STORE CC R3과 같아요)</td></tr>
+  <tr><td>⑤</td><td><b>1100 1101</b></td><td>번지 CD. 16진수 D = 1101 이라서 CD = 1100 1101</td></tr>
+</table></div>
+<p class="small">과제 그림의 <a class="w" href="words.html#w22" data-w="22">LOAD</a> R5 CC 줄은 기계어가 1001 1010 1010 1010으로 적혀 있어서, 규칙(R5=0101)과 맞지 않아요. 그 줄 값으로 CC를 읽으면 ③이 1010 1010이 될 수도 있지만, 교수님은 16진수 CC = 1100 1100으로 설명했고 2023 기출 정답도 같아요. 그래서 위 표를 답으로 쓰세요.</p>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>ADD R3 R1 R2 실행 시 인출 단계에서 PC(4)를 MAR로 보내 메모리의 명령을 MBR을 거쳐 IR로 가져오고 PC를 6으로 바꾼다. 해독 단계에서 제어장치가 명령을 해독해 X, Y에 값을 넣고 제어신호를 +로 정한다. 실행 단계에서 ALU가 계산하여 결과를 AC에 저장하고, <a class="w" href="words.html#w79" data-w="79">데이터 단계</a>는 메모리를 사용하지 않으므로 동작이 없으며, 기록 단계에서 AC의 값을 R3에 기록한다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — STORE 명령에서는 5단계 중 어느 두 단계가 "No action"인가요?</summary>
+<p>실행(3단계)과 기록(5단계)이에요. 메모리에 쓰는 일은 데이터(4단계)에서 해요.</p></details>
+
+<div class="done"><a class="go" href="c7-05.html">다음 카드 → HW6W 메모리 계층 구조 ★★</a><div class="pn"><a href="c7-03.html"><b>← 이전</b>이전 카드</a><a class="next" href="quiz.html#c7"><b>연습</b>이 장 문제 풀기</a></div><p class="muted small">자료: 2~7주차 · HW2W~HW7W.docx · 5·6·7주차 녹취</p></div>
+</main>
+<script src="assets/words.js?v=d2a0e0e2"></script>
+<script src="assets/app.js?v=d2a0e0e2"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ko" data-site="1bb07e">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>주기억장치(RAM) — ROM, SRAM, DRAM, 주소 ★★ · 빅데이터플랫폼 시험공부</title>
+<meta name="description" content="빅데이터플랫폼 중간고사를 전공 처음인 사람도 이해하게 정리한 공부 사이트">
+<link rel="stylesheet" href="assets/style.css?v=d2a0e0e2">
+</head>
+<body>
+<header class="top"><div class="top-in">
+<a class="brand" href="index.html"><span class="bases"><i class="a">시</i><i class="t">험</i><i class="g">공</i><i class="c">부</i></span>빅데이터플랫폼</a>
+<nav class="nav" aria-label="메뉴"><a href="index.html" class=on>보드</a><a href="b.html">최소코스</a><a href="bplus.html">B+코스</a><a href="quiz.html">퀴즈</a><a href="essay.html">서술형</a><a href="cards.html">암기카드</a><a href="words.html">낱말사전</a><a href="cheat.html">시험 전 1장</a></nav>
+</div></header>
+<main>
+<div class="crumb k5"><a href="index.html#c5">← 보드</a><span>메모리와 계층 구조 · 4/9</span></div><h1>주기억장치(RAM) — ROM, SRAM, DRAM, 주소 ★★</h1>
+<p><b><a class="w" href="words.html#w27" data-w="27">주기억장치</a></b>는 <a class="w" href="words.html#w26" data-w="26">CPU</a>와 직접 데이터를 주고받는 기억장치예요. <a class="w" href="words.html#w12" data-w="12">프로그램</a> 수행에 필요한 명령과 데이터를 담아요. 요즘은 <a class="w" href="words.html#w48" data-w="48">반도체</a>로 만들고, 크기가 작고 속도가 빠르며 전력을 적게 먹어요. 크게 <a class="w" href="words.html#w101" data-w="101">ROM</a>과 <a class="w" href="words.html#w28" data-w="28">RAM</a>으로 나뉘어요.</p>
+<div class="tw"><table>
+  <tr><th style="width:22%"></th><th>ROM (Read Only Memory)</th><th>RAM (Random Access Memory)</th></tr>
+  <tr><td>읽기/쓰기</td><td>읽기는 되지만 임의로 기억시킬 수 없는 읽기 전용</td><td>임의의 주소의 데이터를 즉시 읽고 쓸 수 있어요 (Random Access)</td></tr>
+  <tr><td><a class="w" href="words.html#w23" data-w="23">휘발성</a></td><td><b><a class="w" href="words.html#w24" data-w="24">비휘발성</a></b> (전원이 끊겨도 보관)</td><td><b>휘발성</b> (전원이 끊기면 모두 지워짐)</td></tr>
+</table></div>
+<p>RAM은 만드는 방식에 따라 두 가지예요. 교수님은 영상으로 원리를 보여 줬어요.</p>
+<div class="tw"><table>
+  <tr><th style="width:18%"></th><th>SRAM (정적 RAM)</th><th>DRAM (동적 RAM)</th></tr>
+  <tr><td>구조</td><td>플립플롭. <a class="w" href="words.html#w50" data-w="50">트랜지스터</a> <b>6개</b></td><td>콘덴서(커패시터). 트랜지스터 <b>1개 + 콘덴서 1개</b></td></tr>
+  <tr><td>기억 방식</td><td>전원만 있으면 계속 기억돼요 (static)</td><td>일정 주기로 <b>재기억(리프레시)</b>시켜야 해요 (dynamic)</td></tr>
+  <tr><td>속도</td><td><b>빠름</b></td><td>느린 편</td></tr>
+  <tr><td>가격·<a class="w" href="words.html#w88" data-w="88">집적도</a></td><td>비싸고 집적도가 낮아요. 소비 전력 큼</td><td><b>저렴</b>하고 집적도가 높아요. 소비 전력 적음</td></tr>
+  <tr><td>쓰임</td><td><b><a class="w" href="words.html#w98" data-w="98">캐시</a></b> 같은 고속 메모리</td><td><b>주기억장치(RAM)</b>. <a class="w" href="words.html#w67" data-w="67">PC</a> 대부분의 RAM</td></tr>
+</table></div>
+<figure class="slide"><img src="slides/b_sram_dram.jpg" alt="정적 RAM과 동적 RAM의 비교 슬라이드"><figcaption>교수님 슬라이드 — 정적 RAM과 동적 RAM의 비교표 (자료 19쪽)</figcaption></figure>
+<div class="box eg"><span class="t">비유</span>
+<p><a class="w" href="words.html#w99" data-w="99">SRAM</a>은 칠판에 적은 글씨라서 지우기 전엔 그대로예요(대신 칠판이 비싸고 커요). <a class="w" href="words.html#w100" data-w="100">DRAM</a>은 모래시계처럼 물이 조금씩 새는 컵이라, 주기적으로 물을 다시 채워 줘야 값이 유지돼요(대신 싸고 작게 만들 수 있어요).</p>
+</div>
+<p><b>왜 캐시는 SRAM이고 RAM은 DRAM일까요?</b> 빠른 SRAM은 비싸서 조금만 쓸 수 있고, 싼 DRAM은 느리지만 많이 쓸 수 있어서 용량이 큰 주기억장치로 알맞아요. 계층 구조의 "빠를수록 작고 비싸다"가 바로 소자(부품)의 차이에서 나와요.</p>
+<p>메모리는 <b>번지(주소)</b>가 붙은 칸들의 모음이에요. 기출 Q4에서는 "8<a class="w" href="words.html#w0" data-w="0">비트</a>(=<a class="w" href="words.html#w1" data-w="1">1바이트</a>)가 1워드인 메모리"의 01~10번 주소에 숫자와 글자를 하나씩 넣었어요. 한 번지에 1바이트가 들어가고, 번지 번호는 0부터 세요(과제 HW7도 "0번째부터"라고 안내했어요). 주소가 n비트면 2의 n제곱 개의 칸을 가리킬 수 있어요. 4장의 1-주소 명령 예처럼 주소가 11비트면 2<sup>11</sup> = 2,048칸이에요.</p>
+<p>참고로 <b>VRAM</b>은 <a class="w" href="words.html#w33" data-w="33">그래픽카드</a>용 RAM으로, 데이터를 쓰는 핀과 읽는 핀이 따로 있어서 쓰는 동안 읽을 수 있어요. GPU로 AI 계산을 하면서 더 중요해졌어요.</p>
+<div class="box tip"><span class="t">외우기 팁</span>
+<p><b>S</b>RAM은 <b>S</b>peed(빠름), 캐시. <b>D</b>RAM은 <b>D</b>ense(빽빽, 대용량)·<b>D</b>ischarge(방전돼서 리프레시), 주기억장치예요.</p>
+</div>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>RAM은 임의의 주소에 즉시 읽고 쓸 수 있는 휘발성 메모리이고, ROM은 읽기 전용 비휘발성 메모리이다. SRAM은 플립플롭으로 구성되어 속도가 빠르지만 가격이 비싸고 집적도가 낮아 캐시에 사용되며, DRAM은 콘덴서로 구성되어 주기적으로 리프레시가 필요하지만 저렴하고 집적도가 높아 주기억장치로 사용된다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — 전원이 끊겨도 내용이 남는 주기억장치 종류는 ROM과 RAM 중 무엇인가요?</summary>
+<p>ROM이에요(비휘발성). RAM은 전원이 끊기면 지워지는 휘발성이에요.</p></details>
+
+<div class="done"><a class="go" href="c5-05.html">다음 카드 → 운영체제와 프로그램, 프로세스 ★★</a><div class="pn"><a href="c5-03.html"><b>← 이전</b>이전 카드</a><a class="next" href="quiz.html#c5"><b>연습</b>이 장 문제 풀기</a></div><p class="muted small">자료: 6~7주차 · 06메모리와계층구조.pdf, 07보조기억장치.pdf(앞부분) · 빅데이터플06(6주차), 빅데이터플07(7주차)</p></div>
+</main>
+<script src="assets/words.js?v=d2a0e0e2"></script>
+<script src="assets/app.js?v=d2a0e0e2"></script>
+</body>
+</html>

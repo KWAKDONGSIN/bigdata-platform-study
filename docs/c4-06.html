@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ko" data-site="1bb07e">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>파이프라인과 RISC·CISC ★ · 빅데이터플랫폼 시험공부</title>
+<meta name="description" content="빅데이터플랫폼 중간고사를 전공 처음인 사람도 이해하게 정리한 공부 사이트">
+<link rel="stylesheet" href="assets/style.css?v=d2a0e0e2">
+</head>
+<body>
+<header class="top"><div class="top-in">
+<a class="brand" href="index.html"><span class="bases"><i class="a">시</i><i class="t">험</i><i class="g">공</i><i class="c">부</i></span>빅데이터플랫폼</a>
+<nav class="nav" aria-label="메뉴"><a href="index.html" class=on>보드</a><a href="b.html">최소코스</a><a href="bplus.html">B+코스</a><a href="quiz.html">퀴즈</a><a href="essay.html">서술형</a><a href="cards.html">암기카드</a><a href="words.html">낱말사전</a><a href="cheat.html">시험 전 1장</a></nav>
+</div></header>
+<main>
+<div class="crumb k4"><a href="index.html#c4">← 보드</a><span>중앙처리장치(CPU) · 6/9</span></div><h1>파이프라인과 RISC·CISC ★</h1>
+<p>5단계는 서로 부품이 달라서 겹치지 않아요. 그러면 앞 명령이 <a class="w" href="words.html#w77" data-w="77">해독</a> 중일 때 다음 명령은 벌써 <a class="w" href="words.html#w76" data-w="76">인출</a>을 시작할 수 있겠죠. 이렇게 명령들이 <b>한 칸씩 밀리며 동시에 진행</b>하는 방식이 <b><a class="w" href="words.html#w84" data-w="84">파이프라이닝</a></b>(pipelining)이에요. 슬라이드에서 단계 이름은 FI(인출), DI(해독), EI(<a class="w" href="words.html#w78" data-w="78">실행</a>), BD(버퍼/데이터), WB(<a class="w" href="words.html#w80" data-w="80">기록</a>)로 적혀 있어요.</p>
+<figure class="slide"><img src="slides/b_pipeline.jpg" alt="파이프라이닝 슬라이드"><figcaption>교수님 슬라이드 — 파이프라이닝. 명령 1, 2, 3...이 한 칸씩 밀려 동시에 진행돼요</figcaption></figure>
+<div class="box eg"><span class="t">비유 — 세탁소 컨베이어</span>
+<p>빨래를 한 벌씩 "씻기 → 말리기 → 다리기"를 끝내고 나서야 다음 벌을 시작하면 오래 걸려요. 첫 벌이 말리는 중일 때 둘째 벌을 씻으면 기계가 놀지 않아요. 파이프라인이 바로 이거예요.</p>
+</div>
+<p><b>손계산으로 비교</b>해 봐요. 한 단계가 한 칸(한 <a class="w" href="words.html#w85" data-w="85">클럭</a>)이라고 하고 명령이 8개라면 이래요. (슬라이드 그림을 따라 센 계산이에요.)</p>
+<ul>
+  <li>파이프라인 없이 순서대로: 8개 × 5칸 = <b>40칸</b></li>
+  <li>파이프라인: 첫 명령이 끝나는 데 5칸, 이후 1칸마다 1개씩 끝나서 5 + 7 = <b>12칸</b></li>
+</ul>
+<p>파이프라인을 잘 쓰려고 만든 설계 철학이 <b><a class="w" href="words.html#w82" data-w="82">RISC</a></b>예요. 요즘 <a class="w" href="words.html#w26" data-w="26">CPU</a>는 두 방식의 장점을 섞어 써요.</p>
+<div class="tw"><table>
+  <tr><th style="width:18%"></th><th>RISC (Reduced, 단순)</th><th>CISC (Complex, 복잡)</th></tr>
+  <tr><td>철학</td><td>단순한 명령을 여러 줄 써도 빨리빨리</td><td>복잡해도 명령 한 줄로 처리</td></tr>
+  <tr><td><a class="w" href="words.html#w72" data-w="72">명령어</a></td><td>종류가 적고 길이가 같아요(고정). 메모리는 <a class="w" href="words.html#w22" data-w="22">LOAD</a>/STORE로만 접근하고 계산은 <a class="w" href="words.html#w66" data-w="66">레지스터</a>끼리만 해요</td><td>종류가 많고 길이가 달라요(가변)</td></tr>
+  <tr><td>예</td><td><a class="w" href="words.html#w96" data-w="96">ARM</a> 계열 (스마트폰, 애플 M칩)</td><td><a class="w" href="words.html#w95" data-w="95">x86</a> 계열 (인텔·AMD, <a class="w" href="words.html#w67" data-w="67">PC</a>·서버)</td></tr>
+  <tr><td>비교</td><td>파이프라인, 분기 예측, 컴파일러 최적화를 적극 활용</td><td>최근에는 RISC 기법도 도입</td></tr>
+</table></div>
+<p>참고로 if문처럼 분기가 있으면 다음 명령이 어디인지 몰라 파이프라인이 끊겨요. 이를 줄이는 <b>우회 경로(forwarding)</b>가 슬라이드 46쪽에 나오지만, 교수님은 수업에서 자세히 다루지 않았어요.</p>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>파이프라이닝은 여러 개의 명령이 인출-해독-실행-데이터-기록 단계를 한 칸씩 밀려서 동시에 진행하도록 하여 계산을 가속하는 기법이다. RISC는 단순한 명령어를 사용하고 메모리 접근을 적재/저장 명령으로 제한하여 파이프라인에 유리한 구조이고, <a class="w" href="words.html#w83" data-w="83">CISC</a>는 복잡한 명령을 사용하는 구조이다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — 명령 10개를 5단계 파이프라인으로 처리하면 몇 칸이 걸리나요? (한 단계 = 한 칸)</summary>
+<p>5 + 9 = 14칸이에요. 순서대로 하면 10 × 5 = 50칸이에요.</p></details>
+
+<div class="done"><a class="go" href="c4-07.html">다음 카드 → CPU 성능 — 집적도, 클럭, 온도, 전력, 멀티코어 ★★</a><div class="pn"><a href="c4-05.html"><b>← 이전</b>이전 카드</a><a class="next" href="quiz.html#c4"><b>연습</b>이 장 문제 풀기</a></div><p class="muted small">자료: 5~6주차 · 05중앙처리장치.pdf · 빅데이터플렛폼05(5주차), 빅데이터플06(6주차), 빅데이터플07(7주차 일부)</p></div>
+</main>
+<script src="assets/words.js?v=d2a0e0e2"></script>
+<script src="assets/app.js?v=d2a0e0e2"></script>
+</body>
+</html>

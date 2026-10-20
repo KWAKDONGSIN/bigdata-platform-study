@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ko" data-site="1bb07e">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Q4. 십진수와 문자를 1바이트 이진수로 (10점) · 빅데이터플랫폼 시험공부</title>
+<meta name="description" content="빅데이터플랫폼 중간고사를 전공 처음인 사람도 이해하게 정리한 공부 사이트">
+<link rel="stylesheet" href="assets/style.css?v=d2a0e0e2">
+</head>
+<body>
+<header class="top"><div class="top-in">
+<a class="brand" href="index.html"><span class="bases"><i class="a">시</i><i class="t">험</i><i class="g">공</i><i class="c">부</i></span>빅데이터플랫폼</a>
+<nav class="nav" aria-label="메뉴"><a href="index.html" class=on>보드</a><a href="b.html">최소코스</a><a href="bplus.html">B+코스</a><a href="quiz.html">퀴즈</a><a href="essay.html">서술형</a><a href="cards.html">암기카드</a><a href="words.html">낱말사전</a><a href="cheat.html">시험 전 1장</a></nav>
+</div></header>
+<main>
+<div class="crumb k8"><a href="index.html#c8">← 보드</a><span>기출 풀이 (2023) · 4/11</span></div><h1>Q4. 십진수와 문자를 1바이트 이진수로 (10점)</h1>
+<p>8<a class="w" href="words.html#w0" data-w="0">비트</a>(=<a class="w" href="words.html#w1" data-w="1">1바이트</a>)가 1워드인 메모리가 있어요. <a class="w" href="words.html#w4" data-w="4">십진수</a> 137, 7, 38, 77, 11과 문자 Robot의 다섯 글자를 1바이트 <a class="w" href="words.html#w3" data-w="3">이진수</a>로 바꿔 메모리 01~10번에 순서대로 써요. 문자는 <a class="w" href="words.html#w43" data-w="43">ASCII</a> 표를 봐요. 한 줄에 1점이에요.</p>
+<p><b>풀이 방법</b> 8칸의 자릿값은 왼쪽부터 128, 64, 32, 16, 8, 4, 2, 1이에요. 큰 자릿값부터 "들어가면 1, 안 들어가면 0"으로 채우면 돼요.</p>
+<div class="tw"><table>
+<tr><th>수</th><th>쪼개기</th><th>이진수 (8비트)</th></tr>
+<tr><td>137</td><td>128 + 8 + 1</td><td>1000 1001</td></tr>
+<tr><td>7</td><td>4 + 2 + 1</td><td>0000 0111</td></tr>
+<tr><td>38</td><td>32 + 4 + 2</td><td>0010 0110</td></tr>
+<tr><td>77</td><td>64 + 8 + 4 + 1</td><td>0100 1101</td></tr>
+<tr><td>11</td><td>8 + 2 + 1</td><td>0000 1011</td></tr>
+</table></div>
+<p>문자는 먼저 ASCII 표에서 숫자를 찾고, 같은 방법으로 이진수로 바꿔요.</p>
+<div class="tw"><table>
+<tr><th>문자</th><th>ASCII 숫자</th><th>쪼개기</th><th>이진수 (8비트)</th></tr>
+<tr><td>R</td><td>82</td><td>64 + 16 + 2</td><td>0101 0010</td></tr>
+<tr><td>o</td><td>111</td><td>64 + 32 + 8 + 4 + 2 + 1</td><td>0110 1111</td></tr>
+<tr><td>b</td><td>98</td><td>64 + 32 + 2</td><td>0110 0010</td></tr>
+<tr><td>o</td><td>111</td><td>위와 같음</td><td>0110 1111</td></tr>
+<tr><td>t</td><td>116</td><td>64 + 32 + 16 + 4</td><td>0111 0100</td></tr>
+</table></div>
+<p><b>정답 (메모리 01~10번)</b></p>
+<div class="tw"><table>
+<tr><th>주소</th><th>값</th><th>주소</th><th>값</th></tr>
+<tr><td>01</td><td>1000 1001</td><td>06</td><td>0101 0010</td></tr>
+<tr><td>02</td><td>0000 0111</td><td>07</td><td>0110 1111</td></tr>
+<tr><td>03</td><td>0010 0110</td><td>08</td><td>0110 0010</td></tr>
+<tr><td>04</td><td>0100 1101</td><td>09</td><td>0110 1111</td></tr>
+<tr><td>05</td><td>0000 1011</td><td>10</td><td>0111 0100</td></tr>
+</table></div>
+<div class="box tip"><span class="t">외우기 팁</span>
+<p>ASCII 표가 없어도 대문자는 A=65, 소문자는 a=97에서 알파벳 순서를 더하면 돼요. R은 18번째 글자라 64 + 18 = 82, t는 20번째라 96 + 20 = 116이에요. 숫자 0은 48이에요.</p></div>
+<div class="box exam"><span class="t">올해 시험에서도 이렇게 쓰세요</span>
+<p>시험지 여백에 "128 64 32 16 8 4 2 1"을 먼저 적고, 큰 자릿값부터 빼 가며 1을 표시하세요. 다 끝나면 1인 자릿값을 더해 원래 수가 되는지 검산하면 실수가 줄어요. 수업 슬라이드의 138, 5, 32, 27과 Data 문제도 같은 방법이에요.</p></div>
+<details class="check"><summary>잠깐 확인 — 십진수 11을 8비트 이진수로 쓰면?</summary><p>0000 1011이에요. 8 + 2 + 1 = 11이에요.</p></details>
+
+<div class="done"><a class="go" href="c8-05.html">다음 카드 → Q5. 논리 게이트와 가산기 (10점)</a><div class="pn"><a href="c8-03.html"><b>← 이전</b>이전 카드</a><a class="next" href="quiz.html#c8"><b>연습</b>이 장 문제 풀기</a></div><p class="muted small">자료: 중간고사_빅데이터플랫폼001_정답포함_오류수정.pdf</p></div>
+</main>
+<script src="assets/words.js?v=d2a0e0e2"></script>
+<script src="assets/app.js?v=d2a0e0e2"></script>
+</body>
+</html>

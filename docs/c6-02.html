@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ko" data-site="1bb07e">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HDD의 구조 — 판, 헤드, 트랙, 섹터 ★★ · 빅데이터플랫폼 시험공부</title>
+<meta name="description" content="빅데이터플랫폼 중간고사를 전공 처음인 사람도 이해하게 정리한 공부 사이트">
+<link rel="stylesheet" href="assets/style.css?v=d2a0e0e2">
+</head>
+<body>
+<header class="top"><div class="top-in">
+<a class="brand" href="index.html"><span class="bases"><i class="a">시</i><i class="t">험</i><i class="g">공</i><i class="c">부</i></span>빅데이터플랫폼</a>
+<nav class="nav" aria-label="메뉴"><a href="index.html" class=on>보드</a><a href="b.html">최소코스</a><a href="bplus.html">B+코스</a><a href="quiz.html">퀴즈</a><a href="essay.html">서술형</a><a href="cards.html">암기카드</a><a href="words.html">낱말사전</a><a href="cheat.html">시험 전 1장</a></nav>
+</div></header>
+<main>
+<div class="crumb k6"><a href="index.html#c6">← 보드</a><span>보조기억장치 · 2/8</span></div><h1>HDD의 구조 — 판, 헤드, 트랙, 섹터 ★★</h1>
+<p><b><a class="w" href="words.html#w31" data-w="31">HDD</a></b>(Hard Disk Drive, 하드디스크)는 플라스틱이나 알루미늄으로 만든 둥근 판에 자석 성질이 강한 물질(강자성체)을 입힌 장치예요. 이 판이 모터로 빙글빙글 돌고, 팔 끝의 <b>헤드</b>가 판 위로 움직이며 읽고 써요. 레코드플레이어와 모양이 비슷해요.</p>
+<div class="box eg"><span class="t">비유 — 레코드판</span>
+<p>레코드판(HDD의 판)은 돌고, 바늘(헤드)은 원하는 줄(<a class="w" href="words.html#w125" data-w="125">트랙</a>) 위로 이동해요. 원하는 곡(<a class="w" href="words.html#w124" data-w="124">섹터</a>)이 바늘 아래로 돌아오면 소리(데이터)가 읽혀요.</p>
+</div>
+<p>저장 원리는 전기와 자석의 관계예요. <b>쓸 때</b>는 헤드에 전류를 흘려 자기장을 만들고(앙페르의 법칙) 판 표면을 자석 방향대로 자화해요. <b>읽을 때</b>는 판이 헤드 아래를 지나가면서 자기장이 변해 헤드에 유도 전류가 흘러요(패러데이의 법칙). 방향이 N극이면 1, S극이면 0처럼 구분해요.</p>
+<figure class="slide"><img src="slides/b_disk_surface.jpg" alt="자기 디스크 표면 구조 슬라이드"><figcaption>교수님 슬라이드 — 디스크 표면. 트랙은 동심원, 섹터는 트랙을 자른 조각 (이 그림은 트랙 8개, 트랙당 섹터 16개)</figcaption></figure>
+<div class="tw"><table>
+  <tr><th style="width:26%">용어</th><th>뜻</th></tr>
+  <tr><td><b>플래터</b> (disk)</td><td>자성 물질을 입힌 둥근 판. 한 장이 아니라 여러 장을 쌓고 양면을 써요. 슬라이드에서는 "디스크"로 불러요</td></tr>
+  <tr><td><b>헤드</b> (head)</td><td>데이터를 읽고 쓰는 부분. 디스크 팔에 달려 있어요</td></tr>
+  <tr><td><b>트랙</b> (track)</td><td>판 위의 동심원 한 줄</td></tr>
+  <tr><td><b>섹터</b> (sector)</td><td>트랙을 잘게 나눈 조각. 한 번에 읽거나 쓰는 데이터의 <b>최소 단위</b></td></tr>
+  <tr><td><b><a class="w" href="words.html#w126" data-w="126">실린더</a></b> (cylinder)</td><td>서로 다른 판(표면)에 있지만 위치가 같아서 동시에 접근할 수 있는 트랙들의 묶음</td></tr>
+  <tr><td><b><a class="w" href="words.html#w130" data-w="130">RPM</a></b></td><td>분당 회전수(rotations per minute). 판이 얼마나 빨리 도는지의 스펙. 5400, 7200, 10000 등</td></tr>
+  <tr><td><b>디스크 드라이브</b></td><td>디스크 외에 헤드, 디스크 팔, 구동 장치, 판을 돌리는 축(스핀들), 전자 회로까지 포함한 전체</td></tr>
+</table></div>
+<figure class="slide"><img src="slides/b_disk_drive.jpg" alt="디스크 드라이브 내부 구조 슬라이드"><figcaption>교수님 슬라이드 — 디스크 드라이브 내부. 여러 장의 표면, 헤드, 디스크 팔, 회전축, 구동 모터</figcaption></figure>
+<p>섹터 사이에는 <b>섹터 간 갭</b>이, 트랙 사이에는 헤드가 잘못 맞춰지거나 자기장이 섞여서 생기는 오류를 막는 <b>트랙 간 갭</b>이 있어요. 초기 디스크는 표면당 트랙 500~2,000개, 트랙당 섹터 32개였고, 요즘은 트랙이 수천 개, 섹터가 수백 개예요.</p>
+<p><b>HDD가 왜 느릴까요?</b> 판을 돌리고 헤드를 움직이는 <b>물리적인 기계 동작</b>이 필요하기 때문이에요. 전기 신호만 쓰는 <a class="w" href="words.html#w48" data-w="48">반도체</a>보다 빠르게 만드는 데 한계가 있고, 모터 소리와 소음이 나기도 해요.</p>
+<p class="small">참고 — 판 위의 데이터를 일정한 비율로 읽는 방식인 CAV(등각속도, 회전 속도가 일정, 구조가 간단하지만 바깥쪽 트랙의 저장 공간이 낭비됨)와 CLV(등선속도, 위치에 따라 회전 속도가 변함, 공간은 알뜰하지만 장치가 복잡함, CD·DVD가 사용)도 슬라이드에 있어요. 교수님이 따로 강조하지 않았어요.</p>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>HDD는 강자성체가 코팅된 디스크 표면에 헤드로 자화 방향을 <a class="w" href="words.html#w80" data-w="80">기록</a>하여 데이터를 저장하며, 디스크는 동심원의 트랙과 트랙을 나눈 섹터로 구성된다. 섹터는 한 번에 읽고 쓰는 데이터의 최소 단위이다. HDD는 디스크를 회전시키고 헤드를 물리적으로 이동해야 하므로 <a class="w" href="words.html#w30" data-w="30">SSD</a>보다 느리다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — HDD에서 데이터를 한 번에 읽고 쓰는 최소 단위는?</summary>
+<p>섹터예요. 트랙은 판 위의 동심원 한 줄이고, 섹터는 그 트랙을 나눈 조각이에요.</p></details>
+
+<div class="done"><a class="go" href="c6-03.html">다음 카드 → 디스크 접근 시간 — 탐색, 회전, 전송 참고</a><div class="pn"><a href="c6-01.html"><b>← 이전</b>이전 카드</a><a class="next" href="quiz.html#c6"><b>연습</b>이 장 문제 풀기</a></div><p class="muted small">자료: 7주차 · 07보조기억장치.pdf(28쪽~) · 빅데이터플07(7주차)</p></div>
+</main>
+<script src="assets/words.js?v=d2a0e0e2"></script>
+<script src="assets/app.js?v=d2a0e0e2"></script>
+</body>
+</html>

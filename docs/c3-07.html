@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ko" data-site="1bb07e">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>전가산기 (Full Adder) ★★★ · 빅데이터플랫폼 시험공부</title>
+<meta name="description" content="빅데이터플랫폼 중간고사를 전공 처음인 사람도 이해하게 정리한 공부 사이트">
+<link rel="stylesheet" href="assets/style.css?v=d2a0e0e2">
+</head>
+<body>
+<header class="top"><div class="top-in">
+<a class="brand" href="index.html"><span class="bases"><i class="a">시</i><i class="t">험</i><i class="g">공</i><i class="c">부</i></span>빅데이터플랫폼</a>
+<nav class="nav" aria-label="메뉴"><a href="index.html" class=on>보드</a><a href="b.html">최소코스</a><a href="bplus.html">B+코스</a><a href="quiz.html">퀴즈</a><a href="essay.html">서술형</a><a href="cards.html">암기카드</a><a href="words.html">낱말사전</a><a href="cheat.html">시험 전 1장</a></nav>
+</div></header>
+<main>
+<div class="crumb k3"><a href="index.html#c3">← 보드</a><span>계산기 회로 · 7/9</span></div><h1>전가산기 (Full Adder) ★★★</h1>
+<p>여러 자리 덧셈에서는 <b>아랫자리에서 올라온 <a class="w" href="words.html#w62" data-w="62">올림</a></b>도 더해야 해요. 예를 들어 <code>101 + 011</code>(5 + 3)에서는 각 자리마다 올림이 이어서 생겨요. 그래서 한 자리를 계산하는 회로의 입력은 <b>3개</b>(A, B, 아랫자리의 올림 Cin)가 돼야 해요.</p>
+<div class="box def"><span class="t">한 줄 정의</span>
+<p><b><a class="w" href="words.html#w61" data-w="61">전가산기</a>(Full Adder, FA) = <a class="w" href="words.html#w3" data-w="3">2진수</a> 입력 A, B와 아랫자리에서 올라온 올림 Cin까지 1자리 2진수 3개를 더해 합(S)과 올림(Cout)을 출력하는 <a class="w" href="words.html#w59" data-w="59">조합 논리 회로</a>.</b></p>
+</div>
+<div class="tw"><table>
+  <tr><th>A</th><th>B</th><th>Cin</th><th>S (합)</th><th>Cout (올림)</th></tr>
+  <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+  <tr><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td></tr>
+  <tr><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td></tr>
+  <tr><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+  <tr><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+  <tr><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td></tr>
+  <tr><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>
+  <tr><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+</table></div>
+<div class="box tip"><span class="t">외우기 팁 — 1의 개수만 세요</span>
+<p>8줄을 통째로 외울 필요 없어요. 입력 세 개 중 <b>1이 몇 개인지</b>만 세면 돼요. <b>1이 홀수 개(1개 또는 3개)이면 S = 1</b>, <b>1이 2개 이상이면 Cout = 1</b>이에요.</p>
+<p>1이 0개면 둘 다 0, 1이 1개면 S만 1, 2개면 Cout만 1, 3개면 둘 다 1이에요. 1 + 1 + 1 = 11(2진수)이라는 뜻이에요.</p>
+</div>
+<figure class="slide"><img src="slides/a_fa.jpg" alt="전가산기의 진리표, 논리식, 반가산기 2개와 OR 게이트로 만든 회로, 논리 기호"><figcaption>교수님 슬라이드 — 전가산기. 반가산기(HA) 2개와 OR 게이트 1개로 만들어요</figcaption></figure>
+<p>회로 구성은 이래요. 첫 번째 <a class="w" href="words.html#w60" data-w="60">반가산기</a>가 A와 B를 더하고, 그 합을 두 번째 반가산기에서 Cin과 더해요. 두 반가산기에서 나온 올림 둘을 <a class="w" href="words.html#w53" data-w="53">OR</a>로 합치면 최종 Cout이에요. <a class="w" href="words.html#w51" data-w="51">게이트</a> 수로는 <b><a class="w" href="words.html#w57" data-w="57">XOR</a> 2개, <a class="w" href="words.html#w52" data-w="52">AND</a> 2개, OR 1개</b>예요.</p>
+<ul>
+  <li><code>S = A ⊕ B ⊕ Cin</code> (XOR를 두 번)</li>
+  <li><code>Cout = (A ⊕ B)·Cin + A·B</code></li>
+</ul>
+<p>5 + 3 = 8을 4자리 전가산기 4번으로 따라가 볼게요. 아랫자리(오른쪽)부터 올림을 넘겨요.</p>
+<div class="tw"><table>
+  <tr><th style="width:18%">자리</th><th>A</th><th>B</th><th>Cin</th><th>1의 개수</th><th>S</th><th>Cout</th></tr>
+  <tr><td>0번 (맨 오른쪽)</td><td>1</td><td>1</td><td>0</td><td>2</td><td>0</td><td>1</td></tr>
+  <tr><td>1번</td><td>0</td><td>1</td><td>1</td><td>2</td><td>0</td><td>1</td></tr>
+  <tr><td>2번</td><td>1</td><td>0</td><td>1</td><td>2</td><td>0</td><td>1</td></tr>
+  <tr><td>3번</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td></tr>
+</table></div>
+<p>합 <a class="w" href="words.html#w0" data-w="0">비트</a>를 위에서부터(3번→0번) 쓰면 <code>1000</code>, 즉 8이에요. 앞 자리의 Cout이 바로 윗자리의 Cin이 되는 것이 핵심이에요.</p>
+<div class="box eg"><span class="t">비유 — 세로 덧셈의 올림</span>
+<p>초등학교에서 배운 세로셈과 똑같아요. 한 자리씩 더하다가 10이 넘으면 윗자리로 올려서 거기서 한 번 더 더해요. 전가산기는 "이번 자리 두 수와 아래에서 올라온 올림"까지 한 번에 더하는 한 칸짜리 세로셈 기계예요.</p>
+</div>
+<div class="box exam"><span class="t">시험엔 이렇게 써요 (기출 5.6)</span>
+<p>전가산기(full adder)는 두 개의 입력 비트 A, B와 한 개의 올림 비트 Cin이 들어갔을 때 합 비트 S와 올림 비트 Cout을 출력하는 회로이다. 입력에 1이 홀수 개이면 S가 1이고, 1이 두 개 이상이면 Cout이 1이다. 반가산기 2개와 OR 게이트 1개로 구성된다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — 전가산기에서 A = 1, B = 1, Cin = 1이면 S와 Cout은 각각 무엇인가요?</summary>
+<p>S = 1, Cout = 1이에요. 1이 3개(홀수)라서 S = 1이고, 두 개 이상이라서 Cout = 1이에요. 1 + 1 + 1 = 11이에요.</p></details>
+
+<div class="done"><a class="go" href="c3-08.html">다음 카드 → 8비트 덧셈 계산기 ★★★</a><div class="pn"><a href="c3-06.html"><b>← 이전</b>이전 카드</a><a class="next" href="quiz.html#c3"><b>연습</b>이 장 문제 풀기</a></div><p class="muted small">자료: 4주차 · 04계산기회로.pdf · 빅데이터플랫폼04</p></div>
+</main>
+<script src="assets/words.js?v=d2a0e0e2"></script>
+<script src="assets/app.js?v=d2a0e0e2"></script>
+</body>
+</html>

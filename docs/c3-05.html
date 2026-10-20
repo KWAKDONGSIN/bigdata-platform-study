@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ko" data-site="1bb07e">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>조합 논리 회로와 진리표 완성하기 ★★ · 빅데이터플랫폼 시험공부</title>
+<meta name="description" content="빅데이터플랫폼 중간고사를 전공 처음인 사람도 이해하게 정리한 공부 사이트">
+<link rel="stylesheet" href="assets/style.css?v=d2a0e0e2">
+</head>
+<body>
+<header class="top"><div class="top-in">
+<a class="brand" href="index.html"><span class="bases"><i class="a">시</i><i class="t">험</i><i class="g">공</i><i class="c">부</i></span>빅데이터플랫폼</a>
+<nav class="nav" aria-label="메뉴"><a href="index.html" class=on>보드</a><a href="b.html">최소코스</a><a href="bplus.html">B+코스</a><a href="quiz.html">퀴즈</a><a href="essay.html">서술형</a><a href="cards.html">암기카드</a><a href="words.html">낱말사전</a><a href="cheat.html">시험 전 1장</a></nav>
+</div></header>
+<main>
+<div class="crumb k3"><a href="index.html#c3">← 보드</a><span>계산기 회로 · 5/9</span></div><h1>조합 논리 회로와 진리표 완성하기 ★★</h1>
+<p><b><a class="w" href="words.html#w59" data-w="59">조합 논리 회로</a>(combinational logic circuit)</b>는 <b>현재 입력값만으로 출력이 결정되는 회로</b>예요. 과거를 기억하지 않아서 같은 입력을 넣으면 항상 같은 출력이 나와요. <a class="w" href="words.html#w51" data-w="51">게이트</a>들을 이어 붙여서 만들고, 앞으로 배울 <a class="w" href="words.html#w60" data-w="60">반가산기</a>와 <a class="w" href="words.html#w61" data-w="61">전가산기</a>도 모두 이 종류예요.</p>
+<p>슬라이드 21쪽(과제 6번)은 게이트 몇 개를 이은 회로의 <a class="w" href="words.html#w58" data-w="58">진리표</a>를 채우게 해요.</p>
+<figure class="slide"><img src="slides/a_xyz.jpg" alt="XOR, NOT, AND, OR 게이트가 연결된 회로와 입력 A, B에 대한 X, Y, Z 진리표 빈칸"><figcaption>교수님 슬라이드 — 입력 A, B에 대한 출력 X, Y, Z의 진리표를 완성하는 문제</figcaption></figure>
+<p>회로는 이렇게 읽어요. A와 B가 <a class="w" href="words.html#w57" data-w="57">XOR</a>에 들어가 <b>X</b>가 나와요. B를 <a class="w" href="words.html#w54" data-w="54">NOT</a>에 통과시키고, 그 값과 X를 <a class="w" href="words.html#w52" data-w="52">AND</a>하면 <b>Y</b>예요. 마지막으로 Y와 B를 <a class="w" href="words.html#w53" data-w="53">OR</a>하면 <b>Z</b>예요.</p>
+<div class="box tip"><span class="t">푸는 요령 — 중간 열을 만들어요</span>
+<p>회로 전체를 한 번에 생각하지 말고, <b>왼쪽 게이트부터 한 개씩</b> 열을 하나씩 추가해요. 표에 NOT B 같은 중간 열을 하나 더 만들면 실수가 확 줄어요.</p>
+</div>
+<div class="tw"><table>
+  <tr><th>A</th><th>B</th><th>X<br><span class="small">A XOR B</span></th><th>NOT B</th><th>Y<br><span class="small">X AND NOT B</span></th><th>Z<br><span class="small">Y OR B</span></th></tr>
+  <tr><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
+  <tr><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>
+  <tr><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+  <tr><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
+</table></div>
+<p><b>왜 진리표를 쓸까요?</b> 회로가 아무리 복잡해도 입력의 모든 경우를 하나씩 따라가면 반드시 답이 나오기 때문이에요. 입력이 2개면 4줄이라 손으로 충분해요.</p>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>조합 논리 회로는 현재 입력값으로 출력이 결정되는 회로이다. (진리표 문제는 이렇게 푸세요) 왼쪽 게이트부터 차례로 중간 결과 열을 만들어 마지막 출력까지 계산한다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — 위 회로에서 A = 1, B = 1이면 Z는 얼마인가요?</summary>
+<p>1이에요. Z = Y OR B이고 B가 1이면 Y와 관계없이 OR 결과가 1이에요.</p></details>
+
+<div class="done"><a class="go" href="c3-06.html">다음 카드 → 반가산기 (Half Adder) ★★★</a><div class="pn"><a href="c3-04.html"><b>← 이전</b>이전 카드</a><a class="next" href="quiz.html#c3"><b>연습</b>이 장 문제 풀기</a></div><p class="muted small">자료: 4주차 · 04계산기회로.pdf · 빅데이터플랫폼04</p></div>
+</main>
+<script src="assets/words.js?v=d2a0e0e2"></script>
+<script src="assets/app.js?v=d2a0e0e2"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ko" data-site="1bb07e">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Q3. sum.py가 실행되는 과정 (10점) · 빅데이터플랫폼 시험공부</title>
+<meta name="description" content="빅데이터플랫폼 중간고사를 전공 처음인 사람도 이해하게 정리한 공부 사이트">
+<link rel="stylesheet" href="assets/style.css?v=d2a0e0e2">
+</head>
+<body>
+<header class="top"><div class="top-in">
+<a class="brand" href="index.html"><span class="bases"><i class="a">시</i><i class="t">험</i><i class="g">공</i><i class="c">부</i></span>빅데이터플랫폼</a>
+<nav class="nav" aria-label="메뉴"><a href="index.html" class=on>보드</a><a href="b.html">최소코스</a><a href="bplus.html">B+코스</a><a href="quiz.html">퀴즈</a><a href="essay.html">서술형</a><a href="cards.html">암기카드</a><a href="words.html">낱말사전</a><a href="cheat.html">시험 전 1장</a></nav>
+</div></header>
+<main>
+<div class="crumb k8"><a href="index.html#c8">← 보드</a><span>기출 풀이 (2023) · 3/11</span></div><h1>Q3. sum.py가 실행되는 과정 (10점)</h1>
+<p>다음 파이썬 코드가 어디에 저장되고, 어디에 올라가고, 누가 계산하는지를 빈칸 10개(A~E, v~z)로 물어요. 한 칸에 1점이에요.</p>
+<div class="code">1. n = 1
+2. sum = 0
+3. while (n &lt;= 100):
+4.     sum = sum + n
+5.     n = n + 1</div>
+<div class="tw"><table>
+<tr><th>코드 줄</th><th>무슨 뜻</th></tr>
+<tr><td>n = 1</td><td>n이라는 이름의 칸에 1을 넣어요.</td></tr>
+<tr><td>sum = 0</td><td>sum이라는 이름의 칸에 0을 넣어요.</td></tr>
+<tr><td>while (n &lt;= 100):</td><td>n이 100 이하인 동안 아래 두 줄을 계속 반복해요.</td></tr>
+<tr><td>sum = sum + n</td><td>sum 칸의 값에 n을 더해 다시 sum 칸에 넣어요.</td></tr>
+<tr><td>n = n + 1</td><td>n 칸의 값을 1 키워요.</td></tr>
+</table></div>
+<p><b><a class="w" href="words.html#w78" data-w="78">실행</a> 결과</b> 이 코드에는 print가 없어서 화면에 나오는 것은 없어요. 대신 메모리 속 값이 바뀌어, 반복이 끝나면 sum은 5050, n은 101이 돼요.</p>
+<p><b>정답</b></p>
+<div class="tw"><table>
+<tr><th>칸</th><th>정답</th><th>칸</th><th>정답</th></tr>
+<tr><td>A</td><td><a class="w" href="words.html#w29" data-w="29">보조기억장치</a></td><td>v</td><td>1</td></tr>
+<tr><td>B</td><td><a class="w" href="words.html#w27" data-w="27">주기억장치</a></td><td>w</td><td>0</td></tr>
+<tr><td>C</td><td><a class="w" href="words.html#w26" data-w="26">CPU</a></td><td>x</td><td>100</td></tr>
+<tr><td>D</td><td>n</td><td>y</td><td>1</td></tr>
+<tr><td>E</td><td>sum</td><td>z</td><td>2</td></tr>
+</table></div>
+<p><b>왜 그런지</b></p>
+<ul>
+<li>실행 전에는 파이썬 실행기와 코드가 <b>보조기억장치(A)</b>에 있어요. 실행하면 <b>주기억장치(B)</b>로 올라와요. <a class="w" href="words.html#w25" data-w="25">폰노이만 구조</a>의 "<a class="w" href="words.html#w30" data-w="30">SSD</a> → <a class="w" href="words.html#w28" data-w="28">RAM</a> → CPU" 흐름이에요.</li>
+<li>한 줄씩 해석한 <a class="w" href="words.html#w17" data-w="17">기계어</a>는 <b>CPU(C)</b>가 실행해요.</li>
+<li>1번째 줄은 <b>n</b>(D)에 1(v), 2번째 줄은 <b>sum</b>(E)에 0(w)을 기억시켜요.</li>
+<li>3번째 줄은 n이 100 이하인지 보는 줄이라 x는 100이에요. 1은 100 이하라서 다음으로 넘어가요.</li>
+<li>4번째 줄은 sum = 0 + 1 = 1이라 y는 1이고, 값은 sum(E) 칸에 들어가요.</li>
+<li>5번째 줄은 n = 1 + 1 = 2라 z는 2이고, 값은 n(D) 칸에 들어가요.</li>
+</ul>
+<p>손으로 따라가는 요령은 표를 그려 값을 한 줄씩 적는 거예요.</p>
+<div class="tw"><table>
+<tr><th>반복</th><th>줄 4 실행 뒤 sum</th><th>줄 5 실행 뒤 n</th></tr>
+<tr><td>시작 전</td><td>0</td><td>1</td></tr>
+<tr><td>1번째</td><td>0 + 1 = 1</td><td>2</td></tr>
+<tr><td>2번째</td><td>1 + 2 = 3</td><td>3</td></tr>
+<tr><td>3번째</td><td>3 + 3 = 6</td><td>4</td></tr>
+</table></div>
+<div class="box exam"><span class="t">올해 시험에서도 이렇게 쓰세요</span>
+<p>"저장은 보조기억장치, 실행 중에는 주기억장치(RAM), 계산은 CPU"를 먼저 쓰고, <a class="w" href="words.html#w21" data-w="21">변수</a>는 칸마다 이름(n, sum)과 값을 적어 한 줄씩 따라가세요. 코드가 달라져도 같은 틀이에요.</p></div>
+<details class="check"><summary>잠깐 확인 — 프로그램이 실행되기 전에 코드가 보관되는 곳은 어디인가요?</summary><p>보조기억장치(SSD 또는 <a class="w" href="words.html#w31" data-w="31">HDD</a>)예요. 실행하면 주기억장치(RAM)로 올라와요.</p></details>
+
+<div class="done"><a class="go" href="c8-04.html">다음 카드 → Q4. 십진수와 문자를 1바이트 이진수로 (10점)</a><div class="pn"><a href="c8-02.html"><b>← 이전</b>이전 카드</a><a class="next" href="quiz.html#c8"><b>연습</b>이 장 문제 풀기</a></div><p class="muted small">자료: 중간고사_빅데이터플랫폼001_정답포함_오류수정.pdf</p></div>
+</main>
+<script src="assets/words.js?v=d2a0e0e2"></script>
+<script src="assets/app.js?v=d2a0e0e2"></script>
+</body>
+</html>

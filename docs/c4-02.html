@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ko" data-site="1bb07e">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CPU 안에는 무엇이 있을까 — ALU, 제어장치, 레지스터 ★★★ · 빅데이터플랫폼 시험공부</title>
+<meta name="description" content="빅데이터플랫폼 중간고사를 전공 처음인 사람도 이해하게 정리한 공부 사이트">
+<link rel="stylesheet" href="assets/style.css?v=d2a0e0e2">
+</head>
+<body>
+<header class="top"><div class="top-in">
+<a class="brand" href="index.html"><span class="bases"><i class="a">시</i><i class="t">험</i><i class="g">공</i><i class="c">부</i></span>빅데이터플랫폼</a>
+<nav class="nav" aria-label="메뉴"><a href="index.html" class=on>보드</a><a href="b.html">최소코스</a><a href="bplus.html">B+코스</a><a href="quiz.html">퀴즈</a><a href="essay.html">서술형</a><a href="cards.html">암기카드</a><a href="words.html">낱말사전</a><a href="cheat.html">시험 전 1장</a></nav>
+</div></header>
+<main>
+<div class="crumb k4"><a href="index.html#c4">← 보드</a><span>중앙처리장치(CPU) · 2/9</span></div><h1>CPU 안에는 무엇이 있을까 — ALU, 제어장치, 레지스터 ★★★</h1>
+<p><a class="w" href="words.html#w26" data-w="26">CPU</a>는 반드시 있어야 하는 부품 3가지와, 성능을 높이려고 덧붙인 부품 1가지로 이루어져요. 필수 3가지는 <b><a class="w" href="words.html#w64" data-w="64">산술논리연산장치</a>(ALU)</b>, <b><a class="w" href="words.html#w65" data-w="65">제어장치</a>(CU)</b>, <b><a class="w" href="words.html#w66" data-w="66">레지스터 세트</a></b>예요.</p>
+<div class="tw"><table>
+  <tr><th style="width:26%">부품</th><th>하는 일</th><th style="width:30%">비유</th></tr>
+  <tr><td><b>ALU</b><br><span class="small">Arithmetic Logic Unit<br>산술논리연산장치</span></td><td>덧셈·뺄셈 같은 산술 연산과 <a class="w" href="words.html#w52" data-w="52">AND</a>·<a class="w" href="words.html#w53" data-w="53">OR</a> 같은 논리 연산 등 기본 연산을 해요.</td><td>계산기</td></tr>
+  <tr><td><b>CU</b><br><span class="small">Control Unit, 제어장치</span></td><td>메모리에서 가져온 명령을 <a class="w" href="words.html#w77" data-w="77">해독</a>(<a class="w" href="words.html#w38" data-w="38">decode</a>)하고, 각 장치가 움직이도록 제어신호를 보내요.</td><td>오케스트라 지휘자</td></tr>
+  <tr><td><b>레지스터 세트</b><br><span class="small">register set</span></td><td>CPU 안에 있는, 용량은 작지만 매우 빠른 메모리예요. 범용 레지스터와 특수 레지스터로 나뉘어요.</td><td>손에 든 메모지</td></tr>
+  <tr><td><b><a class="w" href="words.html#w98" data-w="98">캐시</a></b> (확장 부품)</td><td>자주 쓰는 데이터를 임시로 보관해서 메모리까지 가는 시간을 줄여요. L1, L2, L3 단계가 있어요. (5장에서 자세히)</td><td>책상 위 참고서</td></tr>
+</table></div>
+<div class="paper"><svg viewBox="0 0 620 330" width="150mm">
+  <defs><marker id="b4" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#1b2333"/></marker>
+  <marker id="b4r" markerWidth="8" markerHeight="8" refX="1" refY="4" orient="auto"><path d="M8,0 L0,4 L8,8 z" fill="#1b2333"/></marker></defs>
+  <rect x="8" y="20" width="84" height="292" rx="8" fill="#eef2f8" stroke="#94a3b8"/>
+  <text x="50" y="160" text-anchor="middle" font-size="14" font-weight="bold" fill="#1b2333">메모리</text>
+  <text x="50" y="180" text-anchor="middle" font-size="13" fill="#1b2333">(RAM)</text>
+  <rect x="210" y="8" width="402" height="314" rx="10" fill="none" stroke="#0f7a4f" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="560" y="26" text-anchor="middle" font-size="13" font-weight="bold" fill="#0f7a4f">CPU</text>
+  <rect x="224" y="34" width="76" height="34" rx="4" fill="#dbe6ff" stroke="#475569"/><text x="262" y="56" text-anchor="middle" font-size="14" font-weight="bold" fill="#1b2333">MAR</text>
+  <rect x="224" y="118" width="76" height="52" rx="4" fill="#fff1d6" stroke="#475569"/><text x="262" y="142" text-anchor="middle" font-size="14" font-weight="bold" fill="#1b2333">CU</text><text x="262" y="160" text-anchor="middle" font-size="11" fill="#1b2333">제어장치</text>
+  <rect x="224" y="262" width="76" height="34" rx="4" fill="#dbe6ff" stroke="#475569"/><text x="262" y="284" text-anchor="middle" font-size="14" font-weight="bold" fill="#1b2333">MBR</text>
+  <rect x="350" y="34" width="64" height="30" rx="4" fill="#dbe6ff" stroke="#475569"/><text x="382" y="55" text-anchor="middle" font-size="14" font-weight="bold" fill="#1b2333">PC</text>
+  <rect x="350" y="80" width="64" height="30" rx="4" fill="#dbe6ff" stroke="#475569"/><text x="382" y="101" text-anchor="middle" font-size="14" font-weight="bold" fill="#1b2333">IR</text>
+  <rect x="330" y="196" width="96" height="64" rx="4" fill="#e3f6ec" stroke="#475569"/><text x="378" y="224" text-anchor="middle" font-size="13" fill="#1b2333">레지스터</text><text x="378" y="242" text-anchor="middle" font-size="13" fill="#1b2333">세트</text>
+  <rect x="452" y="190" width="36" height="26" rx="4" fill="#dbe6ff" stroke="#475569"/><text x="470" y="208" text-anchor="middle" font-size="13" font-weight="bold" fill="#1b2333">X</text>
+  <rect x="452" y="240" width="36" height="26" rx="4" fill="#dbe6ff" stroke="#475569"/><text x="470" y="258" text-anchor="middle" font-size="13" font-weight="bold" fill="#1b2333">Y</text>
+  <polygon points="506,184 560,206 560,250 506,272" fill="#fde2e2" stroke="#475569"/><text x="530" y="233" text-anchor="middle" font-size="14" font-weight="bold" fill="#1b2333">ALU</text>
+  <rect x="572" y="206" width="36" height="44" rx="4" fill="#dbe6ff" stroke="#475569"/><text x="590" y="233" text-anchor="middle" font-size="14" font-weight="bold" fill="#1b2333">AC</text>
+  <g stroke="#1b2333" stroke-width="2" fill="none">
+    <line x1="224" y1="51" x2="94" y2="51" marker-end="url(#b4)"/>
+    <line x1="224" y1="144" x2="94" y2="144" marker-end="url(#b4)"/>
+    <line x1="94" y1="279" x2="224" y2="279" marker-start="url(#b4r)" marker-end="url(#b4)"/>
+    <line x1="350" y1="49" x2="302" y2="49" marker-end="url(#b4)"/>
+    <polyline points="350,95 326,95 326,132 302,132" marker-end="url(#b4)"/>
+    <line x1="426" y1="203" x2="450" y2="203" marker-end="url(#b4)"/>
+    <line x1="426" y1="253" x2="450" y2="253" marker-end="url(#b4)"/>
+    <line x1="488" y1="203" x2="504" y2="203" marker-end="url(#b4)"/>
+    <line x1="488" y1="253" x2="504" y2="253" marker-end="url(#b4)"/>
+    <line x1="560" y1="228" x2="570" y2="228" marker-end="url(#b4)"/>
+    <polyline points="302,279 378,279 378,262" marker-end="url(#b4)"/>
+    <polyline points="300,150 533,150 533,186" stroke-dasharray="5 3" marker-end="url(#b4)"/>
+  </g>
+  <text x="158" y="43" text-anchor="middle" font-size="12" fill="#1b2333">주소 버스</text>
+  <text x="158" y="136" text-anchor="middle" font-size="12" fill="#1b2333">제어 버스</text>
+  <text x="158" y="271" text-anchor="middle" font-size="12" fill="#1b2333">데이터 버스</text>
+  <text x="430" y="144" text-anchor="middle" font-size="12" fill="#1b2333">제어신호 (+, - 등)</text>
+</svg></div>
+<p class="small" style="text-align:center">CPU 내부 구조 단순화. 실선 화살표는 값이 이동하는 길, 점선은 CU가 보내는 제어신호예요. 강의자료 8쪽 그림을 단순화했어요.</p>
+<figure class="slide"><img src="slides/b_cpu_struct.jpg" alt="프로세서의 구성 요소 슬라이드"><figcaption>교수님 슬라이드 — 프로세서 필수 구성 요소 (CU, ALU, 범용·특수 레지스터)</figcaption></figure>
+<p>레지스터는 쓰임새에 따라 두 종류로 나눠요. <b>범용 레지스터</b>는 R1, R2처럼 ALU 계산에 쓰는 데이터를 담는 보통 1~32개의 레지스터예요. <b>특수 레지스터</b>는 정해진 한 가지 일만 하는 레지스터예요. 슬라이드에 나온 특수 레지스터는 <a class="w" href="words.html#w67" data-w="67">PC</a>, <a class="w" href="words.html#w68" data-w="68">IR</a>, <a class="w" href="words.html#w71" data-w="71">AC</a>, <a class="w" href="words.html#w69" data-w="69">MAR</a>, <a class="w" href="words.html#w70" data-w="70">MBR</a> 다섯 개예요.</p>
+<div class="tw"><table>
+  <tr><th style="width:24%">이름</th><th>뜻</th><th style="width:28%">비유</th></tr>
+  <tr><td><b>PC</b><br><span class="small">Program Counter</span></td><td>다음에 가져올 명령이 메모리 몇 번지에 있는지 적어 둬요.</td><td>책갈피 (다음에 읽을 쪽)</td></tr>
+  <tr><td><b>IR</b><br><span class="small">Instruction Register</span></td><td>지금 <a class="w" href="words.html#w78" data-w="78">실행</a>하려고 가져온 명령 한 줄을 담아요.</td><td>지금 읽는 문장</td></tr>
+  <tr><td><b>AC</b><br><span class="small">ACcumulator, 누산기</span></td><td>ALU 계산 결과를 잠깐 담아요.</td><td>계산기 화면</td></tr>
+  <tr><td><b>MAR</b><br><span class="small">Memory Address Register</span></td><td>메모리의 몇 번지를 읽거나 쓸지 번호를 적어 둬요.</td><td>도서관 청구기호 쪽지</td></tr>
+  <tr><td><b>MBR</b><br><span class="small">Memory Buffer Register<br>(MDR이라고도 해요)</span></td><td>메모리에서 읽어 온 값, 또는 메모리에 쓸 값을 잠깐 담아요.</td><td>카운터에서 받은 책을 놓는 쟁반</td></tr>
+</table></div>
+<p>그림의 X, Y는 ALU 입구에 있는 작은 레지스터예요. 계산할 두 값이 X와 Y로 들어가고, 결과는 AC로 나와요.</p>
+<div class="box eg"><span class="t">비유 — 교수님의 시험공부</span>
+<p><a class="w" href="words.html#w30" data-w="30">SSD</a>는 <b>도서관</b>, <a class="w" href="words.html#w28" data-w="28">RAM</a>은 <b>책장</b>, 캐시는 <b>책상</b>, 레지스터는 책상 위에서 필기하는 <b>노트</b>, ALU는 <b>두뇌</b>예요. 도서관에서 필요한 책만 빌려 책장에 꽂고, 지금 볼 책은 책상에 펴고, 계산하는 숫자는 노트에 적는 식이에요.</p>
+</div>
+<p><b>왜 레지스터와 캐시를 따로 둘까요?</b> ALU는 1초에 수십억 번 계산하는데 RAM이나 SSD는 그 속도로 데이터를 못 대 줘요. 그래서 CPU 가까이에 작고 빠른 메모리를 층층이 둬서 ALU가 기다리지 않게 해요. 속도는 레지스터 &gt; L1 &gt; L2 &gt; L3 &gt; RAM &gt; 디스크 순이고, 용량은 반대 순서예요.</p>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>CPU의 필수 구성 요소는 산술논리연산장치(ALU), 제어장치(CU), 레지스터 세트이다. ALU는 산술·논리 연산을 수행하고, 제어장치는 <a class="w" href="words.html#w72" data-w="72">명령어</a>를 해독하여 제어신호를 발생시키며, 레지스터는 CPU 내부에 있는 용량은 작지만 매우 빠른 메모리이다. 특수 레지스터에는 PC(다음 명령의 주소), IR(현재 명령), AC(누산기), MAR(메모리 주소), MBR(메모리 버퍼)이 있다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — 다음에 실행할 명령이 메모리 몇 번지에 있는지 기억하는 레지스터는?</summary>
+<p>PC(프로그램 카운터)예요. 책갈피처럼 "다음에 읽을 번지"를 가리켜요.</p></details>
+
+<div class="done"><a class="go" href="c4-03.html">다음 카드 → 부품을 잇는 길, 버스</a><div class="pn"><a href="c4-01.html"><b>← 이전</b>이전 카드</a><a class="next" href="quiz.html#c4"><b>연습</b>이 장 문제 풀기</a></div><p class="muted small">자료: 5~6주차 · 05중앙처리장치.pdf · 빅데이터플렛폼05(5주차), 빅데이터플06(6주차), 빅데이터플07(7주차 일부)</p></div>
+</main>
+<script src="assets/words.js?v=d2a0e0e2"></script>
+<script src="assets/app.js?v=d2a0e0e2"></script>
+</body>
+</html>

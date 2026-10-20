@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ko" data-site="1bb07e">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HW7W 가상메모리와 보조기억장치 ★★★ 올해 새 유형 · 빅데이터플랫폼 시험공부</title>
+<meta name="description" content="빅데이터플랫폼 중간고사를 전공 처음인 사람도 이해하게 정리한 공부 사이트">
+<link rel="stylesheet" href="assets/style.css?v=d2a0e0e2">
+</head>
+<body>
+<header class="top"><div class="top-in">
+<a class="brand" href="index.html"><span class="bases"><i class="a">시</i><i class="t">험</i><i class="g">공</i><i class="c">부</i></span>빅데이터플랫폼</a>
+<nav class="nav" aria-label="메뉴"><a href="index.html" class=on>보드</a><a href="b.html">최소코스</a><a href="bplus.html">B+코스</a><a href="quiz.html">퀴즈</a><a href="essay.html">서술형</a><a href="cards.html">암기카드</a><a href="words.html">낱말사전</a><a href="cheat.html">시험 전 1장</a></nav>
+</div></header>
+<main>
+<div class="crumb k7"><a href="index.html#c7">← 보드</a><span>과제로 복습 · 6/7</span></div><h1>HW7W 가상메모리와 보조기억장치 ★★★ 올해 새 유형</h1>
+<p>이 과제는 "현재 상태"가 주어지는 문제예요. 상태를 먼저 표로 옮겨 놓고 풀어야 헷갈리지 않아요. 아래가 문제의 현재 상태예요(<a class="w" href="words.html#w116" data-w="116">페이지</a> 크기 같고, 번호는 0부터예요).</p>
+<div class="tw"><table>
+  <tr><th colspan="3">캐시 (TLB)</th></tr>
+  <tr><th>프로세스</th><th>가상 페이지</th><th>물리 프레임</th></tr>
+  <tr><td>워드</td><td>0페이지</td><td>5<a class="w" href="words.html#w117" data-w="117">프레임</a></td></tr>
+  <tr><td>워드</td><td>2페이지</td><td>2프레임</td></tr>
+  <tr><td><a class="w" href="words.html#w34" data-w="34">파워</a>포인트</td><td>0페이지</td><td>3프레임</td></tr>
+  <tr><td>브라우저</td><td>1페이지</td><td>4프레임</td></tr>
+</table></div>
+<div class="tw"><table>
+  <tr><th colspan="2">캐시 (데이터)</th></tr>
+  <tr><th style="width:30%">물리 프레임</th><th>데이터 (16진수, 앞부분만)</th></tr>
+  <tr><td>3프레임</td><td>D301…C701</td></tr>
+  <tr><td>2프레임</td><td>A501…F210</td></tr>
+  <tr><td>8프레임</td><td>E101…A912</td></tr>
+  <tr><td>4프레임</td><td>F401…B319</td></tr>
+  <tr><td colspan="2">나머지 두 칸은 비어 있음</td></tr>
+</table></div>
+<div class="tw"><table>
+  <tr><th colspan="4">메모리 안의 페이지 테이블 (프로세스마다 하나)</th></tr>
+  <tr><th style="width:22%">가상 페이지</th><th>워드</th><th>파워포인트</th><th>브라우저</th></tr>
+  <tr><td>0페이지</td><td>5프레임</td><td>3프레임</td><td>8프레임</td></tr>
+  <tr><td>1페이지</td><td>9프레임</td><td><a class="w" href="words.html#w114" data-w="114">스왑 영역</a></td><td>4프레임</td></tr>
+  <tr><td>2페이지</td><td>2프레임</td><td>7프레임</td><td>스왑 영역</td></tr>
+  <tr><td>3페이지</td><td>스왑 영역</td><td>―</td><td>―</td></tr>
+</table></div>
+<div class="tw"><table>
+  <tr><th colspan="2">메모리 데이터</th></tr>
+  <tr><th style="width:22%">프레임</th><th>데이터 (16진수)</th></tr>
+  <tr><td>0, 1</td><td><a class="w" href="words.html#w105" data-w="105">운영체제</a> 영역</td></tr>
+  <tr><td>2</td><td>A501…F210</td></tr>
+  <tr><td>3</td><td>D301…C701</td></tr>
+  <tr><td>4</td><td>F401…B319</td></tr>
+  <tr><td>5</td><td>BC02…D811</td></tr>
+  <tr><td>6</td><td><b>비어 있음</b> (<a class="w" href="words.html#w115" data-w="115">스와핑</a>에 쓰는 프레임)</td></tr>
+  <tr><td>7</td><td>AA70…D301</td></tr>
+  <tr><td>8</td><td>E101…A912</td></tr>
+  <tr><td>9</td><td>C311…B180</td></tr>
+</table></div>
+<div class="tw"><table>
+  <tr><th colspan="2">스왑 영역</th></tr>
+  <tr><th style="width:36%">(프로세스, 페이지)</th><th>데이터</th></tr>
+  <tr><td>(파워포인트, 1페이지)</td><td>B801…10FE</td></tr>
+  <tr><td>(워드, 3페이지)</td><td>9701…FE90</td></tr>
+  <tr><td>(브라우저, 2페이지)</td><td>CA71…0B32</td></tr>
+</table></div>
+<p><b>Q1 요지</b> : 각 상황에서 일어나는 동작과 사건을 보기에서 모두 골라 순서대로 번호를 쓰라. 각 문제는 서로 영향을 주지 않고 현재 상태에서 따로 수행하며, 스와핑은 빈 6번 프레임을 쓴다.</p>
+<p>보기는 ① <a class="w" href="words.html#w119" data-w="119">TLB</a> 접근, ② TLB <a class="w" href="words.html#w121" data-w="121">히트</a>, ③ TLB <a class="w" href="words.html#w122" data-w="122">미스</a>, ④ <a class="w" href="words.html#w118" data-w="118">페이지 테이블</a> 접근, ⑤ 페이지 존재, ⑥ <a class="w" href="words.html#w120" data-w="120">페이지 폴트</a>, ⑦ <a class="w" href="words.html#w98" data-w="98">캐시</a> 접근, ⑧ 캐시 히트, ⑨ 캐시 미스, ⑩ 메모리 데이터 접근, ⑪ 스와핑이에요. 풀이 순서는 늘 같아요. <b>TLB를 보고 → (미스면) 페이지 테이블을 보고 → (필요하면 스와핑) → 물리 프레임 번호를 얻으면 캐시를 보고 → (미스면) 메모리</b>를 봐요. 5장 5-8의 그림을 따라가면 돼요.</p>
+<div class="tw"><table>
+  <tr><th style="width:24%">문제</th><th>풀이</th><th style="width:22%">답</th></tr>
+  <tr><td>1) 파워포인트가 <b>2페이지</b> 0번째 <a class="w" href="words.html#w1" data-w="1">바이트</a> 읽기</td><td>TLB에 파워포인트는 0페이지뿐이라 <b>미스</b>(①③). 파워포인트 페이지 테이블에서 2페이지는 7프레임이라 <b>존재</b>(④⑤). 프레임 7은 캐시(3, 2, 8, 4)에 없어서 <b>캐시 미스</b>(⑦⑨). 메모리에서 읽어요(⑩).</td><td><b>1, 3, 4, 5, 7, 9, 10</b></td></tr>
+  <tr><td>2) 브라우저가 <b>2페이지</b> 읽기</td><td>TLB에 브라우저 2페이지가 없어 <b>미스</b>(①③). 페이지 테이블에서 2페이지가 <b>스왑 영역</b>이라 <b>페이지 폴트</b>(④⑥). 운영체제가 스왑 영역에서 빈 6프레임으로 <a class="w" href="words.html#w22" data-w="22">적재</a>하고 테이블과 TLB를 갱신해요(⑪). 프레임 6은 캐시에 없어 <b>미스</b>(⑦⑨), 메모리에서 읽어요(⑩).</td><td><b>1, 3, 4, 6, 11, 7, 9, 10</b></td></tr>
+  <tr><td>3) 워드가 <b>2페이지</b> 읽기</td><td>TLB에 (워드, 2페이지 → 2프레임)이 있어 <b>히트</b>(①②). 프레임 2는 캐시에 있어 <b>캐시 히트</b>(⑦⑧). 메모리까지 안 가요.</td><td><b>1, 2, 7, 8</b></td></tr>
+</table></div>
+<p><b>Q2 요지</b> : 워드의 0페이지 0번째 바이트, 브라우저의 0페이지 0번째 바이트 값은? 페이지 테이블로 프레임을 찾고 그 프레임의 데이터에서 맨 앞 두 자리를 읽어요(<a class="w" href="words.html#w6" data-w="6">16진수</a> 두 자리가 1바이트예요).</p>
+<ul>
+  <li><b>1) 워드 0페이지</b> → 워드 페이지 테이블에서 5프레임 → 메모리 5프레임 데이터 BC02…D811 → 0번째 바이트는 <b>BC</b>예요.</li>
+  <li><b>2) 브라우저 0페이지</b> → 브라우저 페이지 테이블에서 8프레임 → 메모리 8프레임 데이터 E101…A912 → 0번째 바이트는 <b>E1</b>이에요.</li>
+</ul>
+<p><b>Q3 요지</b> : 맞으면 O, 틀리면 X.</p>
+<div class="tw"><table>
+  <tr><th style="width:50%">설명</th><th style="width:10%">답</th><th>이유</th></tr>
+  <tr><td>1) 가상 페이지 크기와 물리 프레임 크기는 같다</td><td><b>O</b></td><td>같은 크기로 나누어 대응시켜요</td></tr>
+  <tr><td>2) TLB 미스가 발생하면 반드시 페이지 폴트가 발생한다</td><td><b>X</b></td><td>페이지가 <a class="w" href="words.html#w28" data-w="28">RAM</a>에 있으면 페이지 테이블로 정상 변환돼요 (문제 1번 파워포인트 경우)</td></tr>
+  <tr><td>3) 파워포인트의 1페이지는 현재 RAM에 적재되어 있다</td><td><b>X</b></td><td>파워포인트 1페이지는 스왑 영역에 있어요</td></tr>
+  <tr><td>4) 캐시에 저장된 4프레임 데이터는 브라우저 1페이지의 데이터이다</td><td><b>O</b></td><td>브라우저 1페이지는 4프레임에 있고, 캐시의 4프레임 데이터(F401…B319)가 메모리 4프레임과 같아요</td></tr>
+  <tr><td>5) 브라우저 2페이지의 데이터는 현재 RAM 6프레임에 들어 있다</td><td><b>X</b></td><td>브라우저 2페이지는 스왑 영역에 있고, 6프레임은 비어 있어요 (스와핑 때 들어올 자리일 뿐이에요)</td></tr>
+</table></div>
+<p><b>Q4 요지</b> : <a class="w" href="words.html#w29" data-w="29">보조기억장치</a> 설명의 빈칸을 보기에서 골라 채워라.</p>
+<div class="tw"><table>
+  <tr><th style="width:62%">문장</th><th>답</th></tr>
+  <tr><td>보조기억장치 <b>여러 개</b>를 연결하여 하나의 큰 용량을 가진 장치처럼 사용하는 것</td><td><b><a class="w" href="words.html#w134" data-w="134">RAID</a></b></td></tr>
+  <tr><td>보조기억장치 <b>하나</b>를 작은 용량의 공간으로 나누어 사용하는 것</td><td><b><a class="w" href="words.html#w132" data-w="132">파티션</a></b></td></tr>
+  <tr><td>자기적 성질을 이용</td><td><b><a class="w" href="words.html#w31" data-w="31">HDD</a></b></td></tr>
+  <tr><td>광학적 성질을 이용</td><td><b><a class="w" href="words.html#w131" data-w="131">CD-ROM</a></b></td></tr>
+  <tr><td>전자적 성질을 이용</td><td><b><a class="w" href="words.html#w30" data-w="30">SSD</a></b></td></tr>
+</table></div>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>TLB 미스 후에는 페이지 테이블을 탐색하여 페이지가 RAM에 있으면(페이지 존재) 정상적으로 주소를 변환하고, 없으면 페이지 폴트가 발생하여 운영체제가 스왑 영역의 페이지를 RAM에 적재(스와핑)하고 페이지 테이블과 TLB를 갱신한다. 물리주소를 얻은 뒤에는 캐시에 접근하여 히트이면 데이터를 사용하고 미스이면 메모리 데이터에 접근한다. TLB 미스가 곧 페이지 폴트는 아니다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — 워드가 0페이지를 읽으면 TLB, 캐시에서 각각 히트인가요? (TLB에 (워드, 0 → 5)가 있고, 캐시에는 5프레임 데이터가 없어요)</summary>
+<p>TLB는 히트(①②)예요. 캐시에는 5프레임이 없으니 캐시 미스(⑦⑨)이고 메모리에서 읽어요(⑩). 정답은 1, 2, 7, 9, 10이에요.</p></details>
+
+<div class="done"><a class="go" href="c7-07.html">다음 카드 → 이 장 3줄 요약</a><div class="pn"><a href="c7-05.html"><b>← 이전</b>이전 카드</a><a class="next" href="quiz.html#c7"><b>연습</b>이 장 문제 풀기</a></div><p class="muted small">자료: 2~7주차 · HW2W~HW7W.docx · 5·6·7주차 녹취</p></div>
+</main>
+<script src="assets/words.js?v=d2a0e0e2"></script>
+<script src="assets/app.js?v=d2a0e0e2"></script>
+</body>
+</html>

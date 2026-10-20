@@ -1,0 +1,1296 @@
+{
+ "glossary": [
+  {
+   "term": "비트",
+   "aka": [
+    "bit",
+    "이진 숫자"
+   ],
+   "en": "Bit",
+   "easy": "컴퓨터가 쓰는 가장 작은 정보 한 칸이에요. 전등 스위치처럼 0 또는 1 중 하나만 담을 수 있어요."
+  },
+  {
+   "term": "바이트",
+   "aka": [
+    "byte",
+    "1바이트"
+   ],
+   "en": "Byte",
+   "easy": "비트 8개를 묶은 단위예요. 글자 하나(영어)나 0~255 사이 숫자 하나를 담는 작은 상자라고 생각하세요."
+  },
+  {
+   "term": "니블",
+   "aka": [
+    "nibble"
+   ],
+   "en": "Nibble",
+   "easy": "비트 4개를 묶은 단위예요. 16진수 한 자리와 딱 맞아요."
+  },
+  {
+   "term": "이진수",
+   "aka": [
+    "2진수",
+    "binary"
+   ],
+   "en": "Binary number",
+   "easy": "0과 1 두 가지 숫자만 쓰는 수예요. 컴퓨터는 전기가 켜졌나 꺼졌나로 모든 걸 표현해서 이진수를 써요."
+  },
+  {
+   "term": "십진수",
+   "aka": [
+    "10진수",
+    "decimal"
+   ],
+   "en": "Decimal number",
+   "easy": "0부터 9까지 열 가지 숫자를 쓰는 우리가 평소에 쓰는 수예요."
+  },
+  {
+   "term": "8진수",
+   "aka": [
+    "팔진수",
+    "octal"
+   ],
+   "en": "Octal number",
+   "easy": "0부터 7까지 여덟 가지 숫자를 쓰는 수예요. 이진수 3자리를 한 자리로 묶어 쓸 수 있어요."
+  },
+  {
+   "term": "16진수",
+   "aka": [
+    "십육진수",
+    "hexadecimal",
+    "헥사"
+   ],
+   "en": "Hexadecimal number",
+   "easy": "0~9와 A~F, 열여섯 가지 기호를 쓰는 수예요. 이진수 4자리가 16진수 한 자리와 같아서 짧게 쓸 때 편해요."
+  },
+  {
+   "term": "진법",
+   "aka": [
+    "진수 체계",
+    "수의 체계"
+   ],
+   "en": "Number system",
+   "easy": "수를 몇 개의 기호로 세는지 정한 규칙이에요. 10개로 세면 십진법, 2개로 세면 이진법이에요."
+  },
+  {
+   "term": "MSB",
+   "aka": [
+    "최상위 비트",
+    "가장 큰 자리"
+   ],
+   "en": "Most Significant Bit",
+   "easy": "이진수에서 가장 왼쪽, 값이 제일 큰 자리예요. 돈으로 치면 맨 앞의 천 원 단위 같은 자리예요."
+  },
+  {
+   "term": "LSB",
+   "aka": [
+    "최하위 비트",
+    "가장 작은 자리"
+   ],
+   "en": "Least Significant Bit",
+   "easy": "이진수에서 가장 오른쪽, 값이 제일 작은 자리예요. 1의 자리라고 생각하면 돼요."
+  },
+  {
+   "term": "하드웨어",
+   "aka": [
+    "hardware"
+   ],
+   "en": "Hardware",
+   "easy": "손으로 만질 수 있는 컴퓨터 부품이에요. CPU, RAM, SSD, 메인보드 같은 것들이에요."
+  },
+  {
+   "term": "소프트웨어",
+   "aka": [
+    "software"
+   ],
+   "en": "Software",
+   "easy": "손으로 만질 수 없는 프로그램이에요. 엑셀, 게임, 운영체제처럼 하드웨어를 움직이는 명령 묶음이에요."
+  },
+  {
+   "term": "프로그램",
+   "aka": [
+    "program"
+   ],
+   "en": "Program",
+   "easy": "컴퓨터가 할 일을 순서대로 적어 둔 작업 지시서예요. 요리로 치면 레시피 책이고, 아직 저장장치에 들어 있는 상태예요."
+  },
+  {
+   "term": "프로세스",
+   "aka": [
+    "process"
+   ],
+   "en": "Process",
+   "easy": "저장장치에 있던 프로그램이 메모리에 올라와 실행 중인 상태예요. 레시피로 지금 만들고 있는 요리라고 생각하세요."
+  },
+  {
+   "term": "컴퓨터",
+   "aka": [
+    "computer"
+   ],
+   "en": "Computer",
+   "easy": "프로그램을 실행해서 계산하는 기계예요. 계산기와 달리 프로그램을 바꿔 가며 여러 가지 일을 할 수 있어요."
+  },
+  {
+   "term": "컴퓨테이션",
+   "aka": [
+    "computation"
+   ],
+   "en": "Computation",
+   "easy": "단순한 덧셈·뺄셈이 아니라 문제를 풀어 가는 과정 전체를 뜻하는 계산이에요. 집 짓는 기술 전체에 비유할 수 있어요."
+  },
+  {
+   "term": "캘큘레이션",
+   "aka": [
+    "calculation"
+   ],
+   "en": "Calculation",
+   "easy": "덧셈, 뺄셈처럼 단순한 수 계산 작업이에요. 집 짓는 일에서 못질이나 톱질 같은 한 동작이에요."
+  },
+  {
+   "term": "기계어",
+   "aka": [
+    "machine language",
+    "machine code",
+    "이진 코드"
+   ],
+   "en": "Machine code",
+   "easy": "0과 1로만 쓴 CPU가 바로 알아듣는 명령이에요. 사람이 읽기는 너무 어려워요."
+  },
+  {
+   "term": "어셈블리어",
+   "aka": [
+    "assembly",
+    "어셈블리"
+   ],
+   "en": "Assembly language",
+   "easy": "기계어를 사람이 읽을 수 있게 MOVE, ADD처럼 글자로 바꾼 언어예요. 기계어와 거의 1대1로 대응돼요."
+  },
+  {
+   "term": "고급언어",
+   "aka": [
+    "high-level language",
+    "하이레벨 언어"
+   ],
+   "en": "High-level language",
+   "easy": "파이썬이나 C처럼 사람이 쓰기 쉬운 프로그래밍 언어예요. CPU가 바로 못 알아들어서 번역이 필요해요."
+  },
+  {
+   "term": "인터프리터",
+   "aka": [
+    "interpreter",
+    "해석기"
+   ],
+   "en": "Interpreter",
+   "easy": "파이썬 같은 코드를 한 줄씩 읽어 기계어로 바꿔 주는 번역가 프로그램이에요."
+  },
+  {
+   "term": "변수",
+   "aka": [
+    "variable"
+   ],
+   "en": "Variable",
+   "easy": "값을 넣어 두는 이름표 붙은 칸이에요. n = 1이라고 하면 n이라는 칸에 1이 들어가요."
+  },
+  {
+   "term": "적재",
+   "aka": [
+    "load",
+    "로드",
+    "올린다"
+   ],
+   "en": "Load",
+   "easy": "저장장치에 있던 프로그램이나 데이터를 메모리(RAM)로 올리는 일이에요. 책장에서 책을 꺼내 책상에 펴는 것과 같아요."
+  },
+  {
+   "term": "휘발성",
+   "aka": [
+    "volatile",
+    "휘발"
+   ],
+   "en": "Volatility",
+   "easy": "전원이 꺼지면 내용이 사라지는 성질이에요. RAM이 휘발성이라, 저장하지 않고 전원이 꺼지면 작업이 날아가요."
+  },
+  {
+   "term": "비휘발성",
+   "aka": [
+    "non-volatile",
+    "비휘발"
+   ],
+   "en": "Non-volatile",
+   "easy": "전원이 꺼져도 내용이 남는 성질이에요. SSD, HDD, ROM이 이래요."
+  },
+  {
+   "term": "폰노이만 구조",
+   "aka": [
+    "폰 노이만",
+    "폰노이만",
+    "프로그램 내장형 컴퓨터",
+    "von Neumann architecture"
+   ],
+   "en": "Von Neumann architecture",
+   "easy": "프로그램과 데이터를 기억장치에 저장해 두고 명령을 한 줄씩 CPU로 가져와 실행하는 컴퓨터 구조예요. 오늘날 모든 컴퓨터가 이 방식이에요."
+  },
+  {
+   "term": "CPU",
+   "aka": [
+    "중앙처리장치",
+    "프로세서",
+    "processor"
+   ],
+   "en": "Central Processing Unit",
+   "easy": "컴퓨터의 두뇌예요. 명령을 해석하고 계산을 해서 컴퓨터 일의 거의 대부분을 해요."
+  },
+  {
+   "term": "주기억장치",
+   "aka": [
+    "main memory",
+    "메인 메모리",
+    "주기억"
+   ],
+   "en": "Main memory",
+   "easy": "CPU와 바로 데이터를 주고받는 작업대예요. 지금 실행 중인 프로그램과 데이터가 올라와 있고, 보통 RAM이에요."
+  },
+  {
+   "term": "RAM",
+   "aka": [
+    "램",
+    "Random Access Memory",
+    "주기억장치(RAM)"
+   ],
+   "en": "Random Access Memory",
+   "easy": "전원이 켜져 있는 동안 실행 중인 프로그램과 데이터를 담는 빠른 작업대 메모리예요. 전원이 꺼지면 내용이 사라져요."
+  },
+  {
+   "term": "보조기억장치",
+   "aka": [
+    "보조기억",
+    "저장장치",
+    "secondary storage"
+   ],
+   "en": "Secondary storage",
+   "easy": "전원이 꺼져도 프로그램과 데이터를 오래 보관하는 창고예요. SSD, HDD, CD-ROM이 여기에 들어가요."
+  },
+  {
+   "term": "SSD",
+   "aka": [
+    "Solid State Drive",
+    "에스에스디"
+   ],
+   "en": "Solid State Drive",
+   "easy": "움직이는 부품 없이 플래시 메모리로 저장하는 빠른 저장장치예요. 전자를 가두는 방식으로 기록해서 전원을 꺼도 남아요."
+  },
+  {
+   "term": "HDD",
+   "aka": [
+    "하드디스크",
+    "하드 디스크",
+    "Hard Disk Drive"
+   ],
+   "en": "Hard Disk Drive",
+   "easy": "회전하는 자석 원판에 자기로 기록하는 저장장치예요. 싸고 용량이 크지만 헤드가 움직여야 해서 SSD보다 느려요."
+  },
+  {
+   "term": "메인보드",
+   "aka": [
+    "마더보드",
+    "motherboard",
+    "main board"
+   ],
+   "en": "Motherboard",
+   "easy": "CPU, RAM, 그래픽카드 같은 부품이 모두 꽂히는 큰 바탕 판이에요. 부품끼리 데이터가 오가는 길도 이 판 위에 있어요."
+  },
+  {
+   "term": "그래픽카드",
+   "aka": [
+    "GPU",
+    "VGA 카드",
+    "graphics card",
+    "그래픽 처리 장치"
+   ],
+   "en": "Graphics Processing Unit",
+   "easy": "이미지 처리와 딥러닝처럼 단순한 계산을 수천 개 동시에 하는 데 강한 부품이에요. 조수 수천 명이 한꺼번에 일하는 것과 같아요."
+  },
+  {
+   "term": "전원공급장치",
+   "aka": [
+    "파워",
+    "파워서플라이",
+    "PSU",
+    "power supply"
+   ],
+   "en": "Power supply",
+   "easy": "콘센트의 교류 전기를 부품이 쓰는 직류로 바꿔 컴퓨터에 전기를 대 주는 부품이에요."
+  },
+  {
+   "term": "입출력장치",
+   "aka": [
+    "입력장치",
+    "출력장치",
+    "I/O",
+    "인터페이스 장치"
+   ],
+   "en": "Input/Output device",
+   "easy": "컴퓨터와 사람이 서로 소통하게 해 주는 장치예요. 마우스·키보드는 입력, 모니터는 출력이에요."
+  },
+  {
+   "term": "시스템 버스",
+   "aka": [
+    "버스",
+    "system bus",
+    "데이터 경로",
+    "data path"
+   ],
+   "en": "System bus",
+   "easy": "컴퓨터 부품들 사이에서 데이터가 오가는 길이에요. 도시의 도로처럼 부품을 이어 줘요."
+  },
+  {
+   "term": "인코드",
+   "aka": [
+    "encode",
+    "부호화"
+   ],
+   "en": "Encode",
+   "easy": "문자나 소리 같은 것을 약속한 숫자(코드)로 바꾸는 일이에요. 암호표로 글자를 숫자로 옮기는 것과 같아요."
+  },
+  {
+   "term": "디코드",
+   "aka": [
+    "decode",
+    "복호화"
+   ],
+   "en": "Decode",
+   "easy": "숫자(코드)를 보고 원래 글자나 기호로 되돌리는 일이에요. 인코드의 반대예요."
+  },
+  {
+   "term": "고정길이 코드",
+   "aka": [
+    "fixed-length code"
+   ],
+   "en": "Fixed-length code",
+   "easy": "모든 원소에 같은 비트 수를 주는 코드예요. 원소가 N개면 필요한 비트 수는 log2 N을 올림한 값이에요."
+  },
+  {
+   "term": "가변길이 코드",
+   "aka": [
+    "variable-length code"
+   ],
+   "en": "Variable-length code",
+   "easy": "원소마다 코드의 길이가 다른 방식이에요. 앞부분이 겹치면 디코드가 안 될 수 있어요."
+  },
+  {
+   "term": "BCD",
+   "aka": [
+    "이진화 십진코드",
+    "Binary Coded Decimal",
+    "8421 코드"
+   ],
+   "en": "Binary Coded Decimal",
+   "easy": "십진수 한 자리를 이진수 4비트로 따로따로 바꿔 쓰는 방식이에요. 1225를 0001 0010 0010 0101로 써요."
+  },
+  {
+   "term": "3초과 코드",
+   "aka": [
+    "3초과 BCD",
+    "excess-3 code"
+   ],
+   "en": "Excess-3 code",
+   "easy": "BCD에 3을 더한 값을 코드로 쓰는 방식이에요. 비트를 뒤집으면 9에서 뺀 값(9의 보수)의 코드가 되는 장점이 있어요."
+  },
+  {
+   "term": "ASCII",
+   "aka": [
+    "아스키",
+    "아스키코드",
+    "American Standard Code for Information Interchange"
+   ],
+   "en": "ASCII",
+   "easy": "영어 글자와 숫자, 기호에 번호를 붙인 약속이에요. 대문자 A는 65, 소문자 a는 97, 한 글자가 1바이트예요."
+  },
+  {
+   "term": "유니코드",
+   "aka": [
+    "Unicode"
+   ],
+   "en": "Unicode",
+   "easy": "세계 여러 나라의 글자를 한 표에 담은 국제 문자 약속이에요. 한글은 U+AC00부터 U+D7A3까지 11,172자가 있어요."
+  },
+  {
+   "term": "패리티 비트",
+   "aka": [
+    "parity bit",
+    "패리티"
+   ],
+   "en": "Parity bit",
+   "easy": "데이터가 틀리지 않았는지 검사하려고 덧붙이는 비트 한 개예요. 1의 개수가 짝수나 홀수가 되도록 맞춰요."
+  },
+  {
+   "term": "짝수 패리티",
+   "aka": [
+    "even parity"
+   ],
+   "en": "Even parity",
+   "easy": "전체에서 1의 개수가 짝수가 되도록 비트를 덧붙이는 방식이에요. 1이 3개면 1을 하나 더해 4개로 맞춰요."
+  },
+  {
+   "term": "2의 보수",
+   "aka": [
+    "two's complement",
+    "이의 보수"
+   ],
+   "en": "Two's complement",
+   "easy": "음수를 이진수로 나타내는 방법이에요. 비트를 모두 뒤집고 1을 더해요. 이번 수업 자료에는 없고 참고용이에요."
+  },
+  {
+   "term": "반도체",
+   "aka": [
+    "semiconductor"
+   ],
+   "en": "Semiconductor",
+   "easy": "조건에 따라 전기가 통하기도 하고 안 통하기도 하는 재료예요. 그래서 전기를 켜고 끄는 부품을 만들 수 있어요."
+  },
+  {
+   "term": "다이오드",
+   "aka": [
+    "diode"
+   ],
+   "en": "Diode",
+   "easy": "전류가 한쪽 방향으로만 흐르게 하는 기본 반도체 부품이에요. 한쪽으로만 열리는 문과 같아요."
+  },
+  {
+   "term": "트랜지스터",
+   "aka": [
+    "transistor"
+   ],
+   "en": "Transistor",
+   "easy": "전기로 전기를 켜고 끄는 스위치이자 신호를 키우는 증폭기예요. CPU 안에 수십억 개가 들어 있어요."
+  },
+  {
+   "term": "논리 게이트",
+   "aka": [
+    "논리게이트",
+    "logic gate",
+    "게이트"
+   ],
+   "en": "Logic gate",
+   "easy": "0과 1을 입력받아 약속한 규칙으로 0 또는 1을 내보내는 작은 회로예요. 계산기의 레고 블록이에요."
+  },
+  {
+   "term": "AND 게이트",
+   "aka": [
+    "AND",
+    "논리곱",
+    "앤드"
+   ],
+   "en": "AND gate",
+   "easy": "입력이 모두 1일 때만 1을 내보내요. 시험장 문이 두 열쇠가 모두 있어야 열리는 것과 같아요."
+  },
+  {
+   "term": "OR 게이트",
+   "aka": [
+    "OR",
+    "논리합",
+    "오어"
+   ],
+   "en": "OR gate",
+   "easy": "입력 중 하나라도 1이면 1을 내보내요. 열쇠가 둘 중 하나만 있어도 열리는 문과 같아요."
+  },
+  {
+   "term": "NOT 게이트",
+   "aka": [
+    "NOT",
+    "인버터",
+    "논리부정",
+    "inverter"
+   ],
+   "en": "NOT gate",
+   "easy": "입력을 반대로 뒤집어요. 0이면 1, 1이면 0을 내보내요."
+  },
+  {
+   "term": "NAND 게이트",
+   "aka": [
+    "NAND",
+    "낸드"
+   ],
+   "en": "NAND gate",
+   "easy": "AND의 반대예요. 입력이 모두 1일 때만 0이고, 나머지는 모두 1이에요."
+  },
+  {
+   "term": "NOR 게이트",
+   "aka": [
+    "NOR",
+    "노어"
+   ],
+   "en": "NOR gate",
+   "easy": "OR의 반대예요. 입력이 모두 0일 때만 1이고, 하나라도 1이면 0이에요."
+  },
+  {
+   "term": "XOR 게이트",
+   "aka": [
+    "XOR",
+    "배타적 논리합",
+    "엑스오어"
+   ],
+   "en": "XOR gate",
+   "easy": "두 입력이 서로 다르면 1, 같으면 0을 내보내요. 반가산기의 합 S를 만들 때 써요."
+  },
+  {
+   "term": "진리표",
+   "aka": [
+    "truth table",
+    "진가표"
+   ],
+   "en": "Truth table",
+   "easy": "입력이 0과 1로 바뀔 때마다 출력이 어떻게 되는지 모두 적은 표예요. 시험에 자주 나와요."
+  },
+  {
+   "term": "조합 논리 회로",
+   "aka": [
+    "combinational logic circuit",
+    "조합논리회로"
+   ],
+   "en": "Combinational logic circuit",
+   "easy": "지금 들어온 입력만으로 출력이 정해지는 회로예요. 과거 기록은 기억하지 않는 자판기 버튼 같아요."
+  },
+  {
+   "term": "반가산기",
+   "aka": [
+    "half adder",
+    "HA"
+   ],
+   "en": "Half adder",
+   "easy": "1비트 두 개를 더해 합(S)과 올림(Cout)을 내는 회로예요. S는 XOR, 올림은 AND로 만들어요."
+  },
+  {
+   "term": "전가산기",
+   "aka": [
+    "full adder",
+    "FA"
+   ],
+   "en": "Full adder",
+   "easy": "1비트 두 개에 아랫자리에서 올라온 올림(Cin)까지 세 개를 더하는 회로예요. 반가산기 2개와 OR 1개로 만들어요."
+  },
+  {
+   "term": "올림",
+   "aka": [
+    "캐리",
+    "carry",
+    "Cout",
+    "Cin",
+    "자리올림"
+   ],
+   "en": "Carry",
+   "easy": "한 자리 합이 넘쳐 윗자리로 올려 보내는 1이에요. 초등학교 세로셈의 올림과 같아요."
+  },
+  {
+   "term": "집적회로",
+   "aka": [
+    "IC",
+    "칩",
+    "integrated circuit"
+   ],
+   "en": "Integrated circuit",
+   "easy": "수많은 반도체와 배선을 아주 작은 칩 하나에 넣은 회로예요. CPU와 RAM 칩이 이래요."
+  },
+  {
+   "term": "ALU",
+   "aka": [
+    "산술논리연산장치",
+    "산술 논리 장치",
+    "Arithmetic Logic Unit"
+   ],
+   "en": "Arithmetic Logic Unit",
+   "easy": "CPU 안에서 덧셈, 곱셈, AND, OR 같은 계산을 실제로 하는 장치예요. A, B로 입력받고 C로 계산 종류를 정해 Y를 내요."
+  },
+  {
+   "term": "제어장치",
+   "aka": [
+    "CU",
+    "control unit"
+   ],
+   "en": "Control Unit",
+   "easy": "CPU 안에서 명령을 해독하고 각 부품에 제어 신호를 보내는 지휘자예요."
+  },
+  {
+   "term": "레지스터",
+   "aka": [
+    "register",
+    "레지스터 세트"
+   ],
+   "en": "Register",
+   "easy": "CPU 안에 있는 아주 빠르고 아주 작은 메모리예요. 지금 계산하는 숫자를 잠깐 올려 두는 필기 노트 같아요."
+  },
+  {
+   "term": "PC",
+   "aka": [
+    "프로그램 카운터",
+    "Program Counter"
+   ],
+   "en": "Program Counter",
+   "easy": "다음에 읽어 올 명령어의 주소를 가진 레지스터예요. 책에서 지금 읽을 쪽수를 가리키는 책갈피 같아요."
+  },
+  {
+   "term": "IR",
+   "aka": [
+    "명령 레지스터",
+    "Instruction Register"
+   ],
+   "en": "Instruction Register",
+   "easy": "방금 가져온, 지금 실행할 명령어를 담는 레지스터예요."
+  },
+  {
+   "term": "MAR",
+   "aka": [
+    "메모리 주소 레지스터",
+    "Memory Address Register"
+   ],
+   "en": "Memory Address Register",
+   "easy": "메모리의 어느 번지를 읽거나 쓸지 주소를 담는 레지스터예요."
+  },
+  {
+   "term": "MBR",
+   "aka": [
+    "메모리 버퍼 레지스터",
+    "Memory Buffer Register"
+   ],
+   "en": "Memory Buffer Register",
+   "easy": "메모리에서 읽어 온 값, 또는 메모리에 쓸 값을 잠깐 담는 레지스터예요."
+  },
+  {
+   "term": "AC",
+   "aka": [
+    "누산기",
+    "accumulator"
+   ],
+   "en": "Accumulator",
+   "easy": "ALU의 계산 결과를 임시로 담는 레지스터예요. 계산 후 결과가 먼저 여기에 놓여요."
+  },
+  {
+   "term": "명령어",
+   "aka": [
+    "instruction",
+    "인스트럭션"
+   ],
+   "en": "Instruction",
+   "easy": "CPU에게 시키는 한 줄짜리 명령이에요. MOVE, ADD, LOAD, STORE 같은 게 있어요."
+  },
+  {
+   "term": "opcode",
+   "aka": [
+    "동작 코드",
+    "operation code",
+    "오피코드"
+   ],
+   "en": "Operation code",
+   "easy": "명령어에서 무엇을 할지(동사)를 나타내는 부분이에요. ADD, MOVE 같은 계산의 종류예요."
+  },
+  {
+   "term": "operand",
+   "aka": [
+    "오퍼랜드",
+    "피연산자"
+   ],
+   "en": "Operand",
+   "easy": "명령어에서 무엇에 대해 할지(목적어)를 나타내는 부분이에요. 숫자, 레지스터, 주소 등이 와요."
+  },
+  {
+   "term": "ISA",
+   "aka": [
+    "명령어 집합 구조",
+    "Instruction Set Architecture"
+   ],
+   "en": "Instruction Set Architecture",
+   "easy": "CPU가 알아듣는 명령어 전체를 정리한 설명서예요. CPU를 설계한 회사마다 달라요."
+  },
+  {
+   "term": "인출",
+   "aka": [
+    "fetch",
+    "페치"
+   ],
+   "en": "Fetch",
+   "easy": "명령 실행 5단계의 첫 단계예요. PC가 가리키는 명령을 메모리에서 읽어 IR로 가져오고 PC를 다음으로 옮겨요."
+  },
+  {
+   "term": "해독",
+   "aka": [
+    "decode 단계",
+    "디코드 단계"
+   ],
+   "en": "Decode",
+   "easy": "5단계 중 둘째예요. 제어장치가 IR의 명령을 풀어 읽고 필요한 제어 신호를 정해요."
+  },
+  {
+   "term": "실행",
+   "aka": [
+    "execute",
+    "이그제큐트"
+   ],
+   "en": "Execute",
+   "easy": "5단계 중 셋째예요. ALU가 X, Y 값으로 실제 계산을 해서 결과를 AC에 놓아요."
+  },
+  {
+   "term": "데이터 단계",
+   "aka": [
+    "data stage",
+    "메모리 접근 단계"
+   ],
+   "en": "Data stage",
+   "easy": "5단계 중 넷째예요. LOAD나 STORE처럼 메모리를 읽고 쓰는 명령일 때만 일하고, ADD 같은 명령은 아무 일도 안 해요."
+  },
+  {
+   "term": "기록",
+   "aka": [
+    "write back",
+    "라이트백"
+   ],
+   "en": "Write back",
+   "easy": "5단계 중 마지막이에요. 계산 결과나 메모리에서 읽은 값을 목적 레지스터에 적어요."
+  },
+  {
+   "term": "마이크로 명령",
+   "aka": [
+    "마이크로 인스트럭션",
+    "microinstruction",
+    "주사이클"
+   ],
+   "en": "Microinstruction",
+   "easy": "명령 하나를 더 잘게 나눈 작은 단계예요. 인출, 해독, 실행, 데이터, 기록 5단계가 한 바퀴예요."
+  },
+  {
+   "term": "RISC",
+   "aka": [
+    "리스크",
+    "Reduced Instruction Set Computer"
+   ],
+   "en": "RISC",
+   "easy": "단순한 명령을 여러 줄 써도 빨리빨리 처리하는 설계 방식이에요. 스마트폰의 ARM이 대표적이에요."
+  },
+  {
+   "term": "CISC",
+   "aka": [
+    "시스크",
+    "Complex Instruction Set Computer"
+   ],
+   "en": "CISC",
+   "easy": "복잡하더라도 한 줄 명령으로 많은 일을 하는 설계 방식이에요. PC의 x86이 대표적이에요."
+  },
+  {
+   "term": "파이프라이닝",
+   "aka": [
+    "파이프라인",
+    "pipelining",
+    "pipeline"
+   ],
+   "en": "Pipelining",
+   "easy": "여러 명령을 단계마다 한 칸씩 밀어 가며 동시에 진행하는 기법이에요. 빨래를 세탁, 건조, 다림질로 나눠 줄 세워 돌리는 것과 같아요."
+  },
+  {
+   "term": "클럭",
+   "aka": [
+    "clock",
+    "클럭 수",
+    "Hz",
+    "GHz"
+   ],
+   "en": "Clock",
+   "easy": "CPU가 1초에 몇 번 동작하는지 나타내요. 3GHz는 초당 약 30억 번이에요."
+  },
+  {
+   "term": "무어의 법칙",
+   "aka": [
+    "Moore's law",
+    "무어"
+   ],
+   "en": "Moore's law",
+   "easy": "반도체 집적도가 약 24개월(2년)마다 2배가 된다는 법칙이에요. 인텔 공동창업자 고든 무어가 말했어요."
+  },
+  {
+   "term": "황의 법칙",
+   "aka": [
+    "Hwang's law"
+   ],
+   "en": "Hwang's law",
+   "easy": "무어의 법칙의 메모리판이라고 소개된 법칙이에요. 시험에서는 함정 보기로 나왔어요."
+  },
+  {
+   "term": "집적도",
+   "aka": [
+    "integration"
+   ],
+   "en": "Integration density",
+   "easy": "칩 안에 반도체(트랜지스터)가 얼마나 많이 들어 있는지를 뜻해요."
+  },
+  {
+   "term": "코어",
+   "aka": [
+    "core",
+    "연산 장치"
+   ],
+   "en": "Core",
+   "easy": "CPU 안의 계산하는 부분 하나예요. 요리사 한 명이라고 생각하세요."
+  },
+  {
+   "term": "싱글코어",
+   "aka": [
+    "single core",
+    "싱글 코어"
+   ],
+   "en": "Single core",
+   "easy": "하나의 CPU 안에 연산 장치(코어)가 1개인 구조예요. 2000년대 초까지 흔했어요."
+  },
+  {
+   "term": "멀티코어",
+   "aka": [
+    "multi core",
+    "멀티 코어"
+   ],
+   "en": "Multi core",
+   "easy": "하나의 CPU 안에 연산 장치가 여러 개인 구조예요. 열 때문에 클럭을 못 올리자 코어 수를 늘렸어요."
+  },
+  {
+   "term": "하이퍼스레딩",
+   "aka": [
+    "hyper-threading",
+    "SMT",
+    "하이퍼쓰레딩"
+   ],
+   "en": "Hyper-threading",
+   "easy": "파이프라인을 이용해 코어 하나가 일을 2배로 처리하는 것처럼 보이게 하는 기술이에요. 4코어 8스레드가 이 예예요."
+  },
+  {
+   "term": "스레드",
+   "aka": [
+    "쓰레드",
+    "thread"
+   ],
+   "en": "Thread",
+   "easy": "한 프로세스 안에서 나뉜 실행 흐름 하나예요. 크롬 창 하나 안의 탭 하나에 비유해요."
+  },
+  {
+   "term": "오버클럭",
+   "aka": [
+    "overclock",
+    "오버 클럭"
+   ],
+   "en": "Overclocking",
+   "easy": "CPU 클럭을 정해진 값보다 높여 억지로 더 빠르게 쓰는 일이에요. 열이 많이 나요."
+  },
+  {
+   "term": "x86",
+   "aka": [
+    "엑스86",
+    "인텔 아키텍처"
+   ],
+   "en": "x86",
+   "easy": "인텔과 AMD가 만드는 PC, 노트북, 서버용 CPU 명령 체계예요. CISC 계열의 대표예요."
+  },
+  {
+   "term": "ARM",
+   "aka": [
+    "암",
+    "ARM 아키텍처"
+   ],
+   "en": "ARM",
+   "easy": "스마트폰과 애플 M 시리즈 칩 등에 쓰는 RISC 계열 명령 체계예요."
+  },
+  {
+   "term": "메모리 계층 구조",
+   "aka": [
+    "기억장치 계층",
+    "memory hierarchy"
+   ],
+   "en": "Memory hierarchy",
+   "easy": "레지스터, 캐시, RAM, 보조기억장치를 속도와 용량 순으로 층층이 놓은 구조예요. 빠르고 큰 메모리는 너무 비싸서 이렇게 나눠요."
+  },
+  {
+   "term": "캐시",
+   "aka": [
+    "캐쉬",
+    "cache",
+    "캐시 메모리"
+   ],
+   "en": "Cache",
+   "easy": "CPU와 RAM 사이에서 자주 쓰는 데이터를 미리 두는 빠른 버퍼 메모리예요. 책상 위에 지금 보는 책만 올려 둔 것과 같아요."
+  },
+  {
+   "term": "SRAM",
+   "aka": [
+    "정적 RAM",
+    "static RAM",
+    "에스램"
+   ],
+   "en": "Static RAM",
+   "easy": "트랜지스터 6개로 만든 빠른 메모리예요. 전원이 있는 한 값이 유지되지만 비싸서 캐시처럼 작은 용량에 써요."
+  },
+  {
+   "term": "DRAM",
+   "aka": [
+    "동적 RAM",
+    "dynamic RAM",
+    "디램"
+   ],
+   "en": "Dynamic RAM",
+   "easy": "트랜지스터 1개와 커패시터 1개로 만든 메모리예요. 값을 유지하려면 계속 충전(리프레시)해야 하고, 싸서 주기억장치(RAM)에 써요."
+  },
+  {
+   "term": "ROM",
+   "aka": [
+    "롬",
+    "Read Only Memory"
+   ],
+   "en": "Read Only Memory",
+   "easy": "읽기 전용이고 전원이 꺼져도 내용이 남는 메모리예요."
+  },
+  {
+   "term": "레이턴시",
+   "aka": [
+    "latency",
+    "응답 시간",
+    "지연 시간"
+   ],
+   "en": "Latency",
+   "easy": "요청하고 처음 응답이 올 때까지 걸리는 시간이에요. 낮을수록 빨라요. 우물까지의 거리라고 생각하세요."
+  },
+  {
+   "term": "대역폭",
+   "aka": [
+    "bandwidth",
+    "스루풋",
+    "throughput"
+   ],
+   "en": "Bandwidth",
+   "easy": "단위 시간 동안 옮길 수 있는 데이터 양이에요. 클수록 한꺼번에 많이 옮겨요. 물탱크 크기에 비유해요."
+  },
+  {
+   "term": "지역성",
+   "aka": [
+    "locality",
+    "국소성"
+   ],
+   "en": "Locality",
+   "easy": "데이터를 읽을 때 한 영역과 그 주변을 몰아서 자주 읽는 경향이에요. 시험공부를 1장, 2장, 3장 순서로 하는 것과 같아요."
+  },
+  {
+   "term": "운영체제",
+   "aka": [
+    "OS",
+    "operating system",
+    "윈도우",
+    "Windows"
+   ],
+   "en": "Operating System",
+   "easy": "컴퓨터를 켜면 가장 먼저 실행되어 자원과 프로그램을 관리하는 소프트웨어예요. 가게의 총지배인 같은 역할이에요."
+  },
+  {
+   "term": "커널",
+   "aka": [
+    "kernel"
+   ],
+   "en": "Kernel",
+   "easy": "운영체제의 핵심 부분이에요. 프로세스, 메모리, 저장장치 관리를 맡고 항상 메모리에 올라와 있어요."
+  },
+  {
+   "term": "멀티태스킹",
+   "aka": [
+    "multitasking",
+    "멀티 태스킹"
+   ],
+   "en": "Multitasking",
+   "easy": "여러 프로그램이 동시에 실행되는 것처럼 보이게 하는 기술이에요. 수업에서는 크게 안 써도 된다고 했어요."
+  },
+  {
+   "term": "멀티프로그래밍",
+   "aka": [
+    "multiprogramming",
+    "멀티 프로그래밍"
+   ],
+   "en": "Multiprogramming",
+   "easy": "여러 프로그램을 동시에 메모리에 올려 CPU가 쉬지 않게 하는 방식이에요. 수업에서는 크게 안 써도 된다고 했어요."
+  },
+  {
+   "term": "멀티프로세싱",
+   "aka": [
+    "multiprocessing",
+    "멀티 프로세싱"
+   ],
+   "en": "Multiprocessing",
+   "easy": "하나의 프로그램을 여러 개의 독립된 프로세스로 나눠 병렬 처리하는 방식이에요. 크롬 창을 여러 개 띄우는 것과 같아요."
+  },
+  {
+   "term": "멀티쓰레딩",
+   "aka": [
+    "multithreading",
+    "멀티스레딩",
+    "멀티 쓰레딩",
+    "멀티 스레딩"
+   ],
+   "en": "Multithreading",
+   "easy": "프로세스는 하나만 두고 그 안에서 여러 흐름을 병렬로 실행하는 방식이에요. 창 하나에 탭을 여러 개 띄우는 것과 같아요."
+  },
+  {
+   "term": "시분할",
+   "aka": [
+    "time sharing",
+    "timesharing",
+    "컨텍스트 스위칭",
+    "context switch"
+   ],
+   "en": "Time sharing",
+   "easy": "CPU 시간을 아주 짧게 쪼개 여러 프로세스가 번갈아 쓰게 하는 방식이에요. 너무 빨라서 동시에 도는 것처럼 느껴져요."
+  },
+  {
+   "term": "가상메모리",
+   "aka": [
+    "가상 메모리",
+    "virtual memory"
+   ],
+   "en": "Virtual memory",
+   "easy": "실제 RAM 크기와 상관없이 프로세스에게 아주 큰 메모리 공간이 있는 것처럼 보이게 하는 기술이에요."
+  },
+  {
+   "term": "물리메모리",
+   "aka": [
+    "물리 메모리",
+    "physical memory",
+    "실제 메모리"
+   ],
+   "en": "Physical memory",
+   "easy": "컴퓨터에 실제로 꽂혀 있는 RAM이에요. 가상메모리와 달리 크기가 정해져 있어요."
+  },
+  {
+   "term": "스왑 영역",
+   "aka": [
+    "스왑메모리",
+    "스왑 메모리",
+    "swap area",
+    "스왑"
+   ],
+   "en": "Swap area",
+   "easy": "RAM이 모자라 쫓겨난 데이터를 저장장치의 특별한 공간에 모아 두는 곳이에요."
+  },
+  {
+   "term": "스와핑",
+   "aka": [
+    "swapping",
+    "swap in",
+    "swap out"
+   ],
+   "en": "Swapping",
+   "easy": "RAM이 모자라 일부 데이터를 스왑 영역으로 내보내고 필요할 때 다시 가져오는 과정이에요. 저장장치가 느려서 자주 일어나면 컴퓨터가 느려져요."
+  },
+  {
+   "term": "페이지",
+   "aka": [
+    "page",
+    "페이징"
+   ],
+   "en": "Page",
+   "easy": "가상메모리를 고정 크기로 나눈 한 조각이에요. 예를 들어 4KB(4,096바이트)로 나눠요."
+  },
+  {
+   "term": "프레임",
+   "aka": [
+    "frame",
+    "page frame"
+   ],
+   "en": "Frame",
+   "easy": "RAM(물리메모리)을 페이지와 같은 크기로 나눈 한 칸이에요. 페이지가 프레임 위에 올라가요."
+  },
+  {
+   "term": "페이지 테이블",
+   "aka": [
+    "page table"
+   ],
+   "en": "Page table",
+   "easy": "가상 페이지가 RAM의 어느 프레임에 있는지 적어 둔 표예요. 보통 RAM에 있어요."
+  },
+  {
+   "term": "TLB",
+   "aka": [
+    "Translation Lookaside Buffer",
+    "티엘비"
+   ],
+   "en": "Translation Lookaside Buffer",
+   "easy": "자주 쓰는 주소 변환 정보(페이지 → 프레임)를 모아 둔 빠른 캐시예요. 실제 데이터가 아니라 주소 변환 정보를 저장해요."
+  },
+  {
+   "term": "페이지 폴트",
+   "aka": [
+    "page fault",
+    "페이지 부재"
+   ],
+   "en": "Page fault",
+   "easy": "필요한 페이지가 RAM에 없어서 운영체제가 처리해야 하는 상황이에요. TLB 미스와는 달라요."
+  },
+  {
+   "term": "캐시 히트",
+   "aka": [
+    "cache hit",
+    "TLB hit",
+    "히트"
+   ],
+   "en": "Cache hit",
+   "easy": "찾는 것이 캐시(또는 TLB)에 있어서 바로 얻은 경우예요."
+  },
+  {
+   "term": "캐시 미스",
+   "aka": [
+    "cache miss",
+    "TLB miss",
+    "미스"
+   ],
+   "en": "Cache miss",
+   "easy": "찾는 것이 캐시에 없어서 다음 단계(다음 캐시나 RAM)로 가야 하는 경우예요."
+  },
+  {
+   "term": "자기디스크",
+   "aka": [
+    "magnetic disk",
+    "하드디스크 원판"
+   ],
+   "en": "Magnetic disk",
+   "easy": "금속이나 플라스틱 원판에 자성 물질을 입혀 N극·S극으로 0과 1을 기록하는 디스크예요."
+  },
+  {
+   "term": "섹터",
+   "aka": [
+    "sector"
+   ],
+   "en": "Sector",
+   "easy": "디스크에서 한 번에 읽고 쓰는 가장 작은 단위예요. 같은 각도에 있는 칸이에요."
+  },
+  {
+   "term": "트랙",
+   "aka": [
+    "track"
+   ],
+   "en": "Track",
+   "easy": "디스크 원판에서 동심원으로 그려진 한 줄이에요. 육상 경기장의 레인과 같아요."
+  },
+  {
+   "term": "실린더",
+   "aka": [
+    "cylinder"
+   ],
+   "en": "Cylinder",
+   "easy": "서로 다른 디스크 면에서 위치가 같은 트랙들의 묶음이에요."
+  },
+  {
+   "term": "탐색시간",
+   "aka": [
+    "seek time",
+    "탐색 시간"
+   ],
+   "en": "Seek time",
+   "easy": "헤드가 원하는 트랙으로 움직이는 데 걸리는 시간이에요."
+  },
+  {
+   "term": "회전지연시간",
+   "aka": [
+    "rotational latency",
+    "회전 지연 시간",
+    "회전지연"
+   ],
+   "en": "Rotational latency",
+   "easy": "디스크가 돌아서 원하는 섹터가 헤드 아래로 올 때까지 기다리는 시간이에요. 평균은 반 바퀴 도는 시간이에요."
+  },
+  {
+   "term": "디스크 접근시간",
+   "aka": [
+    "disk access time",
+    "디스크 액세스 시간"
+   ],
+   "en": "Disk access time",
+   "easy": "탐색시간과 회전지연시간과 데이터 전송시간을 더한 값이에요(제어기 오버헤드가 있으면 더해요)."
+  },
+  {
+   "term": "rpm",
+   "aka": [
+    "분당 회전수",
+    "rotations per minute"
+   ],
+   "en": "Rotations per minute",
+   "easy": "디스크가 1분에 몇 바퀴 도는지를 뜻해요. 7200rpm이면 1바퀴에 약 8.33ms예요."
+  },
+  {
+   "term": "CD-ROM",
+   "aka": [
+    "씨디롬",
+    "시디롬",
+    "광디스크"
+   ],
+   "en": "CD-ROM",
+   "easy": "레이저로 홈(피트)과 평평한 곳(랜드)의 반사 빛을 읽는 광학 저장장치예요."
+  },
+  {
+   "term": "파티션",
+   "aka": [
+    "partition",
+    "분할"
+   ],
+   "en": "Partition",
+   "easy": "하나의 저장장치를 여러 공간으로 나눠 쓰는 것이에요. 큰 집을 방으로 나누는 것과 같아요."
+  },
+  {
+   "term": "포맷",
+   "aka": [
+    "format",
+    "포멧"
+   ],
+   "en": "Format",
+   "easy": "저장 공간의 데이터를 지우고 새로 쓸 수 있게 초기화하는 일이에요."
+  },
+  {
+   "term": "RAID",
+   "aka": [
+    "레이드",
+    "Redundant Array of Independent Disks"
+   ],
+   "en": "Redundant Array of Independent Disks",
+   "easy": "작은 디스크 여러 개를 묶어 하나의 큰 저장장치처럼 쓰는 기술이에요. 용량, 속도, 안전성을 높여요. 파티션과 반대 방향이에요."
+  },
+  {
+   "term": "스트라이핑",
+   "aka": [
+    "striping",
+    "RAID 0",
+    "레이드 0"
+   ],
+   "en": "Striping",
+   "easy": "데이터를 여러 디스크에 나눠 써서 속도를 높이는 방식이에요. RAID 0이 이 방식이에요."
+  },
+  {
+   "term": "미러링",
+   "aka": [
+    "mirroring",
+    "RAID 1",
+    "레이드 1"
+   ],
+   "en": "Mirroring",
+   "easy": "똑같은 데이터를 두 디스크에 복사해 두는 방식이에요. 용량은 안 늘지만 한 디스크가 고장 나도 안전해요. RAID 1이에요."
+  },
+  {
+   "term": "패리티",
+   "aka": [
+    "parity",
+    "RAID 5",
+    "레이드 5"
+   ],
+   "en": "Parity",
+   "easy": "여러 디스크의 같은 위치 비트를 더한 검사값이에요. 한 디스크가 고장 나도 이 값으로 복구해요. RAID 5가 패리티를 여러 디스크에 나눠 저장해요."
+  },
+  {
+   "term": "NAND 플래시",
+   "aka": [
+    "NAND 플래시 메모리",
+    "플래시 메모리",
+    "flash memory",
+    "낸드"
+   ],
+   "en": "NAND flash memory",
+   "easy": "전원이 꺼져도 남는 비휘발성 반도체 메모리예요. SSD를 만드는 재료예요."
+  }
+ ],
+ "explain": {},
+ "essay_easy": {}
+}

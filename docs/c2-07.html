@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ko" data-site="1bb07e">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>문자 코드 — ASCII ★★★ · 빅데이터플랫폼 시험공부</title>
+<meta name="description" content="빅데이터플랫폼 중간고사를 전공 처음인 사람도 이해하게 정리한 공부 사이트">
+<link rel="stylesheet" href="assets/style.css?v=d2a0e0e2">
+</head>
+<body>
+<header class="top"><div class="top-in">
+<a class="brand" href="index.html"><span class="bases"><i class="a">시</i><i class="t">험</i><i class="g">공</i><i class="c">부</i></span>빅데이터플랫폼</a>
+<nav class="nav" aria-label="메뉴"><a href="index.html" class=on>보드</a><a href="b.html">최소코스</a><a href="bplus.html">B+코스</a><a href="quiz.html">퀴즈</a><a href="essay.html">서술형</a><a href="cards.html">암기카드</a><a href="words.html">낱말사전</a><a href="cheat.html">시험 전 1장</a></nav>
+</div></header>
+<main>
+<div class="crumb k2"><a href="index.html#c2">← 보드</a><span>데이터 표현 · 7/11</span></div><h1>문자 코드 — ASCII ★★★</h1>
+<p><a class="w" href="words.html#w14" data-w="14">컴퓨터</a>에는 "글자"라는 것이 없어요. 0과 1뿐이에요. 그래서 "이 글자는 이 숫자"라고 미리 약속한 표가 필요한데, 영어와 숫자, 기호에 대한 가장 유명한 약속이 <b><a class="w" href="words.html#w43" data-w="43">ASCII</a>(아스키, American Standard Code for Information Interchange)</b>예요.</p>
+<p>ASCII 표는 아래처럼 생겼고, 시험에서도 표를 보여 줘요. 표 읽는 법은 이래요.</p>
+<figure class="slide"><img src="slides/a_ascii.jpg" alt="가로축 b6b5b4, 세로축 b3b2b1b0로 이루어진 ASCII 문자 코드표"><figcaption>교수님 슬라이드 — ASCII 코드표. 가로가 앞 3비트, 세로가 뒤 4비트</figcaption></figure>
+<ul>
+  <li><b>가로(열)</b>는 앞의 3<a class="w" href="words.html#w0" data-w="0">비트</a>(b6 b5 b4), <b>세로(행)</b>는 뒤의 4비트(b3 b2 b1 b0)예요.</li>
+  <li>글자를 찾아서 <b>열의 3비트 + 행의 4비트</b>를 이어 붙이면 7비트 코드가 나와요.</li>
+  <li>메모리 한 칸은 8비트이니 <b>맨 앞에 0을 하나 더</b> 붙여서 <a class="w" href="words.html#w1" data-w="1">1바이트</a>로 저장해요.</li>
+</ul>
+<p>대문자 <b>R</b>을 찾아볼게요. 표에서 R은 열 <code>101</code>, 행 <code>0010</code>에 있어요. 이어 붙이면 <code>1010010</code>이고 앞에 0을 붙여 <b>01010010</b>이에요. (<a class="w" href="words.html#w4" data-w="4">10진수</a>로는 82, <a class="w" href="words.html#w6" data-w="6">16진수</a>로는 52예요.)</p>
+<div class="box tip"><span class="t">표 없이도 구하는 요령</span>
+<p>알파벳은 차례대로 숫자가 1씩 커져요. 대문자는 <b>A = 65</b>, 소문자는 <b>a = 97</b>이에요(소문자가 32 커요). 숫자 글자 <b>0은 48</b>이고요.</p>
+<p>R은 A에서 17번째 뒤이니 65 + 17 = 82예요. 82를 <a class="w" href="words.html#w3" data-w="3">2진수</a>로 바꾸면 01010010으로 같은 답이에요.</p>
+</div>
+<div class="code">print(ord("R"))
+print(format(ord("R"), "08b"))
+print(chr(82))</div>
+<div class="tw"><table>
+  <tr><th style="width:44%">코드 줄</th><th>무슨 뜻인가요</th></tr>
+  <tr><td><code>print(ord("R"))</code></td><td><code>ord</code>는 글자의 ASCII(<a class="w" href="words.html#w44" data-w="44">유니코드</a>) 번호를 알려 줘요</td></tr>
+  <tr><td><code>print(format(ord("R"), "08b"))</code></td><td>그 번호를 8자리 2진수(<code>08b</code>)로 써요</td></tr>
+  <tr><td><code>print(chr(82))</code></td><td><code>chr</code>는 번호를 글자로 되돌려요 (<a class="w" href="words.html#w38" data-w="38">디코드</a>)</td></tr>
+</table></div>
+<p><b><a class="w" href="words.html#w78" data-w="78">실행</a> 결과(출력)</b></p>
+<div class="code">82
+01010010
+R</div>
+<p>글자 하나가 1바이트이니 단어는 글자 수만큼 바이트를 차지해요. "Apple"은 5바이트, "Data"는 4바이트예요. 슬라이드 26쪽의 "Data"는 이렇게 메모리에 들어가요.</p>
+<div class="tw"><table>
+  <tr><th style="width:20%">글자</th><th style="width:24%">10진수</th><th>8비트</th></tr>
+  <tr><td>D</td><td>68</td><td><code>01000100</code></td></tr>
+  <tr><td>a</td><td>97</td><td><code>01100001</code></td></tr>
+  <tr><td>t</td><td>116</td><td><code>01110100</code></td></tr>
+  <tr><td>a</td><td>97</td><td><code>01100001</code></td></tr>
+</table></div>
+<p>슬라이드 22쪽의 예제 2-12 "Good Morning!"은 공백과 느낌표도 한 글자로 세서 <b>13바이트</b>가 돼요.</p>
+<div class="tw"><table>
+  <tr><th style="width:20%">글자</th><th style="width:24%">16진수</th><th>8비트</th></tr>
+  <tr><td>G</td><td>47</td><td><code>01000111</code></td></tr>
+  <tr><td>o</td><td>6F</td><td><code>01101111</code></td></tr>
+  <tr><td>o</td><td>6F</td><td><code>01101111</code></td></tr>
+  <tr><td>d</td><td>64</td><td><code>01100100</code></td></tr>
+  <tr><td>(공백)</td><td>20</td><td><code>00100000</code></td></tr>
+  <tr><td>M</td><td>4D</td><td><code>01001101</code></td></tr>
+  <tr><td>o</td><td>6F</td><td><code>01101111</code></td></tr>
+  <tr><td>r</td><td>72</td><td><code>01110010</code></td></tr>
+  <tr><td>n</td><td>6E</td><td><code>01101110</code></td></tr>
+  <tr><td>i</td><td>69</td><td><code>01101001</code></td></tr>
+  <tr><td>n</td><td>6E</td><td><code>01101110</code></td></tr>
+  <tr><td>g</td><td>67</td><td><code>01100111</code></td></tr>
+  <tr><td>!</td><td>21</td><td><code>00100001</code></td></tr>
+</table></div>
+<div class="box eg"><span class="t">비유 — 모스 부호</span>
+<p>모스 부호는 글자마다 점과 선의 조합을 정해 놓은 약속이에요. ASCII는 글자마다 8비트 조합을 정해 놓은 약속이고, 같은 표를 쓰는 사람끼리만 서로 읽을 수 있어요.</p>
+</div>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>문자는 ASCII 코드표에서 해당 글자의 코드를 찾아 1바이트(8비트) 이진수로 바꾸어 메모리에 저장한다. 예를 들어 R은 열 101, 행 0010이므로 01010010이다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — "Hello"는 메모리에서 몇 바이트를 차지하나요?</summary>
+<p>5바이트예요. 글자 하나가 1바이트이고 글자가 5개이기 때문이에요.</p></details>
+
+<div class="done"><a class="go" href="c2-08.html">다음 카드 → 패리티 비트와 유니코드</a><div class="pn"><a href="c2-06.html"><b>← 이전</b>이전 카드</a><a class="next" href="quiz.html#c2"><b>연습</b>이 장 문제 풀기</a></div><p class="muted small">자료: 3주차 · 03데이터표현.pdf · 빅데이터플03</p></div>
+</main>
+<script src="assets/words.js?v=d2a0e0e2"></script>
+<script src="assets/app.js?v=d2a0e0e2"></script>
+</body>
+</html>

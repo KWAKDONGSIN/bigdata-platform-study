@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ko" data-site="1bb07e">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HW4W 계산기 회로 — 논리 게이트와 가산기 · 빅데이터플랫폼 시험공부</title>
+<meta name="description" content="빅데이터플랫폼 중간고사를 전공 처음인 사람도 이해하게 정리한 공부 사이트">
+<link rel="stylesheet" href="assets/style.css?v=d2a0e0e2">
+</head>
+<body>
+<header class="top"><div class="top-in">
+<a class="brand" href="index.html"><span class="bases"><i class="a">시</i><i class="t">험</i><i class="g">공</i><i class="c">부</i></span>빅데이터플랫폼</a>
+<nav class="nav" aria-label="메뉴"><a href="index.html" class=on>보드</a><a href="b.html">최소코스</a><a href="bplus.html">B+코스</a><a href="quiz.html">퀴즈</a><a href="essay.html">서술형</a><a href="cards.html">암기카드</a><a href="words.html">낱말사전</a><a href="cheat.html">시험 전 1장</a></nav>
+</div></header>
+<main>
+<div class="crumb k7"><a href="index.html#c7">← 보드</a><span>과제로 복습 · 3/7</span></div><h1>HW4W 계산기 회로 — 논리 게이트와 가산기</h1>
+<p><b>Q1~Q3 요지</b> : <a class="w" href="words.html#w52" data-w="52">AND</a>, <a class="w" href="words.html#w53" data-w="53">OR</a>, <a class="w" href="words.html#w54" data-w="54">NOT</a>의 <a class="w" href="words.html#w58" data-w="58">진리표</a>를 완성하라. 먼저 기본 규칙을 외워 두면 표는 금방 채워져요.</p>
+<div class="tw"><table>
+  <tr><th style="width:12%">a</th><th style="width:12%">b</th><th style="width:22%">AND (모두 1이면 1)</th><th>OR (하나라도 1이면 1)</th></tr>
+  <tr><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+  <tr><td>0</td><td>1</td><td>0</td><td>1</td></tr>
+  <tr><td>1</td><td>0</td><td>0</td><td>1</td></tr>
+  <tr><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+</table></div>
+<p>NOT은 반대로 뒤집어요. a=0이면 y=1, a=1이면 y=0이에요. <a class="w" href="words.html#w57" data-w="57">XOR</a>은 "같으면 0, 다르면 1"이라서 (0,0)→0, (0,1)→1, (1,0)→1, (1,1)→0이에요.</p>
+<p><b>Q4, Q5 요지</b> : 8<a class="w" href="words.html#w0" data-w="0">비트</a> AND 계산기의 회로를 완성하고, A=10001010, B=11111011일 때 출력 Y를 구하라.</p>
+<p><b>풀이</b> : 8비트 AND 계산기는 AND 게이트 8개를 두고 <b>같은 자리끼리</b> 연결하면 돼요. A0와 B0는 첫 <a class="w" href="words.html#w51" data-w="51">게이트</a>로 들어가 Y0가 되고, A1과 B1은 둘째 게이트로 들어가 Y1이 되고, 이런 식으로 A7과 B7까지 이어요(A0, B0, Y0가 가장 낮은 자리). 자리별 AND를 직접 해 볼게요.</p>
+<div class="tw"><table>
+  <tr><th style="width:18%">자리</th><th>7</th><th>6</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr>
+  <tr><td>A</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td></tr>
+  <tr><td>B</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td></tr>
+  <tr><td><b>Y</b></td><td><b>1</b></td><td><b>0</b></td><td><b>0</b></td><td><b>0</b></td><td><b>1</b></td><td><b>0</b></td><td><b>1</b></td><td><b>0</b></td></tr>
+</table></div>
+<p>답은 <b>Y = 10001010</b>이에요. B의 자리가 1이면 A 값이 그대로 통과해서 결과가 A와 같아졌어요.</p>
+<p><b>Q6 요지</b> : 회로에서 입력 A, B에 대한 X, Y, Z의 진리표를 완성하라. 회로는 X = A XOR B, Y = X AND (NOT B), Z = Y OR B예요(그림의 연결을 따라 읽어요).</p>
+<div class="tw"><table>
+  <tr><th>A</th><th>B</th><th>X = A XOR B</th><th>NOT B</th><th>Y = X AND (NOT B)</th><th>Z = Y OR B</th></tr>
+  <tr><td>0</td><td>0</td><td>0</td><td>1</td><td><b>0</b></td><td><b>0</b></td></tr>
+  <tr><td>0</td><td>1</td><td>1</td><td>0</td><td><b>0</b></td><td><b>1</b></td></tr>
+  <tr><td>1</td><td>0</td><td>1</td><td>1</td><td><b>1</b></td><td><b>1</b></td></tr>
+  <tr><td>1</td><td>1</td><td>0</td><td>0</td><td><b>0</b></td><td><b>1</b></td></tr>
+</table></div>
+<p>그래서 X는 0,1,1,0, Y는 0,0,1,0, Z는 0,1,1,1이에요(Z는 결국 A OR B와 같아요).</p>
+<p><b>Q6(<a class="w" href="words.html#w60" data-w="60">반가산기</a>), Q7(<a class="w" href="words.html#w61" data-w="61">전가산기</a>) 요지</b> : 덧셈 회로의 진리표를 완성하라. 풀이 요령은 "입력 1의 개수 세기"예요.</p>
+<ul>
+  <li><b>합 S</b> : 입력에서 1의 개수가 <b>홀수</b>(1개 또는 3개)면 1이에요.</li>
+  <li><b><a class="w" href="words.html#w62" data-w="62">올림</a> Cout</b> : 입력에서 1의 개수가 <b>2개 이상</b>이면 1이에요.</li>
+</ul>
+<div class="tw"><table>
+  <tr><th>A</th><th>B</th><th>Cin</th><th>S</th><th>Cout</th></tr>
+  <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+  <tr><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td></tr>
+  <tr><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td></tr>
+  <tr><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+  <tr><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+  <tr><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td></tr>
+  <tr><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>
+  <tr><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+</table></div>
+<p>반가산기는 Cin이 없는 경우예요. (A, B) = (0,0)→S 0, Cout 0 / (0,1)→1, 0 / (1,0)→1, 0 / (1,1)→0, 1이에요. 즉 S는 XOR, Cout은 AND예요.</p>
+<p><b>Q8 요지</b> : 전가산기 8개로 8비트 덧셈 계산기의 연결을 완성하라.</p>
+<p><b>풀이</b> : 전가산기마다 같은 자리의 A, B를 넣고 합 S를 Y의 같은 자리로 내보내요. 그리고 <b>아래 자리의 올림(Cout)을 바로 위 자리의 Cin에 연결</b>해요. 손으로 덧셈할 때 올림수를 윗자리로 넘기는 것과 같아요. 가장 낮은 자리 A0, B0의 Cin은 올림이 없으니 연결하지 않고(0), 맨 위 자리 A7, B7의 마지막 Cout도 연결하지 않아요(문제에서 "최종 올림 자리는 연결이 없다"고 했어요).</p>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>AND는 두 입력이 모두 1일 때만 1, OR는 하나 이상이 1이면 1, NOT은 입력의 반대, XOR은 두 입력이 다르면 1을 출력한다. 전가산기는 입력 A, B, Cin에서 1의 개수가 홀수이면 합 S가 1, 2개 이상이면 올림 Cout이 1이다. 8비트 덧셈기는 전가산기 8개를 연결하여 아래 자리의 Cout을 위 자리의 Cin으로 전달한다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — 전가산기에서 A=1, B=1, Cin=1이면 S와 Cout은?</summary>
+<p>1이 3개라서 S는 1(홀수), Cout도 1(2개 이상)이에요. 1+1+1 = 3 = <a class="w" href="words.html#w3" data-w="3">이진수</a> 11이라서 S 1, 올림 1이에요.</p></details>
+
+<div class="done"><a class="go" href="c7-04.html">다음 카드 → HW5W 중앙처리장치 — 인출부터 기록까지 ★★★</a><div class="pn"><a href="c7-02.html"><b>← 이전</b>이전 카드</a><a class="next" href="quiz.html#c7"><b>연습</b>이 장 문제 풀기</a></div><p class="muted small">자료: 2~7주차 · HW2W~HW7W.docx · 5·6·7주차 녹취</p></div>
+</main>
+<script src="assets/words.js?v=d2a0e0e2"></script>
+<script src="assets/app.js?v=d2a0e0e2"></script>
+</body>
+</html>

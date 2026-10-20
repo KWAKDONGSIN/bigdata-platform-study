@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ko" data-site="1bb07e">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>폰 노이만 구조 — 프로그램이 실행되는 길 ★★ · 빅데이터플랫폼 시험공부</title>
+<meta name="description" content="빅데이터플랫폼 중간고사를 전공 처음인 사람도 이해하게 정리한 공부 사이트">
+<link rel="stylesheet" href="assets/style.css?v=d2a0e0e2">
+</head>
+<body>
+<header class="top"><div class="top-in">
+<a class="brand" href="index.html"><span class="bases"><i class="a">시</i><i class="t">험</i><i class="g">공</i><i class="c">부</i></span>빅데이터플랫폼</a>
+<nav class="nav" aria-label="메뉴"><a href="index.html" class=on>보드</a><a href="b.html">최소코스</a><a href="bplus.html">B+코스</a><a href="quiz.html">퀴즈</a><a href="essay.html">서술형</a><a href="cards.html">암기카드</a><a href="words.html">낱말사전</a><a href="cheat.html">시험 전 1장</a></nav>
+</div></header>
+<main>
+<div class="crumb k4"><a href="index.html#c4">← 보드</a><span>중앙처리장치(CPU) · 1/9</span></div><h1>폰 노이만 구조 — 프로그램이 실행되는 길 ★★</h1>
+<p><a class="w" href="words.html#w14" data-w="14">컴퓨터</a> 안에서 <a class="w" href="words.html#w12" data-w="12">프로그램</a>은 세 군데를 차례로 지나가요. 먼저 <b><a class="w" href="words.html#w29" data-w="29">보조기억장치</a></b>(<a class="w" href="words.html#w30" data-w="30">SSD</a>나 <a class="w" href="words.html#w31" data-w="31">HDD</a>)에 보관돼 있다가, <a class="w" href="words.html#w78" data-w="78">실행</a>하면 <b><a class="w" href="words.html#w27" data-w="27">주기억장치</a></b>(<a class="w" href="words.html#w28" data-w="28">RAM</a>)에 올라오고, 한 줄씩 <b><a class="w" href="words.html#w26" data-w="26">CPU</a></b>로 가서 계산돼요. 이렇게 "CPU + 기억장치로 이루어지고 프로그램을 한 줄씩 실행하는" 방식을 <b><a class="w" href="words.html#w25" data-w="25">폰 노이만</a> 구조</b>(Von Neumann architecture)라고 해요.</p>
+<div class="paper"><svg viewBox="0 0 540 170" width="140mm">
+  <defs><marker id="a4" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#1d4ed8"/></marker></defs>
+  <rect x="8" y="50" width="130" height="64" rx="8" fill="#e3f6ec" stroke="#94a3b8"/>
+  <text x="73" y="76" text-anchor="middle" font-size="14" font-weight="bold" fill="#1b2333">보조기억장치</text>
+  <text x="73" y="95" text-anchor="middle" font-size="12" fill="#1b2333">SSD / HDD (보관)</text>
+  <rect x="205" y="50" width="130" height="64" rx="8" fill="#dbe6ff" stroke="#94a3b8"/>
+  <text x="270" y="76" text-anchor="middle" font-size="14" font-weight="bold" fill="#1b2333">주기억장치</text>
+  <text x="270" y="95" text-anchor="middle" font-size="12" fill="#1b2333">RAM (실행 중인 것)</text>
+  <rect x="402" y="50" width="130" height="64" rx="8" fill="#fff1d6" stroke="#94a3b8"/>
+  <text x="467" y="76" text-anchor="middle" font-size="14" font-weight="bold" fill="#1b2333">CPU</text>
+  <text x="467" y="95" text-anchor="middle" font-size="12" fill="#1b2333">한 줄씩 계산</text>
+  <line x1="138" y1="82" x2="203" y2="82" stroke="#1d4ed8" stroke-width="3" marker-end="url(#a4)"/>
+  <text x="170" y="40" text-anchor="middle" font-size="12" fill="#1d4ed8" font-weight="bold">① 적재(load)</text>
+  <line x1="335" y1="70" x2="400" y2="70" stroke="#1d4ed8" stroke-width="3" marker-end="url(#a4)"/>
+  <text x="368" y="40" text-anchor="middle" font-size="12" fill="#1d4ed8" font-weight="bold">② 한 줄 가져감</text>
+  <line x1="400" y1="98" x2="337" y2="98" stroke="#0f7a4f" stroke-width="3" marker-end="url(#a4)"/>
+  <text x="368" y="130" text-anchor="middle" font-size="12" fill="#0f7a4f" font-weight="bold">③ 결과 기록</text>
+</svg></div>
+<div class="box eg"><span class="t">비유</span>
+<p>요리 학원을 떠올려 보세요. 레시피 책은 책꽂이(보조기억장치)에 꽂혀 있고, 오늘 만들 레시피만 주방 작업대(RAM)에 펼쳐 놓아요. 요리사(CPU)는 레시피를 한 줄씩 읽으며 요리하고, 중간 결과는 작업대에 다시 놓아요.</p>
+</div>
+<p><b>왜 이렇게 나눌까요?</b> 보조기억장치는 크고 값이 싸지만 느려서 CPU가 바로 쓰기엔 답답해요. 그래서 지금 필요한 것만 빠른 RAM에 올려 놓고 써요. 전원이 꺼져도 남아야 하는 프로그램은 보조기억장치에, 실행 중인 것은 RAM에 있는 거예요.</p>
+<p>2023년 기출 Q3가 정확히 이 흐름을 물어봤어요. 아래 sum.py는 1부터 100까지 더하는 파이썬 코드예요.</p>
+<div class="code">1. n = 1;
+2. sum = 0;
+3. while (n &lt;= 100):
+4.    sum = sum + n
+5.    n = n +1</div>
+<div class="tw"><table>
+  <tr><th style="width:42%">코드 줄</th><th>무슨 뜻</th></tr>
+  <tr><td><code>n = 1</code></td><td>n이라는 이름의 상자를 만들고 1을 넣어요 (대입).</td></tr>
+  <tr><td><code>sum = 0</code></td><td>sum이라는 상자를 만들고 0을 넣어요.</td></tr>
+  <tr><td><code>while (n &lt;= 100):</code></td><td>n이 100 이하인 동안 아래 두 줄을 계속 반복해요.</td></tr>
+  <tr><td><code>sum = sum + n</code></td><td>sum에 n을 더해서 다시 sum에 넣어요 (누적).</td></tr>
+  <tr><td><code>n = n +1</code></td><td>n을 1 늘려요.</td></tr>
+</table></div>
+<p><b>실행 결과</b>는 이래요. 시험지 코드에는 화면에 출력하는 줄이 없어요. 하지만 반복이 끝나면 sum 상자에는 1+2+...+100 = <b>5050</b>이 들어 있어요. 첫 반복만 따라가 보면 n=1일 때 sum은 0+1=1이 되고, n은 2가 돼요.</p>
+<p>기출 빈칸은 이렇게 채워요. 보관은 보조기억장치, <a class="w" href="words.html#w22" data-w="22">적재</a>는 주기억장치, 계산은 CPU, <a class="w" href="words.html#w21" data-w="21">변수</a> 상자(n, sum)는 RAM 안에 있어요.</p>
+<div class="tw"><table>
+  <tr><th style="width:12%">칸</th><th style="width:28%">답</th><th>이유</th></tr>
+  <tr><td>A</td><td><b>보조기억장치</b></td><td>실행 전에는 파일로 보관돼 있어요.</td></tr>
+  <tr><td>B</td><td><b>주기억장치</b></td><td>실행하면 RAM에 적재돼요. 변수 값도 여기에 기억돼요.</td></tr>
+  <tr><td>C</td><td><b>CPU</b></td><td><a class="w" href="words.html#w17" data-w="17">기계어</a>로 바뀐 명령을 계산하는 곳이에요.</td></tr>
+  <tr><td>D, E</td><td><b>n, sum</b></td><td>1번 줄은 n, 2번 줄은 sum을 만들어요. 4번 줄이 E(sum), 5번 줄이 D(n)에 값을 넣어요.</td></tr>
+  <tr><td>v, w, x</td><td><b>1, 0, 100</b></td><td>n=1, sum=0, 조건은 n &lt;= 100이에요.</td></tr>
+  <tr><td>y, z</td><td><b>1, 2</b></td><td>첫 반복에서 sum=0+1=1, n=1+1=2예요.</td></tr>
+</table></div>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>폰 노이만 구조는 계산장치(CPU)와 기억장치로 구성되어, 계산장치가 기억장치의 프로그램에서 명령을 한 줄씩 실행하고 계산 결과를 기억장치에 <a class="w" href="words.html#w80" data-w="80">기록</a>하는 방식으로 동작하는 컴퓨터 구조이다. 프로그램은 보조기억장치에 보관되어 있다가 실행되면 주기억장치(RAM)에 적재되고, CPU가 명령을 한 줄씩 가져와 계산한다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — 실행 중인 프로그램의 변수 값 n, sum은 어디에 기억되나요?</summary>
+<p>주기억장치(RAM)예요. 프로그램이 실행되면 RAM에 올라오고, 변수 값도 RAM의 변수 공간에 기억돼요.</p></details>
+
+<div class="done"><a class="go" href="c4-02.html">다음 카드 → CPU 안에는 무엇이 있을까 — ALU, 제어장치, 레지스터 ★★★</a><div class="pn"><a href="index.html#c4"><b>← 이전</b>보드로</a><a class="next" href="quiz.html#c4"><b>연습</b>이 장 문제 풀기</a></div><p class="muted small">자료: 5~6주차 · 05중앙처리장치.pdf · 빅데이터플렛폼05(5주차), 빅데이터플06(6주차), 빅데이터플07(7주차 일부)</p></div>
+</main>
+<script src="assets/words.js?v=d2a0e0e2"></script>
+<script src="assets/app.js?v=d2a0e0e2"></script>
+</body>
+</html>

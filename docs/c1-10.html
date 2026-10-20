@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ko" data-site="1bb07e">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>멀티태스킹, 멀티프로그래밍, 멀티프로세싱, 멀티쓰레딩 ★★★ · 빅데이터플랫폼 시험공부</title>
+<meta name="description" content="빅데이터플랫폼 중간고사를 전공 처음인 사람도 이해하게 정리한 공부 사이트">
+<link rel="stylesheet" href="assets/style.css?v=d2a0e0e2">
+</head>
+<body>
+<header class="top"><div class="top-in">
+<a class="brand" href="index.html"><span class="bases"><i class="a">시</i><i class="t">험</i><i class="g">공</i><i class="c">부</i></span>빅데이터플랫폼</a>
+<nav class="nav" aria-label="메뉴"><a href="index.html" class=on>보드</a><a href="b.html">최소코스</a><a href="bplus.html">B+코스</a><a href="quiz.html">퀴즈</a><a href="essay.html">서술형</a><a href="cards.html">암기카드</a><a href="words.html">낱말사전</a><a href="cheat.html">시험 전 1장</a></nav>
+</div></header>
+<main>
+<div class="crumb k1"><a href="index.html#c1">← 보드</a><span>컴퓨터 구조 소개 · 10/12</span></div><h1>멀티태스킹, 멀티프로그래밍, 멀티프로세싱, 멀티쓰레딩 ★★★</h1>
+<p>이름이 모두 "멀티"로 시작해서 헷갈려요. 먼저 옛날이야기부터 알아 봐요. 아주 옛날 <a class="w" href="words.html#w14" data-w="14">컴퓨터</a>는 <b>한 번에 <a class="w" href="words.html#w12" data-w="12">프로그램</a> 하나만</b> <a class="w" href="words.html#w78" data-w="78">실행</a>할 수 있었어요(일괄 처리 방식).</p>
+<p>불편해서 <b><a class="w" href="words.html#w111" data-w="111">시분할</a></b> 방식이 나왔어요. 여러 <a class="w" href="words.html#w13" data-w="13">프로세스</a>가 <a class="w" href="words.html#w26" data-w="26">CPU</a>를 <b>아주 짧은 시간씩 번갈아</b> 쓰게 한 거예요.</p>
+<p>CPU는 30억분의 1초 단위로 일하기 때문에, 계산기와 <a class="w" href="words.html#w34" data-w="34">파워</a>포인트를 번갈아 돌려도 사람 눈에는 동시에 도는 것처럼 보여요. 이렇게 짧게 번갈아 바꾸는 일을 컨텍스트 스위치(전환)라고 해요.</p>
+<div class="tw"><table>
+  <tr><th style="width:22%">용어</th><th>뜻</th><th style="width:28%">비유</th></tr>
+  <tr><td><b><a class="w" href="words.html#w107" data-w="107">멀티태스킹</a></b><br><span class="small">multitasking</span></td><td>여러 <b>서로 다른 프로그램</b>(프로세스)이 동시에 실행되는 것처럼 만드는 <a class="w" href="words.html#w105" data-w="105">운영체제</a>의 기술. <a class="w" href="words.html#w90" data-w="90">싱글코어</a>에서는 시분할로, <a class="w" href="words.html#w91" data-w="91">멀티코어</a>에서는 <a class="w" href="words.html#w89" data-w="89">코어</a>별로 나눠 맡겨요</td><td>게임을 켜 놓고 크롬으로 검색하고 녹화 프로그램도 켜 두기</td></tr>
+  <tr><td><b><a class="w" href="words.html#w108" data-w="108">멀티프로그래밍</a></b><br><span class="small">multiprogramming</span></td><td>여러 프로그램을 <b>메모리에 동시에 올려 두고</b> CPU가 놀지 않게 번갈아 실행하는 방식. 멀티태스킹의 바탕이 되는 개념이에요</td><td>책상에 여러 과목 책을 펴 놓고 번갈아 공부</td></tr>
+  <tr><td><b><a class="w" href="words.html#w109" data-w="109">멀티프로세싱</a></b><br><span class="small">multiprocessing</span></td><td>하나의 일을 <b>여러 개의 프로세스</b>로 나눠 병렬로 실행</td><td>크롬 <b>창</b>을 여러 개 따로 띄우기</td></tr>
+  <tr><td><b><a class="w" href="words.html#w110" data-w="110">멀티쓰레딩</a></b><br><span class="small">multithreading</span></td><td><b>프로세스는 하나</b>만 두고 그 안에서 여러 흐름(<a class="w" href="words.html#w93" data-w="93">스레드</a>)을 병렬로 실행</td><td>크롬 한 창 안에 <b>탭</b>을 여러 개 띄우기</td></tr>
+</table></div>
+<p>교수님은 멀티태스킹과 멀티프로그래밍은 "크게 안 써도 될 것 같다"고 했어요. 다만 2023 기출 1번의 보기에 있었으니 뜻만 한 줄씩 알아 두세요. <b>정말 중요한 것은 멀티프로세싱과 멀티쓰레딩의 차이</b>예요.</p>
+<div class="paper"><svg viewBox="0 0 380 292" style="max-width:420px;width:100%;height:auto" role="img" aria-label="멀티프로세싱은 독립된 프로세스 3개, 멀티쓰레딩은 프로세스 1개 안에 스레드 3개">
+<text x="190" y="18" text-anchor="middle" font-size="15" font-weight="bold" fill="#1b2333">멀티프로세싱</text>
+<rect x="10" y="30" width="104" height="58" rx="8" fill="#dbe6ff" stroke="#1d4ed8" stroke-width="2"/>
+<text x="62" y="64" text-anchor="middle" font-size="13" font-weight="bold" fill="#1b2333">프로세스1</text>
+<rect x="138" y="30" width="104" height="58" rx="8" fill="#dbe6ff" stroke="#1d4ed8" stroke-width="2"/>
+<text x="190" y="64" text-anchor="middle" font-size="13" font-weight="bold" fill="#1b2333">프로세스2</text>
+<rect x="266" y="30" width="104" height="58" rx="8" fill="#dbe6ff" stroke="#1d4ed8" stroke-width="2"/>
+<text x="318" y="64" text-anchor="middle" font-size="13" font-weight="bold" fill="#1b2333">프로세스3</text>
+<text x="190" y="108" text-anchor="middle" font-size="12" fill="#1b2333">독립된 프로세스를 여러 개 (창 3개)</text>
+<line x1="10" y1="124" x2="370" y2="124" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="5,5"/>
+<text x="190" y="148" text-anchor="middle" font-size="15" font-weight="bold" fill="#1b2333">멀티쓰레딩</text>
+<rect x="10" y="158" width="360" height="102" rx="10" fill="#dbe6ff" stroke="#1d4ed8" stroke-width="2"/>
+<text x="190" y="178" text-anchor="middle" font-size="13" font-weight="bold" fill="#1b2333">프로세스 1개</text>
+<rect x="22" y="190" width="96" height="50" rx="6" fill="#e3f6ec" stroke="#0f7a4f" stroke-width="2"/>
+<text x="70" y="220" text-anchor="middle" font-size="12" fill="#1b2333">스레드1</text>
+<rect x="142" y="190" width="96" height="50" rx="6" fill="#e3f6ec" stroke="#0f7a4f" stroke-width="2"/>
+<text x="190" y="220" text-anchor="middle" font-size="12" fill="#1b2333">스레드2</text>
+<rect x="262" y="190" width="96" height="50" rx="6" fill="#e3f6ec" stroke="#0f7a4f" stroke-width="2"/>
+<text x="310" y="220" text-anchor="middle" font-size="12" fill="#1b2333">스레드3</text>
+<text x="190" y="280" text-anchor="middle" font-size="12" fill="#1b2333">한 프로세스 안의 여러 흐름 (탭 3개)</text>
+</svg></div>
+<p>교수님이 든 크롬 예시는 이래요. 크롬 창 2개를 띄우고 한 창에 탭 6개, 다른 창에 탭 4개가 있으면, <b>프로세스는 2개</b>이고 <b>스레드는 총 10개</b>예요.</p>
+<p><b>왜 이런 걸 따질까요?</b> 빅데이터를 처리할 때 병렬 처리를 해야 시간을 줄일 수 있기 때문이에요. 예를 들어 400GB 자료를 40GB씩 10조각으로 나눠 동시에 처리하면, 순서대로 40시간 걸릴 일이 4시간으로 줄어요(교수님이 든 예시 숫자예요).</p>
+<p>이때 조각마다 프로세스를 만들면 멀티프로세싱이고, 프로세스 하나 안에서 흐름을 나누면 멀티쓰레딩이에요. 교수님은 파이썬에서는 병렬 처리에 보통 멀티프로세싱을 쓴다고 말했어요.</p>
+<div class="box tip"><span class="t">외우기 팁</span>
+<p>"<b>프로세스 개수를 늘리면 멀티프로세싱, 프로세스 하나 안에서 흐름을 늘리면 멀티쓰레딩</b>"이에요. 창 여러 개 = 프로세싱, 탭 여러 개 = 쓰레딩으로 그림을 떠올리세요.</p>
+</div>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>병렬처리 기법 중에서 하나의 프로그램을 여러 개의 프로세스로 병렬 실행시키는 것을 <b>멀티 프로세싱</b>이라고 하며, 하나의 프로세스 안에서 여러 흐름으로 병렬 실행하는 것을 <b>멀티 쓰레딩</b>이라고 한다. (2023 기출 1번 빈칸 정답)</p>
+</div>
+<details class="check"><summary>잠깐 확인 — 크롬 창 하나 안에 탭을 여러 개 띄우는 것은 멀티프로세싱과 멀티쓰레딩 중 무엇에 가까운가요?</summary>
+<p>멀티쓰레딩이에요. 프로세스(창)는 하나이고 그 안에서 탭(스레드)이 여러 개 돌아가기 때문이에요.</p></details>
+
+<div class="done"><a class="go" href="c1-11.html">다음 카드 → 운영체제(OS) ★★</a><div class="pn"><a href="c1-09.html"><b>← 이전</b>이전 카드</a><a class="next" href="quiz.html#c1"><b>연습</b>이 장 문제 풀기</a></div><p class="muted small">자료: 2·6·7주차 · 02컴퓨터구조소개.pdf · 02컴퓨터구조소개-실습.pdf · 05중앙처리장치.pdf · 06메모리와계층구조.pdf · 빅데이터플02·06·07</p></div>
+</main>
+<script src="assets/words.js?v=d2a0e0e2"></script>
+<script src="assets/app.js?v=d2a0e0e2"></script>
+</body>
+</html>

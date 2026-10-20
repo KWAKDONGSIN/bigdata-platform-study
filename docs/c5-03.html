@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ko" data-site="1bb07e">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>캐시와 적중(hit), 실패(miss), 지역성 ★★ · 빅데이터플랫폼 시험공부</title>
+<meta name="description" content="빅데이터플랫폼 중간고사를 전공 처음인 사람도 이해하게 정리한 공부 사이트">
+<link rel="stylesheet" href="assets/style.css?v=d2a0e0e2">
+</head>
+<body>
+<header class="top"><div class="top-in">
+<a class="brand" href="index.html"><span class="bases"><i class="a">시</i><i class="t">험</i><i class="g">공</i><i class="c">부</i></span>빅데이터플랫폼</a>
+<nav class="nav" aria-label="메뉴"><a href="index.html" class=on>보드</a><a href="b.html">최소코스</a><a href="bplus.html">B+코스</a><a href="quiz.html">퀴즈</a><a href="essay.html">서술형</a><a href="cards.html">암기카드</a><a href="words.html">낱말사전</a><a href="cheat.html">시험 전 1장</a></nav>
+</div></header>
+<main>
+<div class="crumb k5"><a href="index.html#c5">← 보드</a><span>메모리와 계층 구조 · 3/9</span></div><h1>캐시와 적중(hit), 실패(miss), 지역성 ★★</h1>
+<p><b><a class="w" href="words.html#w98" data-w="98">캐시</a></b>(cache)는 <a class="w" href="words.html#w66" data-w="66">레지스터</a>와 <a class="w" href="words.html#w28" data-w="28">RAM</a> 사이의 완충 지대예요. 레지스터와 RAM은 속도 차이가 너무 커서, 가운데 한 층을 더 끼운 거예요. 캐시는 <a class="w" href="words.html#w26" data-w="26">CPU</a> 안에 있고 L1, L2, L3 세 단계로 만들어요. L1이 CPU에 가장 가깝고 작고 빠르며, L2는 L1보다 일반적으로 크고 느리고, L3는 여러 <a class="w" href="words.html#w89" data-w="89">코어</a>가 함께 쓰기도 해요.</p>
+<p>CPU가 데이터를 찾는 방식은 이래요. 먼저 L1 캐시에서 찾아보고, 없으면 L2, L3, 마지막으로 RAM으로 내려가요.</p>
+<div class="tw"><table>
+  <tr><th style="width:24%">용어</th><th>뜻</th></tr>
+  <tr><td><b><a class="w" href="words.html#w121" data-w="121">캐시 히트</a></b><br><span class="small">cache hit, 적중</span></td><td>필요한 데이터가 캐시에 <b>있다</b>. 바로 쓸 수 있어요</td></tr>
+  <tr><td><b><a class="w" href="words.html#w122" data-w="122">캐시 미스</a></b><br><span class="small">cache miss, 실패</span></td><td>필요한 데이터가 캐시에 <b>없다</b>. 다음 캐시 단계나 RAM에서 가져와야 해요</td></tr>
+  <tr><td><b>캐시 라인</b><br><span class="small">cache line</span></td><td>캐시와 RAM 사이에서 한 번에 옮기는 데이터 묶음 (예 64<a class="w" href="words.html#w1" data-w="1">바이트</a>). 필요한 한 칸만이 아니라 주변까지 같이 가져와요</td></tr>
+</table></div>
+<p>캐시가 가득 차면 기존 라인이 교체될 수 있어요. 이 일은 보통 CPU <a class="w" href="words.html#w10" data-w="10">하드웨어</a>가 자동으로 해요.</p>
+<div class="box eg"><span class="t">비유</span>
+<p>책상 위(캐시)에 필요한 책이 있으면 바로 읽어요(히트). 없으면 책장(RAM)까지 가서 가져와야 해요(미스). 책장에서 책을 가져올 때 옆에 꽂힌 책 몇 권도 같이 가져오면 다음에 또 일어나지 않아도 되겠죠? 이게 캐시 라인이에요.</p>
+</div>
+<p><b><a class="w" href="words.html#w104" data-w="104">지역성</a></b>이 왜 중요한지 보여 주는 곳이 여기예요. <a class="w" href="words.html#w12" data-w="12">프로그램</a>은 데이터를 아무 데나 랜덤하게 읽지 않고, <b>한 곳을 읽으면 그 주변을 이어서 읽는</b> 경향이 있어요. 이 습관 덕분에 주변까지 함께 캐시에 올려 두면 다음 접근이 대부분 히트가 돼요. 교수님 비유로는 시험공부를 1장 → 2장 → 3장 순서로 하는 것이 지역성이고, 1장 보다가 갑자기 5장, 7장, 2장을 오가는 것이 랜덤 액세스예요.</p>
+<p class="small">참고 — 교과서에서는 지역성을 시간 지역성(방금 쓴 데이터를 곧 또 쓴다)과 공간 지역성(쓴 데이터의 주변을 곧 쓴다)으로 나누기도 해요. 이 수업 자료에는 나누어 나오지 않았어요.</p>
+<p class="small">참고 — 수업 자료와 기출에는 없는 계산이지만, 캐시가 얼마나 도움이 되는지 감을 잡는 손계산이에요. 평균 접근 시간 = 적중률 × 캐시 시간 + (1 − 적중률) × RAM 시간으로 단순하게 계산하면, 캐시 2ns, RAM 60ns, 적중률 90%일 때 0.9×2 + 0.1×60 = 1.8 + 6 = 7.8ns예요. 적중률이 99%면 0.99×2 + 0.01×60 = 2.58ns로 줄어요. 적중률이 높을수록 빨라져요.</p>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>캐시는 CPU 내부에 있으며 레지스터와 <a class="w" href="words.html#w27" data-w="27">주기억장치</a>의 속도 차이를 줄이는 버퍼 메모리이다. 필요한 데이터가 캐시에 있으면 캐시 히트, 없어서 다음 캐시 계층이나 RAM에서 가져오면 캐시 미스라고 한다. 지역성은 특정 영역과 그 주변 데이터를 자주 접근하는 경향이며 캐시의 효율을 높인다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — 캐시 미스가 나면 데이터는 어디서 가져오나요?</summary>
+<p>다음 캐시 단계(L2, L3)나 RAM에서 가져와요.</p></details>
+
+<div class="done"><a class="go" href="c5-04.html">다음 카드 → 주기억장치(RAM) — ROM, SRAM, DRAM, 주소 ★★</a><div class="pn"><a href="c5-02.html"><b>← 이전</b>이전 카드</a><a class="next" href="quiz.html#c5"><b>연습</b>이 장 문제 풀기</a></div><p class="muted small">자료: 6~7주차 · 06메모리와계층구조.pdf, 07보조기억장치.pdf(앞부분) · 빅데이터플06(6주차), 빅데이터플07(7주차)</p></div>
+</main>
+<script src="assets/words.js?v=d2a0e0e2"></script>
+<script src="assets/app.js?v=d2a0e0e2"></script>
+</body>
+</html>

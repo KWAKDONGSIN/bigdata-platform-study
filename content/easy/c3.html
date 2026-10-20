@@ -1,0 +1,386 @@
+<!-- 3장: 계산기 회로. 반도체에서 논리 게이트, 진리표, 불 대수, 반가산기·전가산기, 8비트 덧셈 계산기까지 레고처럼 쌓아 올리는 과정을 쉬운 말로 설명해요 -->
+<h2>계산기 회로 — 스위치를 쌓아 덧셈 계산기를 만들기</h2>
+<p class="lead">컴퓨터 안의 계산기는 어디서 오는 걸까요? 이 장은 "스위치(반도체) → 논리 게이트 → 가산기 → 계산기(ALU)" 순서로 레고처럼 쌓아 올리는 과정을 보여 줘요. 2023 기출 5번(게이트 진리표, 반가산기, 전가산기, 8비트 덧셈기 배선)이 모두 이 장에서 나와요.</p>
+
+<h3>3-1. 계산기는 레고처럼 쌓아서 만든다 <span class="st">★★</span></h3>
+<p>CPU 안에서 실제로 계산을 하는 부품이 <b>ALU(산술논리연산장치, 계산기)</b>예요. 그런데 ALU도 처음부터 통으로 만든 게 아니라, 작은 블록을 단계별로 쌓아서 만들어요. 교수님은 "작은 블록으로 큰 구조물을 만드는 레고 조립"이라고 비유했어요.</p>
+<figure class="slide"><img src="slides/a_layers.jpg" alt="반도체, 논리게이트, 논리회로, 계산기(ALU) 순서로 조합하는 4단계 그림"><figcaption>교수님 슬라이드 — 계산기 만드는 과정. 반도체 → 논리게이트 → 논리회로 → 계산기(ALU)</figcaption></figure>
+<table>
+  <tr><th style="width:8%">단계</th><th style="width:30%">블록</th><th>설명</th><th style="width:20%">레고 비유</th></tr>
+  <tr><td>①</td><td><b>반도체</b><br><span class="small">다이오드, 트랜지스터</span></td><td>전기의 흐름을 조절하는 가장 작은 부품</td><td>1칸짜리 기본 블록</td></tr>
+  <tr><td>②</td><td><b>논리 게이트</b><br><span class="small">AND, OR, NOT …</span></td><td>반도체를 조합해 0과 1의 규칙을 계산하는 회로</td><td>2칸, 4칸 블록</td></tr>
+  <tr><td>③</td><td><b>논리 회로</b><br><span class="small">덧셈기, 뺄셈기 …</span></td><td>게이트를 조합해 덧셈, 뺄셈 같은 계산을 하는 회로</td><td>벽, 지붕 조각</td></tr>
+  <tr><td>④</td><td><b>계산기 (ALU)</b></td><td>논리 회로들을 모두 모은 CPU 속 계산기</td><td>완성된 건물</td></tr>
+</table>
+<p>ALU는 <b>입력선 둘(A, B), 제어선(C), 출력선(Y)</b>으로 이루어져요. 각 선은 8개씩의 전기 신호(5V는 1, 0V는 0)예요.</p>
+<ul>
+  <li><b>A, B</b> : 계산할 두 수 (8비트씩)</li>
+  <li><b>C</b> : 제어 신호. 무슨 계산을 할지 고르는 8개의 선이에요. 순서는 <code>C7 C6 C5 C4 C3 C2 C1 C0</code> = <code>+ - x / &amp; | &gt;&gt; &lt;&lt;</code> (덧셈, 뺄셈, 곱셈, 나눗셈, AND, OR, 오른쪽 이동, 왼쪽 이동)</li>
+  <li><b>Y</b> : 계산 결과 (8비트)</li>
+</ul>
+<p>ALU 안에는 덧셈기, 뺄셈기, AND, OR, 시프터 같은 회로가 모두 들어 있고, 제어 신호 C가 "이 중 어느 회로의 결과를 Y로 내보낼지"를 골라요. 어셈블리어 두 줄로 확인해 볼게요.</p>
+<table>
+  <tr><th style="width:18%"></th><th>ADD R1, 2, 3<br><span class="small">(2와 3을 더해 R1에 저장)</span></th><th>MUL R2, 5, 5<br><span class="small">(5와 5를 곱해 R2에 저장)</span></th></tr>
+  <tr><td><b>A</b></td><td><code>00000010</code> (2)</td><td><code>00000101</code> (5)</td></tr>
+  <tr><td><b>B</b></td><td><code>00000011</code> (3)</td><td><code>00000101</code> (5)</td></tr>
+  <tr><td><b>C</b> (제어)</td><td><code>10000000</code> (C7 = 덧셈)</td><td><code>00100000</code> (C5 = 곱셈)</td></tr>
+  <tr><td><b>Y</b> (결과)</td><td><code>00000101</code> (5)</td><td><code>00011001</code> (25)</td></tr>
+</table>
+<p>덧셈이면 맨 왼쪽 제어선(C7) 하나만 1, 곱셈이면 왼쪽에서 세 번째(C5) 하나만 1이에요. 25는 16 + 8 + 1이라서 <code>00011001</code>이에요. 2023 기출 6.2번(ADD R3 R1 R2)의 A, B, C, Y 값도 위 왼쪽 열과 똑같아요.</p>
+<div class="box eg"><span class="t">비유 — 멀티 리모컨</span>
+<p>ALU는 계산 버튼이 여러 개 달린 계산기예요. 두 숫자(A, B)를 넣고 버튼(C)을 하나 누르면, 그 버튼에 해당하는 회로의 결과가 Y로 나와요. CPU는 이 입력을 1초에 약 30억 번(3GHz) 바꿔 가며 계산해요.</p>
+</div>
+<p>이렇게 만든 회로들을 손톱만 한 칩에 촘촘히 모아 넣은 것이 <b>집적회로(IC)</b>예요. CPU 칩과 RAM 칩이 모두 집적회로이고, 지금은 나노미터 단위의 공정으로 만들어요.</p>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>계산기(ALU)는 반도체(다이오드, 트랜지스터)를 조합해 논리 게이트(AND, OR, NOT)를 만들고, 논리 게이트를 조합해 논리 회로(덧셈기 등)를 만들고, 논리 회로를 조합해 구성한다. 반도체를 잘 연결하면 AND, OR, NOT의 기본 논리 게이트를 구현할 수 있다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — ADD 명령을 실행할 때 ALU의 제어 신호 C 중 1이 되는 선은 어느 것인가요?</summary>
+<p>맨 왼쪽 C7이에요. 순서가 + - x / &amp; | &gt;&gt; &lt;&lt;이고 덧셈(+)이 첫 번째라서 <code>10000000</code>이에요.</p></details>
+
+<h3>3-2. 반도체 — 다이오드와 트랜지스터</h3>
+<p>모든 계산기의 맨 아래 블록은 <b>반도체</b>예요. 반도체는 조건에 따라 전기가 통하기도(도체) 하고 안 통하기도(부도체) 하는 물질이에요. 그래서 전기의 흐름을 우리 마음대로 조절할 수 있어요. 수업에서는 아래 두 가지만 짧게 다뤘어요.</p>
+<table>
+  <tr><th style="width:22%">부품</th><th>하는 일</th><th style="width:30%">비유</th></tr>
+  <tr><td><b>다이오드</b></td><td>전류를 <b>한쪽 방향으로만</b> 흐르게 해요</td><td>반대쪽으로는 안 열리는 스윙 밸브가 달린 수도관</td></tr>
+  <tr><td><b>트랜지스터</b></td><td><b>스위치</b> 또는 <b>증폭기</b> 역할을 해요. 핀이 3개(이미터, 베이스, 컬렉터)예요</td><td>전기로 여닫는 수도꼭지</td></tr>
+</table>
+<p>트랜지스터에서 교수님이 짚은 중요한 점은 <b>"전기로 전기를 켜고 끈다"</b>는 거예요. 보통 스위치는 손으로 눌러야 하지만, 트랜지스터는 베이스에 5V를 넣으면 전류가 흐르고, 안 넣으면 안 흘러요. 그래서 전기 신호끼리 서로를 조종할 수 있고, 칩 설계에 거의 다 트랜지스터를 써요.</p>
+<p>다이오드와 저항으로 AND, OR 게이트를 만들고(다이오드 회로), 트랜지스터로 NOT 게이트를 만들 수 있어요. 교수님은 이 회로의 전압 계산(0.6V 같은 값)은 "시험에 내지는 않을 것 같다"고 해서 개념만 알면 돼요.</p>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>반도체(다이오드, 트랜지스터)를 잘 연결하면 AND, OR, NOT의 기본 논리 게이트를 구현할 수 있다. 다이오드는 전류를 한 방향으로만 흐르게 하고, 트랜지스터는 전기 신호로 전류를 켜고 끄는 스위치 역할을 한다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — 트랜지스터를 한 줄로 설명하면 무엇인가요?</summary>
+<p>전기 신호로 전기의 흐름을 켜고 끄는 스위치(또는 증폭기)예요.</p></details>
+
+<h3>3-3. 논리 게이트와 진리표 <span class="st">★★★</span></h3>
+<p><b>논리 게이트(logic gate)</b>는 0과 1을 입력받아 정해진 규칙대로 0 또는 1을 내보내는 회로예요. 입력과 출력이 어떤 관계인지 <b>모든 입력 경우의 수</b>를 적은 표가 <b>진리표(truth table)</b>예요. 입력이 2개면 00, 01, 10, 11의 4줄, 3개면 8줄(2³)이에요.</p>
+<p>가장 기본이 되는 게이트는 <b>AND, OR, NOT</b> 세 개예요. 이 셋으로 덧셈·뺄셈까지 모두 만들어요. NAND, NOR, XOR는 이것들을 조합해 만들 수 있고, 교수님은 NAND와 NOR도 기본 게이트처럼 생각해도 된다고 했어요.</p>
+<svg viewBox="0 0 380 450" style="max-width:420px;width:100%;height:auto" role="img" aria-label="AND, OR, NAND, NOR, NOT, XOR 게이트의 기호와 출력 규칙">
+<g transform="translate(20,10)"><path d="M15,8 L45,8 A27,27 0 0 1 45,62 L15,62 Z" fill="#dbe6ff" stroke="#1b2333" stroke-width="2"/><line x1="0" y1="24" x2="15" y2="24" stroke="#1b2333" stroke-width="2"/><line x1="0" y1="46" x2="15" y2="46" stroke="#1b2333" stroke-width="2"/><line x1="72" y1="35" x2="92" y2="35" stroke="#1b2333" stroke-width="2"/></g>
+<text x="70" y="106" text-anchor="middle" font-size="18" font-weight="bold" fill="#1b2333">AND</text>
+<text x="70" y="126" text-anchor="middle" font-size="13" fill="#1b2333">출력 0001</text>
+<g transform="translate(220,10)"><path d="M12,8 Q42,8 72,35 Q42,62 12,62 Q27,35 12,8 Z" fill="#e3f6ec" stroke="#1b2333" stroke-width="2"/><line x1="0" y1="24" x2="18" y2="24" stroke="#1b2333" stroke-width="2"/><line x1="0" y1="46" x2="18" y2="46" stroke="#1b2333" stroke-width="2"/><line x1="72" y1="35" x2="92" y2="35" stroke="#1b2333" stroke-width="2"/></g>
+<text x="270" y="106" text-anchor="middle" font-size="18" font-weight="bold" fill="#1b2333">OR</text>
+<text x="270" y="126" text-anchor="middle" font-size="13" fill="#1b2333">출력 0111</text>
+<g transform="translate(20,160)"><path d="M15,8 L45,8 A27,27 0 0 1 45,62 L15,62 Z" fill="#dbe6ff" stroke="#1b2333" stroke-width="2"/><circle cx="77" cy="35" r="5" fill="#fff" stroke="#1b2333" stroke-width="2"/><line x1="0" y1="24" x2="15" y2="24" stroke="#1b2333" stroke-width="2"/><line x1="0" y1="46" x2="15" y2="46" stroke="#1b2333" stroke-width="2"/><line x1="82" y1="35" x2="100" y2="35" stroke="#1b2333" stroke-width="2"/></g>
+<text x="70" y="256" text-anchor="middle" font-size="18" font-weight="bold" fill="#1b2333">NAND</text>
+<text x="70" y="276" text-anchor="middle" font-size="13" fill="#1b2333">출력 1110</text>
+<g transform="translate(220,160)"><path d="M12,8 Q42,8 72,35 Q42,62 12,62 Q27,35 12,8 Z" fill="#e3f6ec" stroke="#1b2333" stroke-width="2"/><circle cx="77" cy="35" r="5" fill="#fff" stroke="#1b2333" stroke-width="2"/><line x1="0" y1="24" x2="18" y2="24" stroke="#1b2333" stroke-width="2"/><line x1="0" y1="46" x2="18" y2="46" stroke="#1b2333" stroke-width="2"/><line x1="82" y1="35" x2="100" y2="35" stroke="#1b2333" stroke-width="2"/></g>
+<text x="270" y="256" text-anchor="middle" font-size="18" font-weight="bold" fill="#1b2333">NOR</text>
+<text x="270" y="276" text-anchor="middle" font-size="13" fill="#1b2333">출력 1000</text>
+<g transform="translate(20,310)"><path d="M15,8 L67,35 L15,62 Z" fill="#fff1d6" stroke="#1b2333" stroke-width="2"/><circle cx="72" cy="35" r="5" fill="#fff" stroke="#1b2333" stroke-width="2"/><line x1="0" y1="35" x2="15" y2="35" stroke="#1b2333" stroke-width="2"/><line x1="77" y1="35" x2="95" y2="35" stroke="#1b2333" stroke-width="2"/></g>
+<text x="70" y="406" text-anchor="middle" font-size="18" font-weight="bold" fill="#1b2333">NOT</text>
+<text x="70" y="426" text-anchor="middle" font-size="13" fill="#1b2333">0→1, 1→0</text>
+<g transform="translate(220,310)"><path d="M20,8 Q50,8 80,35 Q50,62 20,62 Q35,35 20,8 Z" fill="#efe4ff" stroke="#1b2333" stroke-width="2"/><path d="M12,8 Q27,35 12,62" fill="none" stroke="#1b2333" stroke-width="2"/><line x1="0" y1="24" x2="26" y2="24" stroke="#1b2333" stroke-width="2"/><line x1="0" y1="46" x2="26" y2="46" stroke="#1b2333" stroke-width="2"/><line x1="80" y1="35" x2="98" y2="35" stroke="#1b2333" stroke-width="2"/></g>
+<text x="270" y="406" text-anchor="middle" font-size="18" font-weight="bold" fill="#1b2333">XOR</text>
+<text x="270" y="426" text-anchor="middle" font-size="13" fill="#1b2333">출력 0110</text>
+</svg>
+<table>
+  <tr><th style="width:16%">게이트</th><th style="width:38%">한 줄 정의</th><th>스위치 비유</th></tr>
+  <tr><td><b>AND</b><br><span class="small">논리곱</span></td><td>입력이 <b>모두 1일 때만</b> 1. 하나라도 0이면 0</td><td>스위치 두 개를 <b>직렬(한 줄)</b>로 연결. 둘 다 켜야 전구가 켜져요</td></tr>
+  <tr><td><b>OR</b><br><span class="small">논리합</span></td><td>입력 중 <b>하나라도 1이면</b> 1. 모두 0일 때만 0</td><td>스위치 두 개를 <b>병렬(나란히)</b>로 연결. 하나만 켜도 전구가 켜져요</td></tr>
+  <tr><td><b>NOT</b><br><span class="small">논리부정, 인버터</span></td><td>입력 1개를 <b>반대로 뒤집어요</b></td><td>켜면 꺼지고 꺼지면 켜지는 반대 스위치</td></tr>
+  <tr><td><b>NAND</b></td><td>AND의 반대. 모두 1일 때만 0, 나머지는 1</td><td>AND 뒤에 NOT을 붙인 것 (Not-AND)</td></tr>
+  <tr><td><b>NOR</b></td><td>OR의 반대. 모두 0일 때만 1, 나머지는 0</td><td>OR 뒤에 NOT을 붙인 것 (Not-OR)</td></tr>
+  <tr><td><b>XOR</b></td><td>두 입력이 <b>다르면 1</b>, 같으면 0</td><td>"둘이 다른가요?"라고 묻는 비교 회로</td></tr>
+</table>
+<p>입력 A, B에 대한 출력을 한 표로 모았어요. 진리표 문제는 이 표만 외우면 모두 풀려요.</p>
+<table>
+  <tr><th>A</th><th>B</th><th>AND</th><th>OR</th><th>NAND</th><th>NOR</th><th>XOR</th></tr>
+  <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td></tr>
+  <tr><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+  <tr><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+  <tr><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td></tr>
+</table>
+<table>
+  <tr><th style="width:20%">NOT</th><th>A</th><th>출력</th></tr>
+  <tr><td></td><td>0</td><td>1</td></tr>
+  <tr><td></td><td>1</td><td>0</td></tr>
+</table>
+<div class="box tip"><span class="t">외우기 팁 — 출력 열만 외워요</span>
+<p>입력이 00, 01, 10, 11일 때의 출력을 위에서부터 읽어요. <b>AND 0001, OR 0111, NAND 1110, NOR 1000, XOR 0110.</b> NAND와 NOR는 AND와 OR의 출력을 뒤집은 것이라고 생각하면 외울 게 줄어요. 3입력 AND는 111일 때만 1이에요.</p>
+</div>
+<p>8비트 두 수를 AND하거나 OR하는 계산기는 <b>자리마다 게이트를 하나씩</b> 쓰면 돼요. A와 B의 같은 자리끼리 게이트에 넣고, 결과를 같은 자리 Y에 내보내요. 그래서 8비트 AND 계산기에는 AND 게이트가 8개 들어가요.</p>
+<p>파이썬의 <code>&amp;</code>(AND), <code>|</code>(OR), <code>^</code>(XOR) 기호가 자리마다 이렇게 계산해요. 과제 4번 Q4, Q5의 두 수 <code>10001010</code>과 <code>11111011</code>로 확인해 볼게요.</p>
+<div class="code">a = 0b10001010
+b = 0b11111011
+print(format(a &amp; b, "08b"))
+print(format(a | b, "08b"))
+print(format(a ^ b, "08b"))</div>
+<table>
+  <tr><th style="width:44%">코드 줄</th><th>무슨 뜻인가요</th></tr>
+  <tr><td><code>a = 0b10001010</code></td><td>2진수 <code>10001010</code>(10진수 138)을 <code>a</code> 칸에 넣어요 (<code>0b</code>는 2진수 표시)</td></tr>
+  <tr><td><code>b = 0b11111011</code></td><td>2진수 <code>11111011</code>을 <code>b</code> 칸에 넣어요</td></tr>
+  <tr><td><code>print(format(a &amp; b, "08b"))</code></td><td>자리마다 AND(<code>&amp;</code>)한 결과를 8자리 2진수로 출력해요</td></tr>
+  <tr><td><code>print(format(a | b, "08b"))</code></td><td>자리마다 OR(<code>|</code>)한 결과를 출력해요</td></tr>
+  <tr><td><code>print(format(a ^ b, "08b"))</code></td><td>자리마다 XOR(<code>^</code>)한 결과를 출력해요</td></tr>
+</table>
+<p><b>실행 결과(출력)</b></p>
+<div class="code">10001010
+11111011
+01110001</div>
+<p>AND는 두 수가 모두 1인 자리(맨 왼쪽, 5번째, 7번째)만 1이 남아서 <code>10001010</code>이에요. 이것이 과제 Q5의 정답이에요. A의 0인 자리는 B가 무엇이든 AND하면 0이 되기 때문이에요.</p>
+<div class="box exam"><span class="t">시험엔 이렇게 써요 (기출 5.1~5.4 정답)</span>
+<table>
+  <tr><th>A</th><th>B</th><th>AND (5.1)</th><th>OR (5.2)</th><th>XOR (5.4)</th></tr>
+  <tr><td>0</td><td>0</td><td><b>0</b></td><td><b>0</b></td><td><b>0</b></td></tr>
+  <tr><td>0</td><td>1</td><td><b>0</b></td><td><b>1</b></td><td><b>1</b></td></tr>
+  <tr><td>1</td><td>0</td><td><b>0</b></td><td><b>1</b></td><td><b>1</b></td></tr>
+  <tr><td>1</td><td>1</td><td><b>1</b></td><td><b>1</b></td><td><b>0</b></td></tr>
+</table>
+<table>
+  <tr><th>A</th><th>NOT (5.3)</th></tr>
+  <tr><td>0</td><td><b>1</b></td></tr>
+  <tr><td>1</td><td><b>0</b></td></tr>
+</table>
+<p>설명 문장은 이렇게 써요. AND는 두 비트가 모두 1이면 1, 그 밖에는 0을 출력한다. OR는 두 비트 중 하나 이상이 1이면 1, 그 밖에는 0을 출력한다. NOT은 한 비트가 입력되면 반대 비트를 출력한다. XOR는 두 비트가 같으면 0, 다르면 1을 출력한다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — 입력이 (1, 0)일 때 NAND와 NOR의 출력은 각각 무엇인가요?</summary>
+<p>NAND는 1, NOR는 0이에요. AND(1,0)=0을 뒤집으면 NAND=1, OR(1,0)=1을 뒤집으면 NOR=0이에요.</p></details>
+
+<h3>3-4. 불 대수 — 논리를 식으로 쓰기</h3>
+<p>게이트의 규칙을 수학 식으로 쓴 것이 <b>불 대수(부울 대수, Boolean algebra)</b>예요. 값이 0과 1 둘뿐인 대수라서, 우리가 아는 곱셈과 덧셈과 비슷하지만 1 + 1이 2가 아니라 1이라는 점이 달라요.</p>
+<table>
+  <tr><th style="width:18%">게이트</th><th style="width:34%">식으로 쓰기</th><th>읽는 법</th></tr>
+  <tr><td><b>AND</b></td><td><code>F = A·B</code> 또는 <code>F = AB</code></td><td>곱처럼 써요. "A 그리고 B"</td></tr>
+  <tr><td><b>OR</b></td><td><code>F = A + B</code></td><td>합처럼 써요. "A 또는 B"</td></tr>
+  <tr><td><b>NOT</b></td><td><code>F = <span style="text-decoration:overline">A</span></code> (A 위에 막대)</td><td>"A가 아니다". 0이면 1, 1이면 0</td></tr>
+  <tr><td><b>XOR</b></td><td><code>F = A ⊕ B</code></td><td>"A와 B가 다르다". <code><span style="text-decoration:overline">A</span>B + A<span style="text-decoration:overline">B</span></code>와 같아요</td></tr>
+</table>
+<p>식을 읽는 연습을 해 볼게요. 강의자료 22쪽의 반가산기 합(S)은 <code>S = <span style="text-decoration:overline">A</span>B + A<span style="text-decoration:overline">B</span> = A ⊕ B</code>예요. 풀어 읽으면 "A가 0이면서 B가 1이거나(<code><span style="text-decoration:overline">A</span>B</code>), A가 1이면서 B가 0일 때(<code>A<span style="text-decoration:overline">B</span></code>) S가 1이다"이고, 곧 "A와 B가 다를 때 1"이라서 XOR와 똑같아요.</p>
+<p>그리고 자주 쓰는 기본 규칙이 있어요. 값이 0과 1뿐이라서 직접 대입해 보면 모두 확인돼요.</p>
+<table>
+  <tr><th style="width:28%">규칙</th><th style="width:28%">식</th><th>이유</th></tr>
+  <tr><td><b>0 또는 1과 합치기</b></td><td><code>A + 0 = A</code><br><code>A + 1 = 1</code></td><td>OR는 1이 하나라도 있으면 1이에요</td></tr>
+  <tr><td><b>0 또는 1과 곱하기</b></td><td><code>A·1 = A</code><br><code>A·0 = 0</code></td><td>AND는 0이 하나라도 있으면 0이에요</td></tr>
+  <tr><td><b>같은 것끼리</b></td><td><code>A + A = A</code><br><code>A·A = A</code></td><td>A가 0이든 1이든 결과가 A예요</td></tr>
+  <tr><td><b>자기 자신의 반대와</b></td><td><code>A + <span style="text-decoration:overline">A</span> = 1</code><br><code>A·<span style="text-decoration:overline">A</span> = 0</code></td><td>A와 <span style="text-decoration:overline">A</span> 중 하나는 반드시 1이고 하나는 0이에요</td></tr>
+</table>
+<p>참고로 NAND와 NOR 식에는 <b>드모르간 법칙</b>이 있어요. <code><span style="text-decoration:overline">AB</span></code>(NAND)는 <code><span style="text-decoration:overline">A</span> + <span style="text-decoration:overline">B</span></code>와 같고, <code><span style="text-decoration:overline">A+B</span></code>(NOR)는 <code><span style="text-decoration:overline">A</span><span style="text-decoration:overline">B</span></code>와 같아요. "막대를 쪼개면 AND와 OR가 서로 바뀐다"로 기억하세요. 수업에서 따로 다루지는 않았어요.</p>
+<div class="box eg"><span class="t">비유 — 규칙 문장을 수식으로</span>
+<p>"비가 오고 우산이 있으면 외출한다"는 AND, "비가 오거나 눈이 오면 우산을 챙긴다"는 OR, "비가 오지 않는다"는 NOT이에요. 불 대수는 이런 일상 규칙을 짧은 식으로 쓰는 방법이에요.</p>
+</div>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>불 대수에서 AND는 곱(·), OR는 합(+), NOT은 위 막대(부정), XOR는 ⊕로 쓴다. 반가산기의 합은 S = A ⊕ B, 올림은 C = A·B이다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — A + 1과 A · 0은 각각 얼마인가요?</summary>
+<p>A + 1 = 1, A · 0 = 0이에요. OR는 1이 있으면 항상 1, AND는 0이 있으면 항상 0이에요.</p></details>
+
+<h3>3-5. 조합 논리 회로와 진리표 완성하기 <span class="st">★★</span></h3>
+<p><b>조합 논리 회로(combinational logic circuit)</b>는 <b>현재 입력값만으로 출력이 결정되는 회로</b>예요. 과거를 기억하지 않아서 같은 입력을 넣으면 항상 같은 출력이 나와요. 게이트들을 이어 붙여서 만들고, 앞으로 배울 반가산기와 전가산기도 모두 이 종류예요.</p>
+<p>슬라이드 21쪽(과제 6번)은 게이트 몇 개를 이은 회로의 진리표를 채우게 해요.</p>
+<figure class="slide"><img src="slides/a_xyz.jpg" alt="XOR, NOT, AND, OR 게이트가 연결된 회로와 입력 A, B에 대한 X, Y, Z 진리표 빈칸"><figcaption>교수님 슬라이드 — 입력 A, B에 대한 출력 X, Y, Z의 진리표를 완성하는 문제</figcaption></figure>
+<p>회로는 이렇게 읽어요. A와 B가 XOR에 들어가 <b>X</b>가 나와요. B를 NOT에 통과시키고, 그 값과 X를 AND하면 <b>Y</b>예요. 마지막으로 Y와 B를 OR하면 <b>Z</b>예요.</p>
+<div class="box tip"><span class="t">푸는 요령 — 중간 열을 만들어요</span>
+<p>회로 전체를 한 번에 생각하지 말고, <b>왼쪽 게이트부터 한 개씩</b> 열을 하나씩 추가해요. 표에 NOT B 같은 중간 열을 하나 더 만들면 실수가 확 줄어요.</p>
+</div>
+<table>
+  <tr><th>A</th><th>B</th><th>X<br><span class="small">A XOR B</span></th><th>NOT B</th><th>Y<br><span class="small">X AND NOT B</span></th><th>Z<br><span class="small">Y OR B</span></th></tr>
+  <tr><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
+  <tr><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>
+  <tr><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+  <tr><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
+</table>
+<p><b>왜 진리표를 쓸까요?</b> 회로가 아무리 복잡해도 입력의 모든 경우를 하나씩 따라가면 반드시 답이 나오기 때문이에요. 입력이 2개면 4줄이라 손으로 충분해요.</p>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>조합 논리 회로는 현재 입력값으로 출력이 결정되는 회로이다. (진리표 문제는 이렇게 푸세요) 왼쪽 게이트부터 차례로 중간 결과 열을 만들어 마지막 출력까지 계산한다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — 위 회로에서 A = 1, B = 1이면 Z는 얼마인가요?</summary>
+<p>1이에요. Z = Y OR B이고 B가 1이면 Y와 관계없이 OR 결과가 1이에요.</p></details>
+
+<h3>3-6. 반가산기 (Half Adder) <span class="st">★★★</span></h3>
+<p>덧셈을 컴퓨터가 어떻게 할까요? 먼저 한 자리 2진수의 덧셈 규칙이에요.</p>
+<table>
+  <tr><th>계산</th><th>결과 (2진수)</th><th>합(S, 아래 자리)</th><th>올림(C, 윗자리)</th></tr>
+  <tr><td>0 + 0</td><td>00</td><td>0</td><td>0</td></tr>
+  <tr><td>0 + 1</td><td>01</td><td>1</td><td>0</td></tr>
+  <tr><td>1 + 0</td><td>01</td><td>1</td><td>0</td></tr>
+  <tr><td>1 + 1</td><td>10</td><td>0</td><td>1</td></tr>
+</table>
+<p>1 + 1은 2진수로 <code>10</code>이에요. 10진수에서 9 + 1 = 10이 되면 올림이 생기듯, 한 자리에는 0만 남기고 <b>윗자리로 1을 올려요</b>. 그래서 1비트 두 개를 더하려면 출력이 <b>두 개</b>(합 S와 올림 Carry)가 필요해요.</p>
+<div class="box def"><span class="t">한 줄 정의</span>
+<p><b>반가산기(Half Adder, HA) = 1자리 2진수 2개를 입력해 합(S)과 올림(Carry, C 또는 Cout)을 출력하는 조합 논리 회로.</b></p>
+</div>
+<figure class="slide"><img src="slides/a_ha.jpg" alt="반가산기의 덧셈 규칙, 진리표, XOR와 AND로 만든 논리 회로, 논리 기호"><figcaption>교수님 슬라이드 — 반가산기. 진리표와 식(S = A⊕B, C = AB), XOR 게이트와 AND 게이트로 만든 회로</figcaption></figure>
+<table>
+  <tr><th>A</th><th>B</th><th>S (합)</th><th>Cout (올림)</th></tr>
+  <tr><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+  <tr><td>0</td><td>1</td><td>1</td><td>0</td></tr>
+  <tr><td>1</td><td>0</td><td>1</td><td>0</td></tr>
+  <tr><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+</table>
+<p>표를 보면 규칙이 보여요. <b>합 S는 A와 B가 다를 때 1</b>이라서 <b>XOR</b>이에요. <b>올림 C는 둘 다 1일 때만 1</b>이라서 <b>AND</b>예요. 그래서 반가산기는 <b>XOR 게이트 1개와 AND 게이트 1개</b>면 만들어져요.</p>
+<p><code>S = A ⊕ B</code>, <code>C = A·B</code></p>
+<p><b>왜 "반(half)"가산기일까요?</b> 아랫자리에서 올라온 올림을 받는 입력이 없어서, 가장 아랫자리의 덧셈에만 쓸 수 있는 반쪽짜리이기 때문이에요. 그 문제를 푼 것이 다음의 전가산기예요.</p>
+<div class="box eg"><span class="t">비유 — 두 손가락 세기</span>
+<p>두 사람이 각자 손가락 한 개를 들 수 있다고 해요. 한 개만 들면 합이 1이고, 둘 다 들면 한 자리가 가득 차서(2) "0을 쓰고 윗자리로 1을 올려요".</p>
+</div>
+<div class="box exam"><span class="t">시험엔 이렇게 써요 (기출 5.5)</span>
+<p>반가산기(half adder)는 두 개의 비트 A, B가 입력되면 합 비트(S)와 올림 비트(Cout)를 출력하는 회로이다. 진리표는 (A, B) = (0,0) → S 0, Cout 0 / (0,1) → 1, 0 / (1,0) → 1, 0 / (1,1) → 0, 1이다. S는 XOR, Cout은 AND로 구현된다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — 반가산기에서 A = 1, B = 1이면 S와 Cout은 각각 무엇인가요?</summary>
+<p>S = 0, Cout = 1이에요. 1 + 1 = 10(2진수)이라서 아래 자리는 0이고 윗자리로 1이 올라가요.</p></details>
+
+<h3>3-7. 전가산기 (Full Adder) <span class="st">★★★</span></h3>
+<p>여러 자리 덧셈에서는 <b>아랫자리에서 올라온 올림</b>도 더해야 해요. 예를 들어 <code>101 + 011</code>(5 + 3)에서는 각 자리마다 올림이 이어서 생겨요. 그래서 한 자리를 계산하는 회로의 입력은 <b>3개</b>(A, B, 아랫자리의 올림 Cin)가 돼야 해요.</p>
+<div class="box def"><span class="t">한 줄 정의</span>
+<p><b>전가산기(Full Adder, FA) = 2진수 입력 A, B와 아랫자리에서 올라온 올림 Cin까지 1자리 2진수 3개를 더해 합(S)과 올림(Cout)을 출력하는 조합 논리 회로.</b></p>
+</div>
+<table>
+  <tr><th>A</th><th>B</th><th>Cin</th><th>S (합)</th><th>Cout (올림)</th></tr>
+  <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+  <tr><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td></tr>
+  <tr><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td></tr>
+  <tr><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+  <tr><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+  <tr><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td></tr>
+  <tr><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>
+  <tr><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+</table>
+<div class="box tip"><span class="t">외우기 팁 — 1의 개수만 세요</span>
+<p>8줄을 통째로 외울 필요 없어요. 입력 세 개 중 <b>1이 몇 개인지</b>만 세면 돼요. <b>1이 홀수 개(1개 또는 3개)이면 S = 1</b>, <b>1이 2개 이상이면 Cout = 1</b>이에요.</p>
+<p>1이 0개면 둘 다 0, 1이 1개면 S만 1, 2개면 Cout만 1, 3개면 둘 다 1이에요. 1 + 1 + 1 = 11(2진수)이라는 뜻이에요.</p>
+</div>
+<figure class="slide"><img src="slides/a_fa.jpg" alt="전가산기의 진리표, 논리식, 반가산기 2개와 OR 게이트로 만든 회로, 논리 기호"><figcaption>교수님 슬라이드 — 전가산기. 반가산기(HA) 2개와 OR 게이트 1개로 만들어요</figcaption></figure>
+<p>회로 구성은 이래요. 첫 번째 반가산기가 A와 B를 더하고, 그 합을 두 번째 반가산기에서 Cin과 더해요. 두 반가산기에서 나온 올림 둘을 OR로 합치면 최종 Cout이에요. 게이트 수로는 <b>XOR 2개, AND 2개, OR 1개</b>예요.</p>
+<ul>
+  <li><code>S = A ⊕ B ⊕ Cin</code> (XOR를 두 번)</li>
+  <li><code>Cout = (A ⊕ B)·Cin + A·B</code></li>
+</ul>
+<p>5 + 3 = 8을 4자리 전가산기 4번으로 따라가 볼게요. 아랫자리(오른쪽)부터 올림을 넘겨요.</p>
+<table>
+  <tr><th style="width:18%">자리</th><th>A</th><th>B</th><th>Cin</th><th>1의 개수</th><th>S</th><th>Cout</th></tr>
+  <tr><td>0번 (맨 오른쪽)</td><td>1</td><td>1</td><td>0</td><td>2</td><td>0</td><td>1</td></tr>
+  <tr><td>1번</td><td>0</td><td>1</td><td>1</td><td>2</td><td>0</td><td>1</td></tr>
+  <tr><td>2번</td><td>1</td><td>0</td><td>1</td><td>2</td><td>0</td><td>1</td></tr>
+  <tr><td>3번</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td></tr>
+</table>
+<p>합 비트를 위에서부터(3번→0번) 쓰면 <code>1000</code>, 즉 8이에요. 앞 자리의 Cout이 바로 윗자리의 Cin이 되는 것이 핵심이에요.</p>
+<div class="box eg"><span class="t">비유 — 세로 덧셈의 올림</span>
+<p>초등학교에서 배운 세로셈과 똑같아요. 한 자리씩 더하다가 10이 넘으면 윗자리로 올려서 거기서 한 번 더 더해요. 전가산기는 "이번 자리 두 수와 아래에서 올라온 올림"까지 한 번에 더하는 한 칸짜리 세로셈 기계예요.</p>
+</div>
+<div class="box exam"><span class="t">시험엔 이렇게 써요 (기출 5.6)</span>
+<p>전가산기(full adder)는 두 개의 입력 비트 A, B와 한 개의 올림 비트 Cin이 들어갔을 때 합 비트 S와 올림 비트 Cout을 출력하는 회로이다. 입력에 1이 홀수 개이면 S가 1이고, 1이 두 개 이상이면 Cout이 1이다. 반가산기 2개와 OR 게이트 1개로 구성된다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — 전가산기에서 A = 1, B = 1, Cin = 1이면 S와 Cout은 각각 무엇인가요?</summary>
+<p>S = 1, Cout = 1이에요. 1이 3개(홀수)라서 S = 1이고, 두 개 이상이라서 Cout = 1이에요. 1 + 1 + 1 = 11이에요.</p></details>
+
+<h3>3-8. 8비트 덧셈 계산기 <span class="st">★★★</span></h3>
+<p>전가산기 하나는 한 자리만 더해요. 그러면 <b>전가산기 8개</b>를 이어 붙이면 8비트짜리 두 수를 더하는 덧셈 계산기가 돼요. 2023 기출 5.7번(4점)은 이 배선을 완성하는 문제였어요. 연결 규칙은 딱 네 가지예요.</p>
+<ul>
+  <li><b>① 입력</b> : 같은 자리끼리 짝을 지어 <code>A_i</code>와 <code>B_i</code>를 <code>i</code>번 전가산기의 A, B에 연결해요 (A0, B0가 가장 낮은 자리).</li>
+  <li><b>② 출력</b> : <code>i</code>번 전가산기의 합 S를 같은 자리 결과 <code>Y_i</code>에 연결해요.</li>
+  <li><b>③ 올림 전달</b> : <code>i</code>번 전가산기의 Cout을 바로 윗자리인 <code>i+1</code>번 전가산기의 Cin에 연결해요.</li>
+  <li><b>④ 양 끝</b> : 맨 아래 0번 전가산기의 Cin은 <b>0으로 고정</b>하고, 맨 위 7번 전가산기의 Cout은 <b>연결하지 않아요</b>.</li>
+</ul>
+<svg viewBox="0 0 380 746" style="max-width:420px;width:100%;height:auto" role="img" aria-label="전가산기 8개를 위아래로 이은 8비트 덧셈 계산기 배선도. 각 자리의 Cout이 윗자리의 Cin으로 연결되고 0번 전가산기의 Cin은 0">
+<defs><marker id="a3m1" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#1d4ed8"/></marker><marker id="a3m2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#0f7a4f"/></marker></defs>
+<rect x="140" y="44" width="100" height="46" rx="6" fill="#e3f6ec" stroke="#0f7a4f" stroke-width="2"/>
+<text x="190" y="73" text-anchor="middle" font-size="17" font-weight="bold" fill="#1b2333">FA7</text>
+<text x="30" y="63" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">A7</text>
+<text x="30" y="83" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">B7</text>
+<line x1="48" y1="59" x2="138" y2="59" stroke="#1d4ed8" stroke-width="2" marker-end="url(#a3m1)"/>
+<line x1="48" y1="79" x2="138" y2="79" stroke="#1d4ed8" stroke-width="2" marker-end="url(#a3m1)"/>
+<line x1="240" y1="67" x2="318" y2="67" stroke="#1d4ed8" stroke-width="2" marker-end="url(#a3m1)"/>
+<text x="344" y="72" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">Y7</text>
+<rect x="140" y="124" width="100" height="46" rx="6" fill="#e3f6ec" stroke="#0f7a4f" stroke-width="2"/>
+<text x="190" y="153" text-anchor="middle" font-size="17" font-weight="bold" fill="#1b2333">FA6</text>
+<text x="30" y="143" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">A6</text>
+<text x="30" y="163" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">B6</text>
+<line x1="48" y1="139" x2="138" y2="139" stroke="#1d4ed8" stroke-width="2" marker-end="url(#a3m1)"/>
+<line x1="48" y1="159" x2="138" y2="159" stroke="#1d4ed8" stroke-width="2" marker-end="url(#a3m1)"/>
+<line x1="240" y1="147" x2="318" y2="147" stroke="#1d4ed8" stroke-width="2" marker-end="url(#a3m1)"/>
+<text x="344" y="152" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">Y6</text>
+<line x1="190" y1="124" x2="190" y2="92" stroke="#0f7a4f" stroke-width="3" marker-end="url(#a3m2)"/>
+<rect x="140" y="204" width="100" height="46" rx="6" fill="#e3f6ec" stroke="#0f7a4f" stroke-width="2"/>
+<text x="190" y="233" text-anchor="middle" font-size="17" font-weight="bold" fill="#1b2333">FA5</text>
+<text x="30" y="223" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">A5</text>
+<text x="30" y="243" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">B5</text>
+<line x1="48" y1="219" x2="138" y2="219" stroke="#1d4ed8" stroke-width="2" marker-end="url(#a3m1)"/>
+<line x1="48" y1="239" x2="138" y2="239" stroke="#1d4ed8" stroke-width="2" marker-end="url(#a3m1)"/>
+<line x1="240" y1="227" x2="318" y2="227" stroke="#1d4ed8" stroke-width="2" marker-end="url(#a3m1)"/>
+<text x="344" y="232" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">Y5</text>
+<line x1="190" y1="204" x2="190" y2="172" stroke="#0f7a4f" stroke-width="3" marker-end="url(#a3m2)"/>
+<rect x="140" y="284" width="100" height="46" rx="6" fill="#e3f6ec" stroke="#0f7a4f" stroke-width="2"/>
+<text x="190" y="313" text-anchor="middle" font-size="17" font-weight="bold" fill="#1b2333">FA4</text>
+<text x="30" y="303" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">A4</text>
+<text x="30" y="323" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">B4</text>
+<line x1="48" y1="299" x2="138" y2="299" stroke="#1d4ed8" stroke-width="2" marker-end="url(#a3m1)"/>
+<line x1="48" y1="319" x2="138" y2="319" stroke="#1d4ed8" stroke-width="2" marker-end="url(#a3m1)"/>
+<line x1="240" y1="307" x2="318" y2="307" stroke="#1d4ed8" stroke-width="2" marker-end="url(#a3m1)"/>
+<text x="344" y="312" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">Y4</text>
+<line x1="190" y1="284" x2="190" y2="252" stroke="#0f7a4f" stroke-width="3" marker-end="url(#a3m2)"/>
+<rect x="140" y="364" width="100" height="46" rx="6" fill="#e3f6ec" stroke="#0f7a4f" stroke-width="2"/>
+<text x="190" y="393" text-anchor="middle" font-size="17" font-weight="bold" fill="#1b2333">FA3</text>
+<text x="30" y="383" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">A3</text>
+<text x="30" y="403" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">B3</text>
+<line x1="48" y1="379" x2="138" y2="379" stroke="#1d4ed8" stroke-width="2" marker-end="url(#a3m1)"/>
+<line x1="48" y1="399" x2="138" y2="399" stroke="#1d4ed8" stroke-width="2" marker-end="url(#a3m1)"/>
+<line x1="240" y1="387" x2="318" y2="387" stroke="#1d4ed8" stroke-width="2" marker-end="url(#a3m1)"/>
+<text x="344" y="392" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">Y3</text>
+<line x1="190" y1="364" x2="190" y2="332" stroke="#0f7a4f" stroke-width="3" marker-end="url(#a3m2)"/>
+<rect x="140" y="444" width="100" height="46" rx="6" fill="#e3f6ec" stroke="#0f7a4f" stroke-width="2"/>
+<text x="190" y="473" text-anchor="middle" font-size="17" font-weight="bold" fill="#1b2333">FA2</text>
+<text x="30" y="463" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">A2</text>
+<text x="30" y="483" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">B2</text>
+<line x1="48" y1="459" x2="138" y2="459" stroke="#1d4ed8" stroke-width="2" marker-end="url(#a3m1)"/>
+<line x1="48" y1="479" x2="138" y2="479" stroke="#1d4ed8" stroke-width="2" marker-end="url(#a3m1)"/>
+<line x1="240" y1="467" x2="318" y2="467" stroke="#1d4ed8" stroke-width="2" marker-end="url(#a3m1)"/>
+<text x="344" y="472" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">Y2</text>
+<line x1="190" y1="444" x2="190" y2="412" stroke="#0f7a4f" stroke-width="3" marker-end="url(#a3m2)"/>
+<rect x="140" y="524" width="100" height="46" rx="6" fill="#e3f6ec" stroke="#0f7a4f" stroke-width="2"/>
+<text x="190" y="553" text-anchor="middle" font-size="17" font-weight="bold" fill="#1b2333">FA1</text>
+<text x="30" y="543" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">A1</text>
+<text x="30" y="563" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">B1</text>
+<line x1="48" y1="539" x2="138" y2="539" stroke="#1d4ed8" stroke-width="2" marker-end="url(#a3m1)"/>
+<line x1="48" y1="559" x2="138" y2="559" stroke="#1d4ed8" stroke-width="2" marker-end="url(#a3m1)"/>
+<line x1="240" y1="547" x2="318" y2="547" stroke="#1d4ed8" stroke-width="2" marker-end="url(#a3m1)"/>
+<text x="344" y="552" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">Y1</text>
+<line x1="190" y1="524" x2="190" y2="492" stroke="#0f7a4f" stroke-width="3" marker-end="url(#a3m2)"/>
+<rect x="140" y="604" width="100" height="46" rx="6" fill="#e3f6ec" stroke="#0f7a4f" stroke-width="2"/>
+<text x="190" y="633" text-anchor="middle" font-size="17" font-weight="bold" fill="#1b2333">FA0</text>
+<text x="30" y="623" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">A0</text>
+<text x="30" y="643" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">B0</text>
+<line x1="48" y1="619" x2="138" y2="619" stroke="#1d4ed8" stroke-width="2" marker-end="url(#a3m1)"/>
+<line x1="48" y1="639" x2="138" y2="639" stroke="#1d4ed8" stroke-width="2" marker-end="url(#a3m1)"/>
+<line x1="240" y1="627" x2="318" y2="627" stroke="#1d4ed8" stroke-width="2" marker-end="url(#a3m1)"/>
+<text x="344" y="632" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">Y0</text>
+<line x1="190" y1="604" x2="190" y2="572" stroke="#0f7a4f" stroke-width="3" marker-end="url(#a3m2)"/>
+<line x1="190" y1="684" x2="190" y2="652" stroke="#0f7a4f" stroke-width="3" marker-end="url(#a3m2)"/>
+<text x="190" y="704" text-anchor="middle" font-size="18" font-weight="bold" fill="#b45309">0</text>
+<text x="206" y="704" text-anchor="start" font-size="11" fill="#5d6b80">(Cin을 0으로 고정)</text>
+<line x1="190" y1="44" x2="190" y2="20" stroke="#94a3b8" stroke-width="2" stroke-dasharray="3,3"/>
+<text x="198" y="30" text-anchor="start" font-size="11" fill="#5d6b80">Cout (연결 안 함)</text>
+<text x="190" y="734" text-anchor="middle" font-size="11" fill="#1b2333">초록 = 올림 (Cout → 윗자리 Cin) · 파랑 = 입력과 결과</text>
+</svg>
+<p>그림에서 왼쪽은 입력 A, B이고 오른쪽은 결과 Y예요. 가장 낮은 자리 FA0이 맨 아래에 있어서, 올림이 아래에서 위로 한 칸씩 이어져요. 기출과 슬라이드 24쪽의 배선 그림도 같은 모양이에요(위쪽이 높은 자리 7번).</p>
+<div class="box eg"><span class="t">비유 — 올림 이어달리기</span>
+<p>8명의 이어달리기 선수예요. 각 선수(전가산기)는 자기 구간의 두 수를 더하고, 올림이 있으면 그 "바통"을 왼쪽 옆 선수에게 넘겨요. 첫 번째 선수는 받을 바통이 없어서 0을 쥐고 출발하고, 마지막 선수의 바통은 받을 사람이 없어서 그냥 버려요.</p>
+</div>
+<p>올림이 길게 이어지는 경우를 볼게요. <code>00001111 + 00000001</code>(15 + 1)이에요.</p>
+<table>
+  <tr><th style="width:20%">자리</th><th>A</th><th>B</th><th>Cin</th><th>S</th><th>Cout</th></tr>
+  <tr><td>0번</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>
+  <tr><td>1번</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td></tr>
+  <tr><td>2번</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td></tr>
+  <tr><td>3번</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td></tr>
+  <tr><td>4번</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td></tr>
+  <tr><td>5~7번</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+</table>
+<p>결과는 <code>00010000</code>, 즉 16이에요. 올림이 0번에서 4번까지 줄줄이 넘어갔어요.</p>
+<p>교수님이 강조한 것이 하나 있어요. 사람은 머릿속의 규칙으로 덧셈을 하지만, 이 계산기는 <b>배선만 해 두고 전기를 흘리면 출력에 이미 결과가 나와 있어요</b>. 논리 회로로 산술 계산을 하는 거예요.</p>
+<p>뺄셈기, 곱셈기, 나눗셈기도 같은 방식으로 만들고, 이 회로들을 모두 모은 것이 계산기(ALU)예요. 16비트, 32비트 덧셈기는 같은 방식으로 길게 늘리면 돼요.</p>
+<p>참고로 8비트이면 합이 255를 넘을 때 맨 위 올림이 연결 없이 버려져서 결과가 틀려져요(예 200 + 100 = 300을 담으면 44). 그래서 필요한 크기에 맞춰 비트 수를 늘려요.</p>
+<div class="box exam"><span class="t">시험엔 이렇게 써요 (기출 5.7)</span>
+<p>전가산기 8개를 일렬로 놓고, 각 자리의 입력 A_i, B_i를 i번 전가산기의 A, B에 연결하고 합 S를 Y_i에 연결한다. i번 전가산기의 Cout은 i+1번 전가산기의 Cin에 연결하고, 가장 낮은 자리(0번) 전가산기의 Cin은 0으로 하며, 최종(7번) 올림은 연결하지 않는다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — 가장 낮은 자리 전가산기의 Cin에는 무엇을 연결하나요?</summary>
+<p>0이에요. 더 아래 자리가 없어서 올라올 올림이 없기 때문이에요.</p></details>
+
+<div class="box tip"><span class="t">이 장 3줄 요약</span>
+<ul>
+  <li>계산기(ALU)는 반도체(다이오드·트랜지스터) → 논리 게이트(AND·OR·NOT) → 논리 회로(덧셈기) → ALU 순으로 쌓아 만들고, ALU는 A, B(입력), C(제어), Y(출력) 신호로 동작해요.</li>
+  <li>진리표 출력은 AND 0001, OR 0111, NAND 1110, NOR 1000, XOR 0110이고 NOT은 반대예요. 반가산기는 S = A XOR B, C = A AND B이고, 전가산기는 입력 1의 개수가 홀수면 S = 1, 2개 이상이면 Cout = 1이에요.</li>
+  <li>8비트 덧셈기는 전가산기 8개를 이어서, i번의 Cout을 i+1번의 Cin에 연결하고 0번의 Cin은 0, 7번의 Cout은 연결하지 않아요.</li>
+</ul>
+</div>

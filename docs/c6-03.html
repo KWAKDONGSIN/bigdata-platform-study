@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ko" data-site="1bb07e">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>디스크 접근 시간 — 탐색, 회전, 전송 참고 · 빅데이터플랫폼 시험공부</title>
+<meta name="description" content="빅데이터플랫폼 중간고사를 전공 처음인 사람도 이해하게 정리한 공부 사이트">
+<link rel="stylesheet" href="assets/style.css?v=d2a0e0e2">
+</head>
+<body>
+<header class="top"><div class="top-in">
+<a class="brand" href="index.html"><span class="bases"><i class="a">시</i><i class="t">험</i><i class="g">공</i><i class="c">부</i></span>빅데이터플랫폼</a>
+<nav class="nav" aria-label="메뉴"><a href="index.html" class=on>보드</a><a href="b.html">최소코스</a><a href="bplus.html">B+코스</a><a href="quiz.html">퀴즈</a><a href="essay.html">서술형</a><a href="cards.html">암기카드</a><a href="words.html">낱말사전</a><a href="cheat.html">시험 전 1장</a></nav>
+</div></header>
+<main>
+<div class="crumb k6"><a href="index.html#c6">← 보드</a><span>보조기억장치 · 3/8</span></div><h1>디스크 접근 시간 — 탐색, 회전, 전송 참고</h1>
+<p>교수님은 "디스크 접근 시간까지는 굳이 수업에서 다루지 않아도 될 것 같다"고 했어요. 그래서 시험 가능성은 낮지만 슬라이드에 계산이 있어서 요령만 정리해요.</p>
+<div class="box def"><span class="t">공식</span>
+<p>디스크 접근 시간 = <a class="w" href="words.html#w127" data-w="127">탐색 시간</a> + <a class="w" href="words.html#w128" data-w="128">회전 지연 시간</a> + 데이터 전송 시간 (+ 제어기 오버헤드)</p>
+</div>
+<ul>
+  <li><b>탐색 시간</b>(seek time) : 헤드가 원하는 <a class="w" href="words.html#w125" data-w="125">트랙</a>으로 움직이는 데 걸리는 시간. 기계 동작이라 수 ms예요.</li>
+  <li><b>회전 지연 시간</b>(rotational latency) : 판이 돌아 원하는 <a class="w" href="words.html#w124" data-w="124">섹터</a>가 헤드 아래로 오기까지의 시간. 평균은 <b>반 바퀴</b> 도는 시간이에요.</li>
+  <li><b>데이터 전송 시간</b> : 읽은 데이터를 보내는 시간.</li>
+</ul>
+<p>7200rpm인 디스크를 예로 들게요. 7200 ÷ 60 = 초당 120바퀴라서 1바퀴는 1/120초 = <b>8.33ms</b>이고, 평균 회전 지연은 반 바퀴이므로 <b>4.17ms</b>예요.</p>
+<p>이제 슬라이드의 예제 7-2예요. "10,000rpm 디스크에서 512<a class="w" href="words.html#w1" data-w="1">바이트</a> 섹터 하나를 읽는 평균 시간은? 평균 탐색 시간 6ms, 전송 속도 50MB/초, 제어기 오버헤드 0.2ms, 대기 시간 없음."</p>
+<div class="tw"><table>
+  <tr><th style="width:36%">단계</th><th>계산</th></tr>
+  <tr><td>① 평균 회전 지연</td><td>10,000 ÷ 60 = 초당 약 166.7바퀴. 1바퀴 = 6ms. 반 바퀴 = <b>3ms</b></td></tr>
+  <tr><td>② 데이터 전송 시간</td><td>0.5KB ÷ 50MB/초 = 0.5 ÷ 50,000 초 = 0.00001초 = <b>0.01ms</b></td></tr>
+  <tr><td>③ 모두 더하기</td><td>6 + 3 + 0.01 + 0.2 = <b>9.21ms</b></td></tr>
+</table></div>
+<p><b>왜 대부분 탐색과 회전 때문일까요?</b> 전송 시간은 0.01ms로 아주 작고, 기계가 움직이는 시간이 대부분이에요. 그래서 <a class="w" href="words.html#w31" data-w="31">HDD</a>는 작은 데이터를 여기저기 흩어서 읽을 때 특히 느려요.</p>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>디스크 접근 시간은 탐색 시간, 회전 지연 시간, 데이터 전송 시간의 합이다. 평균 회전 지연 시간은 디스크가 반 바퀴 회전하는 시간이며, 7200rpm이면 1회전이 8.33ms이므로 평균 약 4.17ms이다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — 6000rpm인 디스크의 평균 회전 지연 시간은?</summary>
+<p>6000 ÷ 60 = 초당 100바퀴라서 1바퀴는 10ms이고, 반 바퀴는 5ms예요.</p></details>
+
+<div class="done"><a class="go" href="c6-04.html">다음 카드 → SSD — 움직이는 부품이 없는 저장장치 ★★★</a><div class="pn"><a href="c6-02.html"><b>← 이전</b>이전 카드</a><a class="next" href="quiz.html#c6"><b>연습</b>이 장 문제 풀기</a></div><p class="muted small">자료: 7주차 · 07보조기억장치.pdf(28쪽~) · 빅데이터플07(7주차)</p></div>
+</main>
+<script src="assets/words.js?v=d2a0e0e2"></script>
+<script src="assets/app.js?v=d2a0e0e2"></script>
+</body>
+</html>

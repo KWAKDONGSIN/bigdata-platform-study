@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ko" data-site="1bb07e">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>8비트 덧셈 계산기 ★★★ · 빅데이터플랫폼 시험공부</title>
+<meta name="description" content="빅데이터플랫폼 중간고사를 전공 처음인 사람도 이해하게 정리한 공부 사이트">
+<link rel="stylesheet" href="assets/style.css?v=d2a0e0e2">
+</head>
+<body>
+<header class="top"><div class="top-in">
+<a class="brand" href="index.html"><span class="bases"><i class="a">시</i><i class="t">험</i><i class="g">공</i><i class="c">부</i></span>빅데이터플랫폼</a>
+<nav class="nav" aria-label="메뉴"><a href="index.html" class=on>보드</a><a href="b.html">최소코스</a><a href="bplus.html">B+코스</a><a href="quiz.html">퀴즈</a><a href="essay.html">서술형</a><a href="cards.html">암기카드</a><a href="words.html">낱말사전</a><a href="cheat.html">시험 전 1장</a></nav>
+</div></header>
+<main>
+<div class="crumb k3"><a href="index.html#c3">← 보드</a><span>계산기 회로 · 8/9</span></div><h1>8비트 덧셈 계산기 ★★★</h1>
+<p><a class="w" href="words.html#w61" data-w="61">전가산기</a> 하나는 한 자리만 더해요. 그러면 <b>전가산기 8개</b>를 이어 붙이면 8<a class="w" href="words.html#w0" data-w="0">비트</a>짜리 두 수를 더하는 덧셈 계산기가 돼요. 2023 기출 5.7번(4점)은 이 배선을 완성하는 문제였어요. 연결 규칙은 딱 네 가지예요.</p>
+<ul>
+  <li><b>① 입력</b> : 같은 자리끼리 짝을 지어 <code>A_i</code>와 <code>B_i</code>를 <code>i</code>번 전가산기의 A, B에 연결해요 (A0, B0가 가장 낮은 자리).</li>
+  <li><b>② 출력</b> : <code>i</code>번 전가산기의 합 S를 같은 자리 결과 <code>Y_i</code>에 연결해요.</li>
+  <li><b>③ <a class="w" href="words.html#w62" data-w="62">올림</a> 전달</b> : <code>i</code>번 전가산기의 Cout을 바로 윗자리인 <code>i+1</code>번 전가산기의 Cin에 연결해요.</li>
+  <li><b>④ 양 끝</b> : 맨 아래 0번 전가산기의 Cin은 <b>0으로 고정</b>하고, 맨 위 7번 전가산기의 Cout은 <b>연결하지 않아요</b>.</li>
+</ul>
+<div class="paper"><svg viewBox="0 0 380 746" style="max-width:420px;width:100%;height:auto" role="img" aria-label="전가산기 8개를 위아래로 이은 8비트 덧셈 계산기 배선도. 각 자리의 Cout이 윗자리의 Cin으로 연결되고 0번 전가산기의 Cin은 0">
+<defs><marker id="a3m1" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#1d4ed8"/></marker><marker id="a3m2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#0f7a4f"/></marker></defs>
+<rect x="140" y="44" width="100" height="46" rx="6" fill="#e3f6ec" stroke="#0f7a4f" stroke-width="2"/>
+<text x="190" y="73" text-anchor="middle" font-size="17" font-weight="bold" fill="#1b2333">FA7</text>
+<text x="30" y="63" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">A7</text>
+<text x="30" y="83" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">B7</text>
+<line x1="48" y1="59" x2="138" y2="59" stroke="#1d4ed8" stroke-width="2" marker-end="url(#a3m1)"/>
+<line x1="48" y1="79" x2="138" y2="79" stroke="#1d4ed8" stroke-width="2" marker-end="url(#a3m1)"/>
+<line x1="240" y1="67" x2="318" y2="67" stroke="#1d4ed8" stroke-width="2" marker-end="url(#a3m1)"/>
+<text x="344" y="72" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">Y7</text>
+<rect x="140" y="124" width="100" height="46" rx="6" fill="#e3f6ec" stroke="#0f7a4f" stroke-width="2"/>
+<text x="190" y="153" text-anchor="middle" font-size="17" font-weight="bold" fill="#1b2333">FA6</text>
+<text x="30" y="143" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">A6</text>
+<text x="30" y="163" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">B6</text>
+<line x1="48" y1="139" x2="138" y2="139" stroke="#1d4ed8" stroke-width="2" marker-end="url(#a3m1)"/>
+<line x1="48" y1="159" x2="138" y2="159" stroke="#1d4ed8" stroke-width="2" marker-end="url(#a3m1)"/>
+<line x1="240" y1="147" x2="318" y2="147" stroke="#1d4ed8" stroke-width="2" marker-end="url(#a3m1)"/>
+<text x="344" y="152" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">Y6</text>
+<line x1="190" y1="124" x2="190" y2="92" stroke="#0f7a4f" stroke-width="3" marker-end="url(#a3m2)"/>
+<rect x="140" y="204" width="100" height="46" rx="6" fill="#e3f6ec" stroke="#0f7a4f" stroke-width="2"/>
+<text x="190" y="233" text-anchor="middle" font-size="17" font-weight="bold" fill="#1b2333">FA5</text>
+<text x="30" y="223" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">A5</text>
+<text x="30" y="243" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">B5</text>
+<line x1="48" y1="219" x2="138" y2="219" stroke="#1d4ed8" stroke-width="2" marker-end="url(#a3m1)"/>
+<line x1="48" y1="239" x2="138" y2="239" stroke="#1d4ed8" stroke-width="2" marker-end="url(#a3m1)"/>
+<line x1="240" y1="227" x2="318" y2="227" stroke="#1d4ed8" stroke-width="2" marker-end="url(#a3m1)"/>
+<text x="344" y="232" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">Y5</text>
+<line x1="190" y1="204" x2="190" y2="172" stroke="#0f7a4f" stroke-width="3" marker-end="url(#a3m2)"/>
+<rect x="140" y="284" width="100" height="46" rx="6" fill="#e3f6ec" stroke="#0f7a4f" stroke-width="2"/>
+<text x="190" y="313" text-anchor="middle" font-size="17" font-weight="bold" fill="#1b2333">FA4</text>
+<text x="30" y="303" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">A4</text>
+<text x="30" y="323" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">B4</text>
+<line x1="48" y1="299" x2="138" y2="299" stroke="#1d4ed8" stroke-width="2" marker-end="url(#a3m1)"/>
+<line x1="48" y1="319" x2="138" y2="319" stroke="#1d4ed8" stroke-width="2" marker-end="url(#a3m1)"/>
+<line x1="240" y1="307" x2="318" y2="307" stroke="#1d4ed8" stroke-width="2" marker-end="url(#a3m1)"/>
+<text x="344" y="312" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">Y4</text>
+<line x1="190" y1="284" x2="190" y2="252" stroke="#0f7a4f" stroke-width="3" marker-end="url(#a3m2)"/>
+<rect x="140" y="364" width="100" height="46" rx="6" fill="#e3f6ec" stroke="#0f7a4f" stroke-width="2"/>
+<text x="190" y="393" text-anchor="middle" font-size="17" font-weight="bold" fill="#1b2333">FA3</text>
+<text x="30" y="383" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">A3</text>
+<text x="30" y="403" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">B3</text>
+<line x1="48" y1="379" x2="138" y2="379" stroke="#1d4ed8" stroke-width="2" marker-end="url(#a3m1)"/>
+<line x1="48" y1="399" x2="138" y2="399" stroke="#1d4ed8" stroke-width="2" marker-end="url(#a3m1)"/>
+<line x1="240" y1="387" x2="318" y2="387" stroke="#1d4ed8" stroke-width="2" marker-end="url(#a3m1)"/>
+<text x="344" y="392" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">Y3</text>
+<line x1="190" y1="364" x2="190" y2="332" stroke="#0f7a4f" stroke-width="3" marker-end="url(#a3m2)"/>
+<rect x="140" y="444" width="100" height="46" rx="6" fill="#e3f6ec" stroke="#0f7a4f" stroke-width="2"/>
+<text x="190" y="473" text-anchor="middle" font-size="17" font-weight="bold" fill="#1b2333">FA2</text>
+<text x="30" y="463" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">A2</text>
+<text x="30" y="483" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">B2</text>
+<line x1="48" y1="459" x2="138" y2="459" stroke="#1d4ed8" stroke-width="2" marker-end="url(#a3m1)"/>
+<line x1="48" y1="479" x2="138" y2="479" stroke="#1d4ed8" stroke-width="2" marker-end="url(#a3m1)"/>
+<line x1="240" y1="467" x2="318" y2="467" stroke="#1d4ed8" stroke-width="2" marker-end="url(#a3m1)"/>
+<text x="344" y="472" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">Y2</text>
+<line x1="190" y1="444" x2="190" y2="412" stroke="#0f7a4f" stroke-width="3" marker-end="url(#a3m2)"/>
+<rect x="140" y="524" width="100" height="46" rx="6" fill="#e3f6ec" stroke="#0f7a4f" stroke-width="2"/>
+<text x="190" y="553" text-anchor="middle" font-size="17" font-weight="bold" fill="#1b2333">FA1</text>
+<text x="30" y="543" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">A1</text>
+<text x="30" y="563" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">B1</text>
+<line x1="48" y1="539" x2="138" y2="539" stroke="#1d4ed8" stroke-width="2" marker-end="url(#a3m1)"/>
+<line x1="48" y1="559" x2="138" y2="559" stroke="#1d4ed8" stroke-width="2" marker-end="url(#a3m1)"/>
+<line x1="240" y1="547" x2="318" y2="547" stroke="#1d4ed8" stroke-width="2" marker-end="url(#a3m1)"/>
+<text x="344" y="552" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">Y1</text>
+<line x1="190" y1="524" x2="190" y2="492" stroke="#0f7a4f" stroke-width="3" marker-end="url(#a3m2)"/>
+<rect x="140" y="604" width="100" height="46" rx="6" fill="#e3f6ec" stroke="#0f7a4f" stroke-width="2"/>
+<text x="190" y="633" text-anchor="middle" font-size="17" font-weight="bold" fill="#1b2333">FA0</text>
+<text x="30" y="623" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">A0</text>
+<text x="30" y="643" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">B0</text>
+<line x1="48" y1="619" x2="138" y2="619" stroke="#1d4ed8" stroke-width="2" marker-end="url(#a3m1)"/>
+<line x1="48" y1="639" x2="138" y2="639" stroke="#1d4ed8" stroke-width="2" marker-end="url(#a3m1)"/>
+<line x1="240" y1="627" x2="318" y2="627" stroke="#1d4ed8" stroke-width="2" marker-end="url(#a3m1)"/>
+<text x="344" y="632" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">Y0</text>
+<line x1="190" y1="604" x2="190" y2="572" stroke="#0f7a4f" stroke-width="3" marker-end="url(#a3m2)"/>
+<line x1="190" y1="684" x2="190" y2="652" stroke="#0f7a4f" stroke-width="3" marker-end="url(#a3m2)"/>
+<text x="190" y="704" text-anchor="middle" font-size="18" font-weight="bold" fill="#b45309">0</text>
+<text x="206" y="704" text-anchor="start" font-size="11" fill="#5d6b80">(Cin을 0으로 고정)</text>
+<line x1="190" y1="44" x2="190" y2="20" stroke="#94a3b8" stroke-width="2" stroke-dasharray="3,3"/>
+<text x="198" y="30" text-anchor="start" font-size="11" fill="#5d6b80">Cout (연결 안 함)</text>
+<text x="190" y="734" text-anchor="middle" font-size="11" fill="#1b2333">초록 = 올림 (Cout → 윗자리 Cin) · 파랑 = 입력과 결과</text>
+</svg></div>
+<p>그림에서 왼쪽은 입력 A, B이고 오른쪽은 결과 Y예요. 가장 낮은 자리 FA0이 맨 아래에 있어서, 올림이 아래에서 위로 한 칸씩 이어져요. 기출과 슬라이드 24쪽의 배선 그림도 같은 모양이에요(위쪽이 높은 자리 7번).</p>
+<div class="box eg"><span class="t">비유 — 올림 이어달리기</span>
+<p>8명의 이어달리기 선수예요. 각 선수(전가산기)는 자기 구간의 두 수를 더하고, 올림이 있으면 그 "바통"을 왼쪽 옆 선수에게 넘겨요. 첫 번째 선수는 받을 바통이 없어서 0을 쥐고 출발하고, 마지막 선수의 바통은 받을 사람이 없어서 그냥 버려요.</p>
+</div>
+<p>올림이 길게 이어지는 경우를 볼게요. <code>00001111 + 00000001</code>(15 + 1)이에요.</p>
+<div class="tw"><table>
+  <tr><th style="width:20%">자리</th><th>A</th><th>B</th><th>Cin</th><th>S</th><th>Cout</th></tr>
+  <tr><td>0번</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>
+  <tr><td>1번</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td></tr>
+  <tr><td>2번</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td></tr>
+  <tr><td>3번</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td></tr>
+  <tr><td>4번</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td></tr>
+  <tr><td>5~7번</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+</table></div>
+<p>결과는 <code>00010000</code>, 즉 16이에요. 올림이 0번에서 4번까지 줄줄이 넘어갔어요.</p>
+<p>교수님이 강조한 것이 하나 있어요. 사람은 머릿속의 규칙으로 덧셈을 하지만, 이 계산기는 <b>배선만 해 두고 전기를 흘리면 출력에 이미 결과가 나와 있어요</b>. 논리 회로로 산술 계산을 하는 거예요.</p>
+<p>뺄셈기, 곱셈기, 나눗셈기도 같은 방식으로 만들고, 이 회로들을 모두 모은 것이 계산기(<a class="w" href="words.html#w64" data-w="64">ALU</a>)예요. 16비트, 32비트 덧셈기는 같은 방식으로 길게 늘리면 돼요.</p>
+<p>참고로 8비트이면 합이 255를 넘을 때 맨 위 올림이 연결 없이 버려져서 결과가 틀려져요(예 200 + 100 = 300을 담으면 44). 그래서 필요한 크기에 맞춰 비트 수를 늘려요.</p>
+<div class="box exam"><span class="t">시험엔 이렇게 써요 (기출 5.7)</span>
+<p>전가산기 8개를 일렬로 놓고, 각 자리의 입력 A_i, B_i를 i번 전가산기의 A, B에 연결하고 합 S를 Y_i에 연결한다. i번 전가산기의 Cout은 i+1번 전가산기의 Cin에 연결하고, 가장 낮은 자리(0번) 전가산기의 Cin은 0으로 하며, 최종(7번) 올림은 연결하지 않는다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — 가장 낮은 자리 전가산기의 Cin에는 무엇을 연결하나요?</summary>
+<p>0이에요. 더 아래 자리가 없어서 올라올 올림이 없기 때문이에요.</p></details>
+
+<div class="done"><a class="go" href="c3-09.html">다음 카드 → 이 장 3줄 요약</a><div class="pn"><a href="c3-07.html"><b>← 이전</b>이전 카드</a><a class="next" href="quiz.html#c3"><b>연습</b>이 장 문제 풀기</a></div><p class="muted small">자료: 4주차 · 04계산기회로.pdf · 빅데이터플랫폼04</p></div>
+</main>
+<script src="assets/words.js?v=d2a0e0e2"></script>
+<script src="assets/app.js?v=d2a0e0e2"></script>
+</body>
+</html>

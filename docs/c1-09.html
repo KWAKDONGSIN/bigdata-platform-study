@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ko" data-site="1bb07e">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>프로그램과 프로세스 ★★★ · 빅데이터플랫폼 시험공부</title>
+<meta name="description" content="빅데이터플랫폼 중간고사를 전공 처음인 사람도 이해하게 정리한 공부 사이트">
+<link rel="stylesheet" href="assets/style.css?v=d2a0e0e2">
+</head>
+<body>
+<header class="top"><div class="top-in">
+<a class="brand" href="index.html"><span class="bases"><i class="a">시</i><i class="t">험</i><i class="g">공</i><i class="c">부</i></span>빅데이터플랫폼</a>
+<nav class="nav" aria-label="메뉴"><a href="index.html" class=on>보드</a><a href="b.html">최소코스</a><a href="bplus.html">B+코스</a><a href="quiz.html">퀴즈</a><a href="essay.html">서술형</a><a href="cards.html">암기카드</a><a href="words.html">낱말사전</a><a href="cheat.html">시험 전 1장</a></nav>
+</div></header>
+<main>
+<div class="crumb k1"><a href="index.html#c1">← 보드</a><span>컴퓨터 구조 소개 · 9/12</span></div><h1>프로그램과 프로세스 ★★★</h1>
+<p>1번 문제의 빈칸 중 헷갈리는 쌍이에요. 기준은 하나예요. <b>어디에 있는가</b>예요.</p>
+<div class="tw"><table>
+  <tr><th style="width:20%"></th><th>프로그램 (program)</th><th>프로세스 (process)</th></tr>
+  <tr><td><b>상태</b></td><td><a class="w" href="words.html#w29" data-w="29">저장장치</a>에 <b>보관된</b> 코드 (정적)</td><td><a class="w" href="words.html#w78" data-w="78">실행</a>되어 메모리에 <b>올라온</b> 것 (동적)</td></tr>
+  <tr><td><b>위치</b></td><td>보조기억장치(<a class="w" href="words.html#w30" data-w="30">SSD</a>·<a class="w" href="words.html#w31" data-w="31">HDD</a>)</td><td><a class="w" href="words.html#w28" data-w="28">주기억장치(RAM)</a></td></tr>
+  <tr><td><b>예</b></td><td>설치만 해 둔 팟플레이어, 워드</td><td>더블클릭으로 실행해 작업 중인 팟플레이어, 워드</td></tr>
+  <tr><td><b>비유</b></td><td>레시피(요리법)</td><td>요리를 하는 중인 일 (조리 후 요리)</td></tr>
+</table></div>
+<figure class="slide"><img src="slides/a_proc.jpg" alt="팟플레이어는 저장장치의 프로그램이고 실행하면 메모리에 올라온 프로세스가 된다는 슬라이드와 작업 관리자 화면"><figcaption>강의자료(운영체제 부분) — 저장돼 있으면 프로그램, 실행하면 프로세스. 오른쪽은 윈도우 작업 관리자예요</figcaption></figure>
+<div class="box def"><span class="t">한 줄 정의</span>
+<p><b><a class="w" href="words.html#w12" data-w="12">프로그램</a> = 보조기억장치에 보관된 코드, <a class="w" href="words.html#w13" data-w="13">프로세스</a> = 그 코드가 실행되어 메모리에 <a class="w" href="words.html#w22" data-w="22">적재</a>된 것.</b> <a class="w" href="words.html#w105" data-w="105">운영체제</a>도 실행 중이면 프로세스 하나예요.</p>
+</div>
+<p>같은 프로그램을 두 번 실행하면 프로세스는 <b>두 개</b>가 돼요. 메모장을 세 번 켜면 프로그램은 하나지만 프로세스는 세 개예요. 윈도우의 작업 관리자 화면에 보이는 것들이 지금 돌고 있는 프로세스예요.</p>
+<div class="box tip"><span class="t">헷갈리는 세 단어</span>
+<p><b>프로그램</b>은 저장된 코드, <b>프로세스</b>는 실행 중인 <a class="w" href="words.html#w11" data-w="11">소프트웨어</a>, <b><a class="w" href="words.html#w26" data-w="26">프로세서</a></b>는 CPU(<a class="w" href="words.html#w10" data-w="10">하드웨어</a>)예요. 글자 한 글자 차이라서 시험에서 헷갈리게 내요. "프로세서(서)는 장치, 프로세스(스)는 실행 중 소프트웨어"로 외우세요.</p>
+</div>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>어떤 응용 프로그램의 코드가 보조기억장치에 보관되어 있으면 <b>프로그램</b>이라 하고, 그것이 실행되어 메모리에 적재되어 있으면 <b>프로세스</b>라고 한다. (2023 기출 1번 빈칸 정답)</p>
+</div>
+<details class="check"><summary>잠깐 확인 — 워드를 SSD에 설치만 했을 때와 더블클릭해서 실행했을 때, 각각 무엇으로 부르나요?</summary>
+<p>설치만 했을 때는 프로그램, 실행하면 프로세스예요.</p></details>
+
+<div class="done"><a class="go" href="c1-10.html">다음 카드 → 멀티태스킹, 멀티프로그래밍, 멀티프로세싱, 멀티쓰레딩 ★★★</a><div class="pn"><a href="c1-08.html"><b>← 이전</b>이전 카드</a><a class="next" href="quiz.html#c1"><b>연습</b>이 장 문제 풀기</a></div><p class="muted small">자료: 2·6·7주차 · 02컴퓨터구조소개.pdf · 02컴퓨터구조소개-실습.pdf · 05중앙처리장치.pdf · 06메모리와계층구조.pdf · 빅데이터플02·06·07</p></div>
+</main>
+<script src="assets/words.js?v=d2a0e0e2"></script>
+<script src="assets/app.js?v=d2a0e0e2"></script>
+</body>
+</html>

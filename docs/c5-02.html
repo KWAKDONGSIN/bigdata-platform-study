@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ko" data-site="1bb07e">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>메모리 계층 구조 ★★★ 시험 필수 · 빅데이터플랫폼 시험공부</title>
+<meta name="description" content="빅데이터플랫폼 중간고사를 전공 처음인 사람도 이해하게 정리한 공부 사이트">
+<link rel="stylesheet" href="assets/style.css?v=d2a0e0e2">
+</head>
+<body>
+<header class="top"><div class="top-in">
+<a class="brand" href="index.html"><span class="bases"><i class="a">시</i><i class="t">험</i><i class="g">공</i><i class="c">부</i></span>빅데이터플랫폼</a>
+<nav class="nav" aria-label="메뉴"><a href="index.html" class=on>보드</a><a href="b.html">최소코스</a><a href="bplus.html">B+코스</a><a href="quiz.html">퀴즈</a><a href="essay.html">서술형</a><a href="cards.html">암기카드</a><a href="words.html">낱말사전</a><a href="cheat.html">시험 전 1장</a></nav>
+</div></header>
+<main>
+<div class="crumb k5"><a href="index.html#c5">← 보드</a><span>메모리와 계층 구조 · 2/9</span></div><h1>메모리 계층 구조 ★★★ 시험 필수</h1>
+<p><a class="w" href="words.html#w14" data-w="14">컴퓨터</a>의 기억장치는 한 종류가 아니라 <b><a class="w" href="words.html#w66" data-w="66">레지스터</a> → <a class="w" href="words.html#w98" data-w="98">캐시</a> → <a class="w" href="words.html#w28" data-w="28">주기억장치(RAM)</a> → <a class="w" href="words.html#w29" data-w="29">보조기억장치</a>(<a class="w" href="words.html#w30" data-w="30">SSD</a>/<a class="w" href="words.html#w31" data-w="31">HDD</a>)</b> 4층으로 되어 있어요. 이것을 <b>계층 구조</b>(hierarchy)라고 해요. 위로 갈수록 빠르고, 작고, 비싸요.</p>
+<figure class="slide"><img src="slides/b_hier.jpg" alt="기억장치 계층 구조 슬라이드"><figcaption>교수님 슬라이드 — 레지스터(100바이트, 1ns 미만) → 캐시(메가바이트) → 메모리(기가바이트, 50~70ns) → 디스크(테라바이트, 5~20ms)</figcaption></figure>
+<div class="tw"><table>
+  <tr><th style="width:18%">장치</th><th style="width:20%">위치</th><th style="width:22%">소자</th><th style="width:22%">접근 속도</th><th>휘발성</th></tr>
+  <tr><td><b>레지스터</b></td><td><a class="w" href="words.html#w26" data-w="26">CPU</a> 안</td><td>플립플롭·래치·<a class="w" href="words.html#w99" data-w="99">SRAM</a></td><td>1ns 미만</td><td><a class="w" href="words.html#w23" data-w="23">휘발</a></td></tr>
+  <tr><td><b>캐시</b></td><td>CPU 안</td><td>SRAM</td><td>0.5~2.5ns</td><td>휘발</td></tr>
+  <tr><td><b>RAM</b></td><td>CPU 밖 (별도 부품)</td><td><a class="w" href="words.html#w100" data-w="100">DRAM</a></td><td>50~70ns</td><td>휘발</td></tr>
+  <tr><td><b>SSD</b></td><td>CPU가 직접 접근 불가</td><td>플래시</td><td>20~200µs</td><td><a class="w" href="words.html#w24" data-w="24">비휘발</a></td></tr>
+  <tr><td>USB</td><td></td><td>플래시</td><td>30~125µs</td><td>비휘발</td></tr>
+  <tr><td><b>HDD</b></td><td></td><td><a class="w" href="words.html#w123" data-w="123">자기디스크</a>를 물리적으로 회전</td><td>5~20ms</td><td>비휘발</td></tr>
+  <tr><td><a class="w" href="words.html#w131" data-w="131">CD-ROM</a></td><td></td><td>광학디스크를 물리적으로 회전</td><td>50~200ms</td><td>비휘발</td></tr>
+  <tr><td>백업 테이프</td><td></td><td>자기 테이프</td><td>0.5~1s</td><td>비휘발</td></tr>
+</table></div>
+<figure class="slide"><img src="slides/b_speed_table.jpg" alt="기억장치 종류와 특징 표 슬라이드"><figcaption>교수님 슬라이드 — 자료 9쪽 접근 속도 표 (암기용)</figcaption></figure>
+<p><b>꼭 알아둘 세 가지</b>예요.</p>
+<ul>
+  <li><b>CPU 안에 있는 메모리는 2개</b> : 레지스터와 캐시. RAM과 SSD는 CPU 밖의 별도 부품이에요.</li>
+  <li><b>속도 순서</b> : 레지스터 &gt; 캐시 &gt; RAM &gt; SSD(또는 HDD). 용량은 정반대예요.</li>
+  <li><b>휘발성</b> : RAM 이상(레지스터, 캐시, RAM)은 전원이 꺼지면 사라지고, SSD·HDD 같은 보조기억장치는 비휘발성(반영구)이에요.</li>
+</ul>
+<p><b>왜 계층으로 나눌까요?</b> 빠르면서 큰 메모리는 너무 비싸서 <a class="w" href="words.html#w67" data-w="67">PC</a>를 100~200만 원에 만들 수 없어요. 그래서 "자주 쓰는 소량은 빠른 곳에, 나머지는 느리고 싼 곳에"로 나눠서 값은 낮추고 속도는 높였어요. 교수님이 말한 이 장의 핵심 문장은 <b>"속도가 빠르면 용량이 작고, 용량을 키우면 속도가 느려진다"</b>예요.</p>
+<div class="box eg"><span class="t">비유 — 교수님의 시험공부</span>
+<p>중간고사 범위가 1~7주차 PDF 전체라고 해 봐요. 도서관(SSD)에 모든 자료가 있고, 이번 시험 범위 전체를 책장(RAM)에 꽂아 두고, 지금 공부하는 1주차 자료는 책상(캐시)에 펴 놓고, 지금 푸는 문제의 구체적인 개념은 노트(레지스터)에 적어요. 범위가 좁아질수록 빠르게 꺼내 쓸 수 있고 양은 줄어요.</p>
+</div>
+<p>속도 차이를 숫자로 느껴 보세요. 단위는 1ms = 1,000µs = 1,000,000ns예요. SSD의 20µs는 20,000ns이고 RAM이 50~70ns니까 SSD는 RAM보다 <b>수백 배~수천 배</b> 느려요. (20,000 ÷ 70 ≈ 290배, 200,000 ÷ 50 = 4,000배) 그래서 컴퓨터가 느려지는 병목은 주로 RAM과 SSD 사이에서 생겨요.</p>
+<p>2023년 기출 Q8과 HW6 Q1~Q3은 이 표를 그대로 물었어요. <b>번호는 시험지마다 달라요.</b> 기출은 1 RAM, 2 보조기억장치, 3 레지스터, 4 캐시였고 HW6는 1 레지스터, 2 캐시, 3 RAM, 4 보조기억장치였어요. 번호보다 <b>이름의 순서</b>로 외우세요.</p>
+<div class="tw"><table>
+  <tr><th style="width:42%">질문</th><th>답 (이름)</th></tr>
+  <tr><td>CPU 안에 있는 메모리 2개</td><td><b>레지스터, 캐시</b></td></tr>
+  <tr><td>접근 속도가 빠른 순서</td><td><b>레지스터 → 캐시 → RAM → 보조기억장치</b></td></tr>
+  <tr><td>같은 가격 대비 용량이 큰 순서</td><td><b>보조기억장치 → RAM → 캐시 → 레지스터</b></td></tr>
+</table></div>
+<p>다음은 Q8.4(HW6 Q4와 같은 문제)예요. "엑셀로 분기별 매출 자료 만들기"를 계층에 대응시키는 문제예요.</p>
+<div class="tw"><table>
+  <tr><th style="width:56%">상황</th><th style="width:20%">답</th><th>이유</th></tr>
+  <tr><td>1) 엑셀 <a class="w" href="words.html#w12" data-w="12">프로그램</a>을 <b>설치</b>했다</td><td><b>보조기억장치</b></td><td>설치는 저장이에요. 도서관에 책을 들여놓는 일</td></tr>
+  <tr><td>2) 엑셀 아이콘을 더블클릭해 <b><a class="w" href="words.html#w78" data-w="78">실행</a></b>했다</td><td><b>RAM</b></td><td>실행하면 RAM에 <a class="w" href="words.html#w22" data-w="22">적재</a>돼요</td></tr>
+  <tr><td>3) "거래내역_2000_2020.xlsx" 파일을 <b>불러왔다</b></td><td><b>RAM</b></td><td>파일의 데이터 전체가 RAM에 올라와요</td></tr>
+  <tr><td>4) 2020년 4/4분기 관련 <b>주변부 데이터</b>로 평균 계산</td><td><b>캐시</b></td><td>지금 계산에 쓸 부분과 그 주변은 캐시에 올라와요</td></tr>
+  <tr><td>5) 12/21 매출 170만과 12/22 매출 220만의 <b>합을 계산 중</b></td><td><b>레지스터</b></td><td>CPU가 직접 계산하는 값은 레지스터에 있어요</td></tr>
+</table></div>
+<p>HW6 Q5 "<a class="w" href="words.html#w97" data-w="97">메모리 계층 구조</a>를 사용하는 이유"의 답은 이렇게 써요. 빠르고 용량이 큰 메모리는 너무 비싸서, 속도가 빠르고 용량이 작은 메모리와 속도가 느리고 용량이 큰 메모리를 단계적으로 배치해 정해진 가격 안에서 속도와 용량을 모두 확보하려고 해요. CPU의 계산 속도와 RAM·보조기억장치 속도 차이가 크다는 이유도 함께 써 주면 좋아요.</p>
+<div class="box tip"><span class="t">외우기 팁</span>
+<p>"<b>레-캐-램-보</b>" (레지스터, 캐시, 램, 보조)가 <b>빠른 순서</b>이고, 거꾸로 "보-램-캐-레"가 <b>용량 큰 순서</b>예요. CPU 안은 앞의 "레-캐" 두 개예요.</p>
+</div>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>메모리 계층 구조는 레지스터, 캐시, 주기억장치(RAM), 보조기억장치로 이루어지며, 위로 갈수록 접근 속도가 빠르고 용량이 작으며 <a class="w" href="words.html#w0" data-w="0">비트</a>당 가격이 비싸다. CPU 내부에 있는 메모리는 레지스터와 캐시이다. 빠르고 용량이 큰 메모리는 가격이 매우 비싸기 때문에 제한된 비용으로 속도와 용량을 함께 확보하려고 계층 구조를 사용한다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — 엑셀로 더하기 계산을 하는 중인 두 숫자는 어느 메모리에 있나요?</summary>
+<p>레지스터예요. CPU(<a class="w" href="words.html#w64" data-w="64">ALU</a>)가 직접 계산하는 값은 가장 빠른 레지스터에 올라와요.</p></details>
+
+<div class="done"><a class="go" href="c5-03.html">다음 카드 → 캐시와 적중(hit), 실패(miss), 지역성 ★★</a><div class="pn"><a href="c5-01.html"><b>← 이전</b>이전 카드</a><a class="next" href="quiz.html#c5"><b>연습</b>이 장 문제 풀기</a></div><p class="muted small">자료: 6~7주차 · 06메모리와계층구조.pdf, 07보조기억장치.pdf(앞부분) · 빅데이터플06(6주차), 빅데이터플07(7주차)</p></div>
+</main>
+<script src="assets/words.js?v=d2a0e0e2"></script>
+<script src="assets/app.js?v=d2a0e0e2"></script>
+</body>
+</html>

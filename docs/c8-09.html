@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ko" data-site="1bb07e">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Q9. 40GB 파일을 읽었더니 컴퓨터가 멈췄어요 (8점) · 빅데이터플랫폼 시험공부</title>
+<meta name="description" content="빅데이터플랫폼 중간고사를 전공 처음인 사람도 이해하게 정리한 공부 사이트">
+<link rel="stylesheet" href="assets/style.css?v=d2a0e0e2">
+</head>
+<body>
+<header class="top"><div class="top-in">
+<a class="brand" href="index.html"><span class="bases"><i class="a">시</i><i class="t">험</i><i class="g">공</i><i class="c">부</i></span>빅데이터플랫폼</a>
+<nav class="nav" aria-label="메뉴"><a href="index.html" class=on>보드</a><a href="b.html">최소코스</a><a href="bplus.html">B+코스</a><a href="quiz.html">퀴즈</a><a href="essay.html">서술형</a><a href="cards.html">암기카드</a><a href="words.html">낱말사전</a><a href="cheat.html">시험 전 1장</a></nav>
+</div></header>
+<main>
+<div class="crumb k8"><a href="index.html#c8">← 보드</a><span>기출 풀이 (2023) · 9/11</span></div><h1>Q9. 40GB 파일을 읽었더니 컴퓨터가 멈췄어요 (8점)</h1>
+<p>열이 1000개, 줄이 400만 개인 40GB짜리 bigdata.csv를 <a class="w" href="words.html#w31" data-w="31">HDD</a>에 저장했어요. <a class="w" href="words.html#w14" data-w="14">컴퓨터</a> 사양은 8<a class="w" href="words.html#w89" data-w="89">코어</a> <a class="w" href="words.html#w26" data-w="26">CPU</a>, 16GB <a class="w" href="words.html#w28" data-w="28">RAM</a>, 1TB HDD예요. 다음 코드를 돌렸더니 컴퓨터가 렉이 걸려 거의 멈췄어요.</p>
+<div class="code">import pandas
+x = pandas.read_csv("bigdata.csv")
+print( x['x1'].mean() )</div>
+<div class="tw"><table>
+<tr><th>코드 줄</th><th>무슨 뜻</th></tr>
+<tr><td>import pandas</td><td>표 데이터를 다루는 도구(pandas)를 불러와요.</td></tr>
+<tr><td>x = pandas.read_csv("bigdata.csv")</td><td>csv 파일 전체를 읽어서 x라는 표로 만들어요. 파일 40GB가 통째로 메모리에 올라와요.</td></tr>
+<tr><td>print( x['x1'].mean() )</td><td>x1 열의 평균을 구해서 화면에 출력해요.</td></tr>
+</table></div>
+<p><b><a class="w" href="words.html#w78" data-w="78">실행</a> 결과</b> RAM이 충분하면 x1 열의 평균값 숫자 하나가 출력돼요. 여기서는 RAM이 16GB뿐이라 출력 전에 컴퓨터가 느려져요.</p>
+<p><b>9.1 정답 (각 1점)</b></p>
+<div class="tw"><table>
+<tr><th>칸</th><th>정답</th></tr>
+<tr><td>A</td><td><a class="w" href="words.html#w112" data-w="112">가상메모리</a></td></tr>
+<tr><td>B</td><td><a class="w" href="words.html#w113" data-w="113">물리메모리</a></td></tr>
+<tr><td>C</td><td><a class="w" href="words.html#w29" data-w="29">보조기억장치</a></td></tr>
+<tr><td>D</td><td><a class="w" href="words.html#w114" data-w="114">스왑메모리</a></td></tr>
+<tr><td>E</td><td><a class="w" href="words.html#w115" data-w="115">스와핑</a></td></tr>
+</table></div>
+<p><b>왜 그런지</b> <a class="w" href="words.html#w13" data-w="13">프로세스</a>는 자기만의 큰 가상메모리(A) 공간이 있는 것처럼 데이터를 올려요. <a class="w" href="words.html#w105" data-w="105">운영체제</a>가 이것을 실제 RAM인 물리메모리(B)에 할당하려 하는데, 40GB가 16GB보다 커서 넘치는 부분은 보조기억장치(C)의 스왑메모리(D) 영역으로 쫓겨나요. RAM 용량을 넘어 스왑을 쓰는 이 과정이 스와핑(E)이에요. HDD는 RAM보다 수만 배 이상 느려서(RAM 50~70ns, HDD 5~20ms) 컴퓨터 전체가 거의 멈춰요.</p>
+<p><b>9.2 정답 (3점)</b> 코드를 고치지 않고 부품만 <a class="w" href="words.html#w22" data-w="22">올린다</a>면 <b>RAM을 40GB보다 넉넉하게(예 64GB 이상)</b> 늘려야 해요. 40GB 파일을 읽고 처리할 충분한 RAM 용량을 확보하면 스왑이 필요 없어져요.</p>
+<p>왜 CPU나 HDD가 아닌가요. CPU는 8코어라 계산 능력이 문제가 아니고, HDD는 1TB라 40GB가 들어가고도 남아요. 병목은 "RAM이 데이터보다 작다"예요.</p>
+<div class="box tip"><span class="t">참고 (시험 범위 밖)</span>
+<p>실무에서는 코드를 고쳐 필요한 열(x1)만 읽거나 조금씩 나눠 읽는 방법도 써요. 이번 문제는 "코드를 수정하지 않고 부품을 업그<a class="w" href="words.html#w134" data-w="134">레이드</a>"가 조건이라 RAM이 답이에요.</p></div>
+<div class="box exam"><span class="t">올해 시험에서도 이렇게 쓰세요</span>
+<p>"데이터가 RAM(물리메모리) 용량을 초과하면 일부가 보조기억장치의 스왑 영역으로 옮겨지는 스와핑이 일어나고, 접근 속도가 느린 보조기억장치를 계속 써서 컴퓨터가 느려진다. 따라서 데이터 크기보다 큰 RAM(40GB 이상)으로 업그레이드해야 한다"로 쓰세요. 7주차 가상메모리 수업의 핵심 문장이에요.</p></div>
+<details class="check"><summary>잠깐 확인 — RAM이 모자라 데이터가 보조기억장치로 밀려나는 것을 뭐라고 하나요?</summary><p>스와핑이에요. 밀려난 영역을 스왑메모리(스왑 영역)라고 불러요.</p></details>
+
+<div class="done"><a class="go" href="c8-10.html">다음 카드 → Q10. 보조기억장치 (9점)</a><div class="pn"><a href="c8-08.html"><b>← 이전</b>이전 카드</a><a class="next" href="quiz.html#c8"><b>연습</b>이 장 문제 풀기</a></div><p class="muted small">자료: 중간고사_빅데이터플랫폼001_정답포함_오류수정.pdf</p></div>
+</main>
+<script src="assets/words.js?v=d2a0e0e2"></script>
+<script src="assets/app.js?v=d2a0e0e2"></script>
+</body>
+</html>

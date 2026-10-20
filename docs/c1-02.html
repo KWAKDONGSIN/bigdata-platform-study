@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ko" data-site="1bb07e">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>프로그램이 실행되는 과정 — sum.py 따라가기 ★★★ · 빅데이터플랫폼 시험공부</title>
+<meta name="description" content="빅데이터플랫폼 중간고사를 전공 처음인 사람도 이해하게 정리한 공부 사이트">
+<link rel="stylesheet" href="assets/style.css?v=d2a0e0e2">
+</head>
+<body>
+<header class="top"><div class="top-in">
+<a class="brand" href="index.html"><span class="bases"><i class="a">시</i><i class="t">험</i><i class="g">공</i><i class="c">부</i></span>빅데이터플랫폼</a>
+<nav class="nav" aria-label="메뉴"><a href="index.html" class=on>보드</a><a href="b.html">최소코스</a><a href="bplus.html">B+코스</a><a href="quiz.html">퀴즈</a><a href="essay.html">서술형</a><a href="cards.html">암기카드</a><a href="words.html">낱말사전</a><a href="cheat.html">시험 전 1장</a></nav>
+</div></header>
+<main>
+<div class="crumb k1"><a href="index.html#c1">← 보드</a><span>컴퓨터 구조 소개 · 2/12</span></div><h1>프로그램이 실행되는 과정 — sum.py 따라가기 ★★★</h1>
+<p>3번 문제는 코드 한 줄이 <a class="w" href="words.html#w14" data-w="14">컴퓨터</a> 안에서 어떻게 움직이는지 묻는 문제예요. 먼저 큰 흐름을 외우고, 그다음 시험에 나온 코드를 손으로 따라가 볼게요.</p>
+<ul>
+  <li><b>① <a class="w" href="words.html#w78" data-w="78">실행</a> 전</b> : <a class="w" href="words.html#w12" data-w="12">프로그램</a>(<code>sum.py</code>)과 파이썬 실행기는 <b><a class="w" href="words.html#w29" data-w="29">보조기억장치</a>(<a class="w" href="words.html#w30" data-w="30">SSD</a>)</b>에 저장돼 있어요. 이때는 "보관만 된(비활성)" 상태예요.</li>
+  <li><b>② 실행</b> : 실행하면 코드가 <b><a class="w" href="words.html#w28" data-w="28">주기억장치(RAM)</a></b>에 <a class="w" href="words.html#w22" data-w="22">적재</a>(load)돼요. 이제 "활성" 상태예요.</li>
+  <li><b>③ 번역</b> : RAM의 코드 한 줄을 <b>파이썬 <a class="w" href="words.html#w20" data-w="20">인터프리터</a>(실행기)</b>가 <a class="w" href="words.html#w17" data-w="17">기계어</a>(0과 1)로 바꿔요. 파이썬 코드는 <a class="w" href="words.html#w26" data-w="26">CPU</a>로 바로 갈 수 없어요.</li>
+  <li><b>④ 계산</b> : 기계어가 <b>CPU</b>(<a class="w" href="words.html#w64" data-w="64">ALU</a>)로 전달돼 계산해요.</li>
+  <li><b>⑤ <a class="w" href="words.html#w80" data-w="80">기록</a></b> : 계산 결과(<a class="w" href="words.html#w21" data-w="21">변수</a> 값)를 RAM의 <b>데이터 영역</b>에 기록하고, 다음 줄로 넘어가 ③~⑤를 반복해요.</li>
+</ul>
+<p>번역 단계는 2주차에 교수님이 생략했다가 3주차에 정정해서 넣은 부분이에요. 기계어와 거의 1대 1로 대응되는 사람이 읽을 수 있는 언어가 <b><a class="w" href="words.html#w18" data-w="18">어셈블리어</a></b>예요. RAM 안은 두 영역으로 나뉜다고 생각하세요. 코드가 올라가는 <b>코드 영역</b>과, 변수 값이 적히는 <b>데이터 영역</b>이에요.</p>
+<div class="box eg"><span class="t">비유 — 시나리오와 배우</span>
+<p>교수님은 프로그램을 "계산 시나리오"라고 했어요. 시나리오(프로그램)가 나오면 배우(CPU)가 그 대본을 한 줄씩 연기해요. 파이썬 인터프리터는 외국어 대본을 배우가 알아듣는 말로 한 줄씩 통역해 주는 통역사예요.</p>
+</div>
+<p>이제 2023 기출 3번에 나온 코드를 볼게요.</p>
+<div class="code">1. n = 1;
+2. sum = 0;
+3. while (n &lt;= 100):
+4.     sum = sum + n
+5.     n = n + 1</div>
+<div class="tw"><table>
+  <tr><th style="width:42%">코드 줄</th><th>무슨 뜻인가요</th></tr>
+  <tr><td><code>n = 1;</code></td><td><code>n</code>이라는 이름의 칸을 만들고 1을 넣어요 (끝의 <code>;</code>은 줄 끝 표시일 뿐이에요)</td></tr>
+  <tr><td><code>sum = 0;</code></td><td><code>sum</code>이라는 칸을 만들고 0을 넣어요</td></tr>
+  <tr><td><code>while (n &lt;= 100):</code></td><td>"<code>n</code>이 100 이하인 동안" 아래 두 줄을 반복해요. 조건 판단 명령이에요</td></tr>
+  <tr><td><code>sum = sum + n</code></td><td>오른쪽을 먼저 계산(<code>sum</code> 값 + <code>n</code> 값)해서 그 결과를 <code>sum</code> 칸에 넣어요</td></tr>
+  <tr><td><code>n = n + 1</code></td><td><code>n</code> 값에 1을 더해 <code>n</code> 칸에 다시 넣어요</td></tr>
+</table></div>
+<p>이 코드에는 <code>print</code>가 없어서 <b>화면에 출력되는 것은 아무것도 없어요</b>. 대신 RAM의 변수 칸에 값이 남아요. 손으로 따라간 결과는 아래와 같아요.</p>
+<div class="tw"><table>
+  <tr><th style="width:8%">줄</th><th style="width:34%">하는 일</th><th>RAM의 변수 칸 (실행 후)</th></tr>
+  <tr><td>1</td><td><code>n</code> 칸 만들고 1 기억</td><td><code>n = 1</code></td></tr>
+  <tr><td>2</td><td><code>sum</code> 칸 만들고 0 기억</td><td><code>n = 1, sum = 0</code></td></tr>
+  <tr><td>3</td><td><code>1 &lt;= 100</code> 이 참이니 아래로</td><td>변화 없음</td></tr>
+  <tr><td>4</td><td><code>0 + 1 = 1</code> 을 <code>sum</code>에</td><td><code>n = 1, sum = 1</code></td></tr>
+  <tr><td>5</td><td><code>1 + 1 = 2</code> 를 <code>n</code>에</td><td><code>n = 2, sum = 1</code></td></tr>
+  <tr><td>3</td><td><code>2 &lt;= 100</code> 참, 다시 반복</td><td>변화 없음</td></tr>
+  <tr><td>4~5</td><td><code>sum = 1 + 2 = 3</code>, <code>n = 3</code></td><td><code>n = 3, sum = 3</code></td></tr>
+  <tr><td>…</td><td>계속 반복</td><td>…</td></tr>
+  <tr><td>끝</td><td><code>n</code>이 101이 되면 조건이 거짓이라 반복 종료</td><td><code>n = 101, sum = 5050</code></td></tr>
+</table></div>
+<p>시험 문제는 이 흐름에서 빈칸을 뽑은 거예요. 변수가 <b>어느 줄에서 처음 만들어지는지</b>만 따라가면 풀려요.</p>
+<div class="tw"><table>
+  <tr><th style="width:14%">빈칸</th><th style="width:30%">정답</th><th>이유</th></tr>
+  <tr><td><b>A</b></td><td>보조기억장치</td><td>실행 전에는 저장장치에 있어요</td></tr>
+  <tr><td><b>B</b></td><td><a class="w" href="words.html#w27" data-w="27">주기억장치</a></td><td>실행하면 RAM에 적재돼요. 변수 값도 RAM에 기억돼요</td></tr>
+  <tr><td><b>C</b></td><td>CPU</td><td>기계어를 받아 실행하는 곳이에요</td></tr>
+  <tr><td><b>D</b>, <b>v</b></td><td><code>n</code>, 1</td><td>1번째 줄 <code>n = 1</code></td></tr>
+  <tr><td><b>E</b>, <b>w</b></td><td><code>sum</code>, 0</td><td>2번째 줄 <code>sum = 0</code></td></tr>
+  <tr><td><b>x</b></td><td>100</td><td>3번째 줄 <code>n &lt;= 100</code> 조건의 오른쪽 값</td></tr>
+  <tr><td><b>y</b></td><td>1</td><td>4번째 줄 <code>sum = 0 + 1</code></td></tr>
+  <tr><td><b>z</b></td><td>2</td><td>5번째 줄 <code>n = 1 + 1</code> (변수는 D=<code>n</code>)</td></tr>
+</table></div>
+<div class="box tip"><span class="t">손으로 따라가는 요령</span>
+<p>① 변수 칸 표(<code>n</code>, <code>sum</code>)를 먼저 그려요. ② 줄 번호 순서대로 한 줄씩 칸의 값을 고쳐 써요. ③ <code>=</code>는 "같다"가 아니라 <b>"오른쪽을 계산해서 왼쪽 칸에 넣는다"</b>예요. ④ 반복문은 첫 바퀴만 정확히 하면 나머지는 규칙이 보여요.</p>
+</div>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>sum.py는 보조기억장치(SSD)에 저장되어 있다가 실행되면 파이썬 실행기와 함께 주기억장치(RAM)에 적재된다. 실행기가 코드를 한 줄씩 해석하여 기계어로 CPU에 전달하면 CPU가 계산을 실행하고, 그 결과(변수 값)가 다시 RAM에 기록된다. 이 과정이 반복되며, 프로그램이 종료되면 RAM의 코드와 데이터는 사라지고 출력 결과만 남는다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — 위 코드에서 3번째 줄(while)은 어떤 명령이고, CPU가 하는 일은 무엇인가요?</summary>
+<p>조건 판단 명령이에요. CPU가 <code>n</code> 값이 100 이하인지 비교해서 참이면 4, 5번째 줄로 넘어가고 거짓이면 반복을 끝내요.</p></details>
+
+<div class="done"><a class="go" href="c1-03.html">다음 카드 → 컴퓨터의 6대 부품과 역할 ★★★</a><div class="pn"><a href="c1-01.html"><b>← 이전</b>이전 카드</a><a class="next" href="quiz.html#c1"><b>연습</b>이 장 문제 풀기</a></div><p class="muted small">자료: 2·6·7주차 · 02컴퓨터구조소개.pdf · 02컴퓨터구조소개-실습.pdf · 05중앙처리장치.pdf · 06메모리와계층구조.pdf · 빅데이터플02·06·07</p></div>
+</main>
+<script src="assets/words.js?v=d2a0e0e2"></script>
+<script src="assets/app.js?v=d2a0e0e2"></script>
+</body>
+</html>

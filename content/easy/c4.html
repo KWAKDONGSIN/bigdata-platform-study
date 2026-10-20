@@ -1,0 +1,375 @@
+<!-- 4장: 중앙처리장치(CPU). 폰 노이만 구조, CPU 부품과 레지스터, 버스, 기계어 명령어, 명령어 5단계, 파이프라인, 클럭·멀티코어, 멀티프로세싱을 쉬운 말로 설명해요 -->
+<h2>중앙처리장치(CPU) — 컴퓨터의 두뇌가 일하는 법</h2>
+<p class="lead">컴퓨터에서 계산을 맡는 부품이 CPU예요. 이 장에서는 CPU 안에 무엇이 들어 있는지, 명령 한 줄이 어떤 5단계로 실행되는지, CPU가 왜 더 빨라지기 어려운지를 배워요. 2023년 기출의 Q1, Q3, Q6, Q7이 모두 이 장에서 나와요.</p>
+
+<h3>4-1. 폰 노이만 구조 — 프로그램이 실행되는 길 <span class="st">★★</span></h3>
+<p>컴퓨터 안에서 프로그램은 세 군데를 차례로 지나가요. 먼저 <b>보조기억장치</b>(SSD나 HDD)에 보관돼 있다가, 실행하면 <b>주기억장치</b>(RAM)에 올라오고, 한 줄씩 <b>CPU</b>로 가서 계산돼요. 이렇게 "CPU + 기억장치로 이루어지고 프로그램을 한 줄씩 실행하는" 방식을 <b>폰 노이만 구조</b>(Von Neumann architecture)라고 해요.</p>
+<svg viewBox="0 0 540 170" width="140mm">
+  <defs><marker id="a4" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#1d4ed8"/></marker></defs>
+  <rect x="8" y="50" width="130" height="64" rx="8" fill="#e3f6ec" stroke="#94a3b8"/>
+  <text x="73" y="76" text-anchor="middle" font-size="14" font-weight="bold" fill="#1b2333">보조기억장치</text>
+  <text x="73" y="95" text-anchor="middle" font-size="12" fill="#1b2333">SSD / HDD (보관)</text>
+  <rect x="205" y="50" width="130" height="64" rx="8" fill="#dbe6ff" stroke="#94a3b8"/>
+  <text x="270" y="76" text-anchor="middle" font-size="14" font-weight="bold" fill="#1b2333">주기억장치</text>
+  <text x="270" y="95" text-anchor="middle" font-size="12" fill="#1b2333">RAM (실행 중인 것)</text>
+  <rect x="402" y="50" width="130" height="64" rx="8" fill="#fff1d6" stroke="#94a3b8"/>
+  <text x="467" y="76" text-anchor="middle" font-size="14" font-weight="bold" fill="#1b2333">CPU</text>
+  <text x="467" y="95" text-anchor="middle" font-size="12" fill="#1b2333">한 줄씩 계산</text>
+  <line x1="138" y1="82" x2="203" y2="82" stroke="#1d4ed8" stroke-width="3" marker-end="url(#a4)"/>
+  <text x="170" y="40" text-anchor="middle" font-size="12" fill="#1d4ed8" font-weight="bold">① 적재(load)</text>
+  <line x1="335" y1="70" x2="400" y2="70" stroke="#1d4ed8" stroke-width="3" marker-end="url(#a4)"/>
+  <text x="368" y="40" text-anchor="middle" font-size="12" fill="#1d4ed8" font-weight="bold">② 한 줄 가져감</text>
+  <line x1="400" y1="98" x2="337" y2="98" stroke="#0f7a4f" stroke-width="3" marker-end="url(#a4)"/>
+  <text x="368" y="130" text-anchor="middle" font-size="12" fill="#0f7a4f" font-weight="bold">③ 결과 기록</text>
+</svg>
+<div class="box eg"><span class="t">비유</span>
+<p>요리 학원을 떠올려 보세요. 레시피 책은 책꽂이(보조기억장치)에 꽂혀 있고, 오늘 만들 레시피만 주방 작업대(RAM)에 펼쳐 놓아요. 요리사(CPU)는 레시피를 한 줄씩 읽으며 요리하고, 중간 결과는 작업대에 다시 놓아요.</p>
+</div>
+<p><b>왜 이렇게 나눌까요?</b> 보조기억장치는 크고 값이 싸지만 느려서 CPU가 바로 쓰기엔 답답해요. 그래서 지금 필요한 것만 빠른 RAM에 올려 놓고 써요. 전원이 꺼져도 남아야 하는 프로그램은 보조기억장치에, 실행 중인 것은 RAM에 있는 거예요.</p>
+<p>2023년 기출 Q3가 정확히 이 흐름을 물어봤어요. 아래 sum.py는 1부터 100까지 더하는 파이썬 코드예요.</p>
+<div class="code">1. n = 1;
+2. sum = 0;
+3. while (n &lt;= 100):
+4.    sum = sum + n
+5.    n = n +1</div>
+<table>
+  <tr><th style="width:42%">코드 줄</th><th>무슨 뜻</th></tr>
+  <tr><td><code>n = 1</code></td><td>n이라는 이름의 상자를 만들고 1을 넣어요 (대입).</td></tr>
+  <tr><td><code>sum = 0</code></td><td>sum이라는 상자를 만들고 0을 넣어요.</td></tr>
+  <tr><td><code>while (n &lt;= 100):</code></td><td>n이 100 이하인 동안 아래 두 줄을 계속 반복해요.</td></tr>
+  <tr><td><code>sum = sum + n</code></td><td>sum에 n을 더해서 다시 sum에 넣어요 (누적).</td></tr>
+  <tr><td><code>n = n +1</code></td><td>n을 1 늘려요.</td></tr>
+</table>
+<p><b>실행 결과</b>는 이래요. 시험지 코드에는 화면에 출력하는 줄이 없어요. 하지만 반복이 끝나면 sum 상자에는 1+2+...+100 = <b>5050</b>이 들어 있어요. 첫 반복만 따라가 보면 n=1일 때 sum은 0+1=1이 되고, n은 2가 돼요.</p>
+<p>기출 빈칸은 이렇게 채워요. 보관은 보조기억장치, 적재는 주기억장치, 계산은 CPU, 변수 상자(n, sum)는 RAM 안에 있어요.</p>
+<table>
+  <tr><th style="width:12%">칸</th><th style="width:28%">답</th><th>이유</th></tr>
+  <tr><td>A</td><td><b>보조기억장치</b></td><td>실행 전에는 파일로 보관돼 있어요.</td></tr>
+  <tr><td>B</td><td><b>주기억장치</b></td><td>실행하면 RAM에 적재돼요. 변수 값도 여기에 기억돼요.</td></tr>
+  <tr><td>C</td><td><b>CPU</b></td><td>기계어로 바뀐 명령을 계산하는 곳이에요.</td></tr>
+  <tr><td>D, E</td><td><b>n, sum</b></td><td>1번 줄은 n, 2번 줄은 sum을 만들어요. 4번 줄이 E(sum), 5번 줄이 D(n)에 값을 넣어요.</td></tr>
+  <tr><td>v, w, x</td><td><b>1, 0, 100</b></td><td>n=1, sum=0, 조건은 n &lt;= 100이에요.</td></tr>
+  <tr><td>y, z</td><td><b>1, 2</b></td><td>첫 반복에서 sum=0+1=1, n=1+1=2예요.</td></tr>
+</table>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>폰 노이만 구조는 계산장치(CPU)와 기억장치로 구성되어, 계산장치가 기억장치의 프로그램에서 명령을 한 줄씩 실행하고 계산 결과를 기억장치에 기록하는 방식으로 동작하는 컴퓨터 구조이다. 프로그램은 보조기억장치에 보관되어 있다가 실행되면 주기억장치(RAM)에 적재되고, CPU가 명령을 한 줄씩 가져와 계산한다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — 실행 중인 프로그램의 변수 값 n, sum은 어디에 기억되나요?</summary>
+<p>주기억장치(RAM)예요. 프로그램이 실행되면 RAM에 올라오고, 변수 값도 RAM의 변수 공간에 기억돼요.</p></details>
+
+<h3>4-2. CPU 안에는 무엇이 있을까 — ALU, 제어장치, 레지스터 <span class="st">★★★</span></h3>
+<p>CPU는 반드시 있어야 하는 부품 3가지와, 성능을 높이려고 덧붙인 부품 1가지로 이루어져요. 필수 3가지는 <b>산술논리연산장치(ALU)</b>, <b>제어장치(CU)</b>, <b>레지스터 세트</b>예요.</p>
+<table>
+  <tr><th style="width:26%">부품</th><th>하는 일</th><th style="width:30%">비유</th></tr>
+  <tr><td><b>ALU</b><br><span class="small">Arithmetic Logic Unit<br>산술논리연산장치</span></td><td>덧셈·뺄셈 같은 산술 연산과 AND·OR 같은 논리 연산 등 기본 연산을 해요.</td><td>계산기</td></tr>
+  <tr><td><b>CU</b><br><span class="small">Control Unit, 제어장치</span></td><td>메모리에서 가져온 명령을 해독(decode)하고, 각 장치가 움직이도록 제어신호를 보내요.</td><td>오케스트라 지휘자</td></tr>
+  <tr><td><b>레지스터 세트</b><br><span class="small">register set</span></td><td>CPU 안에 있는, 용량은 작지만 매우 빠른 메모리예요. 범용 레지스터와 특수 레지스터로 나뉘어요.</td><td>손에 든 메모지</td></tr>
+  <tr><td><b>캐시</b> (확장 부품)</td><td>자주 쓰는 데이터를 임시로 보관해서 메모리까지 가는 시간을 줄여요. L1, L2, L3 단계가 있어요. (5장에서 자세히)</td><td>책상 위 참고서</td></tr>
+</table>
+<svg viewBox="0 0 620 330" width="150mm">
+  <defs><marker id="b4" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#1b2333"/></marker>
+  <marker id="b4r" markerWidth="8" markerHeight="8" refX="1" refY="4" orient="auto"><path d="M8,0 L0,4 L8,8 z" fill="#1b2333"/></marker></defs>
+  <rect x="8" y="20" width="84" height="292" rx="8" fill="#eef2f8" stroke="#94a3b8"/>
+  <text x="50" y="160" text-anchor="middle" font-size="14" font-weight="bold" fill="#1b2333">메모리</text>
+  <text x="50" y="180" text-anchor="middle" font-size="13" fill="#1b2333">(RAM)</text>
+  <rect x="210" y="8" width="402" height="314" rx="10" fill="none" stroke="#0f7a4f" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="560" y="26" text-anchor="middle" font-size="13" font-weight="bold" fill="#0f7a4f">CPU</text>
+  <rect x="224" y="34" width="76" height="34" rx="4" fill="#dbe6ff" stroke="#475569"/><text x="262" y="56" text-anchor="middle" font-size="14" font-weight="bold" fill="#1b2333">MAR</text>
+  <rect x="224" y="118" width="76" height="52" rx="4" fill="#fff1d6" stroke="#475569"/><text x="262" y="142" text-anchor="middle" font-size="14" font-weight="bold" fill="#1b2333">CU</text><text x="262" y="160" text-anchor="middle" font-size="11" fill="#1b2333">제어장치</text>
+  <rect x="224" y="262" width="76" height="34" rx="4" fill="#dbe6ff" stroke="#475569"/><text x="262" y="284" text-anchor="middle" font-size="14" font-weight="bold" fill="#1b2333">MBR</text>
+  <rect x="350" y="34" width="64" height="30" rx="4" fill="#dbe6ff" stroke="#475569"/><text x="382" y="55" text-anchor="middle" font-size="14" font-weight="bold" fill="#1b2333">PC</text>
+  <rect x="350" y="80" width="64" height="30" rx="4" fill="#dbe6ff" stroke="#475569"/><text x="382" y="101" text-anchor="middle" font-size="14" font-weight="bold" fill="#1b2333">IR</text>
+  <rect x="330" y="196" width="96" height="64" rx="4" fill="#e3f6ec" stroke="#475569"/><text x="378" y="224" text-anchor="middle" font-size="13" fill="#1b2333">레지스터</text><text x="378" y="242" text-anchor="middle" font-size="13" fill="#1b2333">세트</text>
+  <rect x="452" y="190" width="36" height="26" rx="4" fill="#dbe6ff" stroke="#475569"/><text x="470" y="208" text-anchor="middle" font-size="13" font-weight="bold" fill="#1b2333">X</text>
+  <rect x="452" y="240" width="36" height="26" rx="4" fill="#dbe6ff" stroke="#475569"/><text x="470" y="258" text-anchor="middle" font-size="13" font-weight="bold" fill="#1b2333">Y</text>
+  <polygon points="506,184 560,206 560,250 506,272" fill="#fde2e2" stroke="#475569"/><text x="530" y="233" text-anchor="middle" font-size="14" font-weight="bold" fill="#1b2333">ALU</text>
+  <rect x="572" y="206" width="36" height="44" rx="4" fill="#dbe6ff" stroke="#475569"/><text x="590" y="233" text-anchor="middle" font-size="14" font-weight="bold" fill="#1b2333">AC</text>
+  <g stroke="#1b2333" stroke-width="2" fill="none">
+    <line x1="224" y1="51" x2="94" y2="51" marker-end="url(#b4)"/>
+    <line x1="224" y1="144" x2="94" y2="144" marker-end="url(#b4)"/>
+    <line x1="94" y1="279" x2="224" y2="279" marker-start="url(#b4r)" marker-end="url(#b4)"/>
+    <line x1="350" y1="49" x2="302" y2="49" marker-end="url(#b4)"/>
+    <polyline points="350,95 326,95 326,132 302,132" marker-end="url(#b4)"/>
+    <line x1="426" y1="203" x2="450" y2="203" marker-end="url(#b4)"/>
+    <line x1="426" y1="253" x2="450" y2="253" marker-end="url(#b4)"/>
+    <line x1="488" y1="203" x2="504" y2="203" marker-end="url(#b4)"/>
+    <line x1="488" y1="253" x2="504" y2="253" marker-end="url(#b4)"/>
+    <line x1="560" y1="228" x2="570" y2="228" marker-end="url(#b4)"/>
+    <polyline points="302,279 378,279 378,262" marker-end="url(#b4)"/>
+    <polyline points="300,150 533,150 533,186" stroke-dasharray="5 3" marker-end="url(#b4)"/>
+  </g>
+  <text x="158" y="43" text-anchor="middle" font-size="12" fill="#1b2333">주소 버스</text>
+  <text x="158" y="136" text-anchor="middle" font-size="12" fill="#1b2333">제어 버스</text>
+  <text x="158" y="271" text-anchor="middle" font-size="12" fill="#1b2333">데이터 버스</text>
+  <text x="430" y="144" text-anchor="middle" font-size="12" fill="#1b2333">제어신호 (+, - 등)</text>
+</svg>
+<p class="small" style="text-align:center">CPU 내부 구조 단순화. 실선 화살표는 값이 이동하는 길, 점선은 CU가 보내는 제어신호예요. 강의자료 8쪽 그림을 단순화했어요.</p>
+<figure class="slide"><img src="slides/b_cpu_struct.jpg" alt="프로세서의 구성 요소 슬라이드"><figcaption>교수님 슬라이드 — 프로세서 필수 구성 요소 (CU, ALU, 범용·특수 레지스터)</figcaption></figure>
+<p>레지스터는 쓰임새에 따라 두 종류로 나눠요. <b>범용 레지스터</b>는 R1, R2처럼 ALU 계산에 쓰는 데이터를 담는 보통 1~32개의 레지스터예요. <b>특수 레지스터</b>는 정해진 한 가지 일만 하는 레지스터예요. 슬라이드에 나온 특수 레지스터는 PC, IR, AC, MAR, MBR 다섯 개예요.</p>
+<table>
+  <tr><th style="width:24%">이름</th><th>뜻</th><th style="width:28%">비유</th></tr>
+  <tr><td><b>PC</b><br><span class="small">Program Counter</span></td><td>다음에 가져올 명령이 메모리 몇 번지에 있는지 적어 둬요.</td><td>책갈피 (다음에 읽을 쪽)</td></tr>
+  <tr><td><b>IR</b><br><span class="small">Instruction Register</span></td><td>지금 실행하려고 가져온 명령 한 줄을 담아요.</td><td>지금 읽는 문장</td></tr>
+  <tr><td><b>AC</b><br><span class="small">ACcumulator, 누산기</span></td><td>ALU 계산 결과를 잠깐 담아요.</td><td>계산기 화면</td></tr>
+  <tr><td><b>MAR</b><br><span class="small">Memory Address Register</span></td><td>메모리의 몇 번지를 읽거나 쓸지 번호를 적어 둬요.</td><td>도서관 청구기호 쪽지</td></tr>
+  <tr><td><b>MBR</b><br><span class="small">Memory Buffer Register<br>(MDR이라고도 해요)</span></td><td>메모리에서 읽어 온 값, 또는 메모리에 쓸 값을 잠깐 담아요.</td><td>카운터에서 받은 책을 놓는 쟁반</td></tr>
+</table>
+<p>그림의 X, Y는 ALU 입구에 있는 작은 레지스터예요. 계산할 두 값이 X와 Y로 들어가고, 결과는 AC로 나와요.</p>
+<div class="box eg"><span class="t">비유 — 교수님의 시험공부</span>
+<p>SSD는 <b>도서관</b>, RAM은 <b>책장</b>, 캐시는 <b>책상</b>, 레지스터는 책상 위에서 필기하는 <b>노트</b>, ALU는 <b>두뇌</b>예요. 도서관에서 필요한 책만 빌려 책장에 꽂고, 지금 볼 책은 책상에 펴고, 계산하는 숫자는 노트에 적는 식이에요.</p>
+</div>
+<p><b>왜 레지스터와 캐시를 따로 둘까요?</b> ALU는 1초에 수십억 번 계산하는데 RAM이나 SSD는 그 속도로 데이터를 못 대 줘요. 그래서 CPU 가까이에 작고 빠른 메모리를 층층이 둬서 ALU가 기다리지 않게 해요. 속도는 레지스터 &gt; L1 &gt; L2 &gt; L3 &gt; RAM &gt; 디스크 순이고, 용량은 반대 순서예요.</p>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>CPU의 필수 구성 요소는 산술논리연산장치(ALU), 제어장치(CU), 레지스터 세트이다. ALU는 산술·논리 연산을 수행하고, 제어장치는 명령어를 해독하여 제어신호를 발생시키며, 레지스터는 CPU 내부에 있는 용량은 작지만 매우 빠른 메모리이다. 특수 레지스터에는 PC(다음 명령의 주소), IR(현재 명령), AC(누산기), MAR(메모리 주소), MBR(메모리 버퍼)이 있다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — 다음에 실행할 명령이 메모리 몇 번지에 있는지 기억하는 레지스터는?</summary>
+<p>PC(프로그램 카운터)예요. 책갈피처럼 "다음에 읽을 번지"를 가리켜요.</p></details>
+
+<h3>4-3. 부품을 잇는 길, 버스</h3>
+<p>CPU와 메모리 사이에는 신호가 다니는 길이 필요해요. 이 길을 <b>버스</b>(bus)라고 부르고, 하는 일에 따라 세 가지로 나눠요. 슬라이드 50쪽 요약에는 이름만 나오고 수업에서 자세히 다루지 않았어요. 위 그림의 CPU 왼쪽 선 세 개가 바로 버스예요.</p>
+<table>
+  <tr><th style="width:26%">버스</th><th>무엇이 다니나</th><th style="width:30%">그림에서</th></tr>
+  <tr><td><b>주소 버스</b></td><td>"메모리 몇 번지를 볼 것인가"라는 번호</td><td>MAR에서 메모리로</td></tr>
+  <tr><td><b>데이터 버스</b></td><td>읽거나 쓸 실제 값 (양방향)</td><td>MBR과 메모리 사이</td></tr>
+  <tr><td><b>제어 버스</b></td><td>"읽어라(Read)", "써라(Write)" 같은 제어신호</td><td>CU에서 메모리로</td></tr>
+</table>
+<div class="box eg"><span class="t">비유</span>
+<p>택배로 물건을 주고받는다고 해 봐요. 주소 버스는 받는 사람 주소, 데이터 버스는 상자 안의 물건, 제어 버스는 "보내기"인지 "받기"인지 적은 전표예요.</p>
+</div>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>시스템 버스는 CPU와 메모리 등을 연결하는 통로로 주소 버스, 데이터 버스, 제어 버스로 구성된다. 주소 버스는 읽거나 쓸 메모리 번지를, 데이터 버스는 실제 데이터를, 제어 버스는 읽기/쓰기 같은 제어신호를 전달한다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — MAR의 주소가 메모리로 나가는 길은 무슨 버스인가요?</summary>
+<p>주소 버스예요.</p></details>
+
+<h3>4-4. 기계어와 명령어 — opcode와 operand <span class="st">★★</span></h3>
+<p>CPU가 바로 알아듣는 말은 0과 1로 된 <b>기계어</b>뿐이에요. 사람은 파이썬 같은 <b>고급언어</b>로 코드를 쓰고, 번역기(인터프리터 등)가 이것을 기계어로 바꿔 줘요. 기계어는 사람이 읽기 어려워서, 거의 1대1로 직역한 <b>어셈블리어</b>로 읽어요.</p>
+<table>
+  <tr><th style="width:34%">고급언어 (파이썬)</th><th style="width:32%">어셈블리어</th><th>기계어 (16비트)</th></tr>
+  <tr><td rowspan="4"><code>A = 2 + 3</code></td><td>MOVE R1 2</td><td>1000 0001 0000 0010</td></tr>
+  <tr><td>MOVE R2 3</td><td>1000 0010 0000 0011</td></tr>
+  <tr><td>ADD R3 R1 R2</td><td>1100 0011 0001 0010</td></tr>
+  <tr><td>STORE CC R3</td><td>(번지 CC에 R3 저장)</td></tr>
+  <tr><td rowspan="4"><code>B = 5 * A</code></td><td>MOVE R4 5</td><td>1000 0100 0000 0101</td></tr>
+  <tr><td>LOAD R5 CC</td><td>(번지 CC에서 R5로 읽기)</td></tr>
+  <tr><td>MUL R6 R4 R5</td><td>1101 0110 0100 0101</td></tr>
+  <tr><td>STORE CD R6</td><td>(번지 CD에 R6 저장)</td></tr>
+</table>
+<p>파이썬 한 줄이 어셈블리 여러 줄이 돼요. <code>A = 2 + 3</code> 하나가 MOVE, MOVE, ADD, STORE 네 줄이에요. 번지(메모리 주소) 줄은 아래에서 따로 풀어요.</p>
+<figure class="slide"><img src="slides/b_asm_machine.jpg" alt="고급언어에서 기계어까지 슬라이드"><figcaption>교수님 슬라이드 — 고급언어 → 어셈블리어 → 기계어 (opcode는 빨강, operand는 파랑·초록·보라)</figcaption></figure>
+<p>명령 한 줄(<b>instruction</b>)은 두 부분으로 이루어져요.</p>
+<ul>
+  <li><b>opcode</b>(동작 코드) : 무슨 계산을 할지. MOVE, ADD, MUL, LOAD, STORE 등 (문장의 <b>동사</b>)</li>
+  <li><b>operand</b>(피연산자) : 계산 대상. 숫자, 레지스터, 메모리 주소 (문장의 <b>목적어</b>)</li>
+</ul>
+<p>이 수업의 가상 CPU에서는 16비트 명령 하나를 이렇게 4칸씩 끊어 읽어요. 아래 표가 기계어 빈칸 문제를 푸는 열쇠예요.</p>
+<table>
+  <tr><th style="width:24%">opcode</th><th style="width:24%">2진수 (4비트)</th><th>하는 일</th></tr>
+  <tr><td>MOVE</td><td>1000</td><td>값을 레지스터에 넣기 (대입)</td></tr>
+  <tr><td>LOAD</td><td>1001</td><td>메모리에서 레지스터로 읽기</td></tr>
+  <tr><td>STORE</td><td>1010</td><td>레지스터에서 메모리로 쓰기</td></tr>
+  <tr><td>ADD</td><td>1100</td><td>더하기</td></tr>
+  <tr><td>MUL</td><td>1101</td><td>곱하기</td></tr>
+</table>
+<p>레지스터 번호는 그냥 2진수 4비트예요. R1=0001, R2=0010, R3=0011, R4=0100, R5=0101, R6=0110이에요. 아래 줄을 4칸씩 끊어서 읽어 보세요.</p>
+<ul>
+  <li><b>MOVE R1 2</b> = 1000 | 0001 | 0000 0010 → opcode(MOVE), 레지스터 R1, 숫자 2(8비트)</li>
+  <li><b>ADD R3 R1 R2</b> = 1100 | 0011 | 0001 | 0010 → opcode(ADD), 결과 R3, 더할 R1, 더할 R2</li>
+  <li><b>LOAD R5 CC</b> = 1001 | 0101 | CC(8비트 주소)</li>
+  <li><b>STORE CC R3</b> = 1010 | CC(8비트 주소) | 0011</li>
+</ul>
+<p>번지 CC와 CD는 16진수예요. 16진수 C는 10진수 12이고 2진수 1100이에요. D는 13이고 1101이에요. 그래서 <b>CC = 1100 1100</b>, <b>CD = 1100 1101</b>이에요. 이 값이 2023년 기출 정답과 교수님 설명이에요.</p>
+<p>2023년 기출 Q6.1은 위 규칙으로 풀면 돼요.</p>
+<table>
+  <tr><th style="width:12%">빈칸</th><th style="width:28%">답</th><th>어떻게 풀었나</th></tr>
+  <tr><td>①</td><td><b>0000 0011</b></td><td>MOVE R2 3 → 숫자 3을 8비트로</td></tr>
+  <tr><td>②</td><td><b>1000</b></td><td>MOVE R1 2의 opcode (다른 MOVE 줄과 같아요)</td></tr>
+  <tr><td>③</td><td><b>0000 0101</b></td><td>MOVE R4 5 → 숫자 5를 8비트로</td></tr>
+  <tr><td>④</td><td><b>1100 1100</b></td><td>LOAD R5 CC → 주소 CC</td></tr>
+  <tr><td>⑤</td><td><b>1010</b></td><td>STORE CD R6의 opcode (STORE는 모두 1010)</td></tr>
+  <tr><td>⑥</td><td><b>1100 1101</b></td><td>주소 CD</td></tr>
+</table>
+<p class="small">강의자료 12쪽 예시의 STORE·LOAD 줄에는 주소 자리에 1010 1010 같은 값이 적혀 있어서, 위 규칙(예 LOAD R5의 R5=0101)과 서로 맞지 않아요. 자료 그대로 외우지 말고 규칙으로 푸세요. 참고로 2023 시험지 그림의 4번째 줄 끝 4비트도 0101로 찍혀 있지만 빈칸 ①~⑥과는 상관없어요.</p>
+<p>명령의 종류도 알아 둬요. <b>메모리 접근 명령</b>은 LOAD(메모리에서 레지스터로 읽기)와 STORE(레지스터에서 메모리로 쓰기)예요. <b>레지스터 계산 명령</b>은 MOVE, ADD, MUL처럼 레지스터끼리 계산해요. 이 둘 외에 분기·반복에서 PC 값을 바꾸는 <b>프로그램 이동 명령</b>도 있어요.</p>
+<p><b>명령어 집합 구조(ISA, Instruction Set Architecture)</b>는 "CPU가 알아듣고 계산할 수 있는 명령어 전체"예요. 이 목록은 CPU 제조사 설계에 따라 달라서, ISA가 다른 CPU에서는 같은 프로그램이 안 돌아가요. 인텔 펜티엄의 기계어는 명령마다 길이가 달라요(가변 길이). AVR은 길이가 같아요(고정 길이).</p>
+<p>명령에 주소(operand)를 몇 개 적느냐에 따라 형식이 4가지예요.</p>
+<table>
+  <tr><th style="width:18%">형식</th><th style="width:30%">예</th><th>특징</th></tr>
+  <tr><td><b>0-주소</b></td><td>PUSH, POP</td><td>피연산자가 묵시적(스택을 쓰는 구조)</td></tr>
+  <tr><td><b>1-주소</b></td><td>ADD X<br>AC ← AC + M[X]</td><td>한쪽은 누산기(AC)가 정해져 있고, 결과도 AC에 저장</td></tr>
+  <tr><td><b>2-주소</b></td><td>ADD R1, R2<br>R1 ← R1 + R2</td><td>R1의 원래 값은 지워져요</td></tr>
+  <tr><td><b>3-주소</b></td><td>ADD R1, R2, R3<br>R1 ← R2 + R3</td><td>입력 값이 보존돼요. 프로그램은 짧아지지만 해독이 복잡해요</td></tr>
+</table>
+<p>1-주소 형식으로 <b>손계산</b> 하나를 해 봐요. 명령이 16비트이고 opcode가 5비트, 주소가 11비트라면 opcode로 2<sup>5</sup> = <b>32가지</b> 연산을, 주소로 2<sup>11</sup> = <b>2,048개</b> 번지를 가리킬 수 있어요. 비트가 n개면 2를 n번 곱한 만큼 구분할 수 있기 때문이에요.</p>
+<div class="box tip"><span class="t">외우기 팁</span>
+<p>opcode는 "동사", operand는 "목적어"예요. 같은 동사는 같은 코드로 써요. 그러니 빈칸이 나오면 <b>같은 opcode를 쓴 다른 줄</b>을 먼저 찾아보세요(②, ⑤가 그 경우예요).</p>
+</div>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>기계어 명령어는 연산의 종류를 나타내는 동작 코드(opcode)와 연산의 대상을 나타내는 오퍼랜드(operand)로 구성된다. 명령어 집합 구조(ISA)는 CPU가 인식하여 계산할 수 있는 명령어들의 집합이며 CPU 제조사의 설계에 따라 달라진다. 어셈블리어는 기계어를 사람이 이해하기 쉽게 거의 1대1로 직역한 언어이다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — ADD R3 R1 R2에서 opcode와 operand를 구분해 보세요.</summary>
+<p>opcode는 ADD(더하라)이고, operand는 R3, R1, R2예요. R1과 R2를 더해서 R3에 저장하라는 뜻이에요.</p></details>
+
+<h3>4-5. 명령 한 줄이 실행되는 5단계 <span class="st">★★★ 시험 최다 출제</span></h3>
+<p>CPU는 명령 한 줄을 통째로 처리하지 않고, 더 작은 <b>마이크로 명령</b> 5개로 나눠서 실행해요. 이 5단계를 한 바퀴 도는 것을 <b>주사이클</b>(명령어 사이클)이라고 해요. 순서는 <b>인출 → 해독 → 실행 → 데이터 → 기록</b>이에요.</p>
+<svg viewBox="0 0 600 120" width="150mm">
+  <defs><marker id="c4a" viewBox="0 0 8 8" markerWidth="5" markerHeight="5" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#1d4ed8"/></marker></defs>
+  <g font-size="14" font-weight="bold" fill="#1b2333" text-anchor="middle">
+    <rect x="6" y="20" width="100" height="50" rx="8" fill="#dbe6ff"/><text x="56" y="42">1 인출</text><text x="56" y="60" font-size="11" font-weight="normal">fetch</text>
+    <rect x="124" y="20" width="100" height="50" rx="8" fill="#e3f6ec"/><text x="174" y="42">2 해독</text><text x="174" y="60" font-size="11" font-weight="normal">decode</text>
+    <rect x="242" y="20" width="100" height="50" rx="8" fill="#fff1d6"/><text x="292" y="42">3 실행</text><text x="292" y="60" font-size="11" font-weight="normal">execute</text>
+    <rect x="360" y="20" width="100" height="50" rx="8" fill="#fde2e2"/><text x="410" y="42">4 데이터</text><text x="410" y="60" font-size="11" font-weight="normal">data</text>
+    <rect x="478" y="20" width="100" height="50" rx="8" fill="#eadcf8"/><text x="528" y="42">5 기록</text><text x="528" y="60" font-size="11" font-weight="normal">write back</text>
+  </g>
+  <g stroke="#1d4ed8" stroke-width="2.5"><line x1="106" y1="45" x2="122" y2="45" marker-end="url(#c4a)"/><line x1="224" y1="45" x2="240" y2="45" marker-end="url(#c4a)"/><line x1="342" y1="45" x2="358" y2="45" marker-end="url(#c4a)"/><line x1="460" y1="45" x2="476" y2="45" marker-end="url(#c4a)"/></g>
+  <text x="300" y="95" text-anchor="middle" font-size="13" fill="#1b2333">레지스터 계산 명령(MOVE, ADD, MUL)은 1-2-3-5, 메모리 접근 명령(LOAD, STORE)은 1-2-4-5</text>
+  <text x="300" y="112" text-anchor="middle" font-size="12" fill="#5d6b80">해당 없는 단계는 "No action"(아무 일 없음)이에요</text>
+</svg>
+<div class="box eg"><span class="t">비유 — 도서관에서 책 빌려 계산하기</span>
+<p><b>인출</b>은 다음에 할 일이 적힌 쪽지를 가져오는 것, <b>해독</b>은 쪽지 내용을 이해하는 것, <b>실행</b>은 계산기를 두드리는 것이에요. <b>데이터</b>는 책장(메모리)에서 책을 꺼내거나 꽂는 것, <b>기록</b>은 결과를 내 노트(레지스터)에 적는 것이에요.</p>
+</div>
+<table>
+  <tr><th style="width:18%">단계</th><th>하는 일 (자료 기준)</th><th style="width:26%">주로 쓰는 부품</th></tr>
+  <tr><td><b>1 인출</b><br><span class="small">fetch</span></td><td>PC가 가리키는 번지의 명령을 메모리에서 읽어 IR로 가져와요. 그다음 PC는 <b>다음 명령의 번지로 바뀌어요</b>.</td><td>PC, MAR, MBR, IR</td></tr>
+  <tr><td><b>2 해독</b><br><span class="small">decode</span></td><td>CU가 IR의 명령을 해석하고 제어신호를 정해요. 계산에 쓸 값을 X, Y에 넣어요.</td><td>CU, IR, X, Y</td></tr>
+  <tr><td><b>3 실행</b><br><span class="small">execute</span></td><td>ALU가 계산해요. <b>(레지스터 계산 명령일 때만)</b></td><td>ALU, AC</td></tr>
+  <tr><td><b>4 데이터</b><br><span class="small">data</span></td><td>MAR 번지에서 값을 MBR로 읽거나(읽기), MBR의 값을 MAR 번지에 써요(쓰기). <b>(메모리 접근 명령일 때만)</b></td><td>MAR, MBR, 메모리</td></tr>
+  <tr><td><b>5 기록</b><br><span class="small">write back</span></td><td>계산 결과 또는 메모리에서 읽은 값을 레지스터에 기록해요.</td><td>AC 또는 MBR, 레지스터</td></tr>
+</table>
+<p>실제 예로 따라가 볼게요. 메모리 00번지에 <code>MOVE R1 2</code>, 02번지에 <code>MOVE R2 3</code>, 04번지에 <code>ADD R3 R1 R2</code>, 06번지에 <code>STORE CC R3</code>이 있어요. 명령 하나가 2칸(16비트 = 2바이트)을 차지해서 번지가 0, 2, 4, 6으로 2씩 늘어요. 그래서 PC도 2씩 늘어요. R1에는 2, R2에는 3이 이미 들어 있다고 해요.</p>
+<p><b>예 1. 04번지 ADD R3 R1 R2 (레지스터 계산 명령)</b> — 시험과 과제에 가장 많이 나온 예예요. PC=4에서 시작해요.</p>
+<table>
+  <tr><th style="width:16%">단계</th><th>일어나는 일</th></tr>
+  <tr><td>1 인출</td><td>PC 값 4를 MAR로 보내요 (MAR ← 4). 제어신호는 Read(읽기). 4번지의 명령이 MBR을 거쳐 IR로 들어가요 (MBR, IR ← ADD R3 R1 R2). PC는 6으로 바뀌어요 (PC: 4 ; PC ← 6).</td></tr>
+  <tr><td>2 해독</td><td>CU가 IR을 해석해요. R1, R2의 값이 X ← 2, Y ← 3으로 들어가고 ALU 제어신호는 <b>+</b>예요.</td></tr>
+  <tr><td>3 실행</td><td>ALU가 2 + 3을 계산해서 AC ← 5가 돼요.</td></tr>
+  <tr><td>4 데이터</td><td>메모리를 안 쓰는 명령이라 <b>No action</b>이에요.</td></tr>
+  <tr><td>5 기록</td><td>AC의 5를 R3에 기록해요 (R3 ← 5).</td></tr>
+</table>
+<p><b>예 2. 06번지 STORE CC R3 (메모리 접근 명령)</b> — 계산이 없어서 3단계가 No action이에요. PC=6에서 시작해요.</p>
+<table>
+  <tr><th style="width:16%">단계</th><th>일어나는 일</th></tr>
+  <tr><td>1 인출</td><td>MAR ← 6, 제어신호 Read, MBR와 IR ← STORE CC R3, PC ← 8.</td></tr>
+  <tr><td>2 해독</td><td>IR 해석. 쓸 번지와 값을 준비해요 (MAR ← CC, MBR ← R3의 값 5).</td></tr>
+  <tr><td>3 실행</td><td><b>No action</b> (계산이 없어요).</td></tr>
+  <tr><td>4 데이터</td><td>제어신호 Write. 메모리 CC번지에 MBR의 값을 써요 (MEM[CC] ← 5).</td></tr>
+  <tr><td>5 기록</td><td><b>No action</b> (레지스터에 쓸 것이 없어요).</td></tr>
+</table>
+<figure class="slide"><img src="slides/b_fetch.jpg" alt="인출 단계 슬라이드"><figcaption>교수님 슬라이드 — 1단계 인출. MAR ← 0, 제어신호 Read, MBR와 IR ← MOVE R1 2, PC: 0 ; PC ← 2</figcaption></figure>
+<p><b>예 3. LOAD R5 CC (스스로 해 보기)</b> — 교수님이 "혼자 해 보라"고 한 명령이에요. 같은 방식으로 따라가면 해독에서 MAR ← CC, 데이터에서 Read로 MBR ← MEM[CC], 기록에서 R5 ← MBR이 돼요. 실행은 No action이에요.</p>
+<p><b>왜 이렇게 쪼갤까요?</b> 5단계는 서로 쓰는 부품이 달라서 신호가 겹치지 않아요. 덕분에 다음 절의 파이프라인처럼 겹쳐서 실행할 수 있어요.</p>
+<p>2023년 기출 Q7은 이 그림을 그대로 냈어요. 04번지의 ADD를 실행하는 중이고, 메모리에는 00번지 MOVE R1 5, 02번지 MOVE R2 7이 들어 있었어요(그래서 R1=5, R2=7이에요). 답은 아래와 같아요.</p>
+<table>
+  <tr><th style="width:12%">빈칸</th><th style="width:26%">답</th><th>어떻게 알아보나</th></tr>
+  <tr><td>①</td><td><b>인출(fetch)</b></td><td>그림에 PC, MAR, IR, MBR 화살표가 있으면 인출이에요.</td></tr>
+  <tr><td>②, ③</td><td><b>4, 6</b></td><td>PC : 현재 값 ; PC ← 다음 값. 현재 04번지니까 4, 다음 명령은 06번지니까 6이에요.</td></tr>
+  <tr><td>④</td><td><b>4</b></td><td>MAR ← PC 값이에요.</td></tr>
+  <tr><td>⑤</td><td><b>ADD R3 R1 R2</b></td><td>IR ← 메모리에서 읽은 명령이에요.</td></tr>
+  <tr><td>⑥</td><td><b>실행(execute)</b></td><td>ALU, X, Y, 제어신호, AC가 보이면 실행이에요.</td></tr>
+  <tr><td>⑦</td><td><b>+</b></td><td>ADD니까 더하기 신호예요.</td></tr>
+  <tr><td>⑧, ⑨</td><td><b>5, 7</b></td><td>R1=5, R2=7 값이 X, Y로 들어가요.</td></tr>
+  <tr><td>⑩</td><td><b>12</b></td><td>5 + 7 = 12이고 AC ← 12예요.</td></tr>
+</table>
+<p>Q6.2도 같은 계산이에요. "1100 0011 0001 0010"(ADD R3 R1 R2)을 ALU에서 계산할 때 R1=2, R2=3이면 입력은 <b>A=0000 0010, B=0000 0011, C=1000 0000, Y=0000 0101</b>이에요. 제어신호 C는 왼쪽부터 +, -, ×, /, &amp;, |, &gt;&gt;, &lt;&lt; 순서(C7부터 C0)라서 더하기(+)는 맨 왼쪽 비트만 1이에요. 그래서 1000 0000이에요. Y는 2+3=5를 2진수로 쓴 0000 0101이에요.</p>
+<div class="box tip"><span class="t">외우기 팁</span>
+<p>그림 문제는 <b>어느 부품에 화살표가 있나</b>로 단계를 알아봐요. PC·MAR·IR → 인출, X·Y·제어신호 → 해독(또는 실행), AC가 값을 받으면 실행, MAR·MBR에서 메모리로 → 데이터, 레지스터에 값이 들어가면 기록이에요. 계산(ADD, MUL)은 <b>1-2-3-5</b>, 메모리(LOAD, STORE)는 <b>1-2-4-5</b>예요.</p>
+</div>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>CPU는 하나의 기계어 명령을 인출(fetch), 해독(decode), 실행(execute), 데이터(data), 기록(write back)의 5단계 마이크로 명령으로 나누어 실행한다. 인출 단계에서는 PC의 주소를 MAR에 넣고 메모리에서 읽은 명령을 MBR을 거쳐 IR에 가져오며 PC는 다음 명령의 주소로 변경된다. 해독 단계에서는 제어장치가 IR의 명령을 해독하여 제어신호를 결정하고, 실행 단계에서는 ALU가 계산하여 결과를 AC에 둔다. 데이터 단계는 메모리 접근 명령에서만 MAR 주소와 MBR 사이에 값을 읽거나 쓰며, 기록 단계에서는 결과를 레지스터에 기록한다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — ADD 명령에서 "데이터" 단계는 무슨 일을 하나요? 그리고 PC가 4일 때 인출 후 PC 값은?</summary>
+<p>ADD는 메모리를 안 쓰는 계산 명령이라 데이터 단계는 No action이에요. 명령이 2칸이라 인출 후 PC는 6이에요.</p></details>
+
+<h3>4-6. 파이프라인과 RISC·CISC <span class="st">★</span></h3>
+<p>5단계는 서로 부품이 달라서 겹치지 않아요. 그러면 앞 명령이 해독 중일 때 다음 명령은 벌써 인출을 시작할 수 있겠죠. 이렇게 명령들이 <b>한 칸씩 밀리며 동시에 진행</b>하는 방식이 <b>파이프라이닝</b>(pipelining)이에요. 슬라이드에서 단계 이름은 FI(인출), DI(해독), EI(실행), BD(버퍼/데이터), WB(기록)로 적혀 있어요.</p>
+<figure class="slide"><img src="slides/b_pipeline.jpg" alt="파이프라이닝 슬라이드"><figcaption>교수님 슬라이드 — 파이프라이닝. 명령 1, 2, 3...이 한 칸씩 밀려 동시에 진행돼요</figcaption></figure>
+<div class="box eg"><span class="t">비유 — 세탁소 컨베이어</span>
+<p>빨래를 한 벌씩 "씻기 → 말리기 → 다리기"를 끝내고 나서야 다음 벌을 시작하면 오래 걸려요. 첫 벌이 말리는 중일 때 둘째 벌을 씻으면 기계가 놀지 않아요. 파이프라인이 바로 이거예요.</p>
+</div>
+<p><b>손계산으로 비교</b>해 봐요. 한 단계가 한 칸(한 클럭)이라고 하고 명령이 8개라면 이래요. (슬라이드 그림을 따라 센 계산이에요.)</p>
+<ul>
+  <li>파이프라인 없이 순서대로: 8개 × 5칸 = <b>40칸</b></li>
+  <li>파이프라인: 첫 명령이 끝나는 데 5칸, 이후 1칸마다 1개씩 끝나서 5 + 7 = <b>12칸</b></li>
+</ul>
+<p>파이프라인을 잘 쓰려고 만든 설계 철학이 <b>RISC</b>예요. 요즘 CPU는 두 방식의 장점을 섞어 써요.</p>
+<table>
+  <tr><th style="width:18%"></th><th>RISC (Reduced, 단순)</th><th>CISC (Complex, 복잡)</th></tr>
+  <tr><td>철학</td><td>단순한 명령을 여러 줄 써도 빨리빨리</td><td>복잡해도 명령 한 줄로 처리</td></tr>
+  <tr><td>명령어</td><td>종류가 적고 길이가 같아요(고정). 메모리는 LOAD/STORE로만 접근하고 계산은 레지스터끼리만 해요</td><td>종류가 많고 길이가 달라요(가변)</td></tr>
+  <tr><td>예</td><td>ARM 계열 (스마트폰, 애플 M칩)</td><td>x86 계열 (인텔·AMD, PC·서버)</td></tr>
+  <tr><td>비교</td><td>파이프라인, 분기 예측, 컴파일러 최적화를 적극 활용</td><td>최근에는 RISC 기법도 도입</td></tr>
+</table>
+<p>참고로 if문처럼 분기가 있으면 다음 명령이 어디인지 몰라 파이프라인이 끊겨요. 이를 줄이는 <b>우회 경로(forwarding)</b>가 슬라이드 46쪽에 나오지만, 교수님은 수업에서 자세히 다루지 않았어요.</p>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>파이프라이닝은 여러 개의 명령이 인출-해독-실행-데이터-기록 단계를 한 칸씩 밀려서 동시에 진행하도록 하여 계산을 가속하는 기법이다. RISC는 단순한 명령어를 사용하고 메모리 접근을 적재/저장 명령으로 제한하여 파이프라인에 유리한 구조이고, CISC는 복잡한 명령을 사용하는 구조이다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — 명령 10개를 5단계 파이프라인으로 처리하면 몇 칸이 걸리나요? (한 단계 = 한 칸)</summary>
+<p>5 + 9 = 14칸이에요. 순서대로 하면 10 × 5 = 50칸이에요.</p></details>
+
+<h3>4-7. CPU 성능 — 집적도, 클럭, 온도, 전력, 멀티코어 <span class="st">★★</span></h3>
+<p>CPU의 성능 특성은 네 가지로 말해요. 자료 49쪽에 나오는 그대로예요.</p>
+<table>
+  <tr><th style="width:24%">요소</th><th>무엇을 보나</th></tr>
+  <tr><td><b>집적도</b></td><td>얼마나 많은 반도체(트랜지스터)가 들어 있나. <b>무어의 법칙</b> : 24개월(2년)마다 2배</td></tr>
+  <tr><td><b>클럭수</b></td><td>얼마나 빨리 단일 연산이 수행되나. 3GHz는 초당 30억 번이에요</td></tr>
+  <tr><td><b>온도</b></td><td>열이 적게 나는가</td></tr>
+  <tr><td><b>전력</b></td><td>전력을 얼마나 적게 쓰는가</td></tr>
+</table>
+<p>무어의 법칙은 인텔 공동 창업자 <b>고든 무어</b>가 말한 "집적회로의 반도체 집적도가 2년마다 2배가 된다"는 경험 법칙이에요. 1970년대부터 2000년대 초반까지 잘 맞았어요. 메모리에 대한 비슷한 법칙을 <b>황의 법칙</b>이라고 해요.</p>
+<p><b>손계산 요령</b>: 2년에 2배라서 4년이면 2×2=4배, 6년이면 8배, 10년이면 2<sup>5</sup> = 32배예요. (년수 ÷ 2번 2를 곱해요.)</p>
+<p>클럭은 CPU가 "딱, 딱" 하고 박자를 맞추는 횟수예요. 클럭이 높을수록 빠르지만, <b>전력 소모와 발열이 늘어서 CPU 온도가 올라가요</b>. 온도가 너무 높으면(보통 100도 이하에서 동작) 회로가 상해요. 그래서 클럭을 무한정 높일 수 없어요. 3GHz CPU의 박자 한 번은 1 ÷ 30억 초 = 약 0.33나노초예요.</p>
+<p>그래서 2000년대 초에 "클럭 전쟁"이 끝나고 <b>멀티코어</b> 시대로 넘어갔어요. 클럭을 올리는 대신 일꾼 수를 늘린 거예요.</p>
+<table>
+  <tr><th style="width:26%">용어</th><th>뜻</th></tr>
+  <tr><td><b>싱글코어</b></td><td>하나의 CPU 안에 연산 장치(코어)가 1개</td></tr>
+  <tr><td><b>멀티코어</b></td><td>하나의 CPU 안에 연산 장치(코어)가 여러 개 (듀얼, 쿼드, 옥타...). 요즘은 싱글코어가 없어요</td></tr>
+  <tr><td><b>하이퍼스레딩</b></td><td>파이프라인을 이용해 물리 코어 하나가 2배의 일을 병렬로 처리해서 코어를 가상으로 늘리는 기법</td></tr>
+</table>
+<p>CPU 사양 읽기 예시예요. "<b>1.8GHz, 4코어 8스레드</b>"는 클럭 1.8GHz로 동작하고, 물리적인 연산 장치(코어)는 4개이며, 하이퍼스레딩으로 8개 코어가 하는 계산을 처리할 수 있다는 뜻이에요.</p>
+<div class="box eg"><span class="t">비유 — 주방 확장</span>
+<p>요리사 한 명의 손을 더 빠르게 하는 데는 한계가 있어요(클럭). 그래서 요리사를 4명으로 늘렸어요(멀티코어). 하이퍼스레딩은 요리사 한 명이 가스레인지 두 곳을 번갈아 돌보며 2인분 일을 하는 거예요.</p>
+</div>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>무어의 법칙은 집적회로의 반도체 집적도가 24개월(2년)마다 2배씩 증가한다는 법칙이다. CPU 클럭이 높아질수록 전력 소모와 발열이 증가하여 CPU의 온도가 상승하며, 이는 클럭을 무한정 높일 수 없게 하는 주요 요인이다. 싱글코어는 하나의 CPU 안에 연산 장치가 1개인 것이고 멀티코어는 여러 개인 것이다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — CPU 클럭을 계속 높이지 못하는 가장 큰 이유는?</summary>
+<p>클럭이 높을수록 전력 소모와 발열이 늘어 온도가 올라가기 때문이에요. 그래서 코어 수를 늘리는 멀티코어로 방향을 바꿨어요.</p></details>
+
+<h3>4-8. CPU를 나눠 쓰는 법 — 멀티태스킹, 멀티프로세싱, 멀티쓰레딩 <span class="st">★★</span></h3>
+<p>요즘 컴퓨터는 크롬, 파워포인트, 게임을 한꺼번에 켜 놔요. 이것을 가능하게 하는 용어가 여러 개라 헷갈려요. 7주차에 교수님이 정리한 것을 표로 모았어요.</p>
+<table>
+  <tr><th style="width:24%">용어</th><th>뜻</th><th style="width:28%">비유</th></tr>
+  <tr><td><b>일괄 처리</b></td><td>초창기 방식. 한 번에 작업을 1개만 처리해요</td><td>한 줄짜리 계산대</td></tr>
+  <tr><td><b>시분할</b><br><span class="small">time sharing</span></td><td>CPU 시간을 아주 잘게 쪼개 여러 프로세스가 번갈아 써요. 사람 눈에는 동시에 도는 것처럼 보여요 (번갈아 바꾸는 일을 컨텍스트 스위치라고 해요)</td><td>선생님 한 명이 학생 여러 명을 1분씩 돌아가며 지도</td></tr>
+  <tr><td><b>멀티태스킹</b></td><td>여러 프로그램이 동시에 실행되는 것처럼 보이게 하는 기술. 싱글코어 시절에는 시분할로 만들었어요</td><td>한 사람이 설거지·빨래·요리를 번갈아</td></tr>
+  <tr><td><b>멀티프로세싱</b></td><td>하나의 일을 <b>여러 개의 프로세스</b>로 나눠 병렬 실행해요. 크롬 <b>창</b>을 여러 개 띄우는 것과 같아요</td><td>가게를 여러 개 차림</td></tr>
+  <tr><td><b>멀티쓰레딩</b><br><span class="small">multi-threading</span></td><td><b>프로세스는 하나</b>만 띄우고, 그 안에서 여러 흐름(스레드)으로 병렬 실행해요. 크롬 한 창 안의 <b>탭</b>들과 같아요</td><td>한 가게 안에서 직원 여러 명</td></tr>
+  <tr><td><b>멀티프로그래밍</b></td><td>여러 프로그램을 동시에 RAM에 올려, 한 프로그램이 입출력으로 쉴 때 CPU가 다른 프로그램을 처리하게 해요</td><td>―</td></tr>
+</table>
+<p>빅데이터 처리에서 중요한 이유가 있어요. 40시간 걸리는 큰 작업을 10조각으로 나눠 동시에 돌리면(병렬 처리) 이론상 4시간이면 끝나요. 교수님은 파이썬은 멀티쓰레딩 병렬을 잘 지원하지 않아서 병렬 처리에 보통 멀티프로세싱을 쓴다고 했어요. 멀티태스킹과 멀티프로그래밍은 "안 써도 될 것 같다"고 했어요.</p>
+<p>2023년 기출 Q1은 이 장의 용어 총정리예요. 답을 이렇게 외우세요.</p>
+<table>
+  <tr><th style="width:10%">번호</th><th style="width:26%">답</th><th>설명 문장 (기출)</th></tr>
+  <tr><td>1.1</td><td><b>폰노이만 구조</b></td><td>계산장치가 기억장치의 프로그램을 한 줄씩 실행해 결과를 기억장치에 기록하는 구조</td></tr>
+  <tr><td>1.2</td><td><b>무어의 법칙</b></td><td>집적도가 2년마다 2배</td></tr>
+  <tr><td>1.3, 1.4</td><td><b>싱글코어, 멀티코어</b></td><td>연산 장치가 1개 / 여러 개</td></tr>
+  <tr><td>1.5</td><td><b>온도</b></td><td>클럭이 높을수록 전력·발열이 늘어 상승</td></tr>
+  <tr><td>1.6, 1.7</td><td><b>프로그램, 프로세스</b></td><td>보조기억장치에 있으면 프로그램, 실행되어 메모리에 적재되면 프로세스 (5장)</td></tr>
+  <tr><td>1.8</td><td><b>멀티 프로세싱</b></td><td>하나의 프로그램을 여러 개의 프로세스로 병렬 실행</td></tr>
+  <tr><td>1.9</td><td><b>멀티 쓰레딩</b></td><td>하나의 프로세스 안에 여러 흐름으로 병렬 실행</td></tr>
+  <tr><td>1.10</td><td><b>운영체제</b></td><td>전원이 켜지면 가장 먼저 시작되며 자원과 응용 프로그램 실행을 관리 (5장)</td></tr>
+</table>
+<p class="small">보기에 있던 오버클럭, 황의 법칙, 집적도, 코어, 멀티태스킹, 멀티프로그래밍은 위 설명에 맞지 않아서 답이 아니에요(함정 보기).</p>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>멀티 프로세싱은 하나의 프로그램을 여러 개의 프로세스로 나누어 병렬 실행하는 것이고, 멀티 쓰레딩은 하나의 프로세스 안에서 여러 흐름(스레드)으로 병렬 실행하는 것이다. 멀티태스킹은 여러 프로그램이 동시에 실행되는 것처럼 보이게 하는 기술로, 싱글코어에서는 CPU 시간을 쪼개 번갈아 쓰는 시분할 방식으로 구현되었다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — 크롬 창을 2개 띄운 것과 한 창에 탭을 2개 연 것 중 멀티프로세싱은 어느 쪽인가요?</summary>
+<p>창을 2개 띄운 쪽이에요(프로세스가 2개). 탭은 한 프로세스 안의 스레드라서 멀티쓰레딩이에요.</p></details>
+
+<div class="box tip"><span class="t">이 장 3줄 요약</span>
+<ul>
+  <li>CPU는 ALU(계산) + CU(제어) + 레지스터(PC, IR, AC, MAR, MBR 등)로 이루어지고, 프로그램은 보조기억장치 → RAM → CPU 순서로 한 줄씩 실행돼요.</li>
+  <li>명령은 opcode + operand이고, 한 줄은 인출-해독-실행-데이터-기록 5단계로 실행돼요(계산은 1-2-3-5, 메모리는 1-2-4-5). 겹쳐 하면 파이프라인이에요.</li>
+  <li>클럭을 높이면 발열(온도)이 늘어 한계가 있어서 멀티코어로 갔고, 병렬 처리는 멀티프로세싱(창)과 멀티쓰레딩(탭)으로 나뉘어요.</li>
+</ul>
+</div>

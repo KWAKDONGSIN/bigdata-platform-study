@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ko" data-site="1bb07e">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>코드, 인코드·디코드, 고정길이 코드 · 빅데이터플랫폼 시험공부</title>
+<meta name="description" content="빅데이터플랫폼 중간고사를 전공 처음인 사람도 이해하게 정리한 공부 사이트">
+<link rel="stylesheet" href="assets/style.css?v=d2a0e0e2">
+</head>
+<body>
+<header class="top"><div class="top-in">
+<a class="brand" href="index.html"><span class="bases"><i class="a">시</i><i class="t">험</i><i class="g">공</i><i class="c">부</i></span>빅데이터플랫폼</a>
+<nav class="nav" aria-label="메뉴"><a href="index.html" class=on>보드</a><a href="b.html">최소코스</a><a href="bplus.html">B+코스</a><a href="quiz.html">퀴즈</a><a href="essay.html">서술형</a><a href="cards.html">암기카드</a><a href="words.html">낱말사전</a><a href="cheat.html">시험 전 1장</a></nav>
+</div></header>
+<main>
+<div class="crumb k2"><a href="index.html#c2">← 보드</a><span>데이터 표현 · 5/11</span></div><h1>코드, 인코드·디코드, 고정길이 코드</h1>
+<p>숫자가 아닌 것(기호, 글자 등)도 <a class="w" href="words.html#w3" data-w="3">2진수</a>로 나타내야 해요. 이때 쓰는 약속이 <b>코드</b>예요.</p>
+<div class="box def"><span class="t">한 줄 정의</span>
+<p><b>코드 = 유한한 개수의 원소(기호)들을 서로 구별할 수 있게, 각 원소에 붙여 주는 숫자.</b> 기호를 코드로 바꾸는 일이 <b><a class="w" href="words.html#w37" data-w="37">인코드</a>(encode)</b>, 코드를 보고 원래 기호를 찾는 일이 <b><a class="w" href="words.html#w38" data-w="38">디코드</a>(decode)</b>예요.</p>
+</div>
+<div class="box eg"><span class="t">비유 — 학번</span>
+<p>학생 이름은 같은 사람이 있어도 학번은 모두 달라서 구별돼요. 학번을 붙이는 것이 인코드, 학번으로 학생을 찾는 것이 디코드예요.</p>
+</div>
+<p>코드는 길이에 따라 두 가지로 나뉘어요.</p>
+<ul>
+  <li><b><a class="w" href="words.html#w39" data-w="39">고정길이 코드</a></b> : 모든 원소의 이진수 길이가 같아요.</li>
+  <li><b><a class="w" href="words.html#w40" data-w="40">가변길이 코드</a></b> : 원소마다 이진수 길이가 달라요.</li>
+</ul>
+<p>슬라이드 19쪽은 4개 기호 ♠ ◇ ♡ ♣에 코드 4가지를 붙여 놓고, ♣♡♠◇♡ 다섯 기호를 이어 쓴 뒤 다시 읽어 보게 해요.</p>
+<figure class="slide"><img src="slides/a_code.jpg" alt="네 기호 ♠ ◇ ♡ ♣에 코드 1부터 코드 4까지 붙인 표와 디코드 예시"><figcaption>교수님 슬라이드 — 코드 예제. 코드 2는 디코드가 안 되는 나쁜 코드(???)예요</figcaption></figure>
+<div class="tw"><table>
+  <tr><th style="width:12%">기호</th><th>코드 1</th><th>코드 2</th><th>코드 3</th><th>코드 4</th></tr>
+  <tr><td>♠</td><td>0</td><td>1</td><td>00</td><td>101</td></tr>
+  <tr><td>◇</td><td>10</td><td>11</td><td>01</td><td>111</td></tr>
+  <tr><td>♡</td><td>110</td><td>111</td><td>10</td><td>110</td></tr>
+  <tr><td>♣</td><td>1110</td><td>1111</td><td>11</td><td>000</td></tr>
+  <tr><td><b>종류</b></td><td>가변길이</td><td>가변길이</td><td>고정길이(2<a class="w" href="words.html#w0" data-w="0">비트</a>)</td><td>고정길이(3비트)</td></tr>
+</table></div>
+<ul>
+  <li><b>코드 1</b> : <code>1110_110_0_10_110</code>은 0을 만날 때마다 한 글자가 끝나서 ♣♡♠◇♡로 정확히 읽혀요.</li>
+  <li><b>코드 2</b> : <code>1111_111_1_11_111</code>은 1이 줄줄이 이어져서 어디서 끊을지 몰라 읽을 수 없어요(슬라이드의 "???"). 1이 11의 앞부분, 11이 111의 앞부분이라서 그래요.</li>
+  <li><b>코드 3, 4</b> : 길이가 고정이라 2비트(또는 3비트)씩 끊으면 돼요.</li>
+</ul>
+<p>배울 점은 <b>가변길이 코드는 한 코드가 다른 코드의 앞부분이 되면 디코드가 안 된다</b>는 거예요.</p>
+<p>그러면 원소가 N개일 때 고정길이 코드에는 몇 비트가 필요할까요? 비트 k개로는 2의 k제곱 가지를 표현하니까 <b>(2의 k제곱) ≥ N인 가장 작은 k</b>(= log₂N을 <a class="w" href="words.html#w62" data-w="62">올림</a>)예요.</p>
+<div class="tw"><table>
+  <tr><th style="width:22%">원소 수 N</th><th>필요한 최소 비트 수 (예제 2-9)</th></tr>
+  <tr><td>8개</td><td>2³ = 8이므로 <b>3비트</b></td></tr>
+  <tr><td>10개</td><td>2³ = 8로는 부족하고 2⁴ = 16이면 충분해서 <b>4비트</b></td></tr>
+  <tr><td>16개</td><td>2⁴ = 16이므로 <b>4비트</b></td></tr>
+  <tr><td>25개</td><td>2⁴ = 16은 부족하고 2⁵ = 32면 충분해서 <b>5비트</b></td></tr>
+</table></div>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>코드는 유한개의 원소로 이루어진 집합의 각 원소를 구별할 수 있도록 부여한 숫자이며, 원소를 코드로 바꾸는 것을 인코드, 코드에서 원소를 찾는 것을 디코드라고 한다. 원소의 수가 N개일 때 고정길이 코드의 비트 수는 log₂N을 올림한 값이다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — 원소 25개를 구별하는 고정길이 코드는 최소 몇 비트가 필요한가요?</summary>
+<p>5비트예요. 4비트로는 16가지, 5비트로는 32가지를 만들 수 있어서 25개를 구별하려면 5비트가 필요해요.</p></details>
+
+<div class="done"><a class="go" href="c2-06.html">다음 카드 → BCD — 십진수 한 자리씩 이진수로</a><div class="pn"><a href="c2-04.html"><b>← 이전</b>이전 카드</a><a class="next" href="quiz.html#c2"><b>연습</b>이 장 문제 풀기</a></div><p class="muted small">자료: 3주차 · 03데이터표현.pdf · 빅데이터플03</p></div>
+</main>
+<script src="assets/words.js?v=d2a0e0e2"></script>
+<script src="assets/app.js?v=d2a0e0e2"></script>
+</body>
+</html>

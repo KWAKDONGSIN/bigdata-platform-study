@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ko" data-site="1bb07e">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>B+ 최단 코스 · 빅데이터플랫폼 시험공부</title>
+<meta name="description" content="빅데이터플랫폼 중간고사를 전공 처음인 사람도 이해하게 정리한 공부 사이트">
+<link rel="stylesheet" href="assets/style.css?v=d2a0e0e2">
+</head>
+<body>
+<header class="top"><div class="top-in">
+<a class="brand" href="index.html"><span class="bases"><i class="a">시</i><i class="t">험</i><i class="g">공</i><i class="c">부</i></span>빅데이터플랫폼</a>
+<nav class="nav" aria-label="메뉴"><a href="index.html">보드</a><a href="b.html">최소코스</a><a href="bplus.html" class=on>B+코스</a><a href="quiz.html">퀴즈</a><a href="essay.html">서술형</a><a href="cards.html">암기카드</a><a href="words.html">낱말사전</a><a href="cheat.html">시험 전 1장</a></nav>
+</div></header>
+<main>
+<h1>B+ 최단 코스</h1>
+<p class="lead">시간이 없을 때 이것만 하세요. 교수님이 올려 준 2023년 기출(빈칸 채우기 · 부품 고르기 · 손으로 계산하기)과 수업에서 "복습하세요"라고 한 것만 골랐어요. <b>전부 해도 약 2시간</b>이고, 위에서부터 순서대로 하면 돼요.</p>
+
+<div class="box exam"><span class="t">B+ 전략 한 줄</span>
+<p>빈칸·부품 고르기 문제는 <b>보기에서 그대로 골라 다 맞히고</b>, 계산 문제 3가지(<a class="w" href="words.html#w3" data-w="3">이진수</a> 변환, <a class="w" href="words.html#w17" data-w="17">기계어</a>·<a class="w" href="words.html#w64" data-w="64">ALU</a> 값 쓰기, <a class="w" href="words.html#w58" data-w="58">진리표</a>·가산기)는 <b>종이에 직접 풀 줄 알면</b> B+ 충분해요. 올해 시험은 10월 26일(월) 필기·클로즈드북이고, 교수님이 기출을 보고 공부하라고 했어요.</p></div>
+
+<h2>① 큰 그림 한 줄 외우기 <span class="muted small">15분</span></h2>
+<p>이 과목은 결국 "<a class="w" href="words.html#w12" data-w="12">프로그램</a> 한 줄이 <a class="w" href="words.html#w14" data-w="14">컴퓨터</a> 안에서 어떻게 움직이나"예요. 시험지 받으면 여백에 먼저 써 두세요.</p>
+<div class="box tip"><span class="t">그대로 외우기</span>
+<p class="big"><a class="w" href="words.html#w29" data-w="29">보조기억장치</a>(<a class="w" href="words.html#w30" data-w="30">SSD</a>) → (<a class="w" href="words.html#w78" data-w="78">실행</a>) → <a class="w" href="words.html#w28" data-w="28">주기억장치(RAM)</a> → 한 줄씩 → <a class="w" href="words.html#w26" data-w="26">CPU</a>(ALU)가 계산 → 결과는 다시 RAM</p></div>
+<div class="tw"><div class="tw"><table>
+<tr><th>이것만 기억</th><th>한 줄</th></tr>
+<tr><td>실행 5단계</td><td><a class="w" href="words.html#w76" data-w="76">인출</a> → <a class="w" href="words.html#w77" data-w="77">해독</a> → 실행 → 데이터 → <a class="w" href="words.html#w80" data-w="80">기록</a> (ADD는 <a class="w" href="words.html#w79" data-w="79">데이터 단계</a>가 비어 있음)</td></tr>
+<tr><td>메모리 계층</td><td><a class="w" href="words.html#w66" data-w="66">레지스터</a> → <a class="w" href="words.html#w98" data-w="98">캐시</a> → RAM → SSD/<a class="w" href="words.html#w31" data-w="31">HDD</a> (빠를수록 작고 비싸다)</td></tr>
+<tr><td>RAM이 모자라면</td><td><a class="w" href="words.html#w112" data-w="112">가상메모리</a> → <a class="w" href="words.html#w114" data-w="114">스왑 영역</a>으로 밀려남(<a class="w" href="words.html#w115" data-w="115">스와핑</a>) → 느려짐</td></tr>
+<tr><td>계산기 만들기</td><td><a class="w" href="words.html#w48" data-w="48">반도체</a> → <a class="w" href="words.html#w51" data-w="51">논리게이트</a> → 논리회로(가산기) → ALU</td></tr>
+</table></div></div>
+<p class="small muted">교수님 말씀 — "CPU 구성 요소와 5단계는 꼭 복습", "<a class="w" href="words.html#w102" data-w="102">레이턴시</a>와 <a class="w" href="words.html#w103" data-w="103">대역폭</a>은 둘 다 속도지만 다른 개념", "주소 변환 과정(<a class="w" href="words.html#w119" data-w="119">TLB</a> → <a class="w" href="words.html#w118" data-w="118">페이지 테이블</a> → 스왑 → 캐시)은 빈칸을 만들어 둘 테니 암기".</p>
+
+<h2>② 핵심 카드만 읽기 <span class="muted small">45분</span></h2>
+<p>아래 카드만 순서대로 누르세요. 각 카드의 빨간 <b>"시험엔 이렇게 써요"</b> 칸을 꼭 소리 내어 읽으세요. 장 첫 카드부터 보고, 더 알고 싶으면 장 안의 다음 카드로 넘어가요.</p>
+<ol class="must">
+<li><a href="c8-01.html">기출 Q1 — 용어 빈칸 10개</a> <i>1순위</i></li>
+<li><a href="c1-01.html">컴퓨터 구조 소개 — 폰노이만 구조와 부품</a> <i>단골</i></li>
+<li><a href="c8-02.html">기출 Q2 — 부품 6개와 설명 연결</a></li>
+<li><a href="c8-03.html">기출 Q3 — sum.py 실행 과정 (SSD → RAM → CPU)</a> <i>단골</i></li>
+<li><a href="c2-01.html">데이터 표현 — 이진수·진법 변환</a></li>
+<li><a href="c8-04.html">기출 Q4 — 십진수·문자를 1바이트로</a> <i>손계산</i></li>
+<li><a href="c3-01.html">계산기 회로 — 논리 게이트와 가산기</a></li>
+<li><a href="c8-05.html">기출 Q5 — 진리표와 8비트 덧셈기 연결</a> <i>손계산</i></li>
+<li><a href="c4-01.html">CPU — 구성 요소와 명령 실행 5단계</a> <i>교수님 복습 지시</i></li>
+<li><a href="c8-06.html">기출 Q6 — 기계어 빈칸과 ALU 입력값</a> <i>손계산</i></li>
+<li><a href="c8-07.html">기출 Q7 — 인출·실행 단계 그림 빈칸 10개</a> <i>단골</i></li>
+<li><a href="c5-01.html">메모리와 계층 구조 — 계층, 레이턴시·대역폭, 가상메모리</a></li>
+<li><a href="c8-08.html">기출 Q8 — 계층 순서와 엑셀 상황</a></li>
+<li><a href="c8-09.html">기출 Q9 — 40GB 파일과 스와핑</a></li>
+<li><a href="c6-01.html">보조기억장치 — HDD·SSD·CD-ROM, 파티션, RAID</a></li>
+<li><a href="c8-10.html">기출 Q10 — 보조기억장치 빈칸</a></li>
+<li><a href="c7-01.html">과제로 복습 — HW 문제 다시 풀기</a></li>
+<li><a href="c0-01.html">왕초보 컴퓨터 기초 — 낯설면 맨 먼저 읽기</a></li>
+</ol>
+<p class="small muted">컴퓨터 용어가 너무 낯설면 18번(왕초보 기초)을 맨 먼저 읽어도 돼요.</p>
+
+<h2>③ 꼭 외울 용어와 공식 <span class="muted small">15분</span></h2>
+<p>기출 Q1처럼 보기에서 고르는 문제에 나와요. 뜻까지 한 줄로 외우세요.</p>
+<div class="tw"><div class="tw"><table>
+<tr><th>용어</th><th>한 줄 뜻</th></tr>
+<tr><td><b><a class="w" href="words.html#w25" data-w="25">폰노이만 구조</a></b></td><td>프로그램을 기억장치에 두고 명령을 한 줄씩 CPU로 가져와 실행</td></tr>
+<tr><td><b><a class="w" href="words.html#w86" data-w="86">무어의 법칙</a></b></td><td><a class="w" href="words.html#w88" data-w="88">집적도</a>가 24개월(2년)마다 2배 (<a class="w" href="words.html#w87" data-w="87">황의 법칙</a>은 함정)</td></tr>
+<tr><td><b><a class="w" href="words.html#w90" data-w="90">싱글코어</a> / <a class="w" href="words.html#w91" data-w="91">멀티코어</a></b></td><td>CPU 안의 <a class="w" href="words.html#w89" data-w="89">연산 장치</a>가 1개 / 여러 개</td></tr>
+<tr><td><b>프로그램 / <a class="w" href="words.html#w13" data-w="13">프로세스</a></b></td><td>저장장치에 있으면 프로그램, 메모리에서 실행 중이면 프로세스</td></tr>
+<tr><td><b><a class="w" href="words.html#w109" data-w="109">멀티 프로세싱</a> / <a class="w" href="words.html#w110" data-w="110">멀티 쓰레딩</a></b></td><td>프로세스를 여러 개 / 프로세스 하나 안에서 흐름을 여러 개 (크롬 창 vs 탭)</td></tr>
+<tr><td><b><a class="w" href="words.html#w105" data-w="105">운영체제</a></b></td><td>켜면 가장 먼저 실행되어 자원과 프로그램을 관리</td></tr>
+<tr><td><b>ALU / <a class="w" href="words.html#w65" data-w="65">CU</a></b></td><td>계산 장치 / 명령을 해독하고 제어 신호를 내는 장치</td></tr>
+<tr><td><b><a class="w" href="words.html#w67" data-w="67">PC</a> · <a class="w" href="words.html#w68" data-w="68">IR</a> · <a class="w" href="words.html#w69" data-w="69">MAR</a> · <a class="w" href="words.html#w70" data-w="70">MBR</a> · <a class="w" href="words.html#w71" data-w="71">AC</a></b></td><td>다음 명령 주소 · 현재 명령 · 메모리 주소 · 메모리 값 · 계산 결과</td></tr>
+<tr><td><b><a class="w" href="words.html#w99" data-w="99">SRAM</a> / <a class="w" href="words.html#w100" data-w="100">DRAM</a></b></td><td>캐시에 쓰는 빠르고 비싼 메모리 / RAM에 쓰는 싸고 큰 메모리</td></tr>
+<tr><td><b>레이턴시 / 대역폭</b></td><td>응답까지 걸리는 시간(낮을수록 빠름) / 단위 시간당 전송량</td></tr>
+<tr><td><b>스왑 영역 / 스와핑</b></td><td>RAM에서 쫓겨난 데이터를 모으는 저장장치 공간 / 그렇게 옮겨 쓰는 과정</td></tr>
+<tr><td><b>TLB</b></td><td>주소 변환 정보(<a class="w" href="words.html#w116" data-w="116">페이지</a> → <a class="w" href="words.html#w117" data-w="117">프레임</a>)를 모아 둔 캐시</td></tr>
+<tr><td><b>HDD / <a class="w" href="words.html#w131" data-w="131">CD-ROM</a> / SSD</b></td><td>자기 / 광학 / 전자 (원리로 구분)</td></tr>
+<tr><td><b><a class="w" href="words.html#w134" data-w="134">RAID</a> / <a class="w" href="words.html#w132" data-w="132">파티션</a></b></td><td>여러 디스크를 묶음 / 디스크 하나를 나눔</td></tr>
+</table></div></div>
+<div class="box tip"><span class="t">외울 숫자와 공식</span>
+<p><b><a class="w" href="words.html#w1" data-w="1">1바이트</a> = 8<a class="w" href="words.html#w0" data-w="0">비트</a></b>(256가지) · 자릿값 <b>128 64 32 16 8 4 2 1</b> · <a class="w" href="words.html#w43" data-w="43">ASCII</a> <b>A=65, a=97</b> · 2진→16진은 <b>4비트씩</b>, 8진은 <b>3비트씩</b> · <b>3GHz = 초당 30억 번</b> · 접근 속도 <b>레지스터 &lt;1ns, 캐시 0.5~2.5ns, RAM 50~70ns, SSD 20~200µs, HDD 5~20ms</b> · ALU 제어 C는 <b>+ − x / &amp; | &gt;&gt; &lt;&lt;</b> 순서(덧셈 1000 0000) · 가상주소 = <b>페이지번호 × 페이지크기 + 오프셋</b> · 디스크 접근 시간 = <b>탐색 + <a class="w" href="words.html#w128" data-w="128">회전지연</a> + 전송</b></p></div>
+
+<h2>④ 기출 빈칸 문장 모음 <span class="muted small">30분</span></h2>
+<p>2023년 기출에 실제로 나온 문장이에요. 굵은 글씨가 정답이니, <b>손으로 가리고</b> 빈칸을 말해 본 뒤 확인하세요. 올해도 비슷한 문장이 나올 수 있어요.</p>
+<ol>
+<li>계산장치(CPU)와 기억장치로 구성되어, 계산장치가 기억장치의 프로그램에서 한 줄씩 실행하는 현대 컴퓨터 구조를 <b>폰노이만 구조</b>라고 한다.</li>
+<li><a class="w" href="words.html#w63" data-w="63">집적회로</a>의 반도체 집적도가 2년마다 2배씩 증가한다는 것을 <b>무어의 법칙</b>이라고 한다.</li>
+<li><b>싱글코어</b>는 하나의 CPU 안에 연산 장치가 1개이고, <b>멀티코어</b>는 여러 개이다.</li>
+<li>CPU <a class="w" href="words.html#w85" data-w="85">클럭</a>이 높아질수록 전력 소모와 발열이 증가하여 CPU의 <b>온도</b>가 상승하며, 이것이 클럭을 무한정 높일 수 없게 한다.</li>
+<li>응용 프로그램의 코드가 보조기억장치에 보관되어 있으면 <b>프로그램</b>, 실행되어 메모리에 <a class="w" href="words.html#w22" data-w="22">적재</a>되어 있으면 <b>프로세스</b>라고 한다.</li>
+<li>하나의 프로그램을 여러 개의 프로세스로 병렬 실행하는 것을 <b>멀티 프로세싱</b>, 하나의 프로세스 안에서 여러 흐름으로 병렬 실행하는 것을 <b>멀티 쓰레딩</b>이라고 한다.</li>
+<li>컴퓨터 전원이 켜지면 가장 먼저 시작되고, 컴퓨터 자원과 여러 응용 프로그램의 실행을 관리하는 프로그램을 <b>운영체제</b>라고 한다.</li>
+<li>컴퓨터 부품 간에 데이터가 전송되는 통로 기능을 하는 것은 <b><a class="w" href="words.html#w32" data-w="32">메인보드</a></b>, 거의 대부분의 계산을 하는 것은 <b>CPU</b>, <a class="w" href="words.html#w24" data-w="24">비휘발성</a>으로 데이터를 반영구 보관하는 것은 <b>보조기억장치(SSD/HDD)</b>, <a class="w" href="words.html#w23" data-w="23">휘발성</a>으로 수행 중인 프로그램 코드와 데이터를 보관하는 것은 <b>RAM</b>이다.</li>
+<li>이미지 처리와 딥러닝 같은 행렬 기반 연산을 병렬로 빠르게 하는 것은 <b><a class="w" href="words.html#w33" data-w="33">GPU</a>(그래픽카드)</b>이고, 교류를 직류로 바꿔 전원을 공급하는 것은 <b><a class="w" href="words.html#w34" data-w="34">전원공급장치</a></b>이다.</li>
+<li>코드가 실행되기 전에 파이썬 실행기와 코드는 <b>보조기억장치</b>에 있고, 실행되면 <b><a class="w" href="words.html#w27" data-w="27">주기억장치</a></b>에 적재되며, 해석된 기계어는 <b>CPU</b>에 전달되어 실행된다.</li>
+<li><a class="w" href="words.html#w57" data-w="57">XOR</a> 논리 게이트는 두 비트가 <b>같으면 0, 다르면 1</b>을 출력한다. <a class="w" href="words.html#w60" data-w="60">반가산기</a>는 합 비트 S와 <b><a class="w" href="words.html#w62" data-w="62">올림</a> 비트 Cout</b>을 출력한다.</li>
+<li><a class="w" href="words.html#w61" data-w="61">전가산기</a>는 두 입력 비트(A, B)와 한 개의 <b>올림 비트(Cin)</b>를 받아 합 S와 올림 Cout을 출력한다. 8비트 덧셈기에서 맨 아래 Cin은 <b>0</b>이다.</li>
+<li>CPU는 한 기계어 명령을 <b>인출(fetch), 해독(<a class="w" href="words.html#w38" data-w="38">decode</a>), 실행(execute), 데이터(data), 기록(write back)</b>의 5단계로 실행한다.</li>
+<li>인출 단계에서 PC가 4이고 명령이 2칸이면 MAR ← <b>4</b>, PC ← <b>6</b>이 되고, IR에는 <b>ADD R3 R1 R2</b>가 들어간다.</li>
+<li>실행 단계에서 ALU 제어신호는 <b>+</b>이고, X는 <b>5</b>, Y는 <b>7</b>, AC에는 <b>12</b>가 들어간다.</li>
+<li>CPU 안에 있는 메모리는 <b>레지스터</b>와 <b>캐시</b>이고, 접근 속도가 빠른 순서는 <b>레지스터 → 캐시 → RAM → SSD/HDD</b>이다.</li>
+<li>엑셀 프로그램을 설치하면 <b>보조기억장치</b>에 저장되고, 실행하면 <b>주기억장치(RAM)</b>에 적재된다. 지금 계산하는 주변 데이터는 <b>캐시</b>에, ALU가 직접 더하는 값은 <b>레지스터</b>에 올라간다.</li>
+<li>프로세스의 <b>가상메모리</b> 공간에 올린 데이터를 운영체제가 <b><a class="w" href="words.html#w113" data-w="113">물리메모리</a></b>에 할당하는데, 그 용량을 넘으면 <b>보조기억장치</b>의 <b>스왑메모리</b> 영역으로 옮겨지며 이를 <b>스와핑</b>이라 한다.</li>
+<li>코드를 수정하지 않고 40GB 파일의 렉을 해결하려면 <b>RAM</b>을 40GB 이상으로 업그레이드해야 한다.</li>
+<li><b>HDD</b>는 자기적, <b>CD-ROM</b>은 광학적, <b>SSD</b>는 전자적 성질을 이용한다.</li>
+<li>보조기억장치 여러 개를 하나로 묶는 것은 <b>RAID</b>, 하나를 나눠 쓰는 것은 <b>파티션</b>이다.</li>
+<li><b>SSD</b>는 <b>HDD</b>보다 읽기/쓰기가 빠르지만 같은 용량에 가격이 비싸다. 그래서 운영체제는 <b>SSD</b>에, 동영상과 사진은 <b>HDD</b>에 보관한다.</li>
+</ol>
+<p class="small muted">더 풀고 싶으면 <a href="c8-01.html">기출 풀이 장</a>에서 10문제를 한 번씩 직접 써 보세요.</p>
+
+<h2>⑤ 계산 유형 5개 직접 풀기 <span class="muted small">30분</span></h2>
+<p>기출 Q4, Q5, Q6, Q7, Q9가 이 유형이에요. 가린 채 한 번씩 직접 해 보세요.</p>
+<details class="card"><summary>1. 십진수 137을 1바이트 이진수로 (기출 Q4)</summary><div class="in"><div class="model"><p>자릿값을 큰 것부터 써요. 128 64 32 16 8 4 2 1. 137은 128이 들어가고(남은 9), 64·32·16은 안 들어가고, 8이 들어가고(남은 1), 4·2는 안 들어가고, 1이 들어가요. 그래서 <b>1000 1001</b>이고, 검산은 128 + 8 + 1 = 137이에요. 같은 방법으로 77 = 64 + 8 + 4 + 1 = <b>0100 1101</b>이에요.</p></div></div></details>
+<details class="card"><summary>2. 문자 Robot을 ASCII 이진수로 (기출 Q4)</summary><div class="in"><div class="model"><p>표에서 R = 82, o = 111, b = 98, t = 116을 찾아요. 82 = 64 + 16 + 2 = <b>0101 0010</b>, 111 = 64 + 32 + 8 + 4 + 2 + 1 = <b>0110 1111</b>, 98 = 64 + 32 + 2 = <b>0110 0010</b>, 116 = 64 + 32 + 16 + 4 = <b>0111 0100</b>이에요. o가 두 번이라 같은 값을 두 번 써요.</p></div></div></details>
+<details class="card"><summary>3. ADD R3 R1 R2를 ALU에서 계산할 때 A, B, C, Y (기출 Q6.2)</summary><div class="in"><div class="model"><p>R1은 1번째 줄에서 2, R2는 2번째 줄에서 3이에요. A = 2 = <b>0000 0010</b>, B = 3 = <b>0000 0011</b>이에요. 제어신호 C는 + − x / &amp; | &gt;&gt; &lt;&lt; 순서라 덧셈은 맨 앞이라 <b>1000 0000</b>이에요. Y = 2 + 3 = 5 = <b>0000 0101</b>이에요.</p></div></div></details>
+<details class="card"><summary>4. 전가산기로 0000 0111 + 0000 0101 (기출 Q5.6~5.7)</summary><div class="in"><div class="model"><p>1의 개수로 풀어요. 1이 1개면 S=1, 올림 0, 2개면 S=0, 올림 1, 3개면 S=1, 올림 1이에요. 0번째 자리 1+1(올림 0)은 S=0, 올림 1. 1번째 자리 1+0+올림1은 S=0, 올림 1. 2번째 자리 1+1+올림1은 S=1, 올림 1. 3번째 자리 0+0+올림1은 S=1이에요. 그래서 Y = <b>0000 1100</b>(= 12)이에요.</p></div></div></details>
+<details class="card"><summary>5. 가상주소 10,000, 페이지 크기 4KB일 때 페이지 번호와 오프셋 (7주차 자료)</summary><div class="in"><div class="model"><p>4KB = 4,096바이트예요. 10,000 = 2 × 4,096 + 1,808이라 페이지 번호는 <b>2</b>, 오프셋은 <b>1,808</b>이에요. 페이지 2가 프레임 9에 매핑되어 있으면 물리주소는 9 × 4,096 + 1,808 = <b>38,672</b>이에요. 오프셋은 바뀌지 않아요.</p></div></div></details>
+
+<h2>⑥ 핵심 문제 풀기 <span class="muted small">20분</span></h2>
+<p>위 내용에서만 뽑은 문제예요. 틀린 건 해설만 읽고 넘어가요.</p>
+<a class="go" href="quiz.html#core">핵심 문제 풀기</a>
+
+<h2>안 봐도 되는 것 (시간 아끼기)</h2>
+<ul class="small">
+<li><a class="w" href="words.html#w49" data-w="49">다이오드</a>·<a class="w" href="words.html#w50" data-w="50">트랜지스터</a> 내부 전압 분석, NPN·PN 접합 (교수님 — "여기까지는 시험에 내지는 않을 것 같다")</li>
+<li>빅엔디안·리틀엔디안 (수업에서 넘어간다고 함)</li>
+<li>RAID 2·3·4, 디스크 헤드 내부 동작 (교수님 — "안 쓰니까 넘어가도록")</li>
+<li><a class="w" href="words.html#w84" data-w="84">파이프라인</a> 분기 우회 경로, 인텔·AVR 기계어 예시</li>
+<li>7주차 끝의 네트워크·인터넷 영상, 운영체제 역사(DOS·Windows·UNIX·Linux·Mac)와 8가지 유형</li>
+<li>참고로 <a class="w" href="words.html#w47" data-w="47">2의 보수</a>는 수업 자료에 없어서 시험 범위가 아닐 가능성이 높아요</li>
+</ul>
+
+<h2>시험 날 아침 (30분)</h2>
+<ol>
+<li><a href="quiz.html">퀴즈</a> → <b>"틀린 문제만 다시"</b> (10분)</li>
+<li>위 ③ 용어 표와 숫자 상자를 한 번 훑기 (10분)</li>
+<li>① 큰 그림 한 줄과 ④ 기출 빈칸 문장을 가리고 말해 보기 (10분)</li>
+</ol>
+<div class="box pro"><span class="t">시험장에서</span>
+<p>신분증과 펜을 챙기세요(클로즈드북). 여백에 큰 그림 한 줄과 "128 64 32 16 8 4 2 1"을 먼저 쓰고, 빈칸·부품 문제부터 풀어 점수를 확보하세요. 계산 문제는 풀이 과정을 적어 부분 점수를 받고, 모르는 서술형도 <b>정의 한 줄 + 아는 숫자 하나</b>라도 써서 빈칸을 만들지 마세요.</p></div>
+
+</main>
+<script src="assets/words.js?v=d2a0e0e2"></script>
+<script src="assets/app.js?v=d2a0e0e2"></script>
+</body>
+</html>

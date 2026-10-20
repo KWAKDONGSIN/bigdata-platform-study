@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ko" data-site="1bb07e">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>논리 게이트와 진리표 ★★★ · 빅데이터플랫폼 시험공부</title>
+<meta name="description" content="빅데이터플랫폼 중간고사를 전공 처음인 사람도 이해하게 정리한 공부 사이트">
+<link rel="stylesheet" href="assets/style.css?v=d2a0e0e2">
+</head>
+<body>
+<header class="top"><div class="top-in">
+<a class="brand" href="index.html"><span class="bases"><i class="a">시</i><i class="t">험</i><i class="g">공</i><i class="c">부</i></span>빅데이터플랫폼</a>
+<nav class="nav" aria-label="메뉴"><a href="index.html" class=on>보드</a><a href="b.html">최소코스</a><a href="bplus.html">B+코스</a><a href="quiz.html">퀴즈</a><a href="essay.html">서술형</a><a href="cards.html">암기카드</a><a href="words.html">낱말사전</a><a href="cheat.html">시험 전 1장</a></nav>
+</div></header>
+<main>
+<div class="crumb k3"><a href="index.html#c3">← 보드</a><span>계산기 회로 · 3/9</span></div><h1>논리 게이트와 진리표 ★★★</h1>
+<p><b><a class="w" href="words.html#w51" data-w="51">논리 게이트</a>(logic gate)</b>는 0과 1을 입력받아 정해진 규칙대로 0 또는 1을 내보내는 회로예요. 입력과 출력이 어떤 관계인지 <b>모든 입력 경우의 수</b>를 적은 표가 <b><a class="w" href="words.html#w58" data-w="58">진리표</a>(truth table)</b>예요. 입력이 2개면 00, 01, 10, 11의 4줄, 3개면 8줄(2³)이에요.</p>
+<p>가장 기본이 되는 게이트는 <b><a class="w" href="words.html#w52" data-w="52">AND</a>, <a class="w" href="words.html#w53" data-w="53">OR</a>, <a class="w" href="words.html#w54" data-w="54">NOT</a></b> 세 개예요. 이 셋으로 덧셈·뺄셈까지 모두 만들어요. <a class="w" href="words.html#w55" data-w="55">NAND</a>, <a class="w" href="words.html#w56" data-w="56">NOR</a>, <a class="w" href="words.html#w57" data-w="57">XOR</a>는 이것들을 조합해 만들 수 있고, 교수님은 NAND와 NOR도 기본 게이트처럼 생각해도 된다고 했어요.</p>
+<div class="paper"><svg viewBox="0 0 380 450" style="max-width:420px;width:100%;height:auto" role="img" aria-label="AND, OR, NAND, NOR, NOT, XOR 게이트의 기호와 출력 규칙">
+<g transform="translate(20,10)"><path d="M15,8 L45,8 A27,27 0 0 1 45,62 L15,62 Z" fill="#dbe6ff" stroke="#1b2333" stroke-width="2"/><line x1="0" y1="24" x2="15" y2="24" stroke="#1b2333" stroke-width="2"/><line x1="0" y1="46" x2="15" y2="46" stroke="#1b2333" stroke-width="2"/><line x1="72" y1="35" x2="92" y2="35" stroke="#1b2333" stroke-width="2"/></g>
+<text x="70" y="106" text-anchor="middle" font-size="18" font-weight="bold" fill="#1b2333">AND</text>
+<text x="70" y="126" text-anchor="middle" font-size="13" fill="#1b2333">출력 0001</text>
+<g transform="translate(220,10)"><path d="M12,8 Q42,8 72,35 Q42,62 12,62 Q27,35 12,8 Z" fill="#e3f6ec" stroke="#1b2333" stroke-width="2"/><line x1="0" y1="24" x2="18" y2="24" stroke="#1b2333" stroke-width="2"/><line x1="0" y1="46" x2="18" y2="46" stroke="#1b2333" stroke-width="2"/><line x1="72" y1="35" x2="92" y2="35" stroke="#1b2333" stroke-width="2"/></g>
+<text x="270" y="106" text-anchor="middle" font-size="18" font-weight="bold" fill="#1b2333">OR</text>
+<text x="270" y="126" text-anchor="middle" font-size="13" fill="#1b2333">출력 0111</text>
+<g transform="translate(20,160)"><path d="M15,8 L45,8 A27,27 0 0 1 45,62 L15,62 Z" fill="#dbe6ff" stroke="#1b2333" stroke-width="2"/><circle cx="77" cy="35" r="5" fill="#fff" stroke="#1b2333" stroke-width="2"/><line x1="0" y1="24" x2="15" y2="24" stroke="#1b2333" stroke-width="2"/><line x1="0" y1="46" x2="15" y2="46" stroke="#1b2333" stroke-width="2"/><line x1="82" y1="35" x2="100" y2="35" stroke="#1b2333" stroke-width="2"/></g>
+<text x="70" y="256" text-anchor="middle" font-size="18" font-weight="bold" fill="#1b2333">NAND</text>
+<text x="70" y="276" text-anchor="middle" font-size="13" fill="#1b2333">출력 1110</text>
+<g transform="translate(220,160)"><path d="M12,8 Q42,8 72,35 Q42,62 12,62 Q27,35 12,8 Z" fill="#e3f6ec" stroke="#1b2333" stroke-width="2"/><circle cx="77" cy="35" r="5" fill="#fff" stroke="#1b2333" stroke-width="2"/><line x1="0" y1="24" x2="18" y2="24" stroke="#1b2333" stroke-width="2"/><line x1="0" y1="46" x2="18" y2="46" stroke="#1b2333" stroke-width="2"/><line x1="82" y1="35" x2="100" y2="35" stroke="#1b2333" stroke-width="2"/></g>
+<text x="270" y="256" text-anchor="middle" font-size="18" font-weight="bold" fill="#1b2333">NOR</text>
+<text x="270" y="276" text-anchor="middle" font-size="13" fill="#1b2333">출력 1000</text>
+<g transform="translate(20,310)"><path d="M15,8 L67,35 L15,62 Z" fill="#fff1d6" stroke="#1b2333" stroke-width="2"/><circle cx="72" cy="35" r="5" fill="#fff" stroke="#1b2333" stroke-width="2"/><line x1="0" y1="35" x2="15" y2="35" stroke="#1b2333" stroke-width="2"/><line x1="77" y1="35" x2="95" y2="35" stroke="#1b2333" stroke-width="2"/></g>
+<text x="70" y="406" text-anchor="middle" font-size="18" font-weight="bold" fill="#1b2333">NOT</text>
+<text x="70" y="426" text-anchor="middle" font-size="13" fill="#1b2333">0→1, 1→0</text>
+<g transform="translate(220,310)"><path d="M20,8 Q50,8 80,35 Q50,62 20,62 Q35,35 20,8 Z" fill="#efe4ff" stroke="#1b2333" stroke-width="2"/><path d="M12,8 Q27,35 12,62" fill="none" stroke="#1b2333" stroke-width="2"/><line x1="0" y1="24" x2="26" y2="24" stroke="#1b2333" stroke-width="2"/><line x1="0" y1="46" x2="26" y2="46" stroke="#1b2333" stroke-width="2"/><line x1="80" y1="35" x2="98" y2="35" stroke="#1b2333" stroke-width="2"/></g>
+<text x="270" y="406" text-anchor="middle" font-size="18" font-weight="bold" fill="#1b2333">XOR</text>
+<text x="270" y="426" text-anchor="middle" font-size="13" fill="#1b2333">출력 0110</text>
+</svg></div>
+<div class="tw"><table>
+  <tr><th style="width:16%">게이트</th><th style="width:38%">한 줄 정의</th><th>스위치 비유</th></tr>
+  <tr><td><b>AND</b><br><span class="small">논리곱</span></td><td>입력이 <b>모두 1일 때만</b> 1. 하나라도 0이면 0</td><td>스위치 두 개를 <b>직렬(한 줄)</b>로 연결. 둘 다 켜야 전구가 켜져요</td></tr>
+  <tr><td><b>OR</b><br><span class="small">논리합</span></td><td>입력 중 <b>하나라도 1이면</b> 1. 모두 0일 때만 0</td><td>스위치 두 개를 <b>병렬(나란히)</b>로 연결. 하나만 켜도 전구가 켜져요</td></tr>
+  <tr><td><b>NOT</b><br><span class="small">논리부정, 인버터</span></td><td>입력 1개를 <b>반대로 뒤집어요</b></td><td>켜면 꺼지고 꺼지면 켜지는 반대 스위치</td></tr>
+  <tr><td><b>NAND</b></td><td>AND의 반대. 모두 1일 때만 0, 나머지는 1</td><td>AND 뒤에 NOT을 붙인 것 (Not-AND)</td></tr>
+  <tr><td><b>NOR</b></td><td>OR의 반대. 모두 0일 때만 1, 나머지는 0</td><td>OR 뒤에 NOT을 붙인 것 (Not-OR)</td></tr>
+  <tr><td><b>XOR</b></td><td>두 입력이 <b>다르면 1</b>, 같으면 0</td><td>"둘이 다른가요?"라고 묻는 비교 회로</td></tr>
+</table></div>
+<p>입력 A, B에 대한 출력을 한 표로 모았어요. 진리표 문제는 이 표만 외우면 모두 풀려요.</p>
+<div class="tw"><table>
+  <tr><th>A</th><th>B</th><th>AND</th><th>OR</th><th>NAND</th><th>NOR</th><th>XOR</th></tr>
+  <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td></tr>
+  <tr><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+  <tr><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+  <tr><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td></tr>
+</table></div>
+<div class="tw"><table>
+  <tr><th style="width:20%">NOT</th><th>A</th><th>출력</th></tr>
+  <tr><td></td><td>0</td><td>1</td></tr>
+  <tr><td></td><td>1</td><td>0</td></tr>
+</table></div>
+<div class="box tip"><span class="t">외우기 팁 — 출력 열만 외워요</span>
+<p>입력이 00, 01, 10, 11일 때의 출력을 위에서부터 읽어요. <b>AND 0001, OR 0111, NAND 1110, NOR 1000, XOR 0110.</b> NAND와 NOR는 AND와 OR의 출력을 뒤집은 것이라고 생각하면 외울 게 줄어요. 3입력 AND는 111일 때만 1이에요.</p>
+</div>
+<p>8<a class="w" href="words.html#w0" data-w="0">비트</a> 두 수를 AND하거나 OR하는 계산기는 <b>자리마다 게이트를 하나씩</b> 쓰면 돼요. A와 B의 같은 자리끼리 게이트에 넣고, 결과를 같은 자리 Y에 내보내요. 그래서 8비트 AND 계산기에는 AND 게이트가 8개 들어가요.</p>
+<p>파이썬의 <code>&amp;</code>(AND), <code>|</code>(OR), <code>^</code>(XOR) 기호가 자리마다 이렇게 계산해요. 과제 4번 Q4, Q5의 두 수 <code>10001010</code>과 <code>11111011</code>로 확인해 볼게요.</p>
+<div class="code">a = 0b10001010
+b = 0b11111011
+print(format(a &amp; b, "08b"))
+print(format(a | b, "08b"))
+print(format(a ^ b, "08b"))</div>
+<div class="tw"><table>
+  <tr><th style="width:44%">코드 줄</th><th>무슨 뜻인가요</th></tr>
+  <tr><td><code>a = 0b10001010</code></td><td><a class="w" href="words.html#w3" data-w="3">2진수</a> <code>10001010</code>(<a class="w" href="words.html#w4" data-w="4">10진수</a> 138)을 <code>a</code> 칸에 넣어요 (<code>0b</code>는 2진수 표시)</td></tr>
+  <tr><td><code>b = 0b11111011</code></td><td>2진수 <code>11111011</code>을 <code>b</code> 칸에 넣어요</td></tr>
+  <tr><td><code>print(format(a &amp; b, "08b"))</code></td><td>자리마다 AND(<code>&amp;</code>)한 결과를 8자리 2진수로 출력해요</td></tr>
+  <tr><td><code>print(format(a | b, "08b"))</code></td><td>자리마다 OR(<code>|</code>)한 결과를 출력해요</td></tr>
+  <tr><td><code>print(format(a ^ b, "08b"))</code></td><td>자리마다 XOR(<code>^</code>)한 결과를 출력해요</td></tr>
+</table></div>
+<p><b><a class="w" href="words.html#w78" data-w="78">실행</a> 결과(출력)</b></p>
+<div class="code">10001010
+11111011
+01110001</div>
+<p>AND는 두 수가 모두 1인 자리(맨 왼쪽, 5번째, 7번째)만 1이 남아서 <code>10001010</code>이에요. 이것이 과제 Q5의 정답이에요. A의 0인 자리는 B가 무엇이든 AND하면 0이 되기 때문이에요.</p>
+<div class="box exam"><span class="t">시험엔 이렇게 써요 (기출 5.1~5.4 정답)</span>
+<div class="tw"><table>
+  <tr><th>A</th><th>B</th><th>AND (5.1)</th><th>OR (5.2)</th><th>XOR (5.4)</th></tr>
+  <tr><td>0</td><td>0</td><td><b>0</b></td><td><b>0</b></td><td><b>0</b></td></tr>
+  <tr><td>0</td><td>1</td><td><b>0</b></td><td><b>1</b></td><td><b>1</b></td></tr>
+  <tr><td>1</td><td>0</td><td><b>0</b></td><td><b>1</b></td><td><b>1</b></td></tr>
+  <tr><td>1</td><td>1</td><td><b>1</b></td><td><b>1</b></td><td><b>0</b></td></tr>
+</table></div>
+<div class="tw"><table>
+  <tr><th>A</th><th>NOT (5.3)</th></tr>
+  <tr><td>0</td><td><b>1</b></td></tr>
+  <tr><td>1</td><td><b>0</b></td></tr>
+</table></div>
+<p>설명 문장은 이렇게 써요. AND는 두 비트가 모두 1이면 1, 그 밖에는 0을 출력한다. OR는 두 비트 중 하나 이상이 1이면 1, 그 밖에는 0을 출력한다. NOT은 한 비트가 입력되면 반대 비트를 출력한다. XOR는 두 비트가 같으면 0, 다르면 1을 출력한다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — 입력이 (1, 0)일 때 NAND와 NOR의 출력은 각각 무엇인가요?</summary>
+<p>NAND는 1, NOR는 0이에요. AND(1,0)=0을 뒤집으면 NAND=1, OR(1,0)=1을 뒤집으면 NOR=0이에요.</p></details>
+
+<div class="done"><a class="go" href="c3-04.html">다음 카드 → 불 대수 — 논리를 식으로 쓰기</a><div class="pn"><a href="c3-02.html"><b>← 이전</b>이전 카드</a><a class="next" href="quiz.html#c3"><b>연습</b>이 장 문제 풀기</a></div><p class="muted small">자료: 4주차 · 04계산기회로.pdf · 빅데이터플랫폼04</p></div>
+</main>
+<script src="assets/words.js?v=d2a0e0e2"></script>
+<script src="assets/app.js?v=d2a0e0e2"></script>
+</body>
+</html>

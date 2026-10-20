@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ko" data-site="1bb07e">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>운영체제와 프로그램, 프로세스 ★★ · 빅데이터플랫폼 시험공부</title>
+<meta name="description" content="빅데이터플랫폼 중간고사를 전공 처음인 사람도 이해하게 정리한 공부 사이트">
+<link rel="stylesheet" href="assets/style.css?v=d2a0e0e2">
+</head>
+<body>
+<header class="top"><div class="top-in">
+<a class="brand" href="index.html"><span class="bases"><i class="a">시</i><i class="t">험</i><i class="g">공</i><i class="c">부</i></span>빅데이터플랫폼</a>
+<nav class="nav" aria-label="메뉴"><a href="index.html" class=on>보드</a><a href="b.html">최소코스</a><a href="bplus.html">B+코스</a><a href="quiz.html">퀴즈</a><a href="essay.html">서술형</a><a href="cards.html">암기카드</a><a href="words.html">낱말사전</a><a href="cheat.html">시험 전 1장</a></nav>
+</div></header>
+<main>
+<div class="crumb k5"><a href="index.html#c5">← 보드</a><span>메모리와 계층 구조 · 5/9</span></div><h1>운영체제와 프로그램, 프로세스 ★★</h1>
+<p><a class="w" href="words.html#w14" data-w="14">컴퓨터</a>의 <a class="w" href="words.html#w10" data-w="10">하드웨어</a>(<a class="w" href="words.html#w26" data-w="26">CPU</a>, <a class="w" href="words.html#w28" data-w="28">RAM</a>, <a class="w" href="words.html#w30" data-w="30">SSD</a>)를 조립한 다음 가장 먼저 설치하는 것이 <b><a class="w" href="words.html#w105" data-w="105">운영체제</a></b>(OS, Operating System)예요. Windows, Linux, macOS가 대표예요. 운영체제는 응용 <a class="w" href="words.html#w12" data-w="12">프로그램</a>(엑셀, 게임, 파이썬 등)과 하드웨어 사이에서 둘을 관리해 줘요.</p>
+<div class="box def"><span class="t">한 줄 정의</span>
+<p><b>운영체제</b> = 컴퓨터 전원이 켜지면 가장 먼저 시작되는 프로그램으로, 컴퓨터의 자원(CPU, 메모리, <a class="w" href="words.html#w29" data-w="29">저장장치</a> 등)을 관리하고 여러 응용 프로그램의 <a class="w" href="words.html#w78" data-w="78">실행</a>을 관리하는 시스템 <a class="w" href="words.html#w11" data-w="11">소프트웨어</a>.</p>
+</div>
+<p>운영체제가 하는 일 중 시험에 가장 잘 이어지는 두 가지는 <b>프로그램 실행 관리</b>와 <b>메모리 관리</b>예요. 자료 27쪽에는 관리 대상 7가지가 나와요(<a class="w" href="words.html#w13" data-w="13">프로세스</a>, 작업, <a class="w" href="words.html#w27" data-w="27">주기억장치</a>, 보조기억장치, <a class="w" href="words.html#w35" data-w="35">입출력장치</a>, 파일, 보안). 운영체제의 핵심 부분은 <b><a class="w" href="words.html#w106" data-w="106">커널</a></b>이고, 항상 메모리에 올라와 있어요. 사용자가 커널을 직접 만지지 못하고 <b>시스템 호출</b>로 부탁해요. 교수님 자료의 비유는 "커피머신을 직접 만지지 않고 바리스타에게 부탁하는 것"이에요.</p>
+<p>이제 헷갈리는 세 단어를 구분해요.</p>
+<div class="tw"><table>
+  <tr><th style="width:22%">용어</th><th>뜻</th><th style="width:30%">비유</th></tr>
+  <tr><td><b>프로그램</b></td><td>저장장치(SSD/<a class="w" href="words.html#w31" data-w="31">HDD</a>)에 <b>보관돼 있는</b> 코드. 정적인 상태</td><td>레시피 (책에 적힌 상태)</td></tr>
+  <tr><td><b>프로세스</b></td><td>프로그램을 실행해서 <b>메모리에 올라와 작업 중</b>인 것. 동적인 상태. 운영체제도 하나의 프로세스예요</td><td>조리 중인 요리</td></tr>
+  <tr><td><b>프로세서</b></td><td>CPU를 가리키는 <b>하드웨어</b></td><td>요리사</td></tr>
+</table></div>
+<p>발음이 비슷해서 헷갈리지만 프로세스는 소프트웨어(실행 중인 프로그램), 프로세서는 하드웨어(CPU)예요. 프로그램을 더블클릭하면 프로세스가 돼요. 프로세스는 생성 → 준비(CPU를 기다림) → 실행 → 완료의 상태를 거쳐요(참고).</p>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>운영체제는 컴퓨터 전원이 켜지면 가장 먼저 시작되는 프로그램이며 컴퓨터 자원을 관리하고 여러 응용 프로그램의 실행을 관리한다. 응용 프로그램의 코드가 보조기억장치에 보관되어 있으면 프로그램이라고 하고, 실행되어 메모리에 <a class="w" href="words.html#w22" data-w="22">적재</a>되어 있으면 프로세스라고 한다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — 워드 프로그램을 더블클릭해서 실행하면 무엇이 생기나요?</summary>
+<p>프로세스예요. 보관돼 있던 프로그램이 메모리에 적재되어 실행 중인 상태가 돼요.</p></details>
+
+<div class="done"><a class="go" href="c5-06.html">다음 카드 → 가상메모리와 스왑 영역 ★★★ 올해 새로 추가</a><div class="pn"><a href="c5-04.html"><b>← 이전</b>이전 카드</a><a class="next" href="quiz.html#c5"><b>연습</b>이 장 문제 풀기</a></div><p class="muted small">자료: 6~7주차 · 06메모리와계층구조.pdf, 07보조기억장치.pdf(앞부분) · 빅데이터플06(6주차), 빅데이터플07(7주차)</p></div>
+</main>
+<script src="assets/words.js?v=d2a0e0e2"></script>
+<script src="assets/app.js?v=d2a0e0e2"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ko" data-site="1bb07e">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CPU 성능 — 집적도, 클럭, 온도, 전력, 멀티코어 ★★ · 빅데이터플랫폼 시험공부</title>
+<meta name="description" content="빅데이터플랫폼 중간고사를 전공 처음인 사람도 이해하게 정리한 공부 사이트">
+<link rel="stylesheet" href="assets/style.css?v=d2a0e0e2">
+</head>
+<body>
+<header class="top"><div class="top-in">
+<a class="brand" href="index.html"><span class="bases"><i class="a">시</i><i class="t">험</i><i class="g">공</i><i class="c">부</i></span>빅데이터플랫폼</a>
+<nav class="nav" aria-label="메뉴"><a href="index.html" class=on>보드</a><a href="b.html">최소코스</a><a href="bplus.html">B+코스</a><a href="quiz.html">퀴즈</a><a href="essay.html">서술형</a><a href="cards.html">암기카드</a><a href="words.html">낱말사전</a><a href="cheat.html">시험 전 1장</a></nav>
+</div></header>
+<main>
+<div class="crumb k4"><a href="index.html#c4">← 보드</a><span>중앙처리장치(CPU) · 7/9</span></div><h1>CPU 성능 — 집적도, 클럭, 온도, 전력, 멀티코어 ★★</h1>
+<p><a class="w" href="words.html#w26" data-w="26">CPU</a>의 성능 특성은 네 가지로 말해요. 자료 49쪽에 나오는 그대로예요.</p>
+<div class="tw"><table>
+  <tr><th style="width:24%">요소</th><th>무엇을 보나</th></tr>
+  <tr><td><b><a class="w" href="words.html#w88" data-w="88">집적도</a></b></td><td>얼마나 많은 <a class="w" href="words.html#w48" data-w="48">반도체</a>(<a class="w" href="words.html#w50" data-w="50">트랜지스터</a>)가 들어 있나. <b><a class="w" href="words.html#w86" data-w="86">무어의 법칙</a></b> : 24개월(2년)마다 2배</td></tr>
+  <tr><td><b><a class="w" href="words.html#w85" data-w="85">클럭</a>수</b></td><td>얼마나 빨리 단일 연산이 수행되나. 3GHz는 초당 30억 번이에요</td></tr>
+  <tr><td><b>온도</b></td><td>열이 적게 나는가</td></tr>
+  <tr><td><b>전력</b></td><td>전력을 얼마나 적게 쓰는가</td></tr>
+</table></div>
+<p>무어의 법칙은 인텔 공동 창업자 <b>고든 무어</b>가 말한 "<a class="w" href="words.html#w63" data-w="63">집적회로</a>의 반도체 집적도가 2년마다 2배가 된다"는 경험 법칙이에요. 1970년대부터 2000년대 초반까지 잘 맞았어요. 메모리에 대한 비슷한 법칙을 <b><a class="w" href="words.html#w87" data-w="87">황의 법칙</a></b>이라고 해요.</p>
+<p><b>손계산 요령</b>: 2년에 2배라서 4년이면 2×2=4배, 6년이면 8배, 10년이면 2<sup>5</sup> = 32배예요. (년수 ÷ 2번 2를 곱해요.)</p>
+<p>클럭은 CPU가 "딱, 딱" 하고 박자를 맞추는 횟수예요. 클럭이 높을수록 빠르지만, <b>전력 소모와 발열이 늘어서 CPU 온도가 올라가요</b>. 온도가 너무 높으면(보통 100도 이하에서 동작) 회로가 상해요. 그래서 클럭을 무한정 높일 수 없어요. 3GHz CPU의 박자 한 번은 1 ÷ 30억 초 = 약 0.33나노초예요.</p>
+<p>그래서 2000년대 초에 "클럭 전쟁"이 끝나고 <b><a class="w" href="words.html#w91" data-w="91">멀티코어</a></b> 시대로 넘어갔어요. 클럭을 올리는 대신 일꾼 수를 늘린 거예요.</p>
+<div class="tw"><table>
+  <tr><th style="width:26%">용어</th><th>뜻</th></tr>
+  <tr><td><b><a class="w" href="words.html#w90" data-w="90">싱글코어</a></b></td><td>하나의 CPU 안에 <a class="w" href="words.html#w89" data-w="89">연산 장치</a>(코어)가 1개</td></tr>
+  <tr><td><b>멀티코어</b></td><td>하나의 CPU 안에 연산 장치(코어)가 여러 개 (듀얼, 쿼드, 옥타...). 요즘은 싱글코어가 없어요</td></tr>
+  <tr><td><b><a class="w" href="words.html#w92" data-w="92">하이퍼스레딩</a></b></td><td><a class="w" href="words.html#w84" data-w="84">파이프라인</a>을 이용해 물리 코어 하나가 2배의 일을 병렬로 처리해서 코어를 가상으로 늘리는 기법</td></tr>
+</table></div>
+<p>CPU 사양 읽기 예시예요. "<b>1.8GHz, 4코어 8<a class="w" href="words.html#w93" data-w="93">스레드</a></b>"는 클럭 1.8GHz로 동작하고, 물리적인 연산 장치(코어)는 4개이며, 하이퍼스레딩으로 8개 코어가 하는 계산을 처리할 수 있다는 뜻이에요.</p>
+<div class="box eg"><span class="t">비유 — 주방 확장</span>
+<p>요리사 한 명의 손을 더 빠르게 하는 데는 한계가 있어요(클럭). 그래서 요리사를 4명으로 늘렸어요(멀티코어). 하이퍼스레딩은 요리사 한 명이 가스레인지 두 곳을 번갈아 돌보며 2인분 일을 하는 거예요.</p>
+</div>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>무어의 법칙은 집적회로의 반도체 집적도가 24개월(2년)마다 2배씩 증가한다는 법칙이다. CPU 클럭이 높아질수록 전력 소모와 발열이 증가하여 CPU의 온도가 상승하며, 이는 클럭을 무한정 높일 수 없게 하는 주요 요인이다. 싱글코어는 하나의 CPU 안에 연산 장치가 1개인 것이고 멀티코어는 여러 개인 것이다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — CPU 클럭을 계속 높이지 못하는 가장 큰 이유는?</summary>
+<p>클럭이 높을수록 전력 소모와 발열이 늘어 온도가 올라가기 때문이에요. 그래서 코어 수를 늘리는 멀티코어로 방향을 바꿨어요.</p></details>
+
+<div class="done"><a class="go" href="c4-08.html">다음 카드 → CPU를 나눠 쓰는 법 — 멀티태스킹, 멀티프로세싱, 멀티쓰레딩 ★★</a><div class="pn"><a href="c4-06.html"><b>← 이전</b>이전 카드</a><a class="next" href="quiz.html#c4"><b>연습</b>이 장 문제 풀기</a></div><p class="muted small">자료: 5~6주차 · 05중앙처리장치.pdf · 빅데이터플렛폼05(5주차), 빅데이터플06(6주차), 빅데이터플07(7주차 일부)</p></div>
+</main>
+<script src="assets/words.js?v=d2a0e0e2"></script>
+<script src="assets/app.js?v=d2a0e0e2"></script>
+</body>
+</html>

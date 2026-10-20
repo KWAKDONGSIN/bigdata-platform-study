@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ko" data-site="1bb07e">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>비트, 니블, 바이트 ★★ · 빅데이터플랫폼 시험공부</title>
+<meta name="description" content="빅데이터플랫폼 중간고사를 전공 처음인 사람도 이해하게 정리한 공부 사이트">
+<link rel="stylesheet" href="assets/style.css?v=d2a0e0e2">
+</head>
+<body>
+<header class="top"><div class="top-in">
+<a class="brand" href="index.html"><span class="bases"><i class="a">시</i><i class="t">험</i><i class="g">공</i><i class="c">부</i></span>빅데이터플랫폼</a>
+<nav class="nav" aria-label="메뉴"><a href="index.html" class=on>보드</a><a href="b.html">최소코스</a><a href="bplus.html">B+코스</a><a href="quiz.html">퀴즈</a><a href="essay.html">서술형</a><a href="cards.html">암기카드</a><a href="words.html">낱말사전</a><a href="cheat.html">시험 전 1장</a></nav>
+</div></header>
+<main>
+<div class="crumb k2"><a href="index.html#c2">← 보드</a><span>데이터 표현 · 1/11</span></div><h1>비트, 니블, 바이트 ★★</h1>
+<p><a class="w" href="words.html#w14" data-w="14">컴퓨터</a>가 쓰는 가장 작은 단위가 <b><a class="w" href="words.html#w0" data-w="0">비트</a>(bit)</b>예요. <a class="w" href="words.html#w3" data-w="3">binary</a>(2진) + digit(숫자)의 줄임말이고, 0 또는 1 딱 한 자리예요. 비트를 묶어서 부르는 이름이 따로 있어요.</p>
+<div class="tw"><table>
+  <tr><th style="width:24%">이름</th><th style="width:24%">크기</th><th>설명</th></tr>
+  <tr><td><b>비트(bit)</b></td><td>1자리</td><td>0 또는 1</td></tr>
+  <tr><td><b><a class="w" href="words.html#w2" data-w="2">니블</a>(nibble)</b></td><td>4자리</td><td>비트 4개 묶음. <a class="w" href="words.html#w6" data-w="6">16진수</a> 1자리와 정확히 맞아요</td></tr>
+  <tr><td><b><a class="w" href="words.html#w1" data-w="1">바이트</a>(byte)</b></td><td>8자리</td><td>비트 8개 묶음. 메모리의 기본 한 칸이에요</td></tr>
+</table></div>
+<figure class="slide"><img src="slides/a_bit.jpg" alt="비트 1칸, 니블 4칸, 바이트 8칸과 MSB, LSB 위치를 보여 주는 슬라이드"><figcaption>교수님 슬라이드 — 비트, 니블, 바이트. 맨 왼쪽이 MSB, 맨 오른쪽이 LSB</figcaption></figure>
+<div class="box eg"><span class="t">비유 — 숫자를 끊어 읽기</span>
+<p>우리나라는 큰 숫자를 만 단위(네 자리)로 끊어서 읽고(1,0000,0000), 영어권은 세 자리(1,000,000)로 끊어요. 컴퓨터도 한 자리(비트), 네 자리(니블), 여덟 자리(바이트)로 끊어서 읽어요. 가장 많이 쓰는 단위가 바이트예요.</p>
+</div>
+<p>숫자에서 <a class="w" href="words.html#w8" data-w="8">가장 큰 자리</a>와 <a class="w" href="words.html#w9" data-w="9">가장 작은 자리</a>에는 이름이 있어요.</p>
+<ul>
+  <li><b>MSB</b>(Most Significant Bit) : 이진수의 <b>맨 왼쪽</b>, 가장 큰 자리 비트예요.</li>
+  <li><b>LSB</b>(Least Significant Bit) : 이진수의 <b>맨 오른쪽</b>, 가장 작은 자리 비트예요.</li>
+  <li><b>MSD, LSD</b> : 같은 뜻인데 <a class="w" href="words.html#w4" data-w="4">10진수</a>일 때 쓰는 말(Digit)이에요. 12345678의 MSD는 1, LSD는 8이고, <code>00001111</code>의 MSB는 0, LSB는 1이에요 (슬라이드 예제 2-1).</li>
+</ul>
+<p>1바이트(8비트)로는 0 또는 1이 8자리이니 <b>2를 8번 곱한 256가지</b>(0~255)를 표현해요. 기출 4번의 "8 Bit(=1 Byte)가 1 word인 메모리"는 이 한 칸(1바이트)을 기본 단위로 쓰는 메모리라는 뜻이에요. 메모리는 칸마다 주소(01, 02 …)가 붙어 있어요.</p>
+<p>숫자와 글자 말고 사진, 소리, 영상은 AD 변환(샘플링)으로 숫자로 바꾸는데, 이 수업에서는 생략했어요.</p>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>비트(bit)는 2진수 한 자리(0 또는 1)이고, 4비트를 니블(nibble), 8비트를 바이트(byte)라고 한다. 이진수에서 가장 왼쪽의 최상위 비트를 MSB, 가장 오른쪽의 최하위 비트를 LSB라고 한다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — (00001111)₂의 MSB와 LSB는 각각 무엇인가요?</summary>
+<p>MSB는 맨 왼쪽의 0, LSB는 맨 오른쪽의 1이에요.</p></details>
+
+<div class="done"><a class="go" href="c2-02.html">다음 카드 → 진법과 10진수 ↔ 2진수 변환 ★★★</a><div class="pn"><a href="index.html#c2"><b>← 이전</b>보드로</a><a class="next" href="quiz.html#c2"><b>연습</b>이 장 문제 풀기</a></div><p class="muted small">자료: 3주차 · 03데이터표현.pdf · 빅데이터플03</p></div>
+</main>
+<script src="assets/words.js?v=d2a0e0e2"></script>
+<script src="assets/app.js?v=d2a0e0e2"></script>
+</body>
+</html>

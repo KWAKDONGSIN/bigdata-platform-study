@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ko" data-site="1bb07e">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>싱글코어, 멀티코어, 하이퍼스레딩 ★★ · 빅데이터플랫폼 시험공부</title>
+<meta name="description" content="빅데이터플랫폼 중간고사를 전공 처음인 사람도 이해하게 정리한 공부 사이트">
+<link rel="stylesheet" href="assets/style.css?v=d2a0e0e2">
+</head>
+<body>
+<header class="top"><div class="top-in">
+<a class="brand" href="index.html"><span class="bases"><i class="a">시</i><i class="t">험</i><i class="g">공</i><i class="c">부</i></span>빅데이터플랫폼</a>
+<nav class="nav" aria-label="메뉴"><a href="index.html" class=on>보드</a><a href="b.html">최소코스</a><a href="bplus.html">B+코스</a><a href="quiz.html">퀴즈</a><a href="essay.html">서술형</a><a href="cards.html">암기카드</a><a href="words.html">낱말사전</a><a href="cheat.html">시험 전 1장</a></nav>
+</div></header>
+<main>
+<div class="crumb k1"><a href="index.html#c1">← 보드</a><span>컴퓨터 구조 소개 · 8/12</span></div><h1>싱글코어, 멀티코어, 하이퍼스레딩 ★★</h1>
+<p><a class="w" href="words.html#w26" data-w="26">CPU</a> 안에는 실제로 계산을 하는 <b><a class="w" href="words.html#w89" data-w="89">연산 장치</a>(<a class="w" href="words.html#w64" data-w="64">ALU</a>)</b>가 들어 있어요. 이 연산 장치 하나를 <b>코어(core)</b>라고 불러요. 코어가 몇 개 들어 있느냐로 CPU를 나눠요.</p>
+<div class="tw"><table>
+  <tr><th style="width:24%">종류</th><th>뜻</th><th style="width:30%">시기</th></tr>
+  <tr><td><b><a class="w" href="words.html#w90" data-w="90">싱글코어</a></b></td><td>하나의 CPU 안에 연산 장치가 <b>1개</b></td><td>2000년대 초까지</td></tr>
+  <tr><td><b><a class="w" href="words.html#w91" data-w="91">멀티코어</a></b></td><td>하나의 CPU 안에 연산 장치가 <b>여러 개</b> (듀얼 2, 쿼드 4, 옥타 8 …)</td><td>2000년대 초반부터 지금</td></tr>
+</table></div>
+<div class="box eg"><span class="t">비유 — 주방의 요리사</span>
+<p>싱글코어는 요리사 1명이 일하는 주방이에요. 더 빨리 만들려고 요리사를 더 빠르게 움직이게 했더니(<a class="w" href="words.html#w85" data-w="85">클럭</a>) 몸이 달아올라서 한계에 부딪혔어요. 그래서 요리사를 4명, 8명으로 늘렸어요. 이것이 멀티코어예요.</p>
+</div>
+<p>멀티코어가 더해진 아이디어가 <b><a class="w" href="words.html#w92" data-w="92">하이퍼스레딩</a>(hyper-threading)</b>이에요. <a class="w" href="words.html#w84" data-w="84">파이프라인</a>이라는 기술로 <b>코어 하나가 명령 2개를 동시에</b> 처리하게 해서, 코어를 가상으로 두 배로 늘려 줘요. 이렇게 늘어난 가상 코어를 <b><a class="w" href="words.html#w93" data-w="93">스레드</a>(쓰레드)</b>라고 해요.</p>
+<figure class="slide"><img src="slides/a_core.jpg" alt="CPU-Z 화면에서 Cores 4, Threads 8로 표시된 멀티코어와 하이퍼스레딩 슬라이드"><figcaption>교수님 슬라이드 — 4코어 8쓰레드. 물리적 연산장치는 4개이지만 하이퍼스레딩으로 8개가 처리하는 계산을 수행해요</figcaption></figure>
+<ul>
+  <li><b>코어</b> : 실제로 있는 물리적 연산 장치예요.</li>
+  <li><b>스레드</b> : 하이퍼스레딩으로 만든 가상의 코어 수예요. 보통 코어 수의 2배예요.</li>
+  <li>요즘 노트북은 8코어 16스레드가 흔하고, 서버용은 64코어 128스레드까지 나온다고 교수님이 말했어요 (대략적인 수치예요).</li>
+</ul>
+<p><b>왜 코어를 여러 개 두면 좋을까요?</b> 클럭을 못 올려도 일을 나눠서 동시에 처리하면 전체 속도가 올라가기 때문이에요. 노트북 사양에서 보이는 "코어"와 "스레드"는 바로 이 숫자예요.</p>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p><b>싱글 코어</b>는 하나의 CPU 안에 연산 장치가 1개 있는 것이며, <b>멀티 코어</b>는 하나의 CPU 안에 연산 장치가 여러 개 있는 것이다. (2023 기출 1번 빈칸 정답)</p>
+</div>
+<details class="check"><summary>잠깐 확인 — "4코어 8쓰레드" CPU에서 실제 물리적 연산 장치는 몇 개인가요?</summary>
+<p>4개예요. 하이퍼스레딩으로 8개처럼 동작하지만 실제 연산 장치는 4개예요.</p></details>
+
+<div class="done"><a class="go" href="c1-09.html">다음 카드 → 프로그램과 프로세스 ★★★</a><div class="pn"><a href="c1-07.html"><b>← 이전</b>이전 카드</a><a class="next" href="quiz.html#c1"><b>연습</b>이 장 문제 풀기</a></div><p class="muted small">자료: 2·6·7주차 · 02컴퓨터구조소개.pdf · 02컴퓨터구조소개-실습.pdf · 05중앙처리장치.pdf · 06메모리와계층구조.pdf · 빅데이터플02·06·07</p></div>
+</main>
+<script src="assets/words.js?v=d2a0e0e2"></script>
+<script src="assets/app.js?v=d2a0e0e2"></script>
+</body>
+</html>

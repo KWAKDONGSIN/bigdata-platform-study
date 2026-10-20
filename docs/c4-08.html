@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ko" data-site="1bb07e">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CPU를 나눠 쓰는 법 — 멀티태스킹, 멀티프로세싱, 멀티쓰레딩 ★★ · 빅데이터플랫폼 시험공부</title>
+<meta name="description" content="빅데이터플랫폼 중간고사를 전공 처음인 사람도 이해하게 정리한 공부 사이트">
+<link rel="stylesheet" href="assets/style.css?v=d2a0e0e2">
+</head>
+<body>
+<header class="top"><div class="top-in">
+<a class="brand" href="index.html"><span class="bases"><i class="a">시</i><i class="t">험</i><i class="g">공</i><i class="c">부</i></span>빅데이터플랫폼</a>
+<nav class="nav" aria-label="메뉴"><a href="index.html" class=on>보드</a><a href="b.html">최소코스</a><a href="bplus.html">B+코스</a><a href="quiz.html">퀴즈</a><a href="essay.html">서술형</a><a href="cards.html">암기카드</a><a href="words.html">낱말사전</a><a href="cheat.html">시험 전 1장</a></nav>
+</div></header>
+<main>
+<div class="crumb k4"><a href="index.html#c4">← 보드</a><span>중앙처리장치(CPU) · 8/9</span></div><h1>CPU를 나눠 쓰는 법 — 멀티태스킹, 멀티프로세싱, 멀티쓰레딩 ★★</h1>
+<p>요즘 <a class="w" href="words.html#w14" data-w="14">컴퓨터</a>는 크롬, <a class="w" href="words.html#w34" data-w="34">파워</a>포인트, 게임을 한꺼번에 켜 놔요. 이것을 가능하게 하는 용어가 여러 개라 헷갈려요. 7주차에 교수님이 정리한 것을 표로 모았어요.</p>
+<div class="tw"><table>
+  <tr><th style="width:24%">용어</th><th>뜻</th><th style="width:28%">비유</th></tr>
+  <tr><td><b>일괄 처리</b></td><td>초창기 방식. 한 번에 작업을 1개만 처리해요</td><td>한 줄짜리 계산대</td></tr>
+  <tr><td><b><a class="w" href="words.html#w111" data-w="111">시분할</a></b><br><span class="small">time sharing</span></td><td><a class="w" href="words.html#w26" data-w="26">CPU</a> 시간을 아주 잘게 쪼개 여러 <a class="w" href="words.html#w13" data-w="13">프로세스</a>가 번갈아 써요. 사람 눈에는 동시에 도는 것처럼 보여요 (번갈아 바꾸는 일을 컨텍스트 스위치라고 해요)</td><td>선생님 한 명이 학생 여러 명을 1분씩 돌아가며 지도</td></tr>
+  <tr><td><b><a class="w" href="words.html#w107" data-w="107">멀티태스킹</a></b></td><td>여러 <a class="w" href="words.html#w12" data-w="12">프로그램</a>이 동시에 <a class="w" href="words.html#w78" data-w="78">실행</a>되는 것처럼 보이게 하는 기술. <a class="w" href="words.html#w90" data-w="90">싱글코어</a> 시절에는 시분할로 만들었어요</td><td>한 사람이 설거지·빨래·요리를 번갈아</td></tr>
+  <tr><td><b><a class="w" href="words.html#w109" data-w="109">멀티프로세싱</a></b></td><td>하나의 일을 <b>여러 개의 프로세스</b>로 나눠 병렬 실행해요. 크롬 <b>창</b>을 여러 개 띄우는 것과 같아요</td><td>가게를 여러 개 차림</td></tr>
+  <tr><td><b><a class="w" href="words.html#w110" data-w="110">멀티쓰레딩</a></b><br><span class="small">multi-threading</span></td><td><b>프로세스는 하나</b>만 띄우고, 그 안에서 여러 흐름(<a class="w" href="words.html#w93" data-w="93">스레드</a>)으로 병렬 실행해요. 크롬 한 창 안의 <b>탭</b>들과 같아요</td><td>한 가게 안에서 직원 여러 명</td></tr>
+  <tr><td><b><a class="w" href="words.html#w108" data-w="108">멀티프로그래밍</a></b></td><td>여러 프로그램을 동시에 <a class="w" href="words.html#w28" data-w="28">RAM</a>에 올려, 한 프로그램이 입출력으로 쉴 때 CPU가 다른 프로그램을 처리하게 해요</td><td>―</td></tr>
+</table></div>
+<p>빅데이터 처리에서 중요한 이유가 있어요. 40시간 걸리는 큰 작업을 10조각으로 나눠 동시에 돌리면(병렬 처리) 이론상 4시간이면 끝나요. 교수님은 파이썬은 멀티쓰레딩 병렬을 잘 지원하지 않아서 병렬 처리에 보통 멀티프로세싱을 쓴다고 했어요. 멀티태스킹과 멀티프로그래밍은 "안 써도 될 것 같다"고 했어요.</p>
+<p>2023년 기출 Q1은 이 장의 용어 총정리예요. 답을 이렇게 외우세요.</p>
+<div class="tw"><table>
+  <tr><th style="width:10%">번호</th><th style="width:26%">답</th><th>설명 문장 (기출)</th></tr>
+  <tr><td>1.1</td><td><b><a class="w" href="words.html#w25" data-w="25">폰노이만 구조</a></b></td><td>계산장치가 기억장치의 프로그램을 한 줄씩 실행해 결과를 기억장치에 <a class="w" href="words.html#w80" data-w="80">기록</a>하는 구조</td></tr>
+  <tr><td>1.2</td><td><b><a class="w" href="words.html#w86" data-w="86">무어의 법칙</a></b></td><td><a class="w" href="words.html#w88" data-w="88">집적도</a>가 2년마다 2배</td></tr>
+  <tr><td>1.3, 1.4</td><td><b>싱글코어, <a class="w" href="words.html#w91" data-w="91">멀티코어</a></b></td><td><a class="w" href="words.html#w89" data-w="89">연산 장치</a>가 1개 / 여러 개</td></tr>
+  <tr><td>1.5</td><td><b>온도</b></td><td><a class="w" href="words.html#w85" data-w="85">클럭</a>이 높을수록 전력·발열이 늘어 상승</td></tr>
+  <tr><td>1.6, 1.7</td><td><b>프로그램, 프로세스</b></td><td><a class="w" href="words.html#w29" data-w="29">보조기억장치</a>에 있으면 프로그램, 실행되어 메모리에 <a class="w" href="words.html#w22" data-w="22">적재</a>되면 프로세스 (5장)</td></tr>
+  <tr><td>1.8</td><td><b>멀티 프로세싱</b></td><td>하나의 프로그램을 여러 개의 프로세스로 병렬 실행</td></tr>
+  <tr><td>1.9</td><td><b>멀티 쓰레딩</b></td><td>하나의 프로세스 안에 여러 흐름으로 병렬 실행</td></tr>
+  <tr><td>1.10</td><td><b><a class="w" href="words.html#w105" data-w="105">운영체제</a></b></td><td>전원이 켜지면 가장 먼저 시작되며 자원과 응용 프로그램 실행을 관리 (5장)</td></tr>
+</table></div>
+<p class="small">보기에 있던 <a class="w" href="words.html#w94" data-w="94">오버클럭</a>, <a class="w" href="words.html#w87" data-w="87">황의 법칙</a>, 집적도, 코어, 멀티태스킹, 멀티프로그래밍은 위 설명에 맞지 않아서 답이 아니에요(함정 보기).</p>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>멀티 프로세싱은 하나의 프로그램을 여러 개의 프로세스로 나누어 병렬 실행하는 것이고, 멀티 쓰레딩은 하나의 프로세스 안에서 여러 흐름(스레드)으로 병렬 실행하는 것이다. 멀티태스킹은 여러 프로그램이 동시에 실행되는 것처럼 보이게 하는 기술로, 싱글코어에서는 CPU 시간을 쪼개 번갈아 쓰는 시분할 방식으로 구현되었다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — 크롬 창을 2개 띄운 것과 한 창에 탭을 2개 연 것 중 멀티프로세싱은 어느 쪽인가요?</summary>
+<p>창을 2개 띄운 쪽이에요(프로세스가 2개). 탭은 한 프로세스 안의 스레드라서 멀티쓰레딩이에요.</p></details>
+
+<div class="done"><a class="go" href="c4-09.html">다음 카드 → 이 장 3줄 요약</a><div class="pn"><a href="c4-07.html"><b>← 이전</b>이전 카드</a><a class="next" href="quiz.html#c4"><b>연습</b>이 장 문제 풀기</a></div><p class="muted small">자료: 5~6주차 · 05중앙처리장치.pdf · 빅데이터플렛폼05(5주차), 빅데이터플06(6주차), 빅데이터플07(7주차 일부)</p></div>
+</main>
+<script src="assets/words.js?v=d2a0e0e2"></script>
+<script src="assets/app.js?v=d2a0e0e2"></script>
+</body>
+</html>

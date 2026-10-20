@@ -1,0 +1,365 @@
+<!-- 1장: 컴퓨터 구조 소개. 폰노이만 구조, sum.py 실행 과정, 6대 부품, 휘발성, 무어·황의 법칙, 클럭·온도·오버클럭, 싱글·멀티코어, 프로그램과 프로세스, 병렬 처리 용어, 운영체제를 쉬운 말로 설명해요 -->
+<h2>컴퓨터 구조 소개 — 부품이 서로 어떻게 일하는가</h2>
+<p class="lead">이 장은 중간고사 1번(빈칸 채우기), 2번(6대 부품), 3번(sum.py 실행 과정)이 모두 나오는 곳이에요. 컴퓨터가 어떤 설계로 동작하는지(폰노이만 구조), 어떤 부품이 있는지, CPU가 왜 멀티코어가 되었는지, 프로그램과 프로세스가 어떻게 다른지를 차례로 배워요.</p>
+
+<h3>1-1. 폰노이만 구조 <span class="st">★★★</span></h3>
+<p>컴퓨터를 만들려면 두 가지가 필요해요. 하나는 <b>어떻게 계산할지에 대한 설계</b>(논리적 구조)이고, 다른 하나는 <b>그 설계를 실제 기계로 만드는 일</b>(물리적 구현)이에요. 이 중 설계에 해당하는 것이 <b>폰노이만(Von Neumann) 구조</b>예요.</p>
+<table>
+  <tr><th style="width:30%">컴퓨터 구현의 2요소</th><th>내용</th></tr>
+  <tr><td><b>논리적 구조 설계</b></td><td>폰노이만 구조</td></tr>
+  <tr><td><b>물리적 기기 구현</b></td><td>전자 컴퓨터(전기·전자 신호를 이용), 양자 컴퓨터(양자역학 원리를 이용)</td></tr>
+</table>
+<div class="box def"><span class="t">한 줄 정의</span>
+<p><b>폰노이만 구조 = 프로그램과 데이터를 주기억장치(RAM)에 저장하고, 명령어를 한 개씩 CPU로 가져와 실행(계산)하는 구조.</b> 이렇게 프로그램을 기억장치 안에 넣어 두기 때문에 "프로그램 내장형 컴퓨터"라고도 불러요.</p>
+</div>
+<p>폰노이만 구조를 이루는 부분은 다섯 가지예요. 원래 핵심은 CPU와 메모리 둘뿐이었는데, 쓰기 편하도록 저장장치와 입출력장치가 붙었어요.</p>
+<table>
+  <tr><th style="width:30%">구성 요소</th><th>기능</th></tr>
+  <tr><td><b>중앙처리장치(CPU)</b></td><td><b>제어 및 연산</b>. 계산하고 전체를 지휘해요</td></tr>
+  <tr><td><b>주기억장치(RAM)</b></td><td><b>실행 중인</b> 프로그램과 데이터를 저장해요</td></tr>
+  <tr><td><b>보조기억장치(SSD, HDD)</b></td><td><b>실행이 끝난</b> 프로그램과 데이터를 <b>영구 저장</b>해요</td></tr>
+  <tr><td><b>입출력장치</b></td><td>컴퓨터와 사용자의 인터페이스. 입력은 마우스·키보드, 출력은 모니터</td></tr>
+  <tr><td><b>시스템 버스(system bus)</b></td><td>구성 요소들 사이에서 데이터가 오가는 <b>전달 경로(data path)</b></td></tr>
+</table>
+<figure class="slide"><img src="slides/a_vn.jpg" alt="CPU, 메모리(RAM), 저장장치, 입력장치, 출력장치가 연결된 폰노이만 컴퓨터 구조 그림"><figcaption>교수님 슬라이드 — 폰노이만 컴퓨터 구조. 가운데 CPU와 RAM, 아래 저장장치, 양옆 입출력장치</figcaption></figure>
+<div class="box eg"><span class="t">비유 — 주방</span>
+<p>요리사(CPU)가 조리대(RAM) 위에 레시피(프로그램)와 재료(데이터)를 펼쳐 놓고, 레시피를 <b>한 줄씩</b> 읽으며 요리해요. 쓰지 않는 재료와 레시피 책은 창고(SSD·HDD)에 두고요. 요리사가 아무리 유능해도, 레시피가 조리대에 올라와 있어야 요리를 시작할 수 있어요.</p>
+</div>
+<p><b>왜 이런 구조가 중요할까요?</b> 이 구조 덕분에 프로그램이 아무리 길어도(천 줄, 만 줄, 십만 줄) 한 줄씩 CPU로 가져와 실행하면 되기 때문이에요. 하드웨어는 그대로 두고 프로그램만 바꿔 끼우면 전혀 다른 일을 시킬 수 있어요.</p>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>계산장치(CPU)와 기억장치로 구성되어서, 계산장치가 기억장치의 프로그램에서 한 줄씩 실행하여 계산 결과를 기억장치에 기록하는 방식으로 동작하는 현대의 컴퓨터 구조를 <b>폰노이만 구조</b>라고 한다. (2023 기출 1번 빈칸 정답은 "폰노이만 구조"예요)</p>
+</div>
+<details class="check"><summary>잠깐 확인 — 폰노이만 구조의 핵심 두 가지는 무엇인가요?</summary>
+<p>① 프로그램과 데이터를 RAM에 저장한다. ② 명령어를 한 개씩 CPU로 가져와 실행한다. 이 두 줄이 전부예요.</p></details>
+
+<h3>1-2. 프로그램이 실행되는 과정 — sum.py 따라가기 <span class="st">★★★</span></h3>
+<p>3번 문제는 코드 한 줄이 컴퓨터 안에서 어떻게 움직이는지 묻는 문제예요. 먼저 큰 흐름을 외우고, 그다음 시험에 나온 코드를 손으로 따라가 볼게요.</p>
+<ul>
+  <li><b>① 실행 전</b> : 프로그램(<code>sum.py</code>)과 파이썬 실행기는 <b>보조기억장치(SSD)</b>에 저장돼 있어요. 이때는 "보관만 된(비활성)" 상태예요.</li>
+  <li><b>② 실행</b> : 실행하면 코드가 <b>주기억장치(RAM)</b>에 적재(load)돼요. 이제 "활성" 상태예요.</li>
+  <li><b>③ 번역</b> : RAM의 코드 한 줄을 <b>파이썬 인터프리터(실행기)</b>가 기계어(0과 1)로 바꿔요. 파이썬 코드는 CPU로 바로 갈 수 없어요.</li>
+  <li><b>④ 계산</b> : 기계어가 <b>CPU</b>(ALU)로 전달돼 계산해요.</li>
+  <li><b>⑤ 기록</b> : 계산 결과(변수 값)를 RAM의 <b>데이터 영역</b>에 기록하고, 다음 줄로 넘어가 ③~⑤를 반복해요.</li>
+</ul>
+<p>번역 단계는 2주차에 교수님이 생략했다가 3주차에 정정해서 넣은 부분이에요. 기계어와 거의 1대 1로 대응되는 사람이 읽을 수 있는 언어가 <b>어셈블리어</b>예요. RAM 안은 두 영역으로 나뉜다고 생각하세요. 코드가 올라가는 <b>코드 영역</b>과, 변수 값이 적히는 <b>데이터 영역</b>이에요.</p>
+<div class="box eg"><span class="t">비유 — 시나리오와 배우</span>
+<p>교수님은 프로그램을 "계산 시나리오"라고 했어요. 시나리오(프로그램)가 나오면 배우(CPU)가 그 대본을 한 줄씩 연기해요. 파이썬 인터프리터는 외국어 대본을 배우가 알아듣는 말로 한 줄씩 통역해 주는 통역사예요.</p>
+</div>
+<p>이제 2023 기출 3번에 나온 코드를 볼게요.</p>
+<div class="code">1. n = 1;
+2. sum = 0;
+3. while (n &lt;= 100):
+4.     sum = sum + n
+5.     n = n + 1</div>
+<table>
+  <tr><th style="width:42%">코드 줄</th><th>무슨 뜻인가요</th></tr>
+  <tr><td><code>n = 1;</code></td><td><code>n</code>이라는 이름의 칸을 만들고 1을 넣어요 (끝의 <code>;</code>은 줄 끝 표시일 뿐이에요)</td></tr>
+  <tr><td><code>sum = 0;</code></td><td><code>sum</code>이라는 칸을 만들고 0을 넣어요</td></tr>
+  <tr><td><code>while (n &lt;= 100):</code></td><td>"<code>n</code>이 100 이하인 동안" 아래 두 줄을 반복해요. 조건 판단 명령이에요</td></tr>
+  <tr><td><code>sum = sum + n</code></td><td>오른쪽을 먼저 계산(<code>sum</code> 값 + <code>n</code> 값)해서 그 결과를 <code>sum</code> 칸에 넣어요</td></tr>
+  <tr><td><code>n = n + 1</code></td><td><code>n</code> 값에 1을 더해 <code>n</code> 칸에 다시 넣어요</td></tr>
+</table>
+<p>이 코드에는 <code>print</code>가 없어서 <b>화면에 출력되는 것은 아무것도 없어요</b>. 대신 RAM의 변수 칸에 값이 남아요. 손으로 따라간 결과는 아래와 같아요.</p>
+<table>
+  <tr><th style="width:8%">줄</th><th style="width:34%">하는 일</th><th>RAM의 변수 칸 (실행 후)</th></tr>
+  <tr><td>1</td><td><code>n</code> 칸 만들고 1 기억</td><td><code>n = 1</code></td></tr>
+  <tr><td>2</td><td><code>sum</code> 칸 만들고 0 기억</td><td><code>n = 1, sum = 0</code></td></tr>
+  <tr><td>3</td><td><code>1 &lt;= 100</code> 이 참이니 아래로</td><td>변화 없음</td></tr>
+  <tr><td>4</td><td><code>0 + 1 = 1</code> 을 <code>sum</code>에</td><td><code>n = 1, sum = 1</code></td></tr>
+  <tr><td>5</td><td><code>1 + 1 = 2</code> 를 <code>n</code>에</td><td><code>n = 2, sum = 1</code></td></tr>
+  <tr><td>3</td><td><code>2 &lt;= 100</code> 참, 다시 반복</td><td>변화 없음</td></tr>
+  <tr><td>4~5</td><td><code>sum = 1 + 2 = 3</code>, <code>n = 3</code></td><td><code>n = 3, sum = 3</code></td></tr>
+  <tr><td>…</td><td>계속 반복</td><td>…</td></tr>
+  <tr><td>끝</td><td><code>n</code>이 101이 되면 조건이 거짓이라 반복 종료</td><td><code>n = 101, sum = 5050</code></td></tr>
+</table>
+<p>시험 문제는 이 흐름에서 빈칸을 뽑은 거예요. 변수가 <b>어느 줄에서 처음 만들어지는지</b>만 따라가면 풀려요.</p>
+<table>
+  <tr><th style="width:14%">빈칸</th><th style="width:30%">정답</th><th>이유</th></tr>
+  <tr><td><b>A</b></td><td>보조기억장치</td><td>실행 전에는 저장장치에 있어요</td></tr>
+  <tr><td><b>B</b></td><td>주기억장치</td><td>실행하면 RAM에 적재돼요. 변수 값도 RAM에 기억돼요</td></tr>
+  <tr><td><b>C</b></td><td>CPU</td><td>기계어를 받아 실행하는 곳이에요</td></tr>
+  <tr><td><b>D</b>, <b>v</b></td><td><code>n</code>, 1</td><td>1번째 줄 <code>n = 1</code></td></tr>
+  <tr><td><b>E</b>, <b>w</b></td><td><code>sum</code>, 0</td><td>2번째 줄 <code>sum = 0</code></td></tr>
+  <tr><td><b>x</b></td><td>100</td><td>3번째 줄 <code>n &lt;= 100</code> 조건의 오른쪽 값</td></tr>
+  <tr><td><b>y</b></td><td>1</td><td>4번째 줄 <code>sum = 0 + 1</code></td></tr>
+  <tr><td><b>z</b></td><td>2</td><td>5번째 줄 <code>n = 1 + 1</code> (변수는 D=<code>n</code>)</td></tr>
+</table>
+<div class="box tip"><span class="t">손으로 따라가는 요령</span>
+<p>① 변수 칸 표(<code>n</code>, <code>sum</code>)를 먼저 그려요. ② 줄 번호 순서대로 한 줄씩 칸의 값을 고쳐 써요. ③ <code>=</code>는 "같다"가 아니라 <b>"오른쪽을 계산해서 왼쪽 칸에 넣는다"</b>예요. ④ 반복문은 첫 바퀴만 정확히 하면 나머지는 규칙이 보여요.</p>
+</div>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>sum.py는 보조기억장치(SSD)에 저장되어 있다가 실행되면 파이썬 실행기와 함께 주기억장치(RAM)에 적재된다. 실행기가 코드를 한 줄씩 해석하여 기계어로 CPU에 전달하면 CPU가 계산을 실행하고, 그 결과(변수 값)가 다시 RAM에 기록된다. 이 과정이 반복되며, 프로그램이 종료되면 RAM의 코드와 데이터는 사라지고 출력 결과만 남는다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — 위 코드에서 3번째 줄(while)은 어떤 명령이고, CPU가 하는 일은 무엇인가요?</summary>
+<p>조건 판단 명령이에요. CPU가 <code>n</code> 값이 100 이하인지 비교해서 참이면 4, 5번째 줄로 넘어가고 거짓이면 반복을 끝내요.</p></details>
+
+<h3>1-3. 컴퓨터의 6대 부품과 역할 <span class="st">★★★</span></h3>
+<p>컴퓨터 본체를 열면 부품이 여러 개 보이지만, 시험에 나오는 핵심은 <b>6가지</b>예요. 교수님은 실제 본체를 들고 와서 보여 줬고, 조립 사진 자료도 나눠 줬어요. 아래 사진에서 위치를 먼저 눈에 익혀 두세요.</p>
+<figure class="slide"><img src="slides/a_parts.jpg" alt="컴퓨터 본체 측면 사진에 파워, CPU 및 쿨러, 그래픽카드, SSD, RAM, 메인보드 위치를 표시한 슬라이드"><figcaption>교수님 슬라이드 — 컴퓨터 본체 측면. 파워, CPU 및 쿨러, 그래픽카드, SSD, RAM, 메인보드</figcaption></figure>
+<table>
+  <tr><th style="width:17%">부품</th><th style="width:38%">하는 일 (시험 표현)</th><th>쉬운 비유와 눈으로 찾는 법</th></tr>
+  <tr><td><b>CPU</b><br><span class="small">중앙처리장치</span></td><td>컴퓨터의 <b>거의 대부분의 계산</b>을 담당해요</td><td>두뇌. 위에 큰 팬(쿨러)이 달린 네모난 칩</td></tr>
+  <tr><td><b>RAM</b><br><span class="small">주기억장치</span></td><td><b>휘발성</b> 기억장치. <b>수행 중인</b> 프로그램 코드와 데이터를 보관해요</td><td>책상 위. CPU 옆에 꽂힌 길쭉한 막대</td></tr>
+  <tr><td><b>보조기억장치</b><br><span class="small">SSD / HDD</span></td><td><b>비휘발성</b> 기억장치. 전원이 꺼져도 데이터를 <b>반영구 보관</b>해요</td><td>도서관·창고. 네모난 상자 또는 작은 판(M.2)</td></tr>
+  <tr><td><b>GPU</b><br><span class="small">그래픽카드</span></td><td>이미지 처리, 딥러닝 학습 같은 <b>행렬 기반 연산을 병렬로</b> 빠르게 수행해요</td><td>단순 계산을 한꺼번에 처리하는 조수 부대. 본체 아래쪽에 꽂힌 큰 카드</td></tr>
+  <tr><td><b>메인보드</b><br><span class="small">마더보드</span></td><td>부품들을 꽂아 연결하고, 부품 간에 <b>데이터가 전송되는 통로</b> 기능을 해요</td><td>도로망이 깔린 땅. 모든 부품이 꽂히는 큰 판</td></tr>
+  <tr><td><b>전원공급장치</b><br><span class="small">파워</span></td><td><b>교류</b> 전류를 <b>직류</b> 전류로 바꿔 컴퓨터에 전원을 공급해요</td><td>변압기·발전소. 본체 위쪽 상자에서 선이 뻗어 나와요</td></tr>
+</table>
+<p>GPU는 원래 게임처럼 화려한 그래픽을 위한 부품이었어요. 지금은 AI 계산에 많이 쓰여서 "그래픽 처리 유닛이 아니라 AI 처리 유닛이 되어 간다"고 교수님이 말했어요. GPU가 쓰는 메모리를 따로 <b>VRAM</b>이라고 불러요.</p>
+<div class="box eg"><span class="t">비유 — CPU와 GPU</span>
+<p>CPU는 어려운 문제를 하나씩 척척 푸는 수학 천재 한 명이에요. GPU는 쉬운 계산을 수천 명이 한꺼번에 푸는 부대예요. 사진이나 딥러닝처럼 같은 계산을 엄청나게 많이 반복하는 일은 부대가 훨씬 빨라요.</p>
+</div>
+<p>부품 말고도 <b>쿨러</b>(CPU의 열을 식히는 팬)와 <b>케이스</b>(껍데기)가 있어요. 키보드·마우스·모니터는 본체 밖의 <b>입출력장치</b>예요. 6대 부품에는 들어가지 않아요.</p>
+<p><b>사진 문제 푸는 법</b>이에요. 2023 기출 2.1번은 본체 사진에 빈칸 6개를 두고 부품 번호를 쓰게 했어요. 위치로 찾으면 돼요. 위쪽 상자는 파워, 둥근 팬이 달린 곳은 CPU, 그 옆 얇은 막대는 RAM, 아래의 큰 카드는 그래픽카드, 오른쪽 상자는 SSD, 판 전체는 메인보드예요.</p>
+<div class="box exam"><span class="t">시험엔 이렇게 써요 (기출 2번 정답)</span>
+<p>보기: 1 보조기억장치, 2 그래픽카드(GPU), 3 전원공급장치, 4 CPU, 5 RAM, 6 메인보드</p>
+<table>
+  <tr><th style="width:62%">설명</th><th>정답 번호</th></tr>
+  <tr><td>a. 컴퓨터 부품 간에 데이터가 전송되는 통로의 기능을 수행한다</td><td><b>6</b> 메인보드</td></tr>
+  <tr><td>b. 컴퓨터의 거의 대부분의 계산을 담당하여 수행한다</td><td><b>4</b> CPU</td></tr>
+  <tr><td>c. 비휘발성 기억장치이며, 전원이 꺼지더라도 데이터를 반영구 보관한다</td><td><b>1</b> 보조기억장치</td></tr>
+  <tr><td>d. 휘발성 기억장치이며, 수행 중인 프로그램 코드와 데이터를 보관한다</td><td><b>5</b> RAM</td></tr>
+  <tr><td>e. 이미지 처리, 딥러닝 학습과 같은 행렬 기반의 연산을 병렬 연산으로 빠르게 수행한다</td><td><b>2</b> GPU</td></tr>
+  <tr><td>f. 교류 전류를 직류 전류로 변환하여 컴퓨터에 전원을 공급한다</td><td><b>3</b> 전원공급장치</td></tr>
+</table>
+<p>사진 2.1번 정답은 왼쪽 위에서부터 3(파워), 6(메인보드), 4(CPU), 2(GPU), 오른쪽의 1(SSD), 5(RAM)예요.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — "교류를 직류로 바꿔 전원을 공급한다"는 어느 부품일까요?</summary>
+<p>전원공급장치(파워)예요. 콘센트의 교류 전기를 컴퓨터 부품이 쓰는 직류로 바꿔 줘요.</p></details>
+
+<h3>1-4. 조립 순서와 내 컴퓨터 사양 읽기 (실습)</h3>
+<p>교수님은 부품이 어떻게 조립되는지도 사진으로 보여 줬어요. 순서는 아래와 같아요. 교수님 요약은 "선만 잘 연결하고 선 정리만 잘하면 된다"예요.</p>
+<ul>
+  <li><b>① CPU 장착</b> : 메인보드의 CPU 자리에 CPU를 꽂아요.</li>
+  <li><b>② 써멀 그리스 도포</b> : CPU 위에 열 전달을 돕는 그리스를 발라요. CPU와 쿨러 사이의 빈틈을 메워 열이 잘 빠지게 해요.</li>
+  <li><b>③ CPU 쿨러 장착</b> : 열을 식히는 팬을 달아요.</li>
+  <li><b>④ RAM 장착</b> : 메인보드의 RAM 슬롯에 꽂아요.</li>
+  <li><b>⑤ SSD, 그래픽카드 연결</b> : SSD는 판(M.2)이거나 선으로 연결해요. 그래픽카드는 PCI 슬롯에 꽂아요.</li>
+  <li><b>⑥ 파워 연결</b> : 파워의 선들을 메인보드와 부품에 연결하고 전원을 켜요.</li>
+</ul>
+<p>조립을 끝냈다고 바로 쓸 수 있는 것은 아니에요. 윈도우나 리눅스 같은 <b>운영체제를 설치</b>해야 비로소 쓸 수 있어요.</p>
+<p>내 컴퓨터가 어떤 부품으로 이루어졌는지 보는 프로그램도 배웠어요. 윈도우는 <b>CPU-Z</b>나 <b>Speccy</b>, 맥은 <b>MacCPUID</b>예요. 읽는 법은 이래요.</p>
+<table>
+  <tr><th style="width:18%">부품</th><th>읽는 법</th></tr>
+  <tr><td><b>CPU</b></td><td>예 <code>Intel Core i7-1360P</code>. i3 &lt; i5 &lt; i7 순으로 등급이 올라가고, 뒤 숫자의 앞 두 자리(13)가 <b>세대</b>예요</td></tr>
+  <tr><td><b>코어와 스레드</b></td><td>예 12코어 16스레드. 코어는 실제 계산 장치 수, 스레드는 동시에 처리할 수 있는 가상의 개수예요 (1-8에서 자세히)</td></tr>
+  <tr><td><b>RAM</b></td><td>예 <code>DDR5 16GB</code>. DDR 뒤의 숫자(3, 4, 5…)가 <b>세대</b>, 16GB가 용량이에요</td></tr>
+  <tr><td><b>GPU</b></td><td>그래픽 부분의 이름을 적으면 돼요</td></tr>
+  <tr><td><b>SSD</b></td><td>CPU-Z에는 안 나와요. Speccy를 쓰거나 생략해도 돼요 (교수님 말)</td></tr>
+</table>
+<p>모든 컴퓨터는 폰노이만 구조를 따르기 때문에 <b>구성은 똑같고 사양만 달라요</b>. 이 실습의 요지가 이 문장이에요.</p>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>(서술형 요령) "내 컴퓨터의 주요 부품"을 쓸 때는 CPU(모델과 코어·스레드), RAM(종류와 용량), 메인보드, VGA(그래픽카드) 순으로 이름을 적고, 각 부품의 기능을 한 줄씩 덧붙여요.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — DDR5 16GB에서 5와 16은 각각 무엇을 뜻하나요?</summary>
+<p>5는 RAM의 세대(규격 버전), 16GB는 용량이에요.</p></details>
+
+<h3>1-5. 휘발성과 비휘발성 — RAM과 보조기억장치 <span class="st">★★</span></h3>
+<p><b>휘발성</b>은 전원이 꺼지면 데이터가 사라지는 성질이고, <b>비휘발성</b>은 전원이 꺼져도 데이터가 남는 성질이에요. 휘발유가 날아가듯 사라진다는 뜻이에요.</p>
+<table>
+  <tr><th style="width:22%"></th><th>RAM (주기억장치)</th><th>SSD · HDD (보조기억장치)</th></tr>
+  <tr><td><b>성질</b></td><td><b>휘발성</b> — 전원을 끄면 사라져요</td><td><b>비휘발성</b> — 전원을 꺼도 남아요</td></tr>
+  <tr><td><b>역할</b></td><td><b>실행 중인</b> 프로그램 코드와 데이터</td><td>실행이 끝난 프로그램과 데이터를 <b>영구 저장</b></td></tr>
+  <tr><td><b>속도</b></td><td>빠르지만 비싸서 용량이 작아요 (예 16GB)</td><td>느리지만 싸서 용량이 커요 (예 512GB~수 TB)</td></tr>
+  <tr><td><b>비유</b></td><td>책상 위</td><td>도서관</td></tr>
+</table>
+<div class="box eg"><span class="t">비유 — 책상과 도서관</span>
+<p>시험공부를 하러 도서관(SSD)에 가서 필요한 책만 골라 책상(RAM)에 올려놓고 공부해요. 공부를 마치면 책상을 싹 치우죠. 책상은 작고 빠르게 쓰고, 도서관은 크고 오래 보관하는 곳이에요. 컴퓨터를 끄는 것은 책상 위를 싹 치우는 일이고, 도서관 책은 그대로 있어요.</p>
+</div>
+<p><b>왜 기억장치를 둘로 나눴을까요?</b> 빠르면서 용량도 크고 싼 메모리는 만들 수 없기 때문이에요. 그래서 "빠른 일은 RAM이, 오래 보관하는 일은 저장장치가 맡자"고 역할을 나눴어요.</p>
+<p>교수님은 컴퓨터가 렉에 걸리는 이유도 여기에서 설명했어요. 프로그램이 쓰는 데이터가 RAM보다 커지면 저장장치의 일부를 RAM 대신 쓰는데, 저장장치는 훨씬 느려서 계산이 그 앞에서 발목이 잡혀요. 그래서 데이터가 RAM에 다 들어가는지가 중요해요. 이 내용은 메모리 장에서 더 자세히 다뤄요.</p>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>RAM은 휘발성 기억장치로 전원이 꺼지면 데이터가 사라지며 수행 중인 프로그램 코드와 데이터를 보관한다. SSD·HDD 같은 보조기억장치는 비휘발성 기억장치로 전원이 꺼져도 데이터를 반영구 보관한다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — 컴퓨터를 껐다 켜면 RAM과 SSD 중 어느 쪽 내용이 남아 있나요?</summary>
+<p>SSD예요. RAM은 휘발성이라 전원이 꺼지면 모두 사라지고, SSD는 비휘발성이라 그대로 남아요.</p></details>
+
+<h3>1-6. 무어의 법칙과 황의 법칙 <span class="st">★★</span></h3>
+<p>먼저 <b>집적도</b>라는 말부터 알아야 해요. 집적도는 <b>칩(CPU) 안에 트랜지스터(반도체 스위치)가 얼마나 많이 들어 있는가</b>예요. 뇌 세포가 많을수록 똑똑하듯, 트랜지스터가 많을수록 CPU 성능의 한계치가 높아져요.</p>
+<div class="box def"><span class="t">한 줄 정의</span>
+<p><b>무어의 법칙 = 반도체(CPU)의 집적도가 약 24개월(2년)마다 2배씩 증가한다는 경험 법칙.</b> 인텔의 공동 창업자 고든 무어가 말했어요. (녹취에는 이름이 다르게 적혀 있지만 음성 인식 오류예요)</p>
+</div>
+<p>2년마다 2배이면 10년이면 32배(2의 5제곱), 20년이면 약 1000배(2의 10제곱)가 돼요. 이런 증가를 <b>기하급수적</b>이라고 해요. 이 속도가 1970년대부터 2000년대 초반까지 이어졌어요.</p>
+<div class="box eg"><span class="t">비유 — 접어서 넣는 옷장</span>
+<p>같은 크기의 옷장에 옷을 2년마다 두 배로 접어 넣는다고 생각해 보세요. 옷장 크기(칩 크기)는 그대로인데 들어가는 옷(트랜지스터)이 해마다 늘어나서 옷장이 점점 똑똑해지는 거예요.</p>
+</div>
+<p>시험에서는 비슷한 이름의 <b>황의 법칙</b>이 함께 보기로 나와서 헷갈리기 쉬워요. 교수님 설명으로 둘을 비교하면 이래요.</p>
+<table>
+  <tr><th style="width:22%"></th><th>무어의 법칙</th><th>황의 법칙</th></tr>
+  <tr><td><b>어느 부품</b></td><td><b>CPU</b> (반도체 집적도)</td><td><b>메모리</b> (RAM)</td></tr>
+  <tr><td><b>내용</b></td><td>집적도가 <b>2년마다 2배</b></td><td>메모리가 얼마나 빨리 발전해 왔는가를 말하는 법칙</td></tr>
+  <tr><td><b>이름의 주인</b></td><td>인텔 창업자 무어</td><td>삼성전자 CEO를 지낸 황 씨</td></tr>
+</table>
+<p>참고로 황의 법칙은 일반적으로 "메모리 용량이 1년에 2배씩 늘어난다"고 알려져 있어요. 교수님은 숫자까지는 말하지 않았고 "메모리는 황의 법칙, CPU는 무어의 법칙"이라는 구분을 강조했어요.</p>
+<div class="box tip"><span class="t">외우기 팁</span>
+<p>문제에 <b>"집적도"와 "2년마다 2배"</b>가 나오면 무조건 <b>무어</b>예요. 황은 메모리 쪽이에요.</p>
+</div>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>집적회로의 반도체 집적도가 2년마다 2배씩 증가한다는 것을 <b>무어의 법칙</b>이라고 한다. (2023 기출 1번 빈칸 정답)</p>
+</div>
+<details class="check"><summary>잠깐 확인 — "집적도가 2년마다 2배"는 무어의 법칙과 황의 법칙 중 무엇인가요?</summary>
+<p>무어의 법칙이에요. 황의 법칙은 메모리 쪽 법칙이라서 구분해야 해요.</p></details>
+
+<h3>1-7. 클럭, 온도, 오버클럭 <span class="st">★★</span></h3>
+<p><b>클럭(clock)</b>은 CPU가 계산 신호를 바꾸는 박자예요. 단위는 헤르츠(Hz)이고 G(기가)는 10억을 뜻해요.</p>
+<p>그래서 <b>3GHz는 1초에 약 30억 번</b>을 뜻해요. 사람은 1초 단위로 생각하지만 CPU는 약 30억분의 1초 단위로 생각해요. 다만 이것은 최대 속도이고 매번 계산을 다 하지는 못해요.</p>
+<p>(녹취에는 "35번, 35분의 1초"로 적혀 있지만, 음성 인식 오류예요. 30억이 맞아요.)</p>
+<p>CPU의 성능은 이 클럭을 높일수록 좋아졌어요. 그런데 클럭을 높이면 문제가 생겨요.</p>
+<svg viewBox="0 0 392 88" style="max-width:440px;width:100%;height:auto" role="img" aria-label="클럭이 높아지면 전력 소모와 발열이 늘고 온도가 올라 클럭을 더 올릴 수 없다는 인과 사슬">
+<defs><marker id="a1m1" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#1d4ed8"/></marker></defs>
+<rect x="4" y="14" width="84" height="58" rx="8" fill="#dbe6ff"/>
+<text x="46" y="40" text-anchor="middle" font-size="13" font-weight="bold" fill="#1b2333">클럭</text>
+<text x="46" y="58" text-anchor="middle" font-size="13" font-weight="bold" fill="#1b2333">상승</text>
+<line x1="89" y1="43" x2="103" y2="43" stroke="#1d4ed8" stroke-width="3" marker-end="url(#a1m1)"/>
+<rect x="104" y="14" width="84" height="58" rx="8" fill="#fff1d6"/>
+<text x="146" y="40" text-anchor="middle" font-size="13" font-weight="bold" fill="#1b2333">전력·발열</text>
+<text x="146" y="58" text-anchor="middle" font-size="13" font-weight="bold" fill="#1b2333">증가</text>
+<line x1="189" y1="43" x2="203" y2="43" stroke="#1d4ed8" stroke-width="3" marker-end="url(#a1m1)"/>
+<rect x="204" y="14" width="84" height="58" rx="8" fill="#ffe0e0"/>
+<text x="246" y="40" text-anchor="middle" font-size="13" font-weight="bold" fill="#1b2333">온도</text>
+<text x="246" y="58" text-anchor="middle" font-size="13" font-weight="bold" fill="#1b2333">상승</text>
+<line x1="289" y1="43" x2="303" y2="43" stroke="#1d4ed8" stroke-width="3" marker-end="url(#a1m1)"/>
+<rect x="304" y="14" width="84" height="58" rx="8" fill="#e5e9f0"/>
+<text x="346" y="40" text-anchor="middle" font-size="13" font-weight="bold" fill="#1b2333">더 못</text>
+<text x="346" y="58" text-anchor="middle" font-size="13" font-weight="bold" fill="#1b2333">올림</text>
+</svg>
+<ul>
+  <li>CPU 안의 수십억 개 트랜지스터가 초당 수십억 번 움직이니 <b>전류가 많이 흐르고 전력 소모와 열이 커져요</b>.</li>
+  <li>CPU 칩은 보통 100도 아래에서 동작하도록 만들어져요. 쿨러를 달아도 100도를 넘으면 회로가 탈 수 있어요.</li>
+  <li>그래서 2000년대 초에 <b>클럭을 계속 올리는 경쟁이 끝났어요</b>. 가장 큰 원인이 <b>온도</b>예요.</li>
+</ul>
+<div class="box eg"><span class="t">비유 — 전력 질주</span>
+<p>100미터 달리기는 빨라도 오래 전력 질주하면 몸에 열이 나고 숨이 차서 멈춰야 해요. 클럭을 높이는 것은 CPU를 더 빨리 뛰게 하는 것이라서 열이 나고, 쿨러는 땀을 식혀 주는 부채질이에요.</p>
+</div>
+<p><b>오버클럭(overclock)</b>은 제조사가 정한 것보다 클럭을 억지로 더 높여서 쓰는 일이에요. 성능은 올라가지만 발열과 전력이 크게 늘어서 고장 위험이 커져요. 교수님이 따로 설명하지는 않았고 2023 기출 1번 보기에 있어서 뜻만 알아 두면 돼요.</p>
+<p>그래서 CPU의 발전은 2000년대 초에 방향을 바꿨어요. 클럭을 올리는 대신 <b>계산 장치를 여러 개 넣는 멀티코어</b>로 갔어요. 다음 소단원에서 이어져요.</p>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>CPU 클럭이 높아질수록 일반적으로 전력 소모와 발열이 증가하여 CPU의 <b>온도</b>가 상승하며, 이것은 CPU 클럭을 무한정 높일 수 없게 하는 주요 요인이다. (2023 기출 1번 빈칸 정답은 "온도")</p>
+</div>
+<details class="check"><summary>잠깐 확인 — 클럭을 무한정 높이지 못하는 가장 큰 이유는 무엇인가요?</summary>
+<p>온도(발열)예요. 클럭이 오르면 전력 소모와 열이 늘어 칩이 버틸 수 없게 돼요.</p></details>
+
+<h3>1-8. 싱글코어, 멀티코어, 하이퍼스레딩 <span class="st">★★</span></h3>
+<p>CPU 안에는 실제로 계산을 하는 <b>연산 장치(ALU)</b>가 들어 있어요. 이 연산 장치 하나를 <b>코어(core)</b>라고 불러요. 코어가 몇 개 들어 있느냐로 CPU를 나눠요.</p>
+<table>
+  <tr><th style="width:24%">종류</th><th>뜻</th><th style="width:30%">시기</th></tr>
+  <tr><td><b>싱글코어</b></td><td>하나의 CPU 안에 연산 장치가 <b>1개</b></td><td>2000년대 초까지</td></tr>
+  <tr><td><b>멀티코어</b></td><td>하나의 CPU 안에 연산 장치가 <b>여러 개</b> (듀얼 2, 쿼드 4, 옥타 8 …)</td><td>2000년대 초반부터 지금</td></tr>
+</table>
+<div class="box eg"><span class="t">비유 — 주방의 요리사</span>
+<p>싱글코어는 요리사 1명이 일하는 주방이에요. 더 빨리 만들려고 요리사를 더 빠르게 움직이게 했더니(클럭) 몸이 달아올라서 한계에 부딪혔어요. 그래서 요리사를 4명, 8명으로 늘렸어요. 이것이 멀티코어예요.</p>
+</div>
+<p>멀티코어가 더해진 아이디어가 <b>하이퍼스레딩(hyper-threading)</b>이에요. 파이프라인이라는 기술로 <b>코어 하나가 명령 2개를 동시에</b> 처리하게 해서, 코어를 가상으로 두 배로 늘려 줘요. 이렇게 늘어난 가상 코어를 <b>스레드(쓰레드)</b>라고 해요.</p>
+<figure class="slide"><img src="slides/a_core.jpg" alt="CPU-Z 화면에서 Cores 4, Threads 8로 표시된 멀티코어와 하이퍼스레딩 슬라이드"><figcaption>교수님 슬라이드 — 4코어 8쓰레드. 물리적 연산장치는 4개이지만 하이퍼스레딩으로 8개가 처리하는 계산을 수행해요</figcaption></figure>
+<ul>
+  <li><b>코어</b> : 실제로 있는 물리적 연산 장치예요.</li>
+  <li><b>스레드</b> : 하이퍼스레딩으로 만든 가상의 코어 수예요. 보통 코어 수의 2배예요.</li>
+  <li>요즘 노트북은 8코어 16스레드가 흔하고, 서버용은 64코어 128스레드까지 나온다고 교수님이 말했어요 (대략적인 수치예요).</li>
+</ul>
+<p><b>왜 코어를 여러 개 두면 좋을까요?</b> 클럭을 못 올려도 일을 나눠서 동시에 처리하면 전체 속도가 올라가기 때문이에요. 노트북 사양에서 보이는 "코어"와 "스레드"는 바로 이 숫자예요.</p>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p><b>싱글 코어</b>는 하나의 CPU 안에 연산 장치가 1개 있는 것이며, <b>멀티 코어</b>는 하나의 CPU 안에 연산 장치가 여러 개 있는 것이다. (2023 기출 1번 빈칸 정답)</p>
+</div>
+<details class="check"><summary>잠깐 확인 — "4코어 8쓰레드" CPU에서 실제 물리적 연산 장치는 몇 개인가요?</summary>
+<p>4개예요. 하이퍼스레딩으로 8개처럼 동작하지만 실제 연산 장치는 4개예요.</p></details>
+
+<h3>1-9. 프로그램과 프로세스 <span class="st">★★★</span></h3>
+<p>1번 문제의 빈칸 중 헷갈리는 쌍이에요. 기준은 하나예요. <b>어디에 있는가</b>예요.</p>
+<table>
+  <tr><th style="width:20%"></th><th>프로그램 (program)</th><th>프로세스 (process)</th></tr>
+  <tr><td><b>상태</b></td><td>저장장치에 <b>보관된</b> 코드 (정적)</td><td>실행되어 메모리에 <b>올라온</b> 것 (동적)</td></tr>
+  <tr><td><b>위치</b></td><td>보조기억장치(SSD·HDD)</td><td>주기억장치(RAM)</td></tr>
+  <tr><td><b>예</b></td><td>설치만 해 둔 팟플레이어, 워드</td><td>더블클릭으로 실행해 작업 중인 팟플레이어, 워드</td></tr>
+  <tr><td><b>비유</b></td><td>레시피(요리법)</td><td>요리를 하는 중인 일 (조리 후 요리)</td></tr>
+</table>
+<figure class="slide"><img src="slides/a_proc.jpg" alt="팟플레이어는 저장장치의 프로그램이고 실행하면 메모리에 올라온 프로세스가 된다는 슬라이드와 작업 관리자 화면"><figcaption>강의자료(운영체제 부분) — 저장돼 있으면 프로그램, 실행하면 프로세스. 오른쪽은 윈도우 작업 관리자예요</figcaption></figure>
+<div class="box def"><span class="t">한 줄 정의</span>
+<p><b>프로그램 = 보조기억장치에 보관된 코드, 프로세스 = 그 코드가 실행되어 메모리에 적재된 것.</b> 운영체제도 실행 중이면 프로세스 하나예요.</p>
+</div>
+<p>같은 프로그램을 두 번 실행하면 프로세스는 <b>두 개</b>가 돼요. 메모장을 세 번 켜면 프로그램은 하나지만 프로세스는 세 개예요. 윈도우의 작업 관리자 화면에 보이는 것들이 지금 돌고 있는 프로세스예요.</p>
+<div class="box tip"><span class="t">헷갈리는 세 단어</span>
+<p><b>프로그램</b>은 저장된 코드, <b>프로세스</b>는 실행 중인 소프트웨어, <b>프로세서</b>는 CPU(하드웨어)예요. 글자 한 글자 차이라서 시험에서 헷갈리게 내요. "프로세서(서)는 장치, 프로세스(스)는 실행 중 소프트웨어"로 외우세요.</p>
+</div>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>어떤 응용 프로그램의 코드가 보조기억장치에 보관되어 있으면 <b>프로그램</b>이라 하고, 그것이 실행되어 메모리에 적재되어 있으면 <b>프로세스</b>라고 한다. (2023 기출 1번 빈칸 정답)</p>
+</div>
+<details class="check"><summary>잠깐 확인 — 워드를 SSD에 설치만 했을 때와 더블클릭해서 실행했을 때, 각각 무엇으로 부르나요?</summary>
+<p>설치만 했을 때는 프로그램, 실행하면 프로세스예요.</p></details>
+
+<h3>1-10. 멀티태스킹, 멀티프로그래밍, 멀티프로세싱, 멀티쓰레딩 <span class="st">★★★</span></h3>
+<p>이름이 모두 "멀티"로 시작해서 헷갈려요. 먼저 옛날이야기부터 알아 봐요. 아주 옛날 컴퓨터는 <b>한 번에 프로그램 하나만</b> 실행할 수 있었어요(일괄 처리 방식).</p>
+<p>불편해서 <b>시분할</b> 방식이 나왔어요. 여러 프로세스가 CPU를 <b>아주 짧은 시간씩 번갈아</b> 쓰게 한 거예요.</p>
+<p>CPU는 30억분의 1초 단위로 일하기 때문에, 계산기와 파워포인트를 번갈아 돌려도 사람 눈에는 동시에 도는 것처럼 보여요. 이렇게 짧게 번갈아 바꾸는 일을 컨텍스트 스위치(전환)라고 해요.</p>
+<table>
+  <tr><th style="width:22%">용어</th><th>뜻</th><th style="width:28%">비유</th></tr>
+  <tr><td><b>멀티태스킹</b><br><span class="small">multitasking</span></td><td>여러 <b>서로 다른 프로그램</b>(프로세스)이 동시에 실행되는 것처럼 만드는 운영체제의 기술. 싱글코어에서는 시분할로, 멀티코어에서는 코어별로 나눠 맡겨요</td><td>게임을 켜 놓고 크롬으로 검색하고 녹화 프로그램도 켜 두기</td></tr>
+  <tr><td><b>멀티프로그래밍</b><br><span class="small">multiprogramming</span></td><td>여러 프로그램을 <b>메모리에 동시에 올려 두고</b> CPU가 놀지 않게 번갈아 실행하는 방식. 멀티태스킹의 바탕이 되는 개념이에요</td><td>책상에 여러 과목 책을 펴 놓고 번갈아 공부</td></tr>
+  <tr><td><b>멀티프로세싱</b><br><span class="small">multiprocessing</span></td><td>하나의 일을 <b>여러 개의 프로세스</b>로 나눠 병렬로 실행</td><td>크롬 <b>창</b>을 여러 개 따로 띄우기</td></tr>
+  <tr><td><b>멀티쓰레딩</b><br><span class="small">multithreading</span></td><td><b>프로세스는 하나</b>만 두고 그 안에서 여러 흐름(스레드)을 병렬로 실행</td><td>크롬 한 창 안에 <b>탭</b>을 여러 개 띄우기</td></tr>
+</table>
+<p>교수님은 멀티태스킹과 멀티프로그래밍은 "크게 안 써도 될 것 같다"고 했어요. 다만 2023 기출 1번의 보기에 있었으니 뜻만 한 줄씩 알아 두세요. <b>정말 중요한 것은 멀티프로세싱과 멀티쓰레딩의 차이</b>예요.</p>
+<svg viewBox="0 0 380 292" style="max-width:420px;width:100%;height:auto" role="img" aria-label="멀티프로세싱은 독립된 프로세스 3개, 멀티쓰레딩은 프로세스 1개 안에 스레드 3개">
+<text x="190" y="18" text-anchor="middle" font-size="15" font-weight="bold" fill="#1b2333">멀티프로세싱</text>
+<rect x="10" y="30" width="104" height="58" rx="8" fill="#dbe6ff" stroke="#1d4ed8" stroke-width="2"/>
+<text x="62" y="64" text-anchor="middle" font-size="13" font-weight="bold" fill="#1b2333">프로세스1</text>
+<rect x="138" y="30" width="104" height="58" rx="8" fill="#dbe6ff" stroke="#1d4ed8" stroke-width="2"/>
+<text x="190" y="64" text-anchor="middle" font-size="13" font-weight="bold" fill="#1b2333">프로세스2</text>
+<rect x="266" y="30" width="104" height="58" rx="8" fill="#dbe6ff" stroke="#1d4ed8" stroke-width="2"/>
+<text x="318" y="64" text-anchor="middle" font-size="13" font-weight="bold" fill="#1b2333">프로세스3</text>
+<text x="190" y="108" text-anchor="middle" font-size="12" fill="#1b2333">독립된 프로세스를 여러 개 (창 3개)</text>
+<line x1="10" y1="124" x2="370" y2="124" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="5,5"/>
+<text x="190" y="148" text-anchor="middle" font-size="15" font-weight="bold" fill="#1b2333">멀티쓰레딩</text>
+<rect x="10" y="158" width="360" height="102" rx="10" fill="#dbe6ff" stroke="#1d4ed8" stroke-width="2"/>
+<text x="190" y="178" text-anchor="middle" font-size="13" font-weight="bold" fill="#1b2333">프로세스 1개</text>
+<rect x="22" y="190" width="96" height="50" rx="6" fill="#e3f6ec" stroke="#0f7a4f" stroke-width="2"/>
+<text x="70" y="220" text-anchor="middle" font-size="12" fill="#1b2333">스레드1</text>
+<rect x="142" y="190" width="96" height="50" rx="6" fill="#e3f6ec" stroke="#0f7a4f" stroke-width="2"/>
+<text x="190" y="220" text-anchor="middle" font-size="12" fill="#1b2333">스레드2</text>
+<rect x="262" y="190" width="96" height="50" rx="6" fill="#e3f6ec" stroke="#0f7a4f" stroke-width="2"/>
+<text x="310" y="220" text-anchor="middle" font-size="12" fill="#1b2333">스레드3</text>
+<text x="190" y="280" text-anchor="middle" font-size="12" fill="#1b2333">한 프로세스 안의 여러 흐름 (탭 3개)</text>
+</svg>
+<p>교수님이 든 크롬 예시는 이래요. 크롬 창 2개를 띄우고 한 창에 탭 6개, 다른 창에 탭 4개가 있으면, <b>프로세스는 2개</b>이고 <b>스레드는 총 10개</b>예요.</p>
+<p><b>왜 이런 걸 따질까요?</b> 빅데이터를 처리할 때 병렬 처리를 해야 시간을 줄일 수 있기 때문이에요. 예를 들어 400GB 자료를 40GB씩 10조각으로 나눠 동시에 처리하면, 순서대로 40시간 걸릴 일이 4시간으로 줄어요(교수님이 든 예시 숫자예요).</p>
+<p>이때 조각마다 프로세스를 만들면 멀티프로세싱이고, 프로세스 하나 안에서 흐름을 나누면 멀티쓰레딩이에요. 교수님은 파이썬에서는 병렬 처리에 보통 멀티프로세싱을 쓴다고 말했어요.</p>
+<div class="box tip"><span class="t">외우기 팁</span>
+<p>"<b>프로세스 개수를 늘리면 멀티프로세싱, 프로세스 하나 안에서 흐름을 늘리면 멀티쓰레딩</b>"이에요. 창 여러 개 = 프로세싱, 탭 여러 개 = 쓰레딩으로 그림을 떠올리세요.</p>
+</div>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>병렬처리 기법 중에서 하나의 프로그램을 여러 개의 프로세스로 병렬 실행시키는 것을 <b>멀티 프로세싱</b>이라고 하며, 하나의 프로세스 안에서 여러 흐름으로 병렬 실행하는 것을 <b>멀티 쓰레딩</b>이라고 한다. (2023 기출 1번 빈칸 정답)</p>
+</div>
+<details class="check"><summary>잠깐 확인 — 크롬 창 하나 안에 탭을 여러 개 띄우는 것은 멀티프로세싱과 멀티쓰레딩 중 무엇에 가까운가요?</summary>
+<p>멀티쓰레딩이에요. 프로세스(창)는 하나이고 그 안에서 탭(스레드)이 여러 개 돌아가기 때문이에요.</p></details>
+
+<h3>1-11. 운영체제(OS) <span class="st">★★</span></h3>
+<p>컴퓨터를 켜면 가장 먼저 실행되는 프로그램이 <b>운영체제(OS, Operating System)</b>예요. 운영체제는 SSD에 설치돼 있다가 전원을 켜면 RAM에 올라와서, 이후에 실행하는 모든 응용 프로그램과 부품을 관리해요. 종류는 윈도우, 리눅스, macOS가 대표적이에요.</p>
+<div class="box def"><span class="t">한 줄 정의</span>
+<p><b>운영체제 = 컴퓨터 전원이 켜지면 가장 먼저 시작되며, 컴퓨터 자원을 관리하고 여러 응용 프로그램의 실행을 관리하는 프로그램.</b></p>
+</div>
+<p>강의자료가 정리한 운영체제의 주요 관리 일은 아래와 같아요. 이 중 <b>프로세스 관리, 주기억장치(메모리) 관리</b>가 교수님이 강조한 두 가지예요.</p>
+<table>
+  <tr><th style="width:30%">관리 대상</th><th>하는 일</th></tr>
+  <tr><td><b>프로세스 관리</b></td><td>프로세스를 만들고, 없애고, 잠시 멈추고, 계속하게 해요</td></tr>
+  <tr><td><b>작업 관리</b></td><td>작업의 순서와 우선순위를 정해요</td></tr>
+  <tr><td><b>주기억장치 관리</b></td><td>프로세스마다 RAM 공간을 나눠 주고(할당), 끝나면 거둬들여요(회수)</td></tr>
+  <tr><td><b>보조기억장치 관리</b></td><td>저장장치를 효율적으로 쓰게 해요</td></tr>
+  <tr><td><b>입출력장치·파일·보안 관리</b></td><td>키보드, 모니터 같은 장치와 파일, 보안을 관리해요</td></tr>
+</table>
+<div class="box eg"><span class="t">비유 — 카페의 바리스타</span>
+<p>강의자료의 비유예요. 손님이 커피 머신을 직접 만지면 사용법도 알아야 하고 기계가 망가질 수 있어요. 그래서 바리스타(운영체제)에게 부탁해요. 응용 프로그램도 부품(하드웨어)을 직접 만지지 않고 운영체제에 부탁해서 쓰고, 운영체제는 여러 손님의 주문이 뒤엉키지 않게 순서를 정해 줘요.</p>
+</div>
+<p><b>왜 운영체제가 메모리를 관리해야 할까요?</b> 컴퓨터마다 RAM 용량이 4GB, 8GB, 16GB로 다 다르고, 한꺼번에 프로세스 여러 개가 RAM을 나눠 써야 하기 때문이에요. 서로의 공간을 침범하면 오류가 나니까 운영체제가 정리해 줘요.</p>
+<p>그래서 프로그램을 만드는 사람은 "RAM이 거의 무한한 것처럼" 코드를 짜요. 이것이 <b>가상 메모리</b>의 아이디어이고, 실제 RAM에 맞춰 배치하는 일은 운영체제가 맡아요. RAM이 모자라면 저장장치(SSD)의 일부를 임시 공간으로 쓰는데, 이 영역이 <b>스왑(swap) 영역</b>이에요. 자세한 내용은 메모리 장에서 이어져요.</p>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>컴퓨터 전원이 켜지면 가장 먼저 시작되며, 컴퓨터 자원을 관리하고 여러 응용 프로그램의 실행을 관리하는 프로그램을 <b>운영체제</b>라고 한다. (2023 기출 1번 빈칸 정답)</p>
+</div>
+<details class="check"><summary>잠깐 확인 — 컴퓨터를 켜면 가장 먼저 실행되는 소프트웨어는 무엇인가요?</summary>
+<p>운영체제예요. 운영체제가 올라온 뒤에야 워드나 게임 같은 응용 프로그램을 실행할 수 있어요.</p></details>
+
+<div class="box tip"><span class="t">이 장 3줄 요약</span>
+<ul>
+  <li>폰노이만 구조는 프로그램과 데이터를 RAM에 저장하고 명령어를 한 줄씩 CPU로 가져와 실행하는 구조이고, sum.py는 SSD → RAM → (인터프리터가 기계어로 번역) → CPU → RAM 순으로 돌아요.</li>
+  <li>6대 부품은 CPU(계산), RAM(휘발성·실행 중), 보조기억장치(비휘발성·영구 저장), GPU(병렬 행렬 연산), 메인보드(통로), 전원공급장치(교류→직류)예요.</li>
+  <li>무어의 법칙(집적도 2년마다 2배)과 클럭·온도 한계 때문에 멀티코어가 되었고, 프로그램은 보관 중, 프로세스는 실행 중이며, 멀티프로세싱은 프로세스를 여러 개, 멀티쓰레딩은 프로세스 하나 안에서 흐름을 여러 개로 나눠요.</li>
+</ul>
+</div>

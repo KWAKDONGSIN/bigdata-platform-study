@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ko" data-site="1bb07e">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SSD — 움직이는 부품이 없는 저장장치 ★★★ · 빅데이터플랫폼 시험공부</title>
+<meta name="description" content="빅데이터플랫폼 중간고사를 전공 처음인 사람도 이해하게 정리한 공부 사이트">
+<link rel="stylesheet" href="assets/style.css?v=d2a0e0e2">
+</head>
+<body>
+<header class="top"><div class="top-in">
+<a class="brand" href="index.html"><span class="bases"><i class="a">시</i><i class="t">험</i><i class="g">공</i><i class="c">부</i></span>빅데이터플랫폼</a>
+<nav class="nav" aria-label="메뉴"><a href="index.html" class=on>보드</a><a href="b.html">최소코스</a><a href="bplus.html">B+코스</a><a href="quiz.html">퀴즈</a><a href="essay.html">서술형</a><a href="cards.html">암기카드</a><a href="words.html">낱말사전</a><a href="cheat.html">시험 전 1장</a></nav>
+</div></header>
+<main>
+<div class="crumb k6"><a href="index.html#c6">← 보드</a><span>보조기억장치 · 4/8</span></div><h1>SSD — 움직이는 부품이 없는 저장장치 ★★★</h1>
+<p><b><a class="w" href="words.html#w30" data-w="30">SSD</a></b>(Solid State Drive)는 기계 부품이 있는 <a class="w" href="words.html#w31" data-w="31">HDD</a>를 대신하려고 만든 <b>대용량 <a class="w" href="words.html#w24" data-w="24">비휘발성</a> <a class="w" href="words.html#w48" data-w="48">반도체</a> <a class="w" href="words.html#w29" data-w="29">저장장치</a></b>예요. 안에는 <b><a class="w" href="words.html#w138" data-w="138">NAND 플래시 메모리</a></b>(저장 밀도가 높은 반도체)가 여러 개 배열돼 있어요. 판도 팔도 모터도 없고 전기 신호만 쓰니까 빠르고 조용하고 안정적이에요. 대신 같은 용량당 가격은 HDD보다 다소 높아요.</p>
+<figure class="slide"><img src="slides/b_ssd_inner.jpg" alt="SSD 내부 구조 슬라이드"><figcaption>교수님 슬라이드 — SSD 내부(Intel SSD 320). 컨트롤러, NAND 플래시 메모리, DRAM 캐시</figcaption></figure>
+<div class="tw"><table>
+  <tr><th style="width:28%">SSD 내부 부품</th><th>하는 일</th></tr>
+  <tr><td><b>NAND 플래시 메모리</b></td><td>데이터를 실제로 저장해요. 여러 개에 나눠 저장(인터리빙)하고 병렬로 입출력해서 빨라요</td></tr>
+  <tr><td><b>SSD 컨트롤러</b></td><td>데이터를 꺼내고 저장하고, 칩을 관리하고, 주소를 변환하는 두뇌예요</td></tr>
+  <tr><td><b><a class="w" href="words.html#w100" data-w="100">DRAM</a> (<a class="w" href="words.html#w98" data-w="98">캐시</a>)</b></td><td><a class="w" href="words.html#w14" data-w="14">컴퓨터</a>와 플래시 사이에서 데이터를 임시로 담는 버퍼예요</td></tr>
+</table></div>
+<p>SSD 저장 공간은 <b><a class="w" href="words.html#w116" data-w="116">페이지</a></b>와 <b>블록</b>으로 이루어져요. 페이지는 데이터를 저장하는 최소 단위(읽기와 쓰기의 기본)이고, 블록은 <b>지우기</b>의 최소 단위예요. 페이지 여러 개가 모여 블록 하나가 돼요. HDD와 비교하면 SSD의 블록은 <a class="w" href="words.html#w125" data-w="125">트랙</a>, 페이지는 <a class="w" href="words.html#w124" data-w="124">섹터</a>와 비슷해요. 즉 HDD의 저장 최소 단위는 섹터이고, SSD의 저장 최소 단위는 페이지예요.</p>
+<div class="tw"><table>
+  <tr><th style="width:22%"></th><th>HDD</th><th>SSD</th></tr>
+  <tr><td>원리</td><td>자기 + 기계 회전</td><td>반도체 플래시 (전기)</td></tr>
+  <tr><td>속도</td><td>느림 (5~20ms)</td><td><b>빠름</b> (20~200µs)</td></tr>
+  <tr><td>같은 용량 가격</td><td><b>저렴</b></td><td>비쌈</td></tr>
+  <tr><td>최대 용량(교수님 설명)</td><td>약 20TB</td><td>약 8TB</td></tr>
+  <tr><td>소음·충격</td><td>모터 소리, 충격에 약함</td><td>조용, 안정적</td></tr>
+  <tr><td>비휘발성</td><td>O</td><td>O</td></tr>
+  <tr><td>최소 단위</td><td>섹터</td><td>페이지 (지우기는 블록)</td></tr>
+</table></div>
+<p>"둘 중 무엇을 살까?"는 계층 구조로 풀어요. SSD와 HDD 사이에도 <b>빠르고 비싼 쪽 / 느리고 싼 쪽</b>의 관계가 있어서, 자주 쓰는 <a class="w" href="words.html#w105" data-w="105">운영체제</a>와 <a class="w" href="words.html#w12" data-w="12">프로그램</a>은 SSD에, 자주 안 쓰는 동영상·사진은 HDD에 두면 효율적이에요.</p>
+<div class="box tip"><span class="t">외우기 팁</span>
+<p>"<b>SSD = 빠르고 비싸다, HDD = 느리고 싸다</b>". 그래서 OS와 프로그램은 SSD, 동영상·사진은 HDD예요. 기출 Q10 빈칸 10.6~10.9가 이 문장 그대로예요.</p>
+</div>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span>
+<p>SSD는 NAND 플래시 메모리로 구성된 비휘발성 반도체 저장장치로 기계적 구동부가 없어 HDD보다 읽기/쓰기 속도가 빠르지만 동일한 용량 대비 가격이 비싸다. 따라서 운영체제 등 자주 사용하는 프로그램과 데이터는 SSD에, 동영상·사진 등 자주 사용하지 않는 데이터는 HDD에 보관하면 효율적이다. SSD에서 읽기/쓰기의 최소 단위는 페이지, 지우기의 최소 단위는 블록이다.</p>
+</div>
+<details class="check"><summary>잠깐 확인 — SSD에서 "지우기"의 최소 단위는 페이지와 블록 중 무엇인가요?</summary>
+<p>블록이에요. 페이지는 읽기와 쓰기의 최소 단위예요.</p></details>
+
+<div class="done"><a class="go" href="c6-05.html">다음 카드 → 광학 저장장치 — CD-ROM, DVD, 블루레이 참고</a><div class="pn"><a href="c6-03.html"><b>← 이전</b>이전 카드</a><a class="next" href="quiz.html#c6"><b>연습</b>이 장 문제 풀기</a></div><p class="muted small">자료: 7주차 · 07보조기억장치.pdf(28쪽~) · 빅데이터플07(7주차)</p></div>
+</main>
+<script src="assets/words.js?v=d2a0e0e2"></script>
+<script src="assets/app.js?v=d2a0e0e2"></script>
+</body>
+</html>
