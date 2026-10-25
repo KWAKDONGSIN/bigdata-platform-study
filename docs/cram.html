@@ -30,34 +30,118 @@
 <li>Q10 보조기억장치 빈칸, 9점.</li>
 </ul></div>
 
-<h2>꼭 외울 25줄</h2>
-<ol>
-<li><b>폰노이만 구조</b>는 계산장치(CPU)와 기억장치로 구성되어 계산장치가 기억장치의 <a class="w" href="words.html#w12" data-w="12">프로그램</a>을 한 줄씩 실행하고 결과를 기억장치에 <a class="w" href="words.html#w80" data-w="80">기록</a>하는 구조이다.</li>
-<li><b>무어의 법칙</b>은 <a class="w" href="words.html#w63" data-w="63">집적회로</a>의 <a class="w" href="words.html#w48" data-w="48">반도체</a> <a class="w" href="words.html#w88" data-w="88">집적도</a>가 24개월(2년)마다 2배씩 증가한다는 법칙이다. <a class="w" href="words.html#w87" data-w="87">황의 법칙</a>은 함정이다.</li>
-<li><b><a class="w" href="words.html#w90" data-w="90">싱글코어</a></b>는 CPU 안에 연산 장치가 1개, <b><a class="w" href="words.html#w91" data-w="91">멀티코어</a></b>는 여러 개이다. <a class="w" href="words.html#w85" data-w="85">클럭</a>이 높을수록 전력·발열이 늘어 <b>온도</b>가 올라가서 클럭을 무한정 높일 수 없다.</li>
-<li>코드가 보조기억장치에 있으면 <b>프로그램</b>, 실행되어 메모리에 올라와 있으면 <b>프로세스</b>이다.</li>
-<li>하나의 프로그램을 여러 프로세스로 병렬 실행하면 <b><a class="w" href="words.html#w109" data-w="109">멀티 프로세싱</a></b>(크롬 창 여러 개), 한 프로세스 안에서 여러 흐름으로 실행하면 <b><a class="w" href="words.html#w110" data-w="110">멀티 쓰레딩</a></b>(탭 여러 개)이다.</li>
-<li><b>운영체제</b>는 전원이 켜지면 가장 먼저 시작되어 <a class="w" href="words.html#w14" data-w="14">컴퓨터</a> 자원과 여러 응용 프로그램의 실행을 관리한다.</li>
-<li>6대 부품은 <b>메인보드</b>(데이터 통로), <b>CPU</b>(대부분의 계산), <b>보조기억장치</b>(<a class="w" href="words.html#w24" data-w="24">비휘발성</a> 반영구 보관), <b>RAM</b>(<a class="w" href="words.html#w23" data-w="23">휘발성</a>, 실행 중인 코드·데이터), <b>GPU</b>(행렬 연산 병렬 처리), <b>전원공급장치</b>(교류를 직류로)이다.</li>
-<li><b>휘발성</b>은 전원이 꺼지면 데이터가 사라지는 성질이다. sum.py는 <b><a class="w" href="words.html#w30" data-w="30">SSD</a></b>에 있다가 실행되면 <b>RAM</b>에 <a class="w" href="words.html#w22" data-w="22">적재</a>되고 <b>CPU</b>가 한 줄씩 계산하며, 결과(<a class="w" href="words.html#w21" data-w="21">변수</a> 값)는 다시 RAM에 기록된다.</li>
-<li><a class="w" href="words.html#w52" data-w="52">AND</a>는 <b>모두 1일 때만 1</b>, <a class="w" href="words.html#w53" data-w="53">OR</a>는 <b>하나라도 1이면 1</b>, <a class="w" href="words.html#w54" data-w="54">NOT</a>은 <b>반대로</b>, <a class="w" href="words.html#w57" data-w="57">XOR</a>는 <b>같으면 0 다르면 1</b>을 출력한다. (A, B)가 00, 01, 10, 11일 때 AND 0001, OR 0111, XOR 0110이다.</li>
-<li><b><a class="w" href="words.html#w60" data-w="60">반가산기</a></b>는 비트 두 개를 더해 합 S(XOR)와 <a class="w" href="words.html#w62" data-w="62">올림</a> Cout(AND)을 내고, <b><a class="w" href="words.html#w61" data-w="61">전가산기</a></b>는 아랫자리 올림 Cin까지 세 개를 더한다. 8비트 덧셈기는 전가산기 8개를 이어 i번의 Cout을 i+1번의 Cin에 연결하고 맨 아래 Cin은 <b>0</b>이다.</li>
-<li>CPU의 필수 구성 요소는 <b>ALU</b>(계산), <b><a class="w" href="words.html#w65" data-w="65">제어장치</a> CU</b>(명령 <a class="w" href="words.html#w77" data-w="77">해독</a>·제어신호), <b><a class="w" href="words.html#w66" data-w="66">레지스터 세트</a></b>(CPU 안의 작고 빠른 메모리)이다.</li>
-<li>레지스터는 <b><a class="w" href="words.html#w67" data-w="67">PC</a></b>(다음 명령 주소), <b><a class="w" href="words.html#w68" data-w="68">IR</a></b>(현재 명령), <b><a class="w" href="words.html#w69" data-w="69">MAR</a></b>(메모리 주소), <b><a class="w" href="words.html#w70" data-w="70">MBR</a></b>(메모리에서 읽은 값), <b><a class="w" href="words.html#w71" data-w="71">AC</a></b>(계산 결과)이다.</li>
-<li>기계어는 연산 종류인 <b><a class="w" href="words.html#w73" data-w="73">opcode</a></b>와 대상인 <b><a class="w" href="words.html#w74" data-w="74">operand</a></b>로 되어 있다. ADD R3 R1 R2에서 ADD가 opcode, R3·R1·R2가 operand이다.</li>
-<li>명령 한 줄은 <b><a class="w" href="words.html#w76" data-w="76">인출</a>(fetch) → 해독(<a class="w" href="words.html#w38" data-w="38">decode</a>) → 실행(execute) → 데이터(data) → 기록(write back)</b> 5단계로 실행된다.</li>
-<li>ADD 같은 계산 명령은 <b>데이터</b> 단계가 No action(1-2-3-5)이고, LOAD·STORE 같은 메모리 접근 명령은 <b>실행</b> 단계가 No action(1-2-4-5)이다.</li>
-<li>인출 단계에서는 PC의 주소를 <b>MAR</b>에 넣고 메모리에서 읽은 명령을 MBR을 거쳐 <b>IR</b>에 가져오며 PC는 다음 명령 주소로 바뀐다. PC가 4이고 명령이 2칸이면 MAR은 4, PC는 6이다.</li>
-<li>메모리 계층은 <b>레지스터 → <a class="w" href="words.html#w98" data-w="98">캐시</a> → RAM → SSD/<a class="w" href="words.html#w31" data-w="31">HDD</a></b> 순으로 빠르고, 위로 갈수록 용량이 작고 비싸다. CPU 안의 메모리는 레지스터와 캐시이다.</li>
-<li><b><a class="w" href="words.html#w99" data-w="99">SRAM</a></b>은 빠르고 비싸서 캐시에, <b><a class="w" href="words.html#w100" data-w="100">DRAM</a></b>은 싸고 집적도가 높아 RAM에 쓴다. 필요한 데이터가 캐시에 있으면 <b><a class="w" href="words.html#w121" data-w="121">히트</a></b>, 없으면 <b><a class="w" href="words.html#w122" data-w="122">미스</a></b>이다.</li>
-<li><b><a class="w" href="words.html#w102" data-w="102">레이턴시</a></b>는 데이터에 접근하는 데 걸리는 시간(낮을수록 빠름)이고, <b><a class="w" href="words.html#w103" data-w="103">대역폭</a></b>은 단위 시간당 전송되는 데이터 양이다. 둘은 다른 개념이다.</li>
-<li><b><a class="w" href="words.html#w112" data-w="112">가상메모리</a></b>는 <a class="w" href="words.html#w113" data-w="113">실제 메모리</a> 크기와 관계없이 프로세스에 큰 공간을 주는 기술이고, 가상메모리는 <b>페이지</b>, 물리메모리는 같은 크기의 <b><a class="w" href="words.html#w117" data-w="117">프레임</a></b>으로 나눈다. 주소 변환은 페이지 번호만 프레임 번호로 바꾸고 <b>오프셋은 그대로</b>이다.</li>
-<li>프로세스가 쓰는 메모리가 물리메모리(RAM)를 넘으면 일부가 보조기억장치의 <b><a class="w" href="words.html#w114" data-w="114">스왑 영역</a></b>으로 이동하는데 이것이 <b>스와핑</b>이고 컴퓨터가 느려진다. 코드를 안 고치고 40GB 렉을 해결하려면 <b>RAM</b>을 늘린다.</li>
-<li>주소 변환은 <b><a class="w" href="words.html#w119" data-w="119">TLB</a> → <a class="w" href="words.html#w118" data-w="118">페이지 테이블</a> → (필요하면 스왑) → 캐시</b> 순이다. TLB 히트면 물리주소를 바로 얻고, 미스면 페이지 테이블을 찾는다.</li>
-<li>페이지가 RAM에 없으면 <b><a class="w" href="words.html#w120" data-w="120">페이지 폴트</a></b>가 나서 운영체제가 스왑 영역의 페이지를 RAM에 올리고 페이지 테이블과 TLB를 갱신한다. TLB 미스가 곧 페이지 폴트는 아니다.</li>
-<li><b>HDD</b>는 자기적, <b><a class="w" href="words.html#w131" data-w="131">CD-ROM</a></b>은 광학적, <b>SSD</b>는 전자적 성질을 이용한다.</li>
-<li><b>SSD</b>는 HDD보다 빠르지만 같은 용량에 비싸서 운영체제는 SSD에, 동영상·사진은 HDD에 둔다. 여러 디스크를 하나로 묶는 것이 <b><a class="w" href="words.html#w134" data-w="134">RAID</a></b>, 하나를 나눠 쓰는 것이 <b><a class="w" href="words.html#w132" data-w="132">파티션</a></b>이다.</li>
-</ol>
+<h2>꼭 외울 25줄 — 설명 · 예시 · 외우는 요령</h2>
+<p class="small">빨간 칸은 시험지에 그대로 쓸 문장이에요. 그 아래 <b>쉽게</b>로 이해하고, <b>외우기</b> 한 줄만 입으로 말해 보세요.</p>
+
+<h3>A. 컴퓨터 큰 그림 (Q1·Q2·Q3, 32점)</h3>
+
+<div class="box exam"><span class="t">1. 폰노이만 구조</span><p>계산장치(CPU)와 기억장치로 구성되어, 계산장치가 기억장치의 <a class="w" href="words.html#w12" data-w="12">프로그램</a>을 한 줄씩 실행하고 결과를 기억장치에 <a class="w" href="words.html#w80" data-w="80">기록</a>하는 구조이다.</p></div>
+<p><b>쉽게</b> 요리사(CPU)가 냉장고(기억장치)에서 레시피를 한 줄 꺼내 요리하고, 결과를 다시 냉장고에 넣어요. 지금 쓰는 <a class="w" href="words.html#w14" data-w="14">컴퓨터</a>는 전부 이 방식이에요.</p>
+<p class="small"><b>외우기</b> "<b>꺼내서 → 한 줄 실행 → 다시 기록</b>". 빈칸에 "폰노이만 구조"가 답이에요.</p>
+
+<div class="box exam"><span class="t">2. 무어의 법칙</span><p><a class="w" href="words.html#w63" data-w="63">집적회로</a>의 <a class="w" href="words.html#w48" data-w="48">반도체</a> <a class="w" href="words.html#w88" data-w="88">집적도</a>가 2년(24개월)마다 2배씩 증가한다는 법칙이다.</p></div>
+<p><b>쉽게</b> 손톱만 한 칩에 들어가는 부품 수가 2년마다 두 배가 된다는 얘기예요. 그래서 컴퓨터가 계속 빨라졌어요.</p>
+<p class="small"><b>외우기</b> "<b>무어 = 2년에 2배</b>" (무-이-이). 보기의 "<a class="w" href="words.html#w87" data-w="87">황의 법칙</a>"은 함정이에요.</p>
+
+<div class="box exam"><span class="t">3. 싱글코어 · 멀티코어 · 온도</span><p><a class="w" href="words.html#w90" data-w="90">싱글코어</a>는 CPU 안에 연산 장치가 1개, <a class="w" href="words.html#w91" data-w="91">멀티코어</a>는 여러 개이다. <a class="w" href="words.html#w85" data-w="85">클럭</a>이 높을수록 전력·발열이 늘어 온도가 올라가므로 클럭을 무한정 높일 수 없다.</p></div>
+<p><b>쉽게</b> 코어는 CPU 안의 일꾼이에요. 일꾼 1명이면 싱글, 여럿이면 멀티. 일꾼을 더 빨리 뛰게(클럭↑) 하면 땀(열)이 나서 한계가 있어요.</p>
+<p class="small"><b>외우기</b> "<b>클럭 한계의 이유 = 온도</b>". 빈칸 1.5는 "온도"예요.</p>
+
+<div class="box exam"><span class="t">4. 프로그램 vs 프로세스</span><p>코드가 보조기억장치에 보관되어 있으면 프로그램, 실행되어 메모리에 <a class="w" href="words.html#w22" data-w="22">적재</a>되어 있으면 프로세스이다.</p></div>
+<p><b>쉽게</b> 책장에 꽂힌 레시피 책 = 프로그램, 펴서 지금 요리 중인 레시피 = 프로세스.</p>
+<p class="small"><b>외우기</b> "<b>저장돼 있으면 프로그램, 돌아가면 프로세스</b>" (프로그램은 가만히, 프로세스는 진행 중).</p>
+
+<div class="box exam"><span class="t">5. 멀티 프로세싱 vs 멀티 쓰레딩</span><p>하나의 프로그램을 여러 프로세스로 병렬 실행하면 <a class="w" href="words.html#w109" data-w="109">멀티 프로세싱</a>, 하나의 프로세스 안에서 여러 흐름으로 병렬 실행하면 <a class="w" href="words.html#w110" data-w="110">멀티 쓰레딩</a>이다.</p></div>
+<p><b>쉽게</b> 크롬 <b>창</b>을 여러 개 띄우면 멀티 프로세싱, 창 하나 안에 <b>탭</b>이 여러 개면 멀티 쓰레딩.</p>
+<p class="small"><b>외우기</b> "<b>창 = 프로세스, 탭 = <a class="w" href="words.html#w93" data-w="93">쓰레드</a></b>".</p>
+
+<div class="box exam"><span class="t">6. 운영체제</span><p>컴퓨터 전원이 켜지면 가장 먼저 시작되어, 컴퓨터 자원을 관리하고 여러 응용 프로그램의 실행을 관리하는 프로그램이다.</p></div>
+<p><b>쉽게</b> 윈도우 같은 것이에요. 학교의 교무실처럼 누가 언제 교실(CPU·메모리)을 쓸지 정해 줘요.</p>
+<p class="small"><b>외우기</b> "<b>제일 먼저 켜지는 관리자</b>" = 운영체제.</p>
+
+<div class="box exam"><span class="t">7. 6대 부품 (Q2, 12점)</span><p>메인보드는 데이터가 전송되는 통로, CPU는 대부분의 계산, 보조기억장치(<a class="w" href="words.html#w30" data-w="30">SSD</a>/<a class="w" href="words.html#w31" data-w="31">HDD</a>)는 <a class="w" href="words.html#w24" data-w="24">비휘발성</a> 반영구 보관, RAM은 <a class="w" href="words.html#w23" data-w="23">휘발성</a>으로 실행 중인 코드·데이터 보관, GPU는 그래픽·병렬 계산, 전원공급장치는 전기를 공급한다.</p></div>
+<p><b>쉽게</b> 몸에 비유하면 메인보드 = 혈관(길), CPU = 뇌, RAM = 책상(지금 펼친 것), SSD = 책장(오래 보관), GPU = 그림 잘 그리는 손, 전원 = 심장.</p>
+<p class="small"><b>외우기</b> 기출 번호 "1 보조기억 · 2 GPU · 3 전원 · 4 CPU · 5 RAM · 6 메인보드". 설명 a 통로=6, b 계산=4, c 비휘발=1, d 휘발=5.</p>
+
+<div class="box exam"><span class="t">8. 휘발성 · sum.py 실행 과정 (Q3)</span><p>휘발성은 전원이 꺼지면 데이터가 사라지는 성질이다. sum.py는 보조기억장치(SSD)에 있다가 실행되면 RAM에 적재되고, CPU가 한 줄씩 계산하며 결과(<a class="w" href="words.html#w21" data-w="21">변수</a> 값)는 다시 RAM에 기록된다.</p></div>
+<p><b>쉽게</b> 책장(SSD)에서 책을 꺼내 책상(RAM)에 펴고, 뇌(CPU)가 한 줄씩 읽어 계산한 답을 책상 메모지(RAM)에 적어요. 전원을 끄면 책상 위는 싹 치워져요(휘발).</p>
+<p class="small"><b>외우기</b> "<b>SSD → RAM → CPU → RAM</b>" (책장 → 책상 → 뇌 → 책상).</p>
+
+<h3>B. 회로 (Q5, 10점)</h3>
+
+<div class="box exam"><span class="t">9. 논리 게이트</span><p><a class="w" href="words.html#w52" data-w="52">AND</a>는 모두 1일 때만 1, <a class="w" href="words.html#w53" data-w="53">OR</a>는 하나라도 1이면 1, <a class="w" href="words.html#w54" data-w="54">NOT</a>은 반대, <a class="w" href="words.html#w57" data-w="57">XOR</a>는 같으면 0 다르면 1이다. 입력 00·01·10·11에 대해 AND 0001, OR 0111, XOR 0110이다.</p></div>
+<p><b>쉽게</b> AND = 엄마 아빠 <b>둘 다</b> 허락해야 외출, OR = <b>한 명만</b> 허락해도 외출, XOR = 둘 의견이 <b>다를 때만</b> 1.</p>
+<p class="small"><b>외우기</b> 진리표 맨 아랫줄(11)만 기억 — AND 1, OR 1, XOR <b>0</b>. 나머지는 "AND는 1이 하나, OR는 0이 하나, XOR는 가운데 둘".</p>
+
+<div class="box exam"><span class="t">10. 반가산기 · 전가산기 · 8비트 덧셈기</span><p><a class="w" href="words.html#w60" data-w="60">반가산기</a>는 두 비트를 더해 합 S(XOR)와 <a class="w" href="words.html#w62" data-w="62">올림</a> Cout(AND)을 내고, <a class="w" href="words.html#w61" data-w="61">전가산기</a>는 아랫자리 올림 Cin까지 세 비트를 더한다. 8비트 덧셈기는 전가산기 8개를 이어 i번의 Cout을 i+1번의 Cin에 연결하고 맨 아래 Cin은 0이다.</p></div>
+<p><b>쉽게</b> 손으로 덧셈할 때 "받아올림"을 옆 칸에 넘기잖아요. 전가산기 8개가 한 줄로 서서 받아올림(Cout)을 왼쪽 친구의 Cin으로 넘겨요. 맨 오른쪽은 넘겨받을 게 없으니 0.</p>
+<p class="small"><b>외우기</b> "<b>합은 XOR, 올림은 AND</b>" · "<b>반은 둘, 전은 셋</b>(전가산기는 Cin까지 3개)".</p>
+
+<h3>C. CPU (Q6·Q7, 20점 — 교수님 강조)</h3>
+
+<div class="box exam"><span class="t">11. CPU 구성 요소</span><p>CPU는 ALU(산술·논리 계산), <a class="w" href="words.html#w65" data-w="65">제어장치</a> CU(명령 <a class="w" href="words.html#w77" data-w="77">해독</a>과 제어 신호), <a class="w" href="words.html#w66" data-w="66">레지스터 세트</a>(CPU 안의 작고 빠른 메모리)로 구성된다.</p></div>
+<p><b>쉽게</b> ALU = 계산기, 제어장치 = 지휘자, 레지스터 = 손바닥 메모지(제일 빠른 저장).</p>
+<p class="small"><b>외우기</b> "<b>계산기 · 지휘자 · 메모지</b>" = ALU · CU · 레지스터.</p>
+
+<div class="box exam"><span class="t">12. 레지스터 이름</span><p><a class="w" href="words.html#w67" data-w="67">PC</a>는 다음 명령의 주소, <a class="w" href="words.html#w68" data-w="68">IR</a>은 현재 명령, <a class="w" href="words.html#w69" data-w="69">MAR</a>은 접근할 메모리 주소, <a class="w" href="words.html#w70" data-w="70">MBR</a>은 메모리에서 읽거나 쓸 값, <a class="w" href="words.html#w71" data-w="71">AC</a>는 계산 결과를 저장한다.</p></div>
+<p><b>쉽게</b> PC = 책갈피(다음에 읽을 쪽), IR = 지금 읽는 문장, MAR = 찾아갈 사물함 번호, MBR = 사물함에서 꺼낸 물건, AC = 계산기 화면.</p>
+<p class="small"><b>외우기</b> 글자 뜻으로 — <b>P</b>rogram <b>C</b>ounter(다음 줄 세기), <b>I</b>nstruction(명령), Memory <b>A</b>ddress(주소), Memory <b>B</b>uffer(값), <b>AC</b>cumulator(결과).</p>
+
+<div class="box exam"><span class="t">13. 기계어 = opcode + operand (Q6)</span><p>기계어 명령은 연산 종류인 <a class="w" href="words.html#w73" data-w="73">opcode</a>와 연산 대상인 <a class="w" href="words.html#w74" data-w="74">operand</a>로 구성된다. ADD R3 R1 R2에서 ADD가 opcode, R3·R1·R2가 operand이다.</p></div>
+<p><b>쉽게</b> "더해라(opcode) / 무엇을(operand)". "R1과 R2를 더해서 R3에 넣어라"라는 문장이에요.</p>
+<p class="small"><b>외우기</b> "<b>op = 동사, operand = 목적어</b>".</p>
+
+<div class="box exam"><span class="t">14. 명령 실행 5단계 (Q7) ★</span><p>명령 한 줄은 <a class="w" href="words.html#w76" data-w="76">인출</a>(fetch) → 해독(<a class="w" href="words.html#w38" data-w="38">decode</a>) → 실행(execute) → 데이터(data) → 기록(write back)의 5단계로 실행된다.</p></div>
+<p><b>쉽게</b> 도서관 비유 — 쪽지 가져오기(인출) → 무슨 뜻인지 읽기(해독) → 계산기 두드리기(실행) → 책장에서 책 꺼내거나 꽂기(데이터) → 노트에 적기(기록).</p>
+<p class="small"><b>외우기</b> "<b>인해실데기</b>" (인-해-실-데-기, "인해 실데기"로 소리 내기).</p>
+
+<div class="box exam"><span class="t">15. 어떤 단계를 건너뛰나</span><p>ADD 같은 계산 명령은 <a class="w" href="words.html#w79" data-w="79">데이터 단계</a>가 No action(1-2-3-5)이고, LOAD·STORE 같은 메모리 접근 명령은 실행 단계가 No action(1-2-4-5)이다.</p></div>
+<p><b>쉽게</b> 계산만 하는 명령은 책장(메모리)에 갈 일이 없고, 책장에서 꺼내기만 하는 명령은 계산기를 안 써요.</p>
+<p class="small"><b>외우기</b> "<b>계산은 4번 쉼, 메모리는 3번 쉼</b>" (ADD 1235, LOAD 1245).</p>
+
+<div class="box exam"><span class="t">16. 인출 단계 안에서 일어나는 일</span><p>인출 단계에서는 PC의 주소를 MAR에 넣고, 메모리에서 읽은 명령을 MBR을 거쳐 IR로 가져오며, PC는 다음 명령 주소로 바뀐다. PC가 4이고 명령이 2칸이면 MAR은 4, PC는 6이 된다.</p></div>
+<p><b>쉽게</b> 책갈피(PC) 쪽수를 사물함 번호(MAR)에 적고 → 꺼낸 쪽지(MBR)를 지금 읽는 칸(IR)에 놓고 → 책갈피를 다음 쪽으로 옮겨요.</p>
+<p class="small"><b>외우기</b> "<b>PC → MAR → MBR → IR, 그리고 PC 증가</b>" (피-마-엠-아이).</p>
+
+<h3>D. 메모리 (Q8·Q9, 19점)</h3>
+
+<div class="box exam"><span class="t">17. 메모리 계층</span><p>메모리 계층은 레지스터 → <a class="w" href="words.html#w98" data-w="98">캐시</a> → RAM → 보조기억장치(SSD/HDD) 순으로 빠르며, 위로 갈수록 용량이 작고 비싸다. CPU 안에 있는 메모리는 레지스터와 캐시이다.</p></div>
+<p><b>쉽게</b> 손바닥(레지스터) → 책상 서랍(캐시) → 책상 위(RAM) → 책장(SSD) → 창고(HDD). 가까울수록 빠르지만 좁아요.</p>
+<p class="small"><b>외우기</b> "<b>레캐램보</b>" — 위로 갈수록 빠르고 작고 비싸다(빠작비).</p>
+
+<div class="box exam"><span class="t">18. SRAM · DRAM · 캐시 히트</span><p><a class="w" href="words.html#w99" data-w="99">SRAM</a>은 빠르고 비싸서 캐시에, <a class="w" href="words.html#w100" data-w="100">DRAM</a>은 싸고 집적도가 높아 RAM(주기억장치)에 쓴다. 필요한 데이터가 캐시에 있으면 <a class="w" href="words.html#w121" data-w="121">히트</a>, 없으면 <a class="w" href="words.html#w122" data-w="122">미스</a>이다.</p></div>
+<p><b>쉽게</b> 서랍(캐시)을 열었는데 찾는 게 있으면 히트(성공), 없어서 책상까지 가야 하면 미스(실패).</p>
+<p class="small"><b>외우기</b> "<b>S = Speed(캐시), D = 싸고 많이(RAM)</b>".</p>
+
+<div class="box exam"><span class="t">19. 레이턴시 vs 대역폭 ★ 교수님 강조</span><p><a class="w" href="words.html#w102" data-w="102">레이턴시</a>는 데이터에 접근하는 데 걸리는 시간(낮을수록 좋음)이고, <a class="w" href="words.html#w103" data-w="103">대역폭</a>은 단위 시간당 전송할 수 있는 데이터의 양(높을수록 좋음)이다. 둘은 서로 다른 개념이다.</p></div>
+<p><b>쉽게</b> 택배로 치면 레이턴시 = <b>첫 상자가 도착하기까지 걸린 시간</b>, 대역폭 = <b>트럭 한 대에 실을 수 있는 상자 수</b>. 빨리 오는 오토바이(레이턴시↓)와 많이 싣는 트럭(대역폭↑)은 다른 얘기예요.</p>
+<p class="small"><b>외우기</b> "<b>레이턴시 = 기다림(시간), 대역폭 = 도로 폭(양)</b>".</p>
+
+<div class="box exam"><span class="t">20. 가상메모리 · 페이지 · 프레임</span><p><a class="w" href="words.html#w112" data-w="112">가상메모리</a>는 <a class="w" href="words.html#w113" data-w="113">실제 메모리</a> 크기와 관계없이 프로세스에 큰 메모리 공간을 주는 기술이다. 가상메모리는 페이지, 물리메모리는 같은 크기의 <a class="w" href="words.html#w117" data-w="117">프레임</a>으로 나누며, 주소 변환은 페이지 번호만 프레임 번호로 바꾸고 오프셋은 그대로 둔다.</p></div>
+<p><b>쉽게</b> 아파트 동·호수 바꾸기예요. "가상 3동 05호"를 "실제 7동 05호"로 — 동(페이지→프레임)만 바뀌고 호수(오프셋)는 그대로.</p>
+<p class="small"><b>외우기</b> "<b>가상은 페이지, 진짜는 프레임, 오프셋은 그대로</b>".</p>
+
+<div class="box exam"><span class="t">21. 스와핑 · 40GB 문제 (Q9)</span><p>프로세스가 쓰는 메모리가 물리메모리(RAM)보다 크면 일부가 보조기억장치의 <a class="w" href="words.html#w114" data-w="114">스왑 영역</a>으로 이동하는데, 이것이 스와핑이며 컴퓨터가 느려진다. 코드를 고치지 않고 해결하려면 RAM을 늘린다.</p></div>
+<p><b>쉽게</b> 책상(RAM)이 좁아서 책 일부를 바닥 창고(SSD 스왑)에 내려놨다가 필요할 때마다 다시 올리니 느려져요. 해결은 책상을 키우기(RAM 증설).</p>
+<p class="small"><b>외우기</b> "<b>RAM 넘치면 스왑 → 느림 → RAM 늘리기</b>".</p>
+
+<div class="box exam"><span class="t">22. 주소 변환 순서 ★ 교수님 "빈칸 낼 테니 암기"</span><p>주소 변환은 <a class="w" href="words.html#w119" data-w="119">TLB</a> → <a class="w" href="words.html#w118" data-w="118">페이지 테이블</a> → (필요하면 스왑 영역) → 캐시 순으로 진행된다. TLB 히트면 물리주소를 바로 얻고, 미스면 페이지 테이블을 찾는다.</p></div>
+<p><b>쉽게</b> TLB = 자주 가는 집 주소를 적은 <b>포스트잇</b>, 페이지 테이블 = 전체 <b>주소록</b>. 포스트잇에 있으면 바로, 없으면 주소록을 펼쳐요.</p>
+<p class="small"><b>외우기</b> "<b>포스트잇 → 주소록 → 창고 → 서랍</b>" = TLB → 페이지 테이블 → 스왑 → 캐시.</p>
+
+<div class="box exam"><span class="t">23. 페이지 폴트</span><p>필요한 페이지가 RAM에 없으면 <a class="w" href="words.html#w120" data-w="120">페이지 폴트</a>가 발생하고, 운영체제가 스왑 영역의 페이지를 RAM에 올린 뒤 페이지 테이블과 TLB를 갱신한다. TLB 미스가 곧 페이지 폴트인 것은 아니다.</p></div>
+<p><b>쉽게</b> 주소록엔 있는데 그 책이 책상이 아니라 창고에 있는 상황이에요. 관리자(운영체제)가 창고에서 가져와 책상에 놓고 주소록을 고쳐요.</p>
+<p class="small"><b>외우기</b> "<b>포스트잇에 없음 = TLB 미스</b>(아직 괜찮음), <b>책상에 없음 = 페이지 폴트</b>(창고 다녀옴)".</p>
+
+<h3>E. 보조기억장치 (Q10, 9점)</h3>
+
+<div class="box exam"><span class="t">24. 저장 원리</span><p>HDD는 자기적, <a class="w" href="words.html#w131" data-w="131">CD-ROM</a>은 광학적, SSD는 전자적 성질을 이용해 데이터를 저장한다.</p></div>
+<p><b>쉽게</b> HDD = 자석 원판, CD = 빛(레이저), SSD = 전기(반도체 칩).</p>
+<p class="small"><b>외우기</b> "<b>하자 · 씨광 · 에스전</b>" (HDD 자기, CD 광학, SSD 전자).</p>
+
+<div class="box exam"><span class="t">25. SSD vs HDD · RAID · 파티션</span><p>SSD는 HDD보다 빠르지만 같은 용량에 비싸므로 운영체제는 SSD에, 동영상·사진은 HDD에 둔다. 여러 디스크를 하나처럼 묶는 것이 <a class="w" href="words.html#w134" data-w="134">RAID</a>, 디스크 하나를 나눠 쓰는 것이 <a class="w" href="words.html#w132" data-w="132">파티션</a>이다.</p></div>
+<p><b>쉽게</b> 자주 꺼내는 건 빠른 SSD, 크고 덜 쓰는 사진은 싼 HDD. 여러 개를 <b>묶으면</b> RAID, 하나를 <b>나누면</b> 파티션.</p>
+<p class="small"><b>외우기</b> "<b>묶으면 RAID, 나누면 파티션</b>".</p>
 
 <h2>순서 3개는 통째로</h2>
 <div class="box tip"><span class="t">1. CPU 명령 5단계 (Q7, 교수님 지시)</span>
