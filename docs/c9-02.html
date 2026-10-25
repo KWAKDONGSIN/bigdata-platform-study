@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ko" data-site="1bb07e">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>데이터 표현 — 진법과 코드 (기출 Q4) · 빅데이터플랫폼 시험공부</title>
+<meta name="description" content="빅데이터플랫폼 중간고사를 전공 처음인 사람도 이해하게 정리한 공부 사이트">
+<link rel="stylesheet" href="assets/style.css?v=e9de76fc">
+</head>
+<body>
+<header class="top"><div class="top-in">
+<a class="brand" href="index.html"><span class="bases"><i class="a">시</i><i class="t">험</i><i class="g">공</i><i class="c">부</i></span>빅데이터플랫폼</a>
+<nav class="nav" aria-label="메뉴"><a href="plan.html">내 일정</a><a href="index.html" class=on>보드</a><a href="bplus.html">B+코스</a><a href="quiz.html">퀴즈</a><a href="essay.html">서술형</a><a href="cards.html">암기카드</a><a href="words.html">낱말사전</a><a href="cheat.html">시험 전 1장</a><a href="research.html">왜 이렇게?</a></nav>
+</div></header>
+<main>
+<div class="crumb k9"><a href="index.html#c9">← 보드</a><span>빈칸 암기 훈련 · 2/9</span></div><h1>데이터 표현 — 진법과 코드 (기출 Q4)</h1>
+<p>기출 4번은 <a class="w" href="words.html#w4" data-w="4">십진수</a>와 글자를 <a class="w" href="words.html#w1" data-w="1">1바이트</a> <a class="w" href="words.html#w3" data-w="3">이진수</a>로 쓰는 손계산이에요. 먼저 용어와 규칙을 빈칸으로 떠올리고, 마지막에 직접 변환해 보세요.</p>
+<p><b>① 빈칸 채우기</b> 문장을 읽고 ____에 들어갈 말을 먼저 말하거나 써 본 뒤 눌러서 맞춰 보세요.</p>
+<details class="check"><summary>1) 컴퓨터에서 0 또는 1 한 자리를 나타내는 가장 작은 정보 단위는 ____이고, 이것 8개를 묶은 단위는 ____이다.</summary><p><b><a class="w" href="words.html#w0" data-w="0">비트</a></b>, <b>바이트</b>예요. 비트(bit)는 binary digit(이진 숫자)을 줄인 말이에요.</p></details>
+<details class="check"><summary>2) 4비트를 묶은 단위를 ____이라고 하며, 16진수 한 자리와 같다.</summary><p><b><a class="w" href="words.html#w2" data-w="2">니블</a></b>(nibble)이에요. 비트 4개는 0000~1111로 16가지라 <a class="w" href="words.html#w6" data-w="6">16진수</a> 한 자리와 딱 맞아요.</p></details>
+<details class="check"><summary>3) 1바이트(8비트)로는 서로 다른 ____가지 값(0~255)을 나타낼 수 있다.</summary><p><b>256</b>이에요. 0 또는 1이 8자리이니 2를 8번 곱한 수예요.</p></details>
+<details class="check"><summary>4) 8비트 이진수의 자릿값은 왼쪽부터 ____이다.</summary><p><b>128 64 32 16 8 4 2 1</b>이에요. 오른쪽부터 1에 2를 계속 곱한 수예요. 시험지 여백에 먼저 적어 두세요.</p></details>
+<details class="check"><summary>5) 2진수를 오른쪽부터 ____비트씩 묶으면 8진수 한 자리, ____비트씩 묶으면 16진수 한 자리가 된다.</summary><p><b>3</b>, <b>4</b>예요. 2의 3제곱이 8이고 2의 4제곱이 16이라서 그래요. 자리가 모자라면 왼쪽에 0을 채워요.</p></details>
+<details class="check"><summary>6) 16진수에서 10부터 15까지는 ____로 쓴다.</summary><p><b>A, B, C, D, E, F</b>예요. A는 10, B는 11, C는 12, D는 13, E는 14, F는 15예요. 그래서 1100은 8 + 4 = 12이고 C예요.</p></details>
+<details class="check"><summary>7) 2의 10제곱은 1K(킬로), 2의 20제곱은 1M(메가), 2의 30제곱은 1____, 2의 40제곱은 1____이다.</summary><p><b>G(기가)</b>, <b>T(테라)</b>예요. 큰 거듭제곱은 10단위와 나머지로 쪼개요. 예를 들어 2의 28제곱은 1M × 256 = 256M이에요.</p></details>
+<details class="check"><summary>8) ASCII에서 대문자 A는 십진수 ____, 소문자 a는 ____, 숫자 글자 0은 ____이다.</summary><p><b>65</b>, <b>97</b>, <b>48</b>이에요. 알파벳은 차례대로 1씩 커져서 R은 65 + 17 = 82, t는 97 + 19 = 116이에요.</p></details>
+<details class="check"><summary>9) 문자 하나는 ASCII 7비트 코드 앞에 0을 붙여 ____비트(1바이트)로 메모리에 저장한다.</summary><p><b>8</b>비트예요. 메모리 한 칸이 8비트라서 항상 8자리로 맞춰요. 그래서 "Hello"는 5바이트예요.</p></details>
+<details class="check"><summary>10) 데이터 오류를 검사하려고 덧붙이는 비트를 ____ 비트라고 하며, 짝수 방식은 전체에서 1의 개수가 ____가 되도록 붙인다.</summary><p><b><a class="w" href="words.html#w45" data-w="45">패리티</a></b>, <b>짝수</b>예요. 전송 중 비트 하나가 바뀌면 1의 개수의 짝홀이 규칙과 달라져서 오류를 알아챌 수 있어요.</p></details>
+<p><b>② 순서대로 써 보기</b> 문자 R을 메모리 한 칸(1바이트)에 넣는 순서를 써 보세요. 보기를 순서대로 가나다 기호로 쓰면 돼요.</p>
+<ul><li>가) 열의 3비트와 행의 4비트를 이어 붙여 7비트 코드를 만든다</li><li>나) <a class="w" href="words.html#w43" data-w="43">ASCII</a> 표에서 글자를 찾는다</li><li>다) 맨 앞에 0을 붙여 8비트로 쓴다</li></ul>
+<details class="check"><summary>순서대로 써 보기 — 답 열기</summary><p>나 → 가 → 다</p><p>표에서 R은 열 101, 행 0010이라 1010010이고, 앞에 0을 붙이면 0101 0010이에요. 10진수로는 82예요.</p></details>
+<p><b>③ 계산</b> 십진수 77을 8비트 이진수로 바꿔 보세요. (기출 Q4의 77)</p>
+<details class="check"><summary>단계 풀이 보기 (종이에 먼저 풀어 본 뒤 열기)</summary><p>자릿값 표를 먼저 적어요. 128 64 32 16 8 4 2 1.</p><p>128은 77보다 커서 0이에요. 64는 들어가서 1이고 남은 수는 13이에요.</p><p>32와 16은 13보다 커서 0이에요. 8은 들어가서 1이고 남은 수는 5예요.</p><p>4는 들어가서 1이고 남은 수는 1이에요. 2는 안 들어가서 0, 1은 들어가서 1이에요.</p><p>답은 0100 1101이에요. 검산은 64 + 8 + 4 + 1 = 77이에요.</p></details>
+<div class="box exam"><span class="t">시험엔 이렇게 써요</span><p>숫자는 자릿값(128 64 32 16 8 4 2 1)을 이용해 8비트 이진수로 바꾸고, 문자는 ASCII 표에서 열과 행의 비트를 이어 붙인 뒤 앞에 0을 붙여 8비트로 쓴다. 2진수를 오른쪽부터 3비트씩 묶으면 <a class="w" href="words.html#w5" data-w="5">8진수</a>, 4비트씩 묶으면 16진수이다.</p></div>
+<details class="check"><summary>잠깐 확인 — (10110110)₂를 16진수로 바꾸면 무엇인가요?</summary><p>B6이에요. 1011 = 8 + 2 + 1 = 11 = B이고, 0110 = 4 + 2 = 6이에요.</p></details>
+
+<div class="recall"><b>덮고 10초 — 말해 보기</b><p>화면을 가리고 <b>"데이터 표현 — 진법과 코드 (기출 Q4)"</b>을(를) 친구에게 설명하듯 한 문장으로 말해 보세요. 막히면 위의 빨간 칸만 다시 보고 넘어가요.</p></div><div class="done"><a class="go" href="c9-03.html">다음 카드 → 논리 게이트와 가산기 (기출 Q5)</a><div class="pn"><a href="c9-01.html"><b>← 이전</b>이전 카드</a><a class="next" href="quiz.html#c9"><b>연습</b>이 장 문제 풀기</a></div><p class="muted small">자료: 2023 기출 · 6·7주차 녹취 · 02~07 PDF</p></div>
+</main>
+<script src="assets/words.js?v=e9de76fc"></script>
+<script src="assets/app.js?v=e9de76fc"></script>
+</body>
+</html>
